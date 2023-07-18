@@ -7,9 +7,10 @@
 ###
 # Globals.
 ###
-path="/home/workuser"
-file="https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_elev.zip"
-dest="${path}/WorldClim/Elevation/Full/elev.zip"
+name="wc2.1_30s_elev"
+path="/home/workuser/ClimateService"
+remo="https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/${name}.zip"
+dest="${path}/WorldClim/Elevation/Full"
 
 ###
 # Download.
@@ -21,7 +22,17 @@ start=$(date +%s)
 ###
 # Get files.
 ###
-wget "$file" --force-directories --output-document="$dest"
+wget --continue --force-directories --output-document="$dest/${name}.zip" "$remo"
+
+###
+# Expand files.
+###
+unzip -o "$dest/${name}.zip" -d "$dest"
+
+###
+# remove zip files.
+###
+rm "$dest/${name}.zip"
 
 end=$(date +%s)
 elapsed=$((end-start))
