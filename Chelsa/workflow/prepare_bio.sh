@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip maps to useful region.
+# Download and clip maps.
 ###
 
 ###
@@ -14,20 +14,110 @@ pass="$arg"
 read arg
 path="$arg"
 
+echo "=================================================="
+echo "PREPARE BIOCLIMATIC FILES"
+echo "=================================================="
+start=$(date +%s)
+
+echo "**************************************************"
+echo "DOWNLOAD FILES"
+echo "**************************************************"
+while read -r line
+do
+
+	###
+	# Get source URL and destination file path.
+	###
+    url=$(echo $line | cut -d ' ' -f 1)
+    name=$(echo $line | cut -d ' ' -f 2)
+    
+	###
+	# Download file.
+	###
+	wget --continue --output-document="${path}/Chelsa/1981-2010/Full/bio/$name" "$url"
+    
+done < "${path}/Chelsa/config/path_1981_2010_bio.txt"
+
+while read -r line
+do
+
+	###
+	# Get source URL and destination file path.
+	###
+    url=$(echo $line | cut -d ' ' -f 1)
+    name=$(echo $line | cut -d ' ' -f 2)
+    
+	###
+	# Download file.
+	###
+	wget --continue --output-document="${path}/Chelsa/1981-2010/Full/pr/$name" "$url"
+    
+done < "${path}/Chelsa/config/path_1981_2010_pr.txt"
+
+while read -r line
+do
+
+	###
+	# Get source URL and destination file path.
+	###
+    url=$(echo $line | cut -d ' ' -f 1)
+    name=$(echo $line | cut -d ' ' -f 2)
+    
+	###
+	# Download file.
+	###
+	wget --continue --output-document="${path}/Chelsa/1981-2010/Full/tas/$name" "$url"
+    
+done < "${path}/Chelsa/config/path_1981_2010_tas.txt"
+
+while read -r line
+do
+
+	###
+	# Get source URL and destination file path.
+	###
+    url=$(echo $line | cut -d ' ' -f 1)
+    name=$(echo $line | cut -d ' ' -f 2)
+    
+	###
+	# Download file.
+	###
+	wget --continue --output-document="${path}/Chelsa/1981-2010/Full/tasmax/$name" "$url"
+    
+done < "${path}/Chelsa/config/path_1981_2010_tasmax.txt"
+
+while read -r line
+do
+
+	###
+	# Get source URL and destination file path.
+	###
+    url=$(echo $line | cut -d ' ' -f 1)
+    name=$(echo $line | cut -d ' ' -f 2)
+    
+	###
+	# Download file.
+	###
+	wget --continue --output-document="${path}/Chelsa/1981-2010/Full/tasmin/$name" "$url"
+    
+done < "${path}/Chelsa/config/path_1981_2010_tasmin.txt"
+
+echo ""
+echo "**************************************************"
+echo "CLIP FILES"
+echo "**************************************************"
+
 ###
 # Globals.
 ###
-name="pr"
 poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
-full="${path}/Chelsa/1981-2010/Full/$name"
-clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
-
-echo "--------------------------------------------------"
-start=$(date +%s)
 
 ###
 # Clip bioclimatic variables global TIFF to Forgenius region.
 ###
+name="bio"
+full="${path}/Chelsa/1981-2010/Full/$name"
+clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
 gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -dstnodata -999999999.0 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/ai.tif" "$clip/ai.tif"
 gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -dstnodata -999999999.0 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/bio01.tif" "$clip/bio01.tif"
 gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -dstnodata -999999999.0 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/bio02.tif" "$clip/bio02.tif"
@@ -105,7 +195,85 @@ gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -c
 gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -dstnodata -999999999.0 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/vpd_min.tif" "$clip/vpd_min.tif"
 gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -dstnodata -999999999.0 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/vpd_range.tif" "$clip/vpd_range.tif"
 
+###
+# Clip precipitation global TIFF to Forgenius region.
+###
+name="pr"
+full="${path}/Chelsa/1981-2010/Full/$name"
+clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_01.tif" "$clip/pr_01.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_02.tif" "$clip/pr_02.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_03.tif" "$clip/pr_03.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_04.tif" "$clip/pr_04.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_05.tif" "$clip/pr_05.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_06.tif" "$clip/pr_06.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_07.tif" "$clip/pr_07.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_08.tif" "$clip/pr_08.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_09.tif" "$clip/pr_09.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_10.tif" "$clip/pr_10.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_11.tif" "$clip/pr_11.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/pr_12.tif" "$clip/pr_12.tif"
+
+###
+# Clip monthly mean daily ERA5 2m. air temperature global TIFF to Forgenius region.
+###
+name="tas"
+full="${path}/Chelsa/1981-2010/Full/$name"
+clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_01.tif" "$clip/tas_01.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_02.tif" "$clip/tas_02.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_03.tif" "$clip/tas_03.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_04.tif" "$clip/tas_04.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_05.tif" "$clip/tas_05.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_06.tif" "$clip/tas_06.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_07.tif" "$clip/tas_07.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_08.tif" "$clip/tas_08.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_09.tif" "$clip/tas_09.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_10.tif" "$clip/tas_10.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_11.tif" "$clip/tas_11.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tas_12.tif" "$clip/tas_12.tif"
+
+###
+# Clip monthly mean daily maximum ERA5 2m. air temperature global TIFF to Forgenius region.
+###
+name="tasmax"
+full="${path}/Chelsa/1981-2010/Full/$name"
+clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_01.tif" "$clip/tasmax_01.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_02.tif" "$clip/tasmax_02.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_03.tif" "$clip/tasmax_03.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_04.tif" "$clip/tasmax_04.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_05.tif" "$clip/tasmax_05.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_06.tif" "$clip/tasmax_06.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_07.tif" "$clip/tasmax_07.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_08.tif" "$clip/tasmax_08.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_09.tif" "$clip/tasmax_09.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_10.tif" "$clip/tasmax_10.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_11.tif" "$clip/tasmax_11.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmax_12.tif" "$clip/tasmax_12.tif"
+
+###
+# Clip monthly mean daily minimum ERA5 2m. air temperature global TIFF to Forgenius region.
+###
+name="tasmin"
+full="${path}/Chelsa/1981-2010/Full/$name"
+clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_01.tif" "$clip/tasmin_01.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_02.tif" "$clip/tasmin_02.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_03.tif" "$clip/tasmin_03.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_04.tif" "$clip/tasmin_04.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_05.tif" "$clip/tasmin_05.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_06.tif" "$clip/tasmin_06.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_07.tif" "$clip/tasmin_07.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_08.tif" "$clip/tasmin_08.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_09.tif" "$clip/tasmin_09.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_10.tif" "$clip/tasmin_10.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_11.tif" "$clip/tasmin_11.tif"
+gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/tasmin_12.tif" "$clip/tasmin_12.tif"
+
 end=$(date +%s)
 elapsed=$((end-start))
-echo "Elapsed time: $elapsed seconds"
-echo "--------------------------------------------------"
+echo "=================================================="
+echo "PREPARE BIOCLIMATIC FILES: $elapsed seconds"
+echo "=================================================="
+echo ""
