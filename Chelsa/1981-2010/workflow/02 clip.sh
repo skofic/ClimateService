@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip maps to useful region.
+# Download and clip maps.
 ###
 
 ###
@@ -17,8 +17,65 @@ path="$arg"
 ###
 # Globals.
 ###
-name="bio"
 poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
+
+echo "**************************************************"
+echo "CLIP FILES"
+echo "**************************************************"
+start=$(date +%s)
+
+###
+# Clip bioclimatic Float32 variables global TIFF to Forgenius region.
+###
+
+for code in "bio" "pr" "tas" "tasmax" "tasmin"
+do
+	echo "===> $code"
+	while read -r line
+	do
+
+		###
+		# Get source URL and destination file path.
+		###
+		url=$(echo $line | cut -d ' ' -f 1)
+		name=$(echo $line | cut -d ' ' -f 2)
+	
+		###
+		# Download file.
+		###
+		wget --continue --output-document="${path}/Chelsa/1981-2010/Full/$code/$name" "$url"
+	
+	done < "${path}/Chelsa/config/path_1981_2010_$code.txt"
+done
+
+end=$(date +%s)
+elapsed=$((end-start))
+echo "=================================================="
+echo "CLIP FILES: $elapsed seconds"
+echo "=================================================="
+echo ""
+
+
+#!/bin/sh
+
+###
+# Clip maps to useful region.
+###
+
+###
+# Parameters.
+###
+read arg
+user="$arg"
+read arg
+pass="$arg"
+read arg
+path="$arg"
+
+###
+# Parameters.
+###
+name="bio"
 full="${path}/Chelsa/1981-2010/Full/$name"
 clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
 
