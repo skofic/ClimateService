@@ -28,7 +28,7 @@ start=$(date +%s)
 ###
 # Get files.
 ###
-wget "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_elev.zip" --output-document="${path}/WorldClim/Elevation/Full/elev.zip"
+wget "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_elev.zip" --force-directories --output-document="${path}/WorldClim/Elevation/Full/elev.zip"
 
 end=$(date +%s)
 elapsed=$((end-start))
