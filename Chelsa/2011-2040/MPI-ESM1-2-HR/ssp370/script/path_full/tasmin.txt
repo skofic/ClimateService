@@ -1,0 +1,12 @@
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_01_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_02_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_03_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_04_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_05_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_06_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_07_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_08_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_09_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_10_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_11_2011_2040_norm.tif
+/Users/milko/Local/Data/Environment/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/tasmin/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tasmin_12_2011_2040_norm.tif

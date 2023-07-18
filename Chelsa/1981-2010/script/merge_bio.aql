@@ -1,0 +1,18 @@
+///
+// Combine all 1981-2010 bioclimatic data into the Chelsa_1981_2010_bio collection,
+// create the point geometry and hash it to become the _key.
+// Remember to clear the collection before.
+///
+FOR doc IN temp_pong
+	COLLECT longitude = doc.lon, latitude = doc.lat INTO items
+	
+	LET geo = GEO_POINT(longitude, latitude)
+	
+INSERT {
+	_key: MD5(TO_STRING(geo)),
+	geometry: geo,
+	properties: {
+		`1981-2010`: UNSET(MERGE(items[*].doc), '_id', '_key', '_rev', 'lon', 'lat')
+	}
+}
+IN Chelsa_1981_2010_bio

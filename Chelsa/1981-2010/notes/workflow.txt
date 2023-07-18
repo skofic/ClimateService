@@ -1,0 +1,1579 @@
+###
+# Import all variables into one collection.
+###
+
+/* *** ******************************************* ***
+ * ai - 21258425
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/ai.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_pong \
+        --translate "value=env_ai" \
+        --ignore-missing \
+        --overwrite
+        
+/* *** ******************************************* ***
+ * bio01 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio01.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio01 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio01: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio02 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio02.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio02 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio02: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio03 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio03.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio03 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio03: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio04 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio04.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio04 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio04: (doc.value * 0.1) / 100
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio05 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio05.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio05 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio05: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio06 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio06.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio06 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio06: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio07 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio07.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio07 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio07: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio08 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio08.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio08 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio08: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio09 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio09.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio09 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio09: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio10 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio10.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio10 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio10: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio11 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio11.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio11 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio11: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio12 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio12.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio12 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio12: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio13 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio13.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio13 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio13: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio14 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio14.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio14 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio14: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio15 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio15.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio15 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio15: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio16 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio16.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio16 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio16: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio17 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio17.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio17 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio17: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio18 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio18.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio18 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio18: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * bio19 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/bio19.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process bio19 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_bio19: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * cmi_max - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/cmi_max.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process cmi_max value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_cmi_max: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * cmi_mean - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/cmi_mean.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process cmi_mean value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_cmi_mean: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * cmi_min - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/cmi_min.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process cmi_min value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_cmi_min: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * cmi_range - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/cmi_range.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process cmi_range value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_cmi_range: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * fcf - 14741654
+ * fgd - 21129595
+ * *** ******************************************* ***
+for name in fcf fgd
+do
+	echo ""
+	echo "==> $name"
+	arangoimport \
+			--server.endpoint "http+tcp://127.0.0.1:8529" \
+			--server.database "Chelsa" \
+			--server.username "root" \
+			--server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+			--file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/$name.csv" \
+			--headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+			--type "csv" \
+			--collection temp_pong \
+			--translate "value=env_$name" \
+			--ignore-missing
+done
+       
+/* *** ******************************************* ***
+ * gdd0 - 36125096
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/gdd0.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process gdd0 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_gdd0: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * gdd5 - 36079840
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/gdd5.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process gdd5 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_gdd5: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * gdd10 - 34519330
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/gdd10.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process gdd10 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_gdd10: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * gddlgd0 	-	11522653
+ * gddlgd5 	-	18699210
+ * gddlgd10 -	23933821
+ * gdgfgd0 	-	11522653
+ * gdgfgd5 	-	18699210
+ * gdgfgd10 -	23933821
+ * gsl 		-	35103033
+ * *** ******************************************* ***
+for name in gddlgd0 gddlgd5 gddlgd10 gdgfgd0 gdgfgd5 gdgfgd10 gsl
+do
+	echo ""
+	echo "==> $name"
+	arangoimport \
+			--server.endpoint "http+tcp://127.0.0.1:8529" \
+			--server.database "Chelsa" \
+			--server.username "root" \
+			--server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+			--file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/$name.csv" \
+			--headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+			--type "csv" \
+			--collection temp_pong \
+			--translate "value=env_$name" \
+			--ignore-missing
+done
+       
+/* *** ******************************************* ***
+ * gsp - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/gsp.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process gsp value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_gsp: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * gst - 35103033
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/gst.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process gst value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_gst: (doc.value * 0.1) - 273.15
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * hurs_max - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/hurs_max.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process hurs_max value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_hurs_max: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * hurs_mean - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/hurs_mean.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process hurs_mean value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_hurs_mean: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * hurs_min - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/hurs_min.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process hurs_min value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_hurs_min: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * hurs_range - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/hurs_range.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process hurs_range value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_hurs_range: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * kg0 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/kg0.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process kg0 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_kg0: TO_STRING(doc.value)
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * kg1 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/kg1.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process kg1 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_kg1: TO_STRING(doc.value)
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * kg2 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/kg2.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process kg2 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_kg2: TO_STRING(doc.value)
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * kg3 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/kg3.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process kg3 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_kg3: TO_STRING(doc.value)
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * kg4 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/kg4.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process kg4 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_kg4: TO_STRING(doc.value)
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * kg5 - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/kg5.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process kg5 value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_kg5: TO_STRING(doc.value)
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * lgd		-	21129595
+ * ngd0		-	36125096
+ * ngd5		-	36079840
+ * ngd10	-	34519330
+ * *** ******************************************* ***
+for name in lgd ngd0 ngd5 ngd10
+do
+	echo ""
+	echo "==> $name"
+	arangoimport \
+			--server.endpoint "http+tcp://127.0.0.1:8529" \
+			--server.database "Chelsa" \
+			--server.username "root" \
+			--server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+			--file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/$name.csv" \
+			--headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+			--type "csv" \
+			--collection temp_pong \
+			--translate "value=env_$name" \
+			--ignore-missing
+done
+       
+/* *** ******************************************* ***
+ * npp - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/npp.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process npp value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_npp: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * pet_penman_max - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/pet_penman_max.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process pet_penman_max value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_pet_penman_max: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * pet_penman_mean - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/pet_penman_mean.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process pet_penman_mean value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_pet_penman_mean: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * pet_penman_min - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/pet_penman_min.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process pet_penman_min value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_pet_penman_min: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * pet_penman_range - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/pet_penman_range.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process pet_penman_range value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_pet_penman_range: doc.value * 0.01
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * rsds_max - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/rsds_max.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process rsds_max value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_rsds_max: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * rsds_mean - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/rsds_mean.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process rsds_mean value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_rsds_mean: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * rsds_min - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/rsds_min.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process rsds_min value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_rsds_min: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * rsds_range - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/rsds_range.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process rsds_range value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_rsds_range: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * scd		-	36125747
+ * *** ******************************************* ***
+arangoimport \
+		--server.endpoint "http+tcp://127.0.0.1:8529" \
+		--server.database "Chelsa" \
+		--server.username "root" \
+		--server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+		--file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/scd.csv" \
+		--headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+		--type "csv" \
+		--collection temp_pong \
+		--translate "value=env_scd" \
+		--ignore-missing
+       
+/* *** ******************************************* ***
+ * sfcWind_max - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/sfcWind_max.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process sfcWind_max value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_sfcWind_max: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * sfcWind_mean - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/sfcWind_mean.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process sfcWind_mean value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_sfcWind_mean: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * sfcWind_min - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/sfcWind_min.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process sfcWind_min value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_sfcWind_min: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * sfcWind_range - 21799883
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/sfcWind_range.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process sfcWind_range value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_sfcWind_range: doc.value * 0.001
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * swe - 11519386
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/swe.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process swe value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_swe: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * vpd_max - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/vpd_max.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process vpd_max value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_vpd_max: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * vpd_mean - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/vpd_mean.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process vpd_mean value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_vpd_mean: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * vpd_min - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/vpd_min.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process vpd_min value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_vpd_min: doc.value * 0.1
+}
+IN temp_pong
+       
+/* *** ******************************************* ***
+ * vpd_range - 36125747
+ * *** ******************************************* ***
+arangoimport \
+        --server.endpoint "http+tcp://127.0.0.1:8529" \
+        --server.database "Chelsa" \
+        --server.username "root" \
+        --server.password "7YHMchHC8VjxcGnCyhsL9nuA" \
+        --file "/Users/milko/Local/Data/Environment/Chelsa/1981-2010/CSV/bio/vpd_range.csv" \
+        --headers-file /Users/milko/Local/Data/Environment/Chelsa/config/header.csv \
+        --type "csv" \
+        --collection temp_ping \
+        --ignore-missing \
+        --overwrite
+
+///
+// Process vpd_range value.
+///
+FOR doc IN temp_ping
+INSERT {
+	lon: doc.lon,
+	lat: doc.lat,
+	env_vpd_range: doc.value * 0.1
+}
+IN temp_pong
+
+# ============================================================================ #
+
+///
+// Combine all 1981-2010 data into the chelsa collection,
+// create the point geometry and hash it to become the _key.
+// Remember to clear the collection before.
+///
+FOR doc IN temp_pong
+	COLLECT longitude = doc.lon, latitude = doc.lat INTO groups
+	LET geo = GEO_POINT(longitude, latitude)
+INSERT {
+	_key: MD5(TO_STRING(geo)),
+	geometry: geo,
+	properties: {
+		`1981-2010`: UNSET(MERGE(groups[*].doc), '_id', '_key', '_rev', 'lon', 'lat')
+	}
+}
+IN chelsa

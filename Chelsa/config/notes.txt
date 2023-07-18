@@ -1,0 +1,1 @@
+- For float32 variables, any variable that has a scale smaller than 1, the no-data value is: -999999999.000000.

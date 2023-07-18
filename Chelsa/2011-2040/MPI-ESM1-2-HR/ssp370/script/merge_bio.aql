@@ -1,0 +1,22 @@
+///
+// Combine all 2011-2040 bioclimatic data into the Chelsa__bio collection,
+// create the point geometry and hash it to become the _key.
+// Remember to clear the collection before.
+///
+FOR doc IN temp_pong
+	COLLECT longitude = doc.lon, latitude = doc.lat INTO items
+	
+	LET geo = GEO_POINT(longitude, latitude)
+	
+INSERT {
+	_key: MD5(TO_STRING(geo)),
+	geometry: geo,
+	properties: {
+		`2011-2040`: {
+			`MPI-ESM1-2-HR`: {
+				`ssp370`: UNSET(MERGE(items[*].doc), '_id', '_key', '_rev', 'lon', 'lat')
+			}
+		}
+	}
+}
+IN Chelsa_2011_2040_MPI-ESM1-2-HR_ssp370_bio
