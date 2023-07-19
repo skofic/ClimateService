@@ -5,14 +5,18 @@
 ###
 
 ###
-# Parameters.
+# Find default parameters.
 ###
-read arg
-user="$arg"
-read arg
-pass="$arg"
-read arg
-path="$arg"
+conf=$(dirname "$(realpath  "$BASH_SOURCE")")
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="${conf}/config.txt"
+
+###
+# Load default parameters.
+###
+source "$conf"
 
 ###
 # Globals.

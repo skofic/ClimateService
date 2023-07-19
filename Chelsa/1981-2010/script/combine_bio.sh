@@ -5,12 +5,25 @@
 ###
 
 ###
+# Find default parameters.
+###
+conf=$(dirname "$(realpath  "$BASH_SOURCE")")
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="${conf}/config.txt"
+
+###
+# Load default parameters.
+###
+source "$conf"
+
+###
 # Globals.
 ###
-path="/usr/local/Chelsa/1981-2010"
+epoc="$path/Chelsa/1981-2010"
 host="http+tcp://localhost:8529"
 base="Climate"
-pass="CAULDRON sycamore pioneer quite"
 head="/usr/local/Chelsa/config/header.csv"
 expo="/usr/local/ArangoDB/exports/"
 
@@ -38,7 +51,7 @@ do
 			--server.database "$base" \
 			--server.username "$1" \
 			--server.username "$2" \
-			--file "$path/data/bio/${name}.csv.gz" \
+			--file "$epoc/data/bio/${name}.csv.gz" \
 			--type "csv" \
 			--collection "temp_pong" \
 			--ignore-missing \
@@ -49,7 +62,7 @@ do
 			--server.database "$base" \
 			--server.username "$1" \
 			--server.username "$2" \
-			--file "$path/data/bio/${name}.csv.gz" \
+			--file "$epoc/data/bio/${name}.csv.gz" \
 			--type "csv" \
 			--collection "temp_pong" \
 			--ignore-missing

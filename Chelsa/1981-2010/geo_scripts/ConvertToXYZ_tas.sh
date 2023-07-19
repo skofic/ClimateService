@@ -5,14 +5,18 @@
 ###
 
 ###
-# Parameters.
+# Find default parameters.
 ###
-read arg
-user="$arg"
-read arg
-pass="$arg"
-read arg
-path="$arg"
+conf=$(dirname "$(realpath  "$BASH_SOURCE")")
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="${conf}/config.txt"
+
+###
+# Load default parameters.
+###
+source "$conf"
 
 ###
 # Globals.
@@ -20,6 +24,7 @@ path="$arg"
 name="tas"
 from="${path}/Chelsa/1981-2010/ForgeniusClipped/${name}"
 dest="${path}/Chelsa/1981-2010/CSV/$name"
+cmd="${pyth}gdal2xyz.py"
 
 echo "--------------------------------------------------"
 start=$(date +%s)
@@ -27,18 +32,10 @@ start=$(date +%s)
 ###
 # Convert clipped average temperature variables to CSV format.
 ###
-gdal2xyz.py -skipnodata -csv "$from/tas_01.tif" "$dest/tas_01.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_02.tif" "$dest/tas_02.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_03.tif" "$dest/tas_03.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_04.tif" "$dest/tas_04.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_05.tif" "$dest/tas_05.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_06.tif" "$dest/tas_06.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_07.tif" "$dest/tas_07.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_08.tif" "$dest/tas_08.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_09.tif" "$dest/tas_09.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_10.tif" "$dest/tas_10.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_11.tif" "$dest/tas_11.csv"
-gdal2xyz.py -skipnodata -csv "$from/tas_12.tif" "$dest/tas_12.csv"
+for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
+do
+	gdal2xyz.py -skipnodata -csv "$from/${name}_${month}.tif" "$dest/${name}_${month}.csv"
+done
 
 end=$(date +%s)
 elapsed=$((end-start))
