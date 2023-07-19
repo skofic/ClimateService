@@ -1,0 +1,19 @@
+///
+// Translate Köppen Geiger kg4.
+///
+FOR doc IN temp_ping
+
+	FILTER doc.value IN 1..30
+
+	LET key = CONCAT_SEPARATOR('_', 'env', @variable)
+	LET value = TO_STRING(doc.value)
+	
+RETURN  MERGE(
+			{
+				lon: doc.lon,
+				lat: doc.lat
+			},
+			ZIP(
+				[key], [CONCAT_SEPARATOR('_', key, value)]
+			)
+		)

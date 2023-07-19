@@ -24,7 +24,7 @@ source "$conf"
 base="Climate"
 file="dump_1981_2010_monthly"
 epoc="$path/Chelsa/1981-2010"
-expo="/usr/local/ArangoDB/exports/"
+expo="$path/exports/"
 find="${epoc}/script/dump_monthly.aql"
 
 echo "----------------------------------------"

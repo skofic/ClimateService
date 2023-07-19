@@ -10,14 +10,26 @@
 ###
 
 ###
+# Find default parameters.
+###
+conf=$(dirname "$(realpath  "$BASH_SOURCE")")
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="${conf}/config.txt"
+
+###
+# Load default parameters.
+###
+source "$conf"
+
+###
 # Globals.
 ###
-path="/usr/local/Chelsa/1981-2010"
-host="http+tcp://localhost:8529"
 base="Climate"
-pass="CAULDRON sycamore pioneer quite"
-head="/usr/local/Chelsa/config/header.csv"
-expo="/usr/local/ArangoDB/exports/"
+epoc="$path/Chelsa/1981-2010"
+head="$path/Chelsa/config/header.csv"
+expo="$path/exports/"
 
 ###
 # Iterate monthly precipitation,
@@ -43,9 +55,9 @@ do
 		arangoimport \
 			--server.endpoint "$host" \
 			--server.database "$base" \
-			--server.username "$1" \
-			--server.username "$2" \
-			--file "$path/CSV/$name/${name}_${month}.csv" \
+			--server.username "$user" \
+			--server.password "$pass" \
+			--file "$epoc/CSV/$name/${name}_${month}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -58,8 +70,8 @@ do
 		arangoexport \
 			--server.endpoint "$host" \
 			--server.database "$base" \
-			--server.username "$1" \
-			--server.username "$2" \
+			--server.username "$user" \
+			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
 			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN {lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), env_${name}: doc.value * 0.01}" \
@@ -70,7 +82,7 @@ do
 		###
 		# Move file to its directory.
 		###
-		mv --force "${expo}query.csv.gz" "${path}/data/$name/${name}_${month}.csv.gz"
+		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${name}_${month}.csv.gz"
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
@@ -103,9 +115,9 @@ do
 		arangoimport \
 			--server.endpoint "$host" \
 			--server.database "$base" \
-			--server.username "$1" \
-			--server.username "$2" \
-			--file "$path/CSV/$name/${name}_${month}.csv" \
+			--server.username "$user" \
+			--server.password "$pass" \
+			--file "$epoc/CSV/$name/${name}_${month}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -118,8 +130,8 @@ do
 		arangoexport \
 			--server.endpoint "$host" \
 			--server.database "$base" \
-			--server.username "$1" \
-			--server.username "$2" \
+			--server.username "$user" \
+			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
 			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN { lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), env_${name}: doc.value * 0.1 }" \
@@ -130,7 +142,7 @@ do
 		###
 		# Move file to its directory.
 		###
-		mv --force "${expo}query.csv.gz" "${path}/data/$name/${name}_${month}.csv.gz"
+		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${name}_${month}.csv.gz"
 		
 		end=$(date +%s)
 		elapsed=$((end-start))

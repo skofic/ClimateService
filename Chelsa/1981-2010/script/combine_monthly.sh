@@ -24,7 +24,7 @@ source "$conf"
 base="Climate"
 epoc="$path/Chelsa/1981-2010"
 head="$path/Chelsa/config/header.csv"
-expo="/usr/local/ArangoDB/exports/"
+expo="$path/exports/"
 
 ###
 # Iterate processed files.

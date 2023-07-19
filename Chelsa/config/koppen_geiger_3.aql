@@ -1,0 +1,43 @@
+///
+// Translate Köppen Geiger kg3.
+///
+FOR doc IN temp_ping
+
+	FILTER doc.value IN 1..22
+
+	LET key = CONCAT_SEPARATOR('_', 'env', @variable)
+	LET value = TRANSLATE(
+				TO_STRING(doc.value), {
+					'1': 'I_A',
+					'2': 'I_F',
+					'3': 'I_T',
+					'4': 'I_S',
+					'5': 'I_D',
+					'6': 'II_Fa',
+					'7': 'II_Fb',
+					'8': 'II_Tw',
+					'9': 'II_Ts',
+				   '10': 'II_S',
+				   '11': 'II_D',
+				   '12': 'III_F',
+				   '13': 'III_Tw',
+				   '14': 'III_Ts',
+				   '15': 'III_S',
+				   '16': 'III:D',
+				   '17': 'IV_F',
+				   '18': 'IV_T',
+				   '19': 'IV_S',
+				   '20': 'IV_D',
+				   '21': 'V',
+				   '22': 'VI'
+				})
+	
+RETURN  MERGE(
+			{
+				lon: doc.lon,
+				lat: doc.lat
+			},
+			ZIP(
+				[key], [CONCAT_SEPARATOR('_', key, value)]
+			)
+		)

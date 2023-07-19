@@ -27,8 +27,8 @@ source "$conf"
 ###
 base="Climate"
 epoc="$path/Chelsa/1981-2010"
-head="/usr/local/Chelsa/config/header.csv"
-expo="/usr/local/ArangoDB/exports/"
+head="$path/Chelsa/config/header.csv"
+expo="$path/exports/"
 
 ###
 # Iterate monthly file base names.
@@ -130,7 +130,8 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, env_${variable}: CONCAT_SEPARATOR(\"_\", \"env_${variable}\", TO_STRING(doc.value))}" \
+			--custom-query-file "$path/Chelsa/config/koppen_geiger_0_1_2.aql" \
+			--custom-query-bindvars '{"variable": "$variable"}' \
 			--compress-output true \
 			--fields "lon","lat","env_${variable}" \
 			--type "csv"
@@ -151,9 +152,9 @@ do
 	###
 	echo ""
 	echo "====================================================================="
-	echo "= No scale and no offset and convert to string."
+	echo "= kg3."
 	echo "====================================================================="
-  	for variable in "kg0" "kg1" "kg2" "kg3" "kg4" "kg5"
+  	for variable in "kg3"
 	do
 		echo "==> $variable"
 		start=$(date +%s)
@@ -183,7 +184,116 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, env_${variable}: CONCAT_SEPARATOR(\"_\", \"env_${variable}\", TO_STRING(doc.value))}" \
+			--custom-query-file "$path/Chelsa/config/koppen_geiger_3.aql" \
+			--custom-query-bindvars '{"variable": "$variable"}' \
+			--compress-output true \
+			--fields "lon","lat","env_${variable}" \
+			--type "csv"
+		
+		###
+		# Move file to its directory.
+		###
+		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${variable}.csv.gz"	
+		
+		end=$(date +%s)
+		elapsed=$((end-start))
+		echo "Elapsed time: $elapsed seconds"
+		echo "----------------------------------------"
+	done
+
+	###
+	# Handle no scale and no offset and convert to string.
+	###
+	echo ""
+	echo "====================================================================="
+	echo "= kg4."
+	echo "====================================================================="
+  	for variable in "kg4"
+	do
+		echo "==> $variable"
+		start=$(date +%s)
+	
+		###
+		# Import file into database.
+		###
+		arangoimport \
+			--server.endpoint "$host" \
+			--server.database "$base" \
+			--server.username "$user" \
+			--server.password "$pass" \
+			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--headers-file "$head" \
+			--type "csv" \
+			--collection "temp_ping" \
+			--ignore-missing \
+			--overwrite
+		
+		###
+		# Export data to CSV file.
+		###
+		arangoexport \
+			--server.endpoint "$host" \
+			--server.database "$base" \
+			--server.username "$user" \
+			--server.password "$pass" \
+			--output-directory "$expo" \
+			--overwrite true \
+			--custom-query-file "$path/Chelsa/config/koppen_geiger_4.aql" \
+			--custom-query-bindvars '{"variable": "$variable"}' \
+			--compress-output true \
+			--fields "lon","lat","env_${variable}" \
+			--type "csv"
+		
+		###
+		# Move file to its directory.
+		###
+		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${variable}.csv.gz"	
+		
+		end=$(date +%s)
+		elapsed=$((end-start))
+		echo "Elapsed time: $elapsed seconds"
+		echo "----------------------------------------"
+	done
+
+	###
+	# Handle no scale and no offset and convert to string.
+	###
+	echo ""
+	echo "====================================================================="
+	echo "= kg5."
+	echo "====================================================================="
+  	for variable in "kg5"
+	do
+		echo "==> $variable"
+		start=$(date +%s)
+	
+		###
+		# Import file into database.
+		###
+		arangoimport \
+			--server.endpoint "$host" \
+			--server.database "$base" \
+			--server.username "$user" \
+			--server.password "$pass" \
+			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--headers-file "$head" \
+			--type "csv" \
+			--collection "temp_ping" \
+			--ignore-missing \
+			--overwrite
+		
+		###
+		# Export data to CSV file.
+		###
+		arangoexport \
+			--server.endpoint "$host" \
+			--server.database "$base" \
+			--server.username "$user" \
+			--server.password "$pass" \
+			--output-directory "$expo" \
+			--overwrite true \
+			--custom-query-file "$path/Chelsa/config/koppen_geiger_5.aql" \
+			--custom-query-bindvars '{"variable": "$variable"}' \
 			--compress-output true \
 			--fields "lon","lat","env_${variable}" \
 			--type "csv"

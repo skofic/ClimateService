@@ -1,0 +1,58 @@
+///
+// Translate Köppen Geiger kg5.
+///
+FOR doc IN temp_ping
+
+	FILTER doc.value IN 1..31
+
+	LET key = CONCAT_SEPARATOR('_', 'env', @variable)
+	LET value = TRANSLATE(
+				TO_STRING(doc.value), {
+					'1': 'I_1',
+					'2': 'I_2',
+					'3': 'I_3',
+					'4': 'I_4',
+					'5': 'II_1',
+					'6': 'II_2',
+					'7': 'II_3',
+					'8': 'III_1',
+					'9': 'III_2',
+				   '10': 'III_3',
+				   '11': 'III_4',
+				   '12': 'III_5',
+				   '13': 'III_6',
+				   '14': 'III_7',
+				   '15': 'III_7a',
+				   '16': 'III_8',
+				   '17': 'III_9',
+				   '18': 'III_9a',
+				   '19': 'III_10',
+				   '20': 'III_10a',
+				   '21': 'III_11',
+				   '22': 'III_12',
+				   '23': 'III_12a',
+				   '24': 'IV_1',
+				   '25': 'IV_2',
+				   '26': 'IV_3',
+				   '27': 'IV_4',
+				   '28': 'IV_5',
+				   '29': 'IV_6',
+				   '30': 'IV_7',
+				   '31': 'V_1',
+				   '32': 'V_2',
+				   '33': 'V_2a',
+				   '34': 'V_3',
+				   '35': 'V_4',
+				   '36': 'V_4a',
+				   '37': 'V_5'
+				})
+	
+RETURN  MERGE(
+			{
+				lon: doc.lon,
+				lat: doc.lat
+			},
+			ZIP(
+				[key], [CONCAT_SEPARATOR('_', key, value)]
+			)
+		)
