@@ -21,10 +21,9 @@ source "$conf"
 ###
 # Globals.
 ###
-epoc="$path/Chelsa/1981-2010"
-host="http+tcp://localhost:8529"
 base="Climate"
-head="/usr/local/Chelsa/config/header.csv"
+epoc="$path/Chelsa/1981-2010"
+head="$path/Chelsa/config/header.csv"
 expo="/usr/local/ArangoDB/exports/"
 
 ###
@@ -49,8 +48,8 @@ do
 		arangoimport \
 			--server.endpoint "$host" \
 			--server.database "$base" \
-			--server.username "$1" \
-			--server.username "$2" \
+			--server.username "$user" \
+			--server.password "$pass" \
 			--file "$epoc/data/bio/${name}.csv.gz" \
 			--type "csv" \
 			--collection "temp_pong" \
@@ -60,8 +59,8 @@ do
 		arangoimport \
 			--server.endpoint "$host" \
 			--server.database "$base" \
-			--server.username "$1" \
-			--server.username "$2" \
+			--server.username "$user" \
+			--server.password "$pass" \
 			--file "$epoc/data/bio/${name}.csv.gz" \
 			--type "csv" \
 			--collection "temp_pong" \

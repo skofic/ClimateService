@@ -4,15 +4,27 @@
 # Load 1981-2010 monthly data.
 ###
 
-##–#
+###
+# Find default parameters.
+###
+conf=$(dirname "$(realpath  "$BASH_SOURCE")")
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="${conf}/config.txt"
+
+###
+# Load default parameters.
+###
+source "$conf"
+
+###
 # Globals.
 ###
+base="Climate"
 coll="Chelsa_1981_2010_bio"
 file="dump_1981_2010_bio"
-path="/usr/local/Chelsa/1981-2010"
-host="http+tcp://localhost:8529"
-base="Climate"
-pass="CAULDRON sycamore pioneer quite"
+epoc="$path/Chelsa/1981-2010"
 
 echo "----------------------------------------"
 echo "==> Load ${coll}"
@@ -24,9 +36,9 @@ start=$(date +%s)
 arangoimport \
 	--server.endpoint "$host" \
 	--server.database "$base" \
-	--server.username "$1" \
-	--server.username "$2" \
-	--file "${path}/data/properties/${file}.jsonl.gz" \
+	--server.username "$user" \
+	--server.password "$pass" \
+	--file "${epoc}/data/properties/${file}.jsonl.gz" \
 	--type "jsonl" \
 	--collection "$coll" \
 	--create-collection true \

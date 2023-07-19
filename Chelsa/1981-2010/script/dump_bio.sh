@@ -4,19 +4,31 @@
 # Dump 1981-2010 bioclimatic data.
 ###
 
-##–#
+###
+# Find default parameters.
+###
+conf=$(dirname "$(realpath  "$BASH_SOURCE")")
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="${conf}/config.txt"
+
+###
+# Load default parameters.
+###
+source "$conf"
+
+###
 # Globals.
 ###
-file="dump_1981_2010_bio"
-path="/usr/local/Chelsa/1981-2010"
-host="http+tcp://localhost:8529"
 base="Climate"
-pass="CAULDRON sycamore pioneer quite"
+file="dump_1981_2010_bio"
+epoc="$path/Chelsa/1981-2010"
 expo="/usr/local/ArangoDB/exports/"
-find="${path}/script/dump_bio.aql"
+find="${epoc}/script/dump_bio.aql"
 
 echo "----------------------------------------"
-echo "==> Dump ${path}/data/properties/${file}.jsonl.gz"
+echo "==> Dump ${epoc}/data/properties/${file}.jsonl.gz"
 start=$(date +%s)
 	
 ###
@@ -25,8 +37,8 @@ start=$(date +%s)
 arangoexport \
 	--server.endpoint "$host" \
 	--server.database "$base" \
-	--server.username "$1" \
-	--server.username "$2" \
+	--server.username "$user" \
+	--server.password "$pass" \
 	--output-directory "$expo" \
 	--custom-query-file "$find" \
 	--overwrite true \
@@ -36,7 +48,7 @@ arangoexport \
 ###
 # Move file to its directory.
 ###
-mv --force "${expo}query.jsonl.gz" "${path}/data/properties/${file}.jsonl.gz"	
+mv --force "${expo}query.jsonl.gz" "${epoc}/data/properties/${file}.jsonl.gz"	
 		
 end=$(date +%s)
 elapsed=$((end-start))

@@ -5,13 +5,25 @@
 ###
 
 ###
+# Find default parameters.
+###
+conf=$(dirname "$(realpath  "$BASH_SOURCE")")
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="$(dirname "$conf")"
+conf="${conf}/config.txt"
+
+###
+# Load default parameters.
+###
+source "$conf"
+
+###
 # Globals.
 ###
-path="/usr/local/Chelsa/1981-2010"
-host="http+tcp://localhost:8529"
 base="Climate"
-pass="CAULDRON sycamore pioneer quite"
-head="/usr/local/Chelsa/config/header.csv"
+epoc="$path/Chelsa/1981-2010"
+head="$path/Chelsa/config/header.csv"
 expo="/usr/local/ArangoDB/exports/"
 
 ###
@@ -44,9 +56,9 @@ do
 			arangoimport \
 				--server.endpoint "$host" \
 				--server.database "$base" \
-				--server.username "$1" \
-				--server.username "$2" \
-				--file "$path/data/$name/${name}_${month}.csv.gz" \
+				--server.username "$user" \
+				--server.password "$pass" \
+				--file "$epoc/data/$name/${name}_${month}.csv.gz" \
 				--type "csv" \
 				--collection "temp_pong" \
 				--ignore-missing \
@@ -55,9 +67,9 @@ do
 			arangoimport \
 				--server.endpoint "$host" \
 				--server.database "$base" \
-				--server.username "$1" \
-				--server.username "$2" \
-				--file "$path/data/$name/${name}_${month}.csv.gz" \
+				--server.username "$user" \
+				--server.password "$pass" \
+				--file "$epoc/data/$name/${name}_${month}.csv.gz" \
 				--type "csv" \
 				--collection "temp_pong" \
 				--ignore-missing
