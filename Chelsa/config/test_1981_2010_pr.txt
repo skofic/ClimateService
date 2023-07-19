@@ -1,0 +1,2 @@
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/1981-2010/pr/CHELSA_pr_01_1981-2010_V.2.1.tif pr_01.tif 
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/1981-2010/pr/CHELSA_pr_02_1981-2010_V.2.1.tif pr_02.tif 

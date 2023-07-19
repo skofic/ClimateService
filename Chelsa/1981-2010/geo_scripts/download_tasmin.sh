@@ -41,7 +41,7 @@ do
 	###
 	# Download file.
 	###
-	wget --force-directories --output-document="$dest/$name" "$url"
+	wget --continue --output-document="$dest/$name" "$url"
     
 done < "${path}/Chelsa/config/path_1981_2010_tasmin.txt"
 

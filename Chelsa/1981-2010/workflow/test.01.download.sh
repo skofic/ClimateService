@@ -23,7 +23,7 @@ echo "= DOWNLOAD FILES"
 echo "=================================================="
 start=$(date +%s)
 
-for code in "bio" "pr" "tas" "tasmax" "tasmin"
+for code in "bio" "pr" "tas"
 do
 
 	echo "================"
@@ -48,7 +48,7 @@ do
 		###
 		wget --continue --output-document="$dest/$name" "$url"
 	
-	done < "${path}/Chelsa/config/path_1981_2010_${code}.txt"
+	done < "${path}/Chelsa/config/test_1981_2010_${code}.txt"
 
 done
 
