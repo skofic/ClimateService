@@ -1,0 +1,4 @@
+user=<ArangoDB username>
+pass=<ArangoDB user password>
+path=<full path to the ClimateService folder>
+pyth=<eventual path to the gdal2xyz.py command, excluding gdal2xyz.py>
