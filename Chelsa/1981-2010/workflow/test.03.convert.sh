@@ -23,25 +23,25 @@ echo "= CONVERT FILES"
 echo "=================================================="
 start=$(date +%s)
 
-# ###
-# # Parameters.
-# ###
-# name="bio"
-# from="${path}/Chelsa/1981-2010/ForgeniusClipped/${name}"
-# dest="${path}/Chelsa/1981-2010/CSV/${name}"
-# 
-# echo "--------------------------------------------------"
-# echo "$name"
-# echo "--------------------------------------------------"
-# 
-# ###
-# # Convert clipped bioclimatic variables to CSV format.
-# ###
-# for var in "ai" "bio01"
-# do
-# 	echo "==> $var"
-# 	gdal2xyz.py -skipnodata -csv "$from/$var.tif" "$dest/$var.csv"
-# done
+###
+# Parameters.
+###
+name="bio"
+from="${path}/Chelsa/1981-2010/ForgeniusClipped/${name}"
+dest="${path}/Chelsa/1981-2010/CSV/${name}"
+
+echo "--------------------------------------------------"
+echo "$name"
+echo "--------------------------------------------------"
+
+###
+# Convert clipped bioclimatic variables to CSV format.
+###
+for var in "ai" "bio01"
+do
+	echo "==> $var"
+	gdal2xyz.py -skipnodata -csv "$from/$var.tif" "$dest/$var.csv"
+done
 
 ###
 # Convert clipped monthly variables to CSV format.
