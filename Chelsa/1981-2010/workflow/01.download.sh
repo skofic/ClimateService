@@ -26,9 +26,9 @@ start=$(date +%s)
 for code in "bio" "pr" "tas" "tasmax" "tasmin"
 do
 
-	echo "================"
-	echo "===> $code"
-	echo "================"
+	echo "--------------------------------------------------"
+	echo "$code"
+	echo "--------------------------------------------------"
 
 	###
 	# Download files.

@@ -53,21 +53,24 @@ dest="${path}/Chelsa/1981-2010/CSV/$name"
 # Convert clipped monthly variables to CSV format.
 ###
 for name in "pr" "tas"
-echo "--------------------------------------------------"
-echo "$name"
-echo "--------------------------------------------------"
-do
-	###
-	# Iterate months.
-	###
-	for month in "01" "02"
+
+	echo "--------------------------------------------------"
+	echo "$name"
+	echo "--------------------------------------------------"
+
 	do
-		echo "==> $month"
-		gdal2xyz.py -skipnodata -csv "$from/${name}_${month}.tif" "$dest/${name}_${month}.csv"
+		###
+		# Iterate months.
+		###
+		for month in "01" "02"
+		do
+			echo "==> $month"
+			gdal2xyz.py -skipnodata -csv "$from/${name}_${month}.tif" "$dest/${name}_${month}.csv"
+		done
 	done
-done
 
 end=$(date +%s)
+
 elapsed=$((end-start))
 echo "=================================================="
 echo "= CONVERT FILES: $elapsed seconds"
