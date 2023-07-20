@@ -24,7 +24,7 @@ source "$conf"
 name="pr"
 from="${path}/Chelsa/1981-2010/ForgeniusClipped/${name}"
 dest="${path}/Chelsa/1981-2010/CSV/$name"
-cmd="${pyth}gdal2xyz.py"
+cmd="gdal2xyz.py"
 
 echo "--------------------------------------------------"
 start=$(date +%s)
