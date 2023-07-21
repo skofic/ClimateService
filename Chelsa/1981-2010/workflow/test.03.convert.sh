@@ -63,7 +63,6 @@ do
 	###
 	for month in "01" "02"
 	do
-		echo "==> $month"
 		gdal2xyz.py -skipnodata -csv "$from/${name}_${month}.tif" "$dest/${name}_${month}.csv"
 	done
 done
