@@ -357,7 +357,7 @@ do
 			--type "csv" \
 			--collection "temp_ping" \
 			--ignore-missing \
-			--overwrite--overwrite
+			--overwrite
 		
 		sleep 6
 		
