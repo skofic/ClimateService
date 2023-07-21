@@ -22,13 +22,13 @@ source "$conf"
 ###
 # Run workflow scripts.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/01.download.sh"
+cmd="${path}/Chelsa/1981-2010/workflow/download.sh"
 $cmd
 
-cmd="${path}/Chelsa/1981-2010/workflow/02.clip.sh"
+cmd="${path}/Chelsa/1981-2010/workflow/clip.sh"
 $cmd
 
-cmd="${path}/Chelsa/1981-2010/workflow/03.convert.sh"
+cmd="${path}/Chelsa/1981-2010/workflow/convert.sh"
 $cmd
 
 end=$(date +%s)

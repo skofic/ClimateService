@@ -2,11 +2,14 @@
 
 ###
 # Process all monthly variables.
+#
 # Will iterate all monthly data files,
 # eventually normalising the value
 # adding the month number,
 # and generating a compressed CSV file
 # moving it in its directory.
+#
+# This is the first step in the PREPARE workflow.
 ###
 
 ###
