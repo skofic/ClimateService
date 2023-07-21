@@ -67,6 +67,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -81,6 +83,8 @@ do
 			--fields "lon","lat","std_month","${pref}_${name}" \
 			--compress-output true \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -127,6 +131,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -141,6 +147,8 @@ do
 			--fields "lon","lat","std_month","${pref}_${name}" \
 			--compress-output true \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.

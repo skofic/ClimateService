@@ -24,8 +24,10 @@ source "$conf"
 ###
 # Run workflow scripts.
 ###
-# 1. Load bioclimatic data into collection.
-# 2. Merge monthly data into collection.
+# 1. Load bioclimatic data into one collection.
+# 2. Load monthly data into another collection.
+# 3. Insert bioclimatic data into merge collection.
+# 4. Upsert monthly data into merge collection.
 
 end=$(date +%s)
 elapsed=$((end-start))

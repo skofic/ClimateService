@@ -24,9 +24,11 @@ source "$conf"
 ###
 cmd="${path}/Chelsa/1981-2010/script/process_bio.sh"
 $cmd
+sleep 10
 
 cmd="${path}/Chelsa/1981-2010/script/process_monthly.sh"
 $cmd
+sleep 10
 
 end=$(date +%s)
 elapsed=$((end-start))

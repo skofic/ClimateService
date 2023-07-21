@@ -70,6 +70,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -84,6 +86,8 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--compress-output true \
 			--type "csv"
+			
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -123,6 +127,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -138,6 +144,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -177,6 +185,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -192,6 +202,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -231,6 +243,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -246,6 +260,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -285,6 +301,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -300,6 +318,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -337,7 +357,9 @@ do
 			--type "csv" \
 			--collection "temp_ping" \
 			--ignore-missing \
-			--ignore-missing \n			--overwrite--overwrite
+			--overwrite--overwrite
+		
+		sleep 5
 		
 		###
 		# Export data to CSV file.
@@ -353,6 +375,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -392,6 +416,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -406,6 +432,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -445,6 +473,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -459,6 +489,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
@@ -498,6 +530,8 @@ do
 			--ignore-missing \
 			--overwrite
 		
+		sleep 5
+		
 		###
 		# Export data to CSV file.
 		###
@@ -512,6 +546,8 @@ do
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
+		
+		sleep 2
 		
 		###
 		# Move file to its directory.
