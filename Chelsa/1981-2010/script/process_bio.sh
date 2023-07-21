@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Process all 1981-2010 bioclimatic variables.
+# Process all bioclimatic variables.
 # Will iterate all bioclimatic data files,
 # normalising the value according to Chelsa instructions
 # and generating a compressed CSV file
@@ -60,7 +60,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -77,8 +77,8 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, env_${variable}: doc.value}" \
-			--fields "lon","lat","env_${variable}" \
+			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, ${pref}_${variable}: doc.value}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--compress-output true \
 			--type "csv"
 		
@@ -113,7 +113,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -131,9 +131,9 @@ do
 			--output-directory "$expo" \
 			--overwrite true \
 			--custom-query-file "$path/Chelsa/config/koppen_geiger_0_1_2.aql" \
-			--custom-query-bindvars '{"variable": "$variable"}' \
+			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###
@@ -167,7 +167,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -185,9 +185,9 @@ do
 			--output-directory "$expo" \
 			--overwrite true \
 			--custom-query-file "$path/Chelsa/config/koppen_geiger_3.aql" \
-			--custom-query-bindvars '{"variable": "$variable"}' \
+			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###
@@ -221,7 +221,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -239,9 +239,9 @@ do
 			--output-directory "$expo" \
 			--overwrite true \
 			--custom-query-file "$path/Chelsa/config/koppen_geiger_4.aql" \
-			--custom-query-bindvars '{"variable": "$variable"}' \
+			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###
@@ -275,7 +275,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -293,9 +293,9 @@ do
 			--output-directory "$expo" \
 			--overwrite true \
 			--custom-query-file "$path/Chelsa/config/koppen_geiger_5.aql" \
-			--custom-query-bindvars '{"variable": "$variable"}' \
+			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###
@@ -329,7 +329,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -346,9 +346,9 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, env_${variable}: doc.value * 0.1}" \
+			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, ${pref}_${variable}: doc.value * 0.1}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###
@@ -382,7 +382,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -399,9 +399,9 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, env_${variable}: doc.value * 0.01}" \
+			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, ${pref}_${variable}: doc.value * 0.01}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###
@@ -435,7 +435,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -452,9 +452,9 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, env_${variable}: doc.value * 0.001}" \
+			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, ${pref}_${variable}: doc.value * 0.001}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###
@@ -488,7 +488,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${variable}.csv.gz" \
+			--file "$epoc/CSV/$name/${variable}.csv" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
@@ -505,9 +505,9 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, env_${variable}: (doc.value * 0.1) - 273.15}" \
+			--custom-query "FOR doc IN temp_ping RETURN {lon: doc.lon, lat: doc.lat, ${pref}_${variable}: (doc.value * 0.1) - 273.15}" \
 			--compress-output true \
-			--fields "lon","lat","env_${variable}" \
+			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
 		###

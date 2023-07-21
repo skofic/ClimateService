@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Load 1981-2010 monthly data.
+# Load bioclimatic data.
 ###
 
 ###

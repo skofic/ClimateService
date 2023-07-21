@@ -23,7 +23,7 @@ source "$conf"
 ###
 name="tasmin"
 from="${path}/Chelsa/1981-2010/ForgeniusClipped/${name}"
-dest="${path}/Chelsa/1981-2010/CSV/$name"
+dest="${path}/Chelsa/1981-2010/CSV/${name}"
 cmd="gdal2xyz.py"
 
 echo "--------------------------------------------------"

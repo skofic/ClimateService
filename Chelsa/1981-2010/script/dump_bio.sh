@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Dump 1981-2010 bioclimatic data.
+# Dump bioclimatic data.
 ###
 
 ###

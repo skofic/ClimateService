@@ -1,4 +1,5 @@
 host="<database endpoint>"
-user=<database username>
-pass=<database user password>
-path=<full path to the ClimateService folder>
+user="<database username>"
+pass="<database user password>"
+path="<full path to the ClimateService folder>"
+pref="<prefix for all variable names, without trailing underscore (_)>"

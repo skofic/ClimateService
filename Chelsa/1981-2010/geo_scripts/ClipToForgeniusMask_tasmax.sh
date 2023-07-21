@@ -27,8 +27,8 @@ poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
 # Parameters.
 ###
 name="tasmax"
-full="${path}/Chelsa/1981-2010/Full/$name"
-clip="${path}/Chelsa/1981-2010/ForgeniusClipped/name"
+full="${path}/Chelsa/1981-2010/Full/${name}"
+clip="${path}/Chelsa/1981-2010/ForgeniusClipped/${name}"
 
 echo "--------------------------------------------------"
 start=$(date +%s)

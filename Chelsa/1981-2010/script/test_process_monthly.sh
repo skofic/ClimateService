@@ -73,8 +73,8 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN {lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), env_${name}: doc.value * 0.01}" \
-			--fields "lon","lat","std_month","env_${name}" \
+			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN {lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), ${pref}_${name}: doc.value * 0.01}" \
+			--fields "lon","lat","std_month","${pref}_${name}" \
 			--compress-output true \
 			--type "csv"
 		
@@ -133,8 +133,8 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN { lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), env_${name}: doc.value * 0.1 }" \
-			--fields "lon","lat","std_month","env_${name}" \
+			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN { lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), ${pref}_${name}: doc.value * 0.1 }" \
+			--fields "lon","lat","std_month","${pref}_${name}" \
 			--compress-output true \
 			--type "csv"
 		

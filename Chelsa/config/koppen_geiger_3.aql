@@ -5,7 +5,7 @@ FOR doc IN temp_ping
 
 	FILTER doc.value IN 1..22
 
-	LET key = CONCAT_SEPARATOR('_', 'env', @variable)
+	LET key = CONCAT_SEPARATOR('_', @prefix, @variable)
 	LET value = TRANSLATE(
 				TO_STRING(doc.value), {
 					'1': 'I_A',
