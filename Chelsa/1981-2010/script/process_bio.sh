@@ -70,7 +70,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -87,7 +87,7 @@ do
 			--compress-output true \
 			--type "csv"
 			
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -127,7 +127,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -145,7 +145,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -185,7 +185,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -203,7 +203,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -243,7 +243,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -261,7 +261,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -301,7 +301,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -319,7 +319,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -359,7 +359,7 @@ do
 			--ignore-missing \
 			--overwrite--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -376,7 +376,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -416,7 +416,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -433,7 +433,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -473,7 +473,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -490,7 +490,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -510,7 +510,7 @@ do
 	echo "====================================================================="
 	echo "= Scale 0.1 Offset -273.15."
 	echo "====================================================================="
-  	for variable in "bio1" "bio5" "bio6" "bio8" "bio9" "bio10" "bio11" "gst"
+  	for variable in "bio01" "bio05" "bio06" "bio08" "bio09" "bio10" "bio11" "gst"
 	do
 		echo "==> $variable"
 		start=$(date +%s)
@@ -530,7 +530,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -547,7 +547,7 @@ do
 			--fields "lon","lat","${pref}_${variable}" \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.

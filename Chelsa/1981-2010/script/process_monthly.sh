@@ -67,7 +67,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -84,7 +84,7 @@ do
 			--compress-output true \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
@@ -131,7 +131,7 @@ do
 			--ignore-missing \
 			--overwrite
 		
-		sleep 5
+		sleep 6
 		
 		###
 		# Export data to CSV file.
@@ -148,7 +148,7 @@ do
 			--compress-output true \
 			--type "csv"
 		
-		sleep 2
+		sleep 6
 		
 		###
 		# Move file to its directory.
