@@ -1,21 +1,29 @@
 ///
-// Merge data into Chelsa.
+// Merge data into chelsa.
+// Clear points collection: temp_pang.
+// Load bioclimatic locations into points collection.
+// Load monthly locations into points collection.
+// Scanning points upsert data into chelsa.
 ///
+
+// Remove all records from point collection.
 LET result_1 = (
 	FOR doc IN temp_pang
 	REMOVE doc IN temp_pang
 )
 
+// Load all bioclimatic variables points.
 LET result_2 = (
-	FOR doc IN temp_ping
+	FOR doc IN temp_bio
 	INSERT {
 		_key: doc._key,
 		geometry: doc.geometry
 	} IN temp_pang
 )
 
+// Load all monthly variables points.
 LET result_3 = (
-	FOR doc IN temp_pong
+	FOR doc IN temp_monthly
 	INSERT {
 		_key: doc._key,
 		geometry: doc.geometry
@@ -23,9 +31,10 @@ LET result_3 = (
 	OPTIONS { ignoreErrors: true }
 )
 
+// Merge data into chelsa.
 FOR doc IN temp_pang
-	LET bio = DOCUMENT(temp_ping, doc._key)
-	LET monthly = DOCUMENT(temp_ping, doc._key)
+	LET bio = DOCUMENT(temp_bio doc._key)
+	LET monthly = DOCUMENT(temp_monthly, doc._key)
 
 UPSERT { _key: doc._key }
 INSERT {
@@ -34,6 +43,7 @@ INSERT {
 	properties: MERGE(bio.properties, monthly.properties)
 }
 UPDATE { properties: MERGE(bio.properties, monthly.properties) }
+IN chelsa
 OPTIONS {
 	mergeObjects: true,
 	exclusive: true
