@@ -1,0 +1,40 @@
+///
+// Merge data into Chelsa.
+///
+LET result_1 = (
+	FOR doc IN temp_pang
+	REMOVE doc IN temp_pang
+)
+
+LET result_2 = (
+	FOR doc IN temp_ping
+	INSERT {
+		_key: doc._key,
+		geometry: doc.geometry
+	} IN temp_pang
+)
+
+LET result_3 = (
+	FOR doc IN temp_pong
+	INSERT {
+		_key: doc._key,
+		geometry: doc.geometry
+	} IN temp_pang
+	OPTIONS { ignoreErrors: true }
+)
+
+FOR doc IN temp_pang
+	LET bio = DOCUMENT(temp_ping, doc._key)
+	LET monthly = DOCUMENT(temp_ping, doc._key)
+
+UPSERT { _key: doc._key }
+INSERT {
+	_key: doc._key,
+	geometry: doc.geometry,
+	properties: MERGE(bio.properties, monthly.properties)
+}
+UPDATE { properties: MERGE(bio.properties, monthly.properties) }
+OPTIONS {
+	mergeObjects: true,
+	exclusive: true
+}

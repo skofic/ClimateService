@@ -22,7 +22,7 @@ source "$conf"
 # Globals.
 ###
 base="Climate"
-coll="Chelsa_1981_2010_monthly"
+coll="temp_pong"
 file="dump_1981_2010_monthly"
 epoc="$path/Chelsa/1981-2010"
 

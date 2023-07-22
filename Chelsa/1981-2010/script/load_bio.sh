@@ -22,7 +22,7 @@ source "$conf"
 # Globals.
 ###
 base="Climate"
-coll="Chelsa_1981_2010_bio"
+coll="temp_ping"
 file="dump_1981_2010_bio"
 epoc="$path/Chelsa/1981-2010"
 
