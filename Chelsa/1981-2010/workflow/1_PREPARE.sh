@@ -6,18 +6,9 @@
 start=$(date +%s)
 
 ###
-# Find default parameters.
-###
-conf=$(dirname "$(realpath  "$BASH_SOURCE")")
-conf="$(dirname "$conf")"
-conf="$(dirname "$conf")"
-conf="$(dirname "$conf")"
-conf="${conf}/config.txt"
-
-###
 # Load default parameters.
 ###
-source "$conf"
+source "${HOME}/.ClimateService"
 
 ###
 # Run workflow scripts.
