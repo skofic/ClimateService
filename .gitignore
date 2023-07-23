@@ -1,10 +1,6 @@
 
 .DS_Store
 
-config.txt
-
-Chelsa/workflow/log/
-
 Chelsa/1981-2010/CSV/
 
 Chelsa/1981-2010/data/
@@ -14,10 +10,6 @@ Chelsa/1981-2010/ForgeniusClipped/
 Chelsa/1981-2010/Full/
 
 Chelsa/1981-2010/geo_scripts/log/
-
-Chelsa/1981-2010/script/log/
-
-Chelsa/1981-2010/workflow/log/
 
 Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/CSV/
 
