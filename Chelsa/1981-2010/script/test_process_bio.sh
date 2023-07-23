@@ -57,6 +57,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -110,6 +111,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -164,6 +166,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -218,6 +221,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -272,6 +276,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -326,8 +331,9 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
-			--ignore-missing \n			--overwrite--overwrite
+			--overwrite
 		
 		###
 		# Export data to CSV file.
@@ -379,6 +385,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -432,6 +439,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -485,6 +493,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		

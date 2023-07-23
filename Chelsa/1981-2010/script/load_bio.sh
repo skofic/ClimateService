@@ -34,6 +34,7 @@ arangoimport \
 	--collection "$coll" \
 	--create-collection true \
 	--create-collection-type "document" \
+	--auto-rate-limit true \
 	--overwrite true
 		
 end=$(date +%s)

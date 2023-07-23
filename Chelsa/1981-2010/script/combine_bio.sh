@@ -44,6 +44,7 @@ do
 			--file "$epoc/data/bio/${name}.csv.gz" \
 			--type "csv" \
 			--collection "temp_pong" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 	else
@@ -55,6 +56,7 @@ do
 			--file "$epoc/data/bio/${name}.csv.gz" \
 			--type "csv" \
 			--collection "temp_pong" \
+			--auto-rate-limit true \
 			--ignore-missing
 	fi
 	first=0

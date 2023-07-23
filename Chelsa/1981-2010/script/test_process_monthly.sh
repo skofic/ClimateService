@@ -51,6 +51,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -111,6 +112,7 @@ do
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		

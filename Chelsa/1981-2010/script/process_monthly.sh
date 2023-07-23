@@ -51,10 +51,11 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${name}_${month}.csv" \
+			--file "$epoc/CSV/$name/${name}_${month}.csv.gz" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
@@ -115,10 +116,11 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${name}_${month}.csv" \
+			--file "$epoc/CSV/$name/${name}_${month}.csv.gz" \
 			--headers-file "$head" \
 			--type "csv" \
 			--collection "temp_ping" \
+			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
 		
