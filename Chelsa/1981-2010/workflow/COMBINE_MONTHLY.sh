@@ -17,7 +17,7 @@ source "${HOME}/.ClimateService"
 # Remove contents of the bio folder in the data directory.
 # Run this script only after you are sure the 3_COMBINE_bio.sh script works.
 ###
-for folder in "bio"
+for folder in "pr" "tas" "tasmax" "tasmin"
 do
 	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
 done

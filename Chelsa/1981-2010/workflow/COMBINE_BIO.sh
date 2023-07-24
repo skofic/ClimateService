@@ -18,7 +18,7 @@ source "${HOME}/.ClimateService"
 # We do this here, because at this point
 # only the files in the data directory are relevant.
 ###
-for folder in "bio" "pr" "tas" "tasmax" "tasmin"
+for folder in "bio"
 do
 	rm -fv "${path}/Chelsa/1981-2010/CSV/${folder}/*.csv.gz"
 done
