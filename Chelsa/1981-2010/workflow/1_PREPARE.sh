@@ -8,56 +8,9 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
-script "${path}/Chelsa/1981-2010/log/1_PREPARE.log"
-
-echo "**************************************************"
-echo "*** PREPARE.sh"
-echo "**************************************************"
-PREPARE_START=$(date +%s)
-	
-###
-# Download full maps.
-###
-cmd="${path}/Chelsa/1981-2010/workflow/download.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
 
 ###
-# Clip full maps to EUFGIS region.
+# Execute script.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/clip.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Convert clipped maps to CSV (longitude, latitude and value).
-###
-cmd="${path}/Chelsa/1981-2010/workflow/convert.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-PREPARE_END=$(date +%s)
-elapsed=$((PREPARE_END-PREPARE_START))
-echo ""
-echo "**************************************************"
-echo "*** PREPARE.sh - TOTAL TIME: $elapsed seconds"
-echo "**************************************************"
-echo ""
+cmd="${path}/Chelsa/1981-2010/workflow/PREPARE.sh"
+$cmd | tee "${path}/Chelsa/1981-2010/log/1_PREPARE.log"

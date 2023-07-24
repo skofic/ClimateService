@@ -12,59 +12,9 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
-script "${path}/Chelsa/1981-2010/log/4_COMBINE_MONTHLY.log"
 
 ###
-# Remove contents of the bio folder in the data directory.
-# Run this script only after you are sure the 3_COMBINE_bio.sh script works.
+# Execute script.
 ###
-for folder in "bio"
-do
-	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
-done
-
-echo "**************************************************"
-echo "*** COMBINE_monthly.sh"
-echo "**************************************************"
-COMBINE_monthly_START=$(date +%s)
-	
-###
-# Run workflow scripts.
-###
-cmd="${path}/Chelsa/1981-2010/script_data/combine_monthly.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-cmd="${path}/Chelsa/1981-2010/script_data/dump_monthly.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-cmd="${path}/Chelsa/1981-2010/script_data/load_monthly.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-COMBINE_monthly_END=$(date +%s)
-elapsed=$((COMBINE_monthly_END-COMBINE_monthly_START))
-echo ""
-echo "**************************************************"
-echo "*** COMBINE_monthly.sh - TOTAL TIME: $elapsed seconds"
-echo "**************************************************"
-echo ""
+cmd="${path}/Chelsa/1981-2010/workflow/COMBINE_MONTHLY.sh"
+$cmd | tee "${path}/Chelsa/1981-2010/log/4_COMBINE_MONTHLY.log"

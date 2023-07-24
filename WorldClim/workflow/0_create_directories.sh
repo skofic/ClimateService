@@ -52,6 +52,7 @@ do
 	mkdir "${period}/data/tasmin/"
 	mkdir "${period}/data/vapr/"
 	mkdir "${period}/data/wind/"
+	mkdir "${period}/data/properties/"
 
 	###
 	# Create clipped directories.
