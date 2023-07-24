@@ -12,6 +12,7 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+script "${path}/Chelsa/1981-2010/log/4_COMBINE_MONTHLY.log"
 
 echo "**************************************************"
 echo "*** COMBINE_monthly.sh"
@@ -50,6 +51,14 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove contents of the data folder.
+###
+for folder in "pr" "tas" "tasmax" "tasmin"
+do
+	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
+done
 
 COMBINE_monthly_END=$(date +%s)
 elapsed=$((COMBINE_monthly_END-COMBINE_monthly_START))

@@ -12,6 +12,7 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+script "${path}/Chelsa/1981-2010/log/3_COMBINE_BIO.log"
 
 echo "**************************************************"
 echo "*** COMBINE_bio.sh"
@@ -50,6 +51,14 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove contents of the data folder.
+###
+for folder in "bio"
+do
+	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
+done
 
 COMBINE_bio_END=$(date +%s)
 elapsed=$((COMBINE_bio_END-COMBINE_bio_START))

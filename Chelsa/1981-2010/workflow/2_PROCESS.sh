@@ -8,6 +8,7 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+script "${path}/Chelsa/1981-2010/log/2_PROCESS.log"
 
 echo "**************************************************"
 echo "*** PROCESS.sh"
@@ -36,6 +37,14 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove contents of the CSV folder.
+###
+for folder in "bio" "pr" "tas" "tasmax" "tasmin"
+do
+	rm -fv "${path}/Chelsa/1981-2010/CSV/${folder}/*.csv.gz"
+done
 
 PROCESS_END=$(date +%s)
 elapsed=$((PROCESS_END-PROCESS_START))

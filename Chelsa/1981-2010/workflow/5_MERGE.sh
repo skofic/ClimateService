@@ -10,6 +10,7 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+script "${path}/Chelsa/1981-2010/log/5_MERGE.log"
 
 echo "**************************************************"
 echo "*** MERGE.sh"
