@@ -14,6 +14,15 @@
 source "${HOME}/.ClimateService"
 script "${path}/Chelsa/1981-2010/log/4_COMBINE_MONTHLY.log"
 
+###
+# Remove contents of the bio folder in the data directory.
+# Run this script only after you are sure the 3_COMBINE_bio.sh script works.
+###
+for folder in "bio"
+do
+	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
+done
+
 echo "**************************************************"
 echo "*** COMBINE_monthly.sh"
 echo "**************************************************"
@@ -51,14 +60,6 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Remove contents of the data folder.
-###
-for folder in "pr" "tas" "tasmax" "tasmin"
-do
-	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
-done
 
 COMBINE_monthly_END=$(date +%s)
 elapsed=$((COMBINE_monthly_END-COMBINE_monthly_START))

@@ -12,6 +12,16 @@
 source "${HOME}/.ClimateService"
 script "${path}/Chelsa/1981-2010/log/5_MERGE.log"
 
+###
+# Remove contents of the monthly folders in the data directory.
+# Run this script only after you are sure the 4_COMBINE_monthly.sh script works.
+# Note that we keep the files in the properties folder as a safety backup.
+###
+for folder in "pr" "tas" "tasmax" "tasmin"
+do
+	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
+done
+
 echo "**************************************************"
 echo "*** MERGE.sh"
 echo "**************************************************"

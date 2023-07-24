@@ -10,6 +10,22 @@
 source "${HOME}/.ClimateService"
 script "${path}/Chelsa/1981-2010/log/2_PROCESS.log"
 
+###
+# Remove downloaded and clipped maps,
+# leaving only the contents of the CSV folder.
+# We do this here, because at this point
+# you will not use GeoTIFF files any more.
+###
+for directory in "Full" "ForgeniusClipped"
+do
+	
+	for folder in "bio" "pr" "tas" "tasmax" "tasmin"
+	do
+		rm -fv "${path}/Chelsa/1981-2010/${directory}/${folder}/*.tif"
+	done
+	
+done
+
 echo "**************************************************"
 echo "*** PROCESS.sh"
 echo "**************************************************"
@@ -37,14 +53,6 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Remove contents of the CSV folder.
-###
-for folder in "bio" "pr" "tas" "tasmax" "tasmin"
-do
-	rm -fv "${path}/Chelsa/1981-2010/CSV/${folder}/*.csv.gz"
-done
 
 PROCESS_END=$(date +%s)
 elapsed=$((PROCESS_END-PROCESS_START))

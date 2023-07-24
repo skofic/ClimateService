@@ -54,20 +54,6 @@ then
 	exit 1
 fi
 
-###
-# Remove downloaded and clipped maps,
-# leaving only the contents of the CSV folder.
-###
-for directory in "Full" "ForgeniusClipped"
-do
-	
-	for folder in "bio" "pr" "tas" "tasmax" "tasmin"
-	do
-		rm -fv "${path}/Chelsa/1981-2010/${directory}/${folder}/*.tif"
-	done
-	
-done
-
 PREPARE_END=$(date +%s)
 elapsed=$((PREPARE_END-PREPARE_START))
 echo ""
