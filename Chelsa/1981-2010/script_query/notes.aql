@@ -19,9 +19,6 @@ LET result_2 = (
 		_key: doc._key,
 		geometry: doc.geometry
 	} IN temp_pang
-	OPTIONS {
-		exclusive: true
-	}
 )
 
 // Load all monthly variables points.
@@ -31,11 +28,28 @@ LET result_3 = (
 		_key: doc._key,
 		geometry: doc.geometry
 	} IN temp_pang
-	OPTIONS {
-		exclusive: true,
-		ignoreErrors: true
-	}
+	OPTIONS { ignoreErrors: true }
 )
+
+/*
+// Merge data into period.
+FOR doc IN temp_pang
+	LET bio = DOCUMENT(temp_bio doc._key)
+	LET monthly = DOCUMENT(temp_monthly, doc._key)
+
+UPSERT { _key: doc._key }
+INSERT {
+	_key: doc._key,
+	geometry: doc.geometry,
+	properties: MERGE(bio.properties, monthly.properties)
+}
+UPDATE { properties: MERGE(bio.properties, monthly.properties) }
+IN chelsa
+OPTIONS {
+	mergeObjects: true,
+	exclusive: true
+}
+*/
 
 // Merge data into period.
 FOR doc IN temp_pang
