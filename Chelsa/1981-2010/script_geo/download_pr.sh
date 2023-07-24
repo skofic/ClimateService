@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Download, clip and convert bioclimatic files.
+# Download bioclimatic files.
 ###
 
 ###
@@ -18,7 +18,7 @@ echo "--------------------------------------------------"
 start=$(date +%s)
 
 ###
-# Download files.
+# Iterate list of files.
 ###
 while read -r line
 do
@@ -33,8 +33,15 @@ do
 	# Download file.
 	###
 	wget --continue --output-document="$dest/$name" "$url"
-    
-done < "${path}/Chelsa/config/path_1981_2010_bio.txt"
+ 	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
+   
+done < "${path}/Chelsa/config/path_1981_2010_pr.txt"
 
 end=$(date +%s)
 elapsed=$((end-start))

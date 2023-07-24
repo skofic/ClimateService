@@ -47,6 +47,13 @@ do
 			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 	else
 		arangoimport \
 			--server.endpoint "$host" \
@@ -58,7 +65,15 @@ do
 			--collection "temp_pong" \
 			--auto-rate-limit true \
 			--ignore-missing
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 	fi
+
 	first=0
 	
 	end=$(date +%s)

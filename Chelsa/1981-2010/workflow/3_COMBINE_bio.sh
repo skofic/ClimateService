@@ -7,27 +7,54 @@
 # group all variable by geographic location and dump result,
 # load result into a specific collection.
 ###
-start=$(date +%s)
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
 
+echo "**************************************************"
+echo "*** COMBINE_bio.sh"
+echo "**************************************************"
+COMBINE_bio_START=$(date +%s)
+	
 ###
 # Run workflow scripts.
 ###
-cmd="${path}/Chelsa/1981-2010/script/combine_bio.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/combine_bio.sh"
 $cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-cmd="${path}/Chelsa/1981-2010/script/dump_bio.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/dump_bio.sh"
 $cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-cmd="${path}/Chelsa/1981-2010/script/load_bio.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/load_bio.sh"
 $cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-end=$(date +%s)
-elapsed=$((end-start))
+COMBINE_bio_END=$(date +%s)
+elapsed=$((COMBINE_bio_END-COMBINE_bio_START))
 echo ""
-echo "TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
+echo "*** COMBINE_bio.sh - TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
 echo ""

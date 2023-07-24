@@ -21,11 +21,25 @@ start=$(date +%s)
 # Download zip file.
 ###
 wget --continue "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip" --output-document="${dest}/bio.zip"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Unzip file.
 ###
 unzip "${dest}/bio.zip" -d "$dest"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Place files.
@@ -43,6 +57,13 @@ do
 	# Move file.
 	###
 	mv --force "${dest}/${old}" "${dest}/bio/${new}"
+	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
     
 done < "${path}/WorldClim/config/path_1970_2000_bio.txt"
 

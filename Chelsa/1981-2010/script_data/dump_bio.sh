@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Dump 1981-2010 monthly data.
+# Dump bioclimatic data.
 ###
 
 ###
@@ -9,14 +9,14 @@
 ###
 source "${HOME}/.ClimateService"
 
-##–#
+###
 # Globals.
 ###
 base="Climate"
-file="dump_1981_2010_monthly"
+file="dump_1981_2010_bio"
 epoc="$path/Chelsa/1981-2010"
 expo="$path/exports/"
-find="${epoc}/script/dump_monthly.aql"
+find="${epoc}/script_query/dump_bio.aql"
 
 echo "----------------------------------------"
 echo "==> Dump ${epoc}/data/properties/${file}.jsonl.gz"
@@ -35,6 +35,13 @@ arangoexport \
 	--overwrite true \
 	--compress-output true \
 	--type "jsonl"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Move file to its directory.

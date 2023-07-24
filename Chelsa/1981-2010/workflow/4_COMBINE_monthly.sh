@@ -7,27 +7,54 @@
 # group all variable by geographic location and dump result,
 # load result into a specific collection.
 ###
-start=$(date +%s)
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
 
+echo "**************************************************"
+echo "*** COMBINE_monthly.sh"
+echo "**************************************************"
+COMBINE_monthly_START=$(date +%s)
+	
 ###
 # Run workflow scripts.
 ###
-cmd="${path}/Chelsa/1981-2010/script/combine_monthly.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/combine_monthly.sh"
 $cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-cmd="${path}/Chelsa/1981-2010/script/dump_monthly.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/dump_monthly.sh"
 $cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-cmd="${path}/Chelsa/1981-2010/script/load_monthly.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/load_monthly.sh"
 $cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-end=$(date +%s)
-elapsed=$((end-start))
+COMBINE_monthly_END=$(date +%s)
+elapsed=$((COMBINE_monthly_END-COMBINE_monthly_START))
 echo ""
-echo "TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
+echo "*** COMBINE_monthly.sh - TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
 echo ""

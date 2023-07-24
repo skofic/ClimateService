@@ -33,8 +33,15 @@ do
 	# Download file.
 	###
 	wget --continue --output-document="$dest/$name" "$url"
+	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
     
-done < "${path}/Chelsa/config/path_1981_2010_tasmin.txt"
+done < "${path}/Chelsa/config/path_1981_2010_tasmax.txt"
 
 end=$(date +%s)
 elapsed=$((end-start))

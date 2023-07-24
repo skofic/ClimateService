@@ -29,12 +29,26 @@ do
 	# Convert to CSV.
 	###
 	gdal2xyz.py -skipnodata -csv "$from/$var.tif" "$dest/$var.csv"
+	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
 	
 	###
 	# Compress file.
 	###
 	echo "=> Compress..."
 	gzip "$dest/$var.csv"
+	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
 	
 done
 

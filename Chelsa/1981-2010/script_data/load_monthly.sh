@@ -36,6 +36,13 @@ arangoimport \
 	--create-collection-type "document" \
 	--auto-rate-limit true \
 	--overwrite true
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 		
 end=$(date +%s)
 elapsed=$((end-start))

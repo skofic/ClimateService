@@ -5,13 +5,17 @@
 #
 # Merge bioclimatic and monthly data into the chelsa collection.
 ###
-start=$(date +%s)
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
 
+echo "**************************************************"
+echo "*** MERGE.sh"
+echo "**************************************************"
+MERGE_START=$(date +%s)
+	
 ###
 # Run workflow scripts.
 ###
@@ -19,9 +23,18 @@ source "${HOME}/.ClimateService"
 # 2. Load monthly data into another collection.
 # 3. Insert bioclimatic data into merge collection.
 # 4. Upsert monthly data into merge collection.
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-end=$(date +%s)
-elapsed=$((end-start))
+MERGE_END=$(date +%s)
+elapsed=$((MERGE_END-MERGE_START))
 echo ""
-echo "TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
+echo "*** MERGE.sh - TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
 echo ""

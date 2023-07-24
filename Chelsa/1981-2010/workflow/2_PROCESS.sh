@@ -3,26 +3,44 @@
 ###
 # Process data: import GeoJSON data, process variables and dump to data folder.
 ###
-start=$(date +%s)
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
 
+echo "**************************************************"
+echo "*** PROCESS.sh"
+echo "**************************************************"
+PROCESS_START=$(date +%s)
+	
 ###
 # Run workflow scripts.
 ###
-cmd="${path}/Chelsa/1981-2010/script/process_bio.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/process_bio.sh"
 $cmd
-sleep 10
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-cmd="${path}/Chelsa/1981-2010/script/process_monthly.sh"
+cmd="${path}/Chelsa/1981-2010/script_data/process_monthly.sh"
 $cmd
-sleep 10
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-end=$(date +%s)
-elapsed=$((end-start))
+PROCESS_END=$(date +%s)
+elapsed=$((PROCESS_END-PROCESS_START))
 echo ""
-echo "TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
+echo "*** PROCESS.sh - TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
 echo ""

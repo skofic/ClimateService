@@ -58,8 +58,13 @@ do
 			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
-		
-		sleep 6
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 		
 		###
 		# Export data to CSV file.
@@ -75,13 +80,25 @@ do
 			--fields "lon","lat","std_month","${pref}_${name}" \
 			--compress-output true \
 			--type "csv"
-		
-		sleep 6
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 		
 		###
 		# Move file to its directory.
 		###
 		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${name}_${month}.csv.gz"
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
@@ -123,8 +140,13 @@ do
 			--auto-rate-limit true \
 			--ignore-missing \
 			--overwrite
-		
-		sleep 6
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 		
 		###
 		# Export data to CSV file.
@@ -140,13 +162,25 @@ do
 			--fields "lon","lat","std_month","${pref}_${name}" \
 			--compress-output true \
 			--type "csv"
-		
-		sleep 6
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 		
 		###
 		# Move file to its directory.
 		###
 		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${name}_${month}.csv.gz"
+		if [ $? -ne 0 ]
+		then
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
+		fi
 		
 		end=$(date +%s)
 		elapsed=$((end-start))

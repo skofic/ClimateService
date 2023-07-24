@@ -5,7 +5,7 @@
 # Will launch bio and monthly downloads in parallel.
 # You will need to check if the jobs finished correctly.
 #
-# The scripts that will be run in batch mode can be found in the geo_scripts folder:
+# The scripts that will be run in batch mode can be found in the script_geo folder:
 #
 # download_bio.log
 # download_pr.log
@@ -26,7 +26,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-scripts="${path}/Chelsa/1981-2010/geo_scripts"
+scripts="${path}/Chelsa/1981-2010/script_geo"
 
 ###
 # Launch batches.
