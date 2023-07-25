@@ -1,0 +1,12 @@
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_01_2011_2040_norm.tif tas_01.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_02_2011_2040_norm.tif tas_02.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_03_2011_2040_norm.tif tas_03.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_04_2011_2040_norm.tif tas_04.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_05_2011_2040_norm.tif tas_05.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_06_2011_2040_norm.tif tas_06.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_07_2011_2040_norm.tif tas_07.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_08_2011_2040_norm.tif tas_08.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_09_2011_2040_norm.tif tas_09.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_10_2011_2040_norm.tif tas_10.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_11_2011_2040_norm.tif tas_11.tif
+https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/2011-2040/MPI-ESM1-2-HR/ssp370/tas/CHELSA_mpi-esm1-2-hr_r1i1p1f1_w5e5_ssp370_tas_12_2011_2040_norm.tif tas_12.tif

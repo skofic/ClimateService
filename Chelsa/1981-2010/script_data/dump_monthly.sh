@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Dump 1981-2010 monthly data.
+# Dump monthly data.
 ###
 
 ###
@@ -13,9 +13,9 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 base="Climate"
-epoc="$path/Chelsa/1981-2010"
-expo="$path/exports/"
 file="combined_monthly"
+expo="$path/exports/"
+epoc="$path/Chelsa/1981-2010"
 query="${epoc}/script_query/dump_monthly.aql"
 dump="${epoc}/data/properties/${file}.jsonl.gz"
 

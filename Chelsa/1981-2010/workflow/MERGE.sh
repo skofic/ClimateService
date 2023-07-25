@@ -12,13 +12,18 @@
 source "${HOME}/.ClimateService"
 
 ###
+# Globals.
+###
+epoc="$path/Chelsa/1981-2010"
+
+###
 # Remove files from the data directory.
 # We assume here that the two previous steps were successful.
 # Only the properties folder will be untouched.
 ###
 for folder in "bio" "pr" "tas" "tasmax" "tasmin"
 do
-	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
+	rm -fv "${epoc}/data/${folder}/*.csv.gz"
 done
 
 echo "**************************************************"
@@ -29,7 +34,7 @@ MERGE_START=$(date +%s)
 ###
 # Dump bioclimatic coordinates.
 ###
-cmd="${path}/Chelsa/1981-2010/script_data/dump_coordinates.sh"
+cmd="${epoc}/script_data/dump_coordinates.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -42,7 +47,7 @@ fi
 ###
 # Load bioclimatic coordinates.
 ###
-cmd="${path}/Chelsa/1981-2010/script_data/load_coordinates.sh"
+cmd="${epoc}/script_data/load_coordinates.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -55,7 +60,7 @@ fi
 ###
 # Dump merged data.
 ###
-cmd="${path}/Chelsa/1981-2010/script_data/dump_merged.sh"
+cmd="${epoc}/script_data/dump_merged.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -73,7 +78,7 @@ fi
 ###
 for folder in "properties"
 do
-	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
+	rm -fv "${epoc}/data/${folder}/*.csv.gz"
 done
 
 MERGE_END=$(date +%s)

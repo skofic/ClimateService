@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Combine all 1981-2010 monthly processed files into collection temp_pong.
+# Combine all monthly processed files into collection temp_pong.
 ###
 
 ###

@@ -13,8 +13,8 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 base="Climate"
-epoc="$path/Chelsa/1981-2010"
 expo="$path/exports/"
+epoc="$path/Chelsa/1981-2010"
 
 start=$(date +%s)
 

@@ -13,10 +13,10 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 base="Climate"
-epoc="$path/Chelsa/1981-2010"
-expo="$path/exports/"
-query="merge.aql"
 name="properties"
+query="merge.aql"
+expo="$path/exports/"
+epoc="$path/Chelsa/1981-2010"
 dump="${epoc}/${name}.jsonl.gz"
 
 echo "----------------------------------------"
@@ -32,7 +32,7 @@ arangoexport \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
-	--custom-query-file "${epoc}script_query/${query}" \
+	--custom-query-file "${path}/Chelsa/config/${query}" \
 	--overwrite true \
 	--compress-output true \
 	--type "jsonl"

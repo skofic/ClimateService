@@ -14,8 +14,8 @@ source "${HOME}/.ClimateService"
 ###
 base="Climate"
 coll="temp_bio"
-epoc="$path/Chelsa/1981-2010"
 file="combined_bio"
+epoc="$path/Chelsa/1981-2010"
 
 echo "----------------------------------------"
 echo "==> Load ${coll}"

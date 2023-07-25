@@ -9,6 +9,11 @@
 ###
 source "${HOME}/.ClimateService"
 
+###
+# Globals.
+###
+epoc="$path/Chelsa/1981-2010"
+
 echo "**************************************************"
 echo "*** PREPARE.sh"
 echo "**************************************************"
@@ -17,7 +22,7 @@ PREPARE_START=$(date +%s)
 ###
 # Download full maps.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/download.sh"
+cmd="${epoc}/workflow/download.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -30,7 +35,7 @@ fi
 ###
 # Clip full maps to EUFGIS region.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/clip.sh"
+cmd="${epoc}/workflow/clip.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -43,7 +48,7 @@ fi
 ###
 # Convert clipped maps to CSV (longitude, latitude and value).
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/convert.sh"
+cmd="${epoc}/workflow/convert.sh"
 $cmd
 if [ $? -ne 0 ]
 then

@@ -16,5 +16,6 @@ source "${HOME}/.ClimateService"
 ###
 # Execute script.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/COMBINE_BIO.sh"
-$cmd | tee "${path}/Chelsa/1981-2010/log/3_COMBINE_BIO.log"
+epoc="$path/Chelsa/1981-2010"
+cmd="${epoc}/workflow/COMBINE_BIO.sh"
+$cmd | tee "${epoc}/log/3_COMBINE_BIO.log"

@@ -14,6 +14,11 @@
 source "${HOME}/.ClimateService"
 
 ###
+# Globals.
+###
+epoc="$path/Chelsa/1981-2010"
+
+###
 # Remove contents of the CSV folder.
 # We do this here, because at this point
 # only the files in the data directory are relevant.
@@ -21,7 +26,7 @@ source "${HOME}/.ClimateService"
 ###
 for folder in "bio"
 do
-	rm -fv "${path}/Chelsa/1981-2010/CSV/${folder}/*.csv.gz"
+	rm -fv "${epoc}/CSV/${folder}/*.csv.gz"
 done
 
 echo "**************************************************"
@@ -32,7 +37,7 @@ COMBINE_bio_START=$(date +%s)
 ###
 # Stack all data into a single collection.
 ###
-cmd="${path}/Chelsa/1981-2010/script_data/combine_bio.sh"
+cmd="${epoc}/script_data/combine_bio.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -45,7 +50,7 @@ fi
 ###
 # Group stacked data by coordinate abd dump export file.
 ###
-cmd="${path}/Chelsa/1981-2010/script_data/dump_bio.sh"
+cmd="${epoc}/script_data/dump_bio.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -58,7 +63,7 @@ fi
 ###
 # Import combined data in collection.
 ###
-cmd="${path}/Chelsa/1981-2010/script_data/load_bio.sh"
+cmd="${epoc}/script_data/load_bio.sh"
 $cmd
 if [ $? -ne 0 ]
 then

@@ -9,6 +9,11 @@
 ###
 source "${HOME}/.ClimateService"
 
+###
+# Globals.
+###
+epoc="$path/Chelsa/1981-2010"
+
 echo "=================================================="
 echo "= DOWNLOAD FILES"
 echo "=================================================="
@@ -20,7 +25,7 @@ do
 	echo "--------------------------------------------------"
 	echo "$code"
 	echo "--------------------------------------------------"
-	cmd="${path}/script_geo/download_${code}.sh"
+	cmd="${epoc}/script_geo/download_${code}.sh"
 	$cmd
 	if [ $? -ne 0 ]
 	then

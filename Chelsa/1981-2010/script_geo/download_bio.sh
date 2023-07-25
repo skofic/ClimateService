@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Download, clip and convert bioclimatic files.
+# Download bioclimatic files.
 ###
 
 ###
@@ -12,7 +12,9 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-dest="${path}/Chelsa/1981-2010/Full/bio"
+cat="bio"
+epoc="$path/Chelsa/1981-2010"
+dest="${epoc}/Full/$cat"
 
 echo "--------------------------------------------------"
 start=$(date +%s)
@@ -41,7 +43,7 @@ do
 		exit 1
 	fi
    
-done < "${path}/Chelsa/config/path_1981_2010_bio.txt"
+done < "${path}/Chelsa/config/path_1981_2010_${cat}.txt"
 
 end=$(date +%s)
 elapsed=$((end-start))

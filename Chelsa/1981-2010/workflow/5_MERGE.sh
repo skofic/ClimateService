@@ -14,5 +14,6 @@ source "${HOME}/.ClimateService"
 ###
 # Execute script.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/MERGE.sh"
-$cmd | tee "${path}/Chelsa/1981-2010/log/5_MERGE.log"
+epoc="$path/Chelsa/1981-2010"
+cmd="${epoc}/workflow/MERGE.sh"
+$cmd | tee "${epoc}/log/5_MERGE.log"

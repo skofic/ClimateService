@@ -10,6 +10,11 @@
 source "${HOME}/.ClimateService"
 
 ###
+# Globals.
+###
+epoc="$path/Chelsa/1981-2010"
+
+###
 # Remove downloaded and clipped maps,
 # leaving only the contents of the CSV folder.
 # We do this here, because at this point
@@ -20,7 +25,7 @@ do
 	
 	for folder in "bio" "pr" "tas" "tasmax" "tasmin"
 	do
-		rm -fv "${path}/Chelsa/1981-2010/${directory}/${folder}/*.tif"
+		rm -fv "${epoc}/${directory}/${folder}/*.tif"
 	done
 	
 done
@@ -33,7 +38,7 @@ PROCESS_START=$(date +%s)
 ###
 # Run workflow scripts.
 ###
-cmd="${path}/Chelsa/1981-2010/script_data/process_bio.sh"
+cmd="${epoc}/script_data/process_bio.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -43,7 +48,7 @@ then
 	exit 1
 fi
 
-cmd="${path}/Chelsa/1981-2010/script_data/process_monthly.sh"
+cmd="${epoc}/script_data/process_monthly.sh"
 $cmd
 if [ $? -ne 0 ]
 then

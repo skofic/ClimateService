@@ -13,8 +13,9 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 name="tasmin"
-from="${path}/Chelsa/1981-2010/ForgeniusClipped/${name}"
-dest="${path}/Chelsa/1981-2010/CSV/${name}"
+epoc="$path/Chelsa/1981-2010"
+from="${epoc}/ForgeniusClipped/${name}"
+dest="${epoc}/CSV/${name}"
 
 echo "--------------------------------------------------"
 start=$(date +%s)

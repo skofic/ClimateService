@@ -21,9 +21,9 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 base="Climate"
-epoc="$path/Chelsa/1981-2010"
-head="$path/Chelsa/config/header.csv"
 expo="$path/exports/"
+head="$path/Chelsa/config/header.csv"
+epoc="$path/Chelsa/1981-2010"
 
 ###
 # Iterate monthly precipitation,

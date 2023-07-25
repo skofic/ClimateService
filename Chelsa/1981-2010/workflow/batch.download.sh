@@ -26,7 +26,8 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-scripts="${path}/Chelsa/1981-2010/script_geo"
+epoc="$path/Chelsa/1981-2010"
+scripts="${epoc}/script_geo"
 
 ###
 # Launch batches.

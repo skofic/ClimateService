@@ -12,5 +12,6 @@ source "${HOME}/.ClimateService"
 ###
 # Execute script.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/PREPARE.sh"
-$cmd | tee "${path}/Chelsa/1981-2010/log/1_PREPARE.log"
+epoc="$path/Chelsa/1981-2010"
+cmd="${epoc}/workflow/PREPARE.sh"
+$cmd | tee "${epoc}/log/1_PREPARE.log"

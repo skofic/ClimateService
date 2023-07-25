@@ -16,5 +16,6 @@ source "${HOME}/.ClimateService"
 ###
 # Execute script.
 ###
-cmd="${path}/Chelsa/1981-2010/workflow/COMBINE_MONTHLY.sh"
-$cmd | tee "${path}/Chelsa/1981-2010/log/4_COMBINE_MONTHLY.log"
+epoc="$path/Chelsa/1981-2010"
+cmd="${epoc}/workflow/COMBINE_MONTHLY.sh"
+$cmd | tee "${epoc}/log/4_COMBINE_MONTHLY.log"
