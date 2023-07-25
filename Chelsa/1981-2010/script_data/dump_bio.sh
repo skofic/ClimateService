@@ -15,11 +15,12 @@ source "${HOME}/.ClimateService"
 base="Climate"
 epoc="$path/Chelsa/1981-2010"
 expo="$path/exports/"
-file_data="combined_bio"
-query_data="${epoc}/script_query/dump_bio.aql"
+file="combined_bio"
+query="${epoc}/script_query/dump_bio.aql"
+dump="${epoc}/data/properties/${file}.jsonl.gz"
 
 echo "----------------------------------------"
-echo "==> Dump ${epoc}/data/properties/${file}.jsonl.gz"
+echo "==> Dump ${dump}"
 start=$(date +%s)
 	
 ###
@@ -31,7 +32,7 @@ arangoexport \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
-	--custom-query-file "$query_data" \
+	--custom-query-file "$query" \
 	--overwrite true \
 	--compress-output true \
 	--type "jsonl"
@@ -46,7 +47,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv --force "${expo}query.jsonl.gz" "${epoc}/data/properties/${file_data}.jsonl.gz"	
+mv --force "${expo}query.jsonl.gz" "${dump}"	
 		
 end=$(date +%s)
 elapsed=$((end-start))

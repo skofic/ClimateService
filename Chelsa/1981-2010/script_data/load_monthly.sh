@@ -15,7 +15,7 @@ source "${HOME}/.ClimateService"
 base="Climate"
 coll="temp_monthly"
 epoc="$path/Chelsa/1981-2010"
-file_data="combined_monthly"
+file="combined_monthly"
 
 echo "----------------------------------------"
 echo "==> Load ${coll}"
@@ -29,7 +29,7 @@ arangoimport \
 	--server.database "$base" \
 	--server.username "$user" \
 	--server.password "$pass" \
-	--file "${epoc}/data/properties/${file_data}.jsonl.gz" \
+	--file "${epoc}/data/properties/${file}.jsonl.gz" \
 	--type "jsonl" \
 	--collection "$coll" \
 	--create-collection true \

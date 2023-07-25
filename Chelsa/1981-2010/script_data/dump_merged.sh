@@ -17,9 +17,10 @@ epoc="$path/Chelsa/1981-2010"
 expo="$path/exports/"
 query="merge.aql"
 name="properties"
+dump="${epoc}/${name}.jsonl.gz"
 
 echo "----------------------------------------"
-echo "==> Dump ${epoc}/${name}.jsonl.gz"
+echo "==> Dump $dump"
 start=$(date +%s)
 
 ###
@@ -46,7 +47,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv --force "${expo}query.jsonl.gz" "${epoc}/${name}.jsonl.gz"	
+mv --force "${expo}query.jsonl.gz" "$dump"	
 		
 end=$(date +%s)
 elapsed=$((end-start))

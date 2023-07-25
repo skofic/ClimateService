@@ -16,15 +16,20 @@ base="Climate"
 epoc="$path/Chelsa/1981-2010"
 expo="$path/exports/"
 
-echo "----------------------------------------"
-echo "==> Dump ${epoc}/data/properties/${file}.jsonl.gz"
 start=$(date +%s)
+
+###
+# Parameters.
+###
+coll="temp_bio"
+file_name="coordinates_bio"
+dump="${epoc}/data/properties/${file_name}.jsonl.gz"
 
 ###
 # Export bioclimatic coordinates.
 ###
-coll="temp_bio"
-file_name="coordinates_bio"
+echo "----------------------------------------"
+echo "==> Dump ${dump}"
 arangoexport \
 	--server.endpoint "$host" \
 	--server.database "$base" \
@@ -46,13 +51,20 @@ fi
 ###
 # Move file to its directory.
 ###
-mv --force "${expo}query.jsonl.gz" "${epoc}/data/properties/${file_name}.jsonl.gz"	
+mv --force "${expo}query.jsonl.gz" "$dump"	
 
 ###
-# Export data to JSONL file.
+# Parameters.
 ###
 coll="temp_monthly"
 file_name="coordinates_monthly"
+dump="${epoc}/data/properties/${file_name}.jsonl.gz"
+
+###
+# Export monthly coordinates.
+###
+echo "----------------------------------------"
+echo "==> Dump ${dump}"
 arangoexport \
 	--server.endpoint "$host" \
 	--server.database "$base" \
@@ -74,7 +86,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv --force "${expo}query.jsonl.gz" "${epoc}/data/properties/${file_name}.jsonl.gz"	
+mv --force "${expo}query.jsonl.gz" "$dump"	
 		
 end=$(date +%s)
 elapsed=$((end-start))
