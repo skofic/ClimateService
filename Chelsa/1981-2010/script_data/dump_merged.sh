@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Dump 1981-2010 monthly data.
+# Dump merged dataset.
 ###
 
 ###
@@ -9,21 +9,21 @@
 ###
 source "${HOME}/.ClimateService"
 
-##–#
+###
 # Globals.
 ###
 base="Climate"
 epoc="$path/Chelsa/1981-2010"
 expo="$path/exports/"
-file_data="combined_monthly"
-query_data="${epoc}/script_query/dump_monthly.aql"
+query="merge.aql"
+name="properties"
 
 echo "----------------------------------------"
-echo "==> Dump ${epoc}/data/properties/${file}.jsonl.gz"
+echo "==> Dump ${epoc}/${name}.jsonl.gz"
 start=$(date +%s)
-	
+
 ###
-# Export data to CSV file.
+# Export merged data.
 ###
 arangoexport \
 	--server.endpoint "$host" \
@@ -31,7 +31,7 @@ arangoexport \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
-	--custom-query-file "$query_data" \
+	--custom-query-file "${epoc}script_query/${query}" \
 	--overwrite true \
 	--compress-output true \
 	--type "jsonl"
@@ -46,7 +46,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv --force "${expo}query.jsonl.gz" "${epoc}/data/properties/${file_data}.jsonl.gz"	
+mv --force "${expo}query.jsonl.gz" "${epoc}/${name}.jsonl.gz"	
 		
 end=$(date +%s)
 elapsed=$((end-start))

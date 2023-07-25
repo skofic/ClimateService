@@ -14,8 +14,8 @@ source "${HOME}/.ClimateService"
 ###
 base="Climate"
 coll="temp_bio"
-file="dump_1981_2010_bio"
 epoc="$path/Chelsa/1981-2010"
+file_data="combined_bio"
 
 echo "----------------------------------------"
 echo "==> Load ${coll}"
@@ -29,7 +29,7 @@ arangoimport \
 	--server.database "$base" \
 	--server.username "$user" \
 	--server.password "$pass" \
-	--file "${epoc}/data/properties/${file}.jsonl.gz" \
+	--file "${epoc}/data/properties/${file_data}.jsonl.gz" \
 	--type "jsonl" \
 	--collection "$coll" \
 	--create-collection true \

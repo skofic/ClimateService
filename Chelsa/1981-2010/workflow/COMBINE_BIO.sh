@@ -17,6 +17,7 @@ source "${HOME}/.ClimateService"
 # Remove contents of the CSV folder.
 # We do this here, because at this point
 # only the files in the data directory are relevant.
+# Note that the data folder is not touched yet.
 ###
 for folder in "bio"
 do
@@ -29,7 +30,7 @@ echo "**************************************************"
 COMBINE_bio_START=$(date +%s)
 	
 ###
-# Run workflow scripts.
+# Stack all data into a single collection.
 ###
 cmd="${path}/Chelsa/1981-2010/script_data/combine_bio.sh"
 $cmd
@@ -41,6 +42,9 @@ then
 	exit 1
 fi
 
+###
+# Group stacked data by coordinate abd dump export file.
+###
 cmd="${path}/Chelsa/1981-2010/script_data/dump_bio.sh"
 $cmd
 if [ $? -ne 0 ]
@@ -51,6 +55,9 @@ then
 	exit 1
 fi
 
+###
+# Import combined data in collection.
+###
 cmd="${path}/Chelsa/1981-2010/script_data/load_bio.sh"
 $cmd
 if [ $? -ne 0 ]

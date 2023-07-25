@@ -12,11 +12,11 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Remove contents of the monthly folders in the data directory.
-# Run this script only after you are sure the 4_COMBINE_monthly.sh script works.
-# Note that we keep the files in the properties folder as a safety backup.
+# Remove files from the data directory.
+# We assume here that the two previous steps were successful.
+# Only the properties folder will be untouched.
 ###
-for folder in "pr" "tas" "tasmax" "tasmin"
+for folder in "bio" "pr" "tas" "tasmax" "tasmin"
 do
 	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
 done
@@ -27,12 +27,10 @@ echo "**************************************************"
 MERGE_START=$(date +%s)
 	
 ###
-# Run workflow scripts.
+# Dump bioclimatic coordinates.
 ###
-# 1. Load bioclimatic data into one collection.
-# 2. Load monthly data into another collection.
-# 3. Insert bioclimatic data into merge collection.
-# 4. Upsert monthly data into merge collection.
+cmd="${path}/Chelsa/1981-2010/script_data/dump_coordinates.sh"
+$cmd
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -40,6 +38,43 @@ then
 	echo "*************"
 	exit 1
 fi
+	
+###
+# Load bioclimatic coordinates.
+###
+cmd="${path}/Chelsa/1981-2010/script_data/load_coordinates.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+	
+###
+# Dump merged data.
+###
+cmd="${path}/Chelsa/1981-2010/script_data/dump_merged.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Remove files from the properties folder in the data directory.
+# We assume here that all previous scripts have been run,
+# after this point we should be left with the "properties.jsonl.gz"
+# at the root level of the period.
+###
+for folder in "properties"
+do
+	rm -fv "${path}/Chelsa/1981-2010/data/${folder}/*.csv.gz"
+done
 
 MERGE_END=$(date +%s)
 elapsed=$((MERGE_END-MERGE_START))
