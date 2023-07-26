@@ -154,7 +154,7 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query-file "$path/Chelsa/config/koppen_geiger_0_1_2.aql" \
+			--custom-query-file "$path/Chelsa/script_query/koppen_geiger_0_1_2.aql" \
 			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
@@ -230,7 +230,7 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query-file "$path/Chelsa/config/koppen_geiger_3.aql" \
+			--custom-query-file "$path/Chelsa/script_query/koppen_geiger_3.aql" \
 			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
@@ -306,7 +306,7 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query-file "$path/Chelsa/config/koppen_geiger_4.aql" \
+			--custom-query-file "$path/Chelsa/script_query/koppen_geiger_4.aql" \
 			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
@@ -382,7 +382,7 @@ do
 			--server.password "$pass" \
 			--output-directory "$expo" \
 			--overwrite true \
-			--custom-query-file "$path/Chelsa/config/koppen_geiger_5.aql" \
+			--custom-query-file "$path/Chelsa/script_query/koppen_geiger_5.aql" \
 			--custom-query-bindvars "{\"variable\": \"${variable}\", \"prefix\": \"${prefix}\"}" \
 			--compress-output true \
 			--fields "lon","lat","${pref}_${variable}" \
