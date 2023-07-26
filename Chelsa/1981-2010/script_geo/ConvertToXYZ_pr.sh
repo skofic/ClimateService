@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip maps to useful region.
+# Convert precipitation maps to CSV.
 ###
 
 ###
@@ -13,7 +13,11 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 name="pr"
-epoc="$path/Chelsa/1981-2010"
+
+###
+# Parameters.
+###
+epoc="${path}/Chelsa/1981-2010"
 from="${epoc}/ForgeniusClipped/${name}"
 dest="${epoc}/CSV/${name}"
 
@@ -27,22 +31,9 @@ for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 do
 
 	###
-	# Convert to CSV.
+	# Convert to CSV and gzip.
 	###
-	gdal2xyz.py -skipnodata -csv "$from/${name}_${month}.tif" "$dest/${name}_${month}.csv"
-	if [ $? -ne 0 ]
-	then
-		echo "*************"
-		echo "*** ERROR ***"
-		echo "*************"
-		exit 1
-	fi
-	
-	###
-	# Compress file.
-	###
-	echo "=> Compress..."
-	gzip "$dest/${name}_${month}.csv"
+	$cmd "${from}/${name}_${month}.tif" "${dest}/${name}_${month}.csv"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
