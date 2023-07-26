@@ -7,11 +7,6 @@
 # - $1: Base directory path to period root.
 # - $2: Folder name: bio, pr, tas, tasmax or tasmin.
 # - $3: Download files list filename.
-#
-# Example:
-# > download.sh ""
-#
-# The script will iterate the entries 
 ###
 
 ###

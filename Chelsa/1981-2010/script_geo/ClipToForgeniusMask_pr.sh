@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip maps to useful region.
+# Clip precipitation maps to EUFGIS region.
 ###
 
 ###
@@ -12,15 +12,16 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
+name="pr"
 
 ###
 # Parameters.
 ###
-name="pr"
-epoc="$path/Chelsa/1981-2010"
+epoc="${path}/Chelsa/1981-2010"
 full="${epoc}/Full/${name}"
 clip="${epoc}/ForgeniusClipped/${name}"
+poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
+
 
 echo "--------------------------------------------------"
 start=$(date +%s)
@@ -28,9 +29,10 @@ start=$(date +%s)
 ###
 # Clip precipitation global TIFF to Forgenius region.
 ###
+cmd="${path}/Chelsa/script_geo/clip.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 do
-	gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$full/${name}_${month}.tif" "$clip/${name}_${month}.tif"
+	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif" "$poly"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
