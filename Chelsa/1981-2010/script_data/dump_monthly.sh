@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Dump monthly data.
+# Dump annual data.
 ###
 
 ###
@@ -9,33 +9,24 @@
 ###
 source "${HOME}/.ClimateService"
 
-##–#
+###
 # Globals.
 ###
-base="Climate"
+coll="temp_pong"
 file="combined_monthly"
-expo="$path/exports/"
-epoc="$path/Chelsa/1981-2010"
-query="${epoc}/script_query/dump_monthly.aql"
-dump="${epoc}/data/properties/${file}.jsonl.gz"
+epoc="${path}/Chelsa/1981-2010"
 
 echo "----------------------------------------"
-echo "==> Dump $dump"
+echo "==> Dump ${dump}"
 start=$(date +%s)
-	
+
 ###
-# Export data to CSV file.
+# Export data to JSONL file.
 ###
-arangoexport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--output-directory "$expo" \
-	--custom-query-file "$query" \
-	--overwrite true \
-	--compress-output true \
-	--type "jsonl"
+cmd="${path}/Chelsa/script_data/dump.sh"
+$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
+	 "${epoc}/script_query/dump_monthly.aql" \
+	 '{"@@collection": "$3"}'
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -43,11 +34,6 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Move file to its directory.
-###
-mv --force "${expo}query.jsonl.gz" "$dump"	
 		
 end=$(date +%s)
 elapsed=$((end-start))

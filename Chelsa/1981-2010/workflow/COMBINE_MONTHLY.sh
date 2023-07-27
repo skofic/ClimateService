@@ -16,7 +16,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="$path/Chelsa/1981-2010"
+epoc="${path}/Chelsa/1981-2010"
 
 ###
 # Remove contents of the CSV folder.
@@ -30,7 +30,7 @@ do
 done
 
 echo "**************************************************"
-echo "*** COMBINE_monthly.sh"
+echo "*** COMBINE_MONTHLY.sh"
 echo "**************************************************"
 COMBINE_monthly_START=$(date +%s)
 	
@@ -77,6 +77,6 @@ COMBINE_monthly_END=$(date +%s)
 elapsed=$((COMBINE_monthly_END-COMBINE_monthly_START))
 echo ""
 echo "**************************************************"
-echo "*** COMBINE_monthly.sh - TOTAL TIME: $elapsed seconds"
+echo "*** COMBINE_MONTHLY.sh - TOTAL TIME: $elapsed seconds"
 echo "**************************************************"
 echo ""

@@ -12,10 +12,9 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-base="Climate"
-expo="$path/exports/"
+coll="temp_pong"
 epoc="$path/Chelsa/1981-2010"
-dump="${epoc}/properties.jsonl.gz"
+cmd="${path}/Chelsa/script_data/dump.sh"
 
 echo "----------------------------------------"
 echo "==> Dump $dump"
@@ -24,16 +23,9 @@ start=$(date +%s)
 ###
 # Export merged data.
 ###
-arangoexport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--output-directory "$expo" \
-	--custom-query-file "${path}/Chelsa/script_query/merge.aql" \
-	--overwrite true \
-	--compress-output true \
-	--type "jsonl"
+$cmd "${epoc}/properties.jsonl.gz" \
+	 "${path}/Chelsa/script_query/merge.aql" \
+	 '{"@@collection": "$3"}'
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -41,12 +33,7 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Move file to its directory.
-###
-mv --force "${expo}query.jsonl.gz" "$dump"	
-		
+	
 end=$(date +%s)
 elapsed=$((end-start))
 echo "Elapsed time: $elapsed seconds"

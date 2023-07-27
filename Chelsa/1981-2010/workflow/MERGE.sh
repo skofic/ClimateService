@@ -14,7 +14,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="$path/Chelsa/1981-2010"
+epoc="${path}/Chelsa/1981-2010"
 
 ###
 # Remove files from the data directory.

@@ -1,0 +1,8 @@
+///
+// Export _key and geometry from feature collection.
+///
+FOR doc IN @@collection
+RETURN {
+	_key: doc._key,
+	geometry: doc.geometry
+}

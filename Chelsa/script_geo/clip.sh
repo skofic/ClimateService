@@ -5,7 +5,7 @@
 #
 # The script expects the following parameters:
 # - $1: Source map full file path.
-# - $2: Cliooed map full file path.
+# - $2: Clipped map full file path.
 # - $3: Full path to clip region GeoJSON file.
 ###
 

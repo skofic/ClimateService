@@ -12,7 +12,6 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-base="Climate"
 coll="temp_pong"
 epoc="$path/Chelsa/1981-2010"
 
@@ -25,19 +24,10 @@ start=$(date +%s)
 # Note that here we use the temp_pong collection and we clear it,
 # a good thing, since it is holding more than 2 billion records...
 ###
-file_name="coordinates_bio"
-arangoimport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--file "${epoc}/data/properties/${file_name}.jsonl.gz" \
-	--type "jsonl" \
-	--collection "$coll" \
-	--create-collection true \
-	--create-collection-type "document" \
-	--auto-rate-limit true \
-	--overwrite true
+file="coordinates_annual"
+cmd="${path}/Chelsa/script_data/load.sh"
+$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
+	 "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -49,17 +39,10 @@ fi
 ###
 # Import monthly coordinates from JSONL file.
 ###
-file_name="coordinates_monthly"
-arangoimport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--file "${epoc}/data/properties/${file_name}.jsonl.gz" \
-	--type "jsonl" \
-	--collection "$coll" \
-	--auto-rate-limit true \
-	--on-duplicate "ignore"
+file="coordinates_monthly"
+cmd="${path}/Chelsa/script_data/load_ignore.sh"
+$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
+	 "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -67,7 +50,7 @@ then
 	echo "*************"
 	exit 1
 fi
-		
+
 end=$(date +%s)
 elapsed=$((end-start))
 echo "Elapsed time: $elapsed seconds"

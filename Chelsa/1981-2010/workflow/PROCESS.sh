@@ -12,7 +12,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="$path/Chelsa/1981-2010"
+epoc="${path}/Chelsa/1981-2010"
 
 ###
 # Remove downloaded and clipped maps,
@@ -36,9 +36,9 @@ echo "**************************************************"
 PROCESS_START=$(date +%s)
 	
 ###
-# Run workflow scripts.
+# Process bioclimatic data.
 ###
-cmd="${epoc}/script_data/process_bio.sh"
+cmd="${epoc}/script_data/process_annual.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -48,6 +48,9 @@ then
 	exit 1
 fi
 
+###
+# Process monthly data.
+###
 cmd="${epoc}/script_data/process_monthly.sh"
 $cmd
 if [ $? -ne 0 ]

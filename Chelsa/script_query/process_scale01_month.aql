@@ -1,0 +1,11 @@
+///
+// Scale value to 0.1.
+///
+FOR doc IN @@collection
+	FILTER doc.value != 0
+RETURN {
+	lon: doc.lon,
+	lat: doc.lat,
+	std_month: TO_NUMBER(@month),
+	@variable: doc.value * 0.1
+}

@@ -20,6 +20,13 @@ start=$(date +%s)
 ###
 cmd="${path}/Chelsa/script_geo/download.sh"
 $cmd "${path}/Chelsa/1981-2010" "tasmax" "path_1981_2010_tasmax.txt"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # End timer.

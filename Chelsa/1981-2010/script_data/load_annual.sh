@@ -12,8 +12,8 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-coll="temp_monthly"
-file="combined_monthly"
+coll="temp_annual"
+file="combined_annual"
 epoc="$path/Chelsa/1981-2010"
 
 ###

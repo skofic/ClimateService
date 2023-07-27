@@ -14,6 +14,13 @@ source "${HOME}/.ClimateService"
 ###
 # Execute script.
 ###
-epoc="$path/Chelsa/1981-2010"
+epoc="${path}/Chelsa/1981-2010"
 cmd="${epoc}/workflow/MERGE.sh"
 $cmd | tee "${epoc}/log/5_MERGE.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi

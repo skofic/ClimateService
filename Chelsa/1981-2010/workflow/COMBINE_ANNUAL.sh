@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Combine bioclimatic data.
+# Combine annual data.
 #
 # Collect all individual bioclimatic variables into a single collection,
 # group all variable by geographic location and dump result,
@@ -16,7 +16,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="$path/Chelsa/1981-2010"
+epoc="${path}/Chelsa/1981-2010"
 
 ###
 # Remove contents of the CSV folder.
@@ -30,14 +30,14 @@ do
 done
 
 echo "**************************************************"
-echo "*** COMBINE_bio.sh"
+echo "*** COMBINE_ANNUAL.sh"
 echo "**************************************************"
 COMBINE_bio_START=$(date +%s)
 	
 ###
 # Stack all data into a single collection.
 ###
-cmd="${epoc}/script_data/combine_bio.sh"
+cmd="${epoc}/script_data/combine_annual.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -50,7 +50,7 @@ fi
 ###
 # Group stacked data by coordinate abd dump export file.
 ###
-cmd="${epoc}/script_data/dump_bio.sh"
+cmd="${epoc}/script_data/dump_annual.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -63,7 +63,7 @@ fi
 ###
 # Import combined data in collection.
 ###
-cmd="${epoc}/script_data/load_bio.sh"
+cmd="${epoc}/script_data/load_annual.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -77,6 +77,6 @@ COMBINE_bio_END=$(date +%s)
 elapsed=$((COMBINE_bio_END-COMBINE_bio_START))
 echo ""
 echo "**************************************************"
-echo "*** COMBINE_bio.sh - TOTAL TIME: $elapsed seconds"
+echo "*** COMBINE_ANNUAL.sh - TOTAL TIME: $elapsed seconds"
 echo "**************************************************"
 echo ""

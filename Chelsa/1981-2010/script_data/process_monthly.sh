@@ -20,10 +20,9 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-base="Climate"
-expo="$path/exports/"
-head="$path/Chelsa/config/header.csv"
+coll="temp_ping"
 epoc="$path/Chelsa/1981-2010"
+cmd="${path}/Chelsa/script_data/process_monthly.sh"
 
 ###
 # Iterate monthly precipitation,
@@ -44,54 +43,14 @@ do
 		start=$(date +%s)
 	
 		###
-		# Import file into database.
+		# Process variable name and scale to 0.01.
 		###
-		arangoimport \
-			--server.endpoint "$host" \
-			--server.database "$base" \
-			--server.username "$user" \
-			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${name}_${month}.csv.gz" \
-			--headers-file "$head" \
-			--type "csv" \
-			--collection "temp_ping" \
-			--auto-rate-limit true \
-			--ignore-missing \
-			--overwrite
-		if [ $? -ne 0 ]
-		then
-			echo "*************"
-			echo "*** ERROR ***"
-			echo "*************"
-			exit 1
-		fi
-		
-		###
-		# Export data to CSV file.
-		###
-		arangoexport \
-			--server.endpoint "$host" \
-			--server.database "$base" \
-			--server.username "$user" \
-			--server.password "$pass" \
-			--output-directory "$expo" \
-			--overwrite true \
-			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN {lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), ${pref}_${name}: doc.value * 0.01}" \
-			--fields "lon","lat","std_month","${pref}_${name}" \
-			--compress-output true \
-			--type "csv"
-		if [ $? -ne 0 ]
-		then
-			echo "*************"
-			echo "*** ERROR ***"
-			echo "*************"
-			exit 1
-		fi
-		
-		###
-		# Move file to its directory.
-		###
-		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${name}_${month}.csv.gz"
+		$cmd "${epoc}/CSV/${name}/${name}_${month}.csv.gz" \
+			 "${epoc}/data/${name}/${name}_${month}.csv.gz" \
+			 "${path}/Chelsa/script_query/process_scale001_month.aql" \
+			 '{"@@collection": "$coll", "@variable": "${pref}_${name}", "std_month": "$month"}' \
+			 "$coll" \
+			 "${pref}_${name}"
 		if [ $? -ne 0 ]
 		then
 			echo "*************"
@@ -126,54 +85,14 @@ do
 		start=$(date +%s)
 	
 		###
-		# Import file into database.
+		# Process variable name and scale to 0.1.
 		###
-		arangoimport \
-			--server.endpoint "$host" \
-			--server.database "$base" \
-			--server.username "$user" \
-			--server.password "$pass" \
-			--file "$epoc/CSV/$name/${name}_${month}.csv.gz" \
-			--headers-file "$head" \
-			--type "csv" \
-			--collection "temp_ping" \
-			--auto-rate-limit true \
-			--ignore-missing \
-			--overwrite
-		if [ $? -ne 0 ]
-		then
-			echo "*************"
-			echo "*** ERROR ***"
-			echo "*************"
-			exit 1
-		fi
-		
-		###
-		# Export data to CSV file.
-		###
-		arangoexport \
-			--server.endpoint "$host" \
-			--server.database "$base" \
-			--server.username "$user" \
-			--server.password "$pass" \
-			--output-directory "$expo" \
-			--overwrite true \
-			--custom-query "FOR doc IN temp_ping FILTER doc.value != 0 RETURN { lon: doc.lon, lat: doc.lat, std_month: TO_NUMBER(\"${month}\"), ${pref}_${name}: doc.value * 0.1 }" \
-			--fields "lon","lat","std_month","${pref}_${name}" \
-			--compress-output true \
-			--type "csv"
-		if [ $? -ne 0 ]
-		then
-			echo "*************"
-			echo "*** ERROR ***"
-			echo "*************"
-			exit 1
-		fi
-		
-		###
-		# Move file to its directory.
-		###
-		mv --force "${expo}query.csv.gz" "${epoc}/data/$name/${name}_${month}.csv.gz"
+		$cmd "${epoc}/CSV/${name}/${name}_${month}.csv.gz" \
+			 "${epoc}/data/${name}/${name}_${month}.csv.gz" \
+			 "${path}/Chelsa/script_query/process_scale01_month.aql" \
+			 '{"@@collection": "$coll", "@variable": "${pref}_${name}", "std_month": "$month"}' \
+			 "$coll" \
+			 "${pref}_${name}"
 		if [ $? -ne 0 ]
 		then
 			echo "*************"

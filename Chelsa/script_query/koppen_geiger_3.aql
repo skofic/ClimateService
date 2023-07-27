@@ -1,11 +1,10 @@
 ///
 // Translate Köppen Geiger kg3.
 ///
-FOR doc IN temp_ping
+FOR doc IN @@collection
 
 	FILTER doc.value IN 1..22
 
-	LET key = CONCAT_SEPARATOR('_', @prefix, @variable)
 	LET value = TRANSLATE(
 				TO_STRING(doc.value), {
 					'1': 'I_A',
@@ -38,6 +37,6 @@ RETURN  MERGE(
 				lat: doc.lat
 			},
 			ZIP(
-				[key], [CONCAT_SEPARATOR('_', key, value)]
+				[@variable], [CONCAT_SEPARATOR('_', @variable, value)]
 			)
 		)

@@ -1,3 +1,4 @@
+base="<database name>"
 host="<database endpoint>"
 user="<database username>"
 pass="<database user password>"

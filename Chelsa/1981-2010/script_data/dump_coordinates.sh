@@ -12,34 +12,25 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-base="Climate"
-expo="$path/exports/"
 epoc="$path/Chelsa/1981-2010"
+cmd="${path}/Chelsa/script_data/dump.sh"
 
 start=$(date +%s)
 
 ###
 # Parameters.
 ###
-coll="temp_bio"
-file_name="coordinates_bio"
-dump="${epoc}/data/properties/${file_name}.jsonl.gz"
+coll="temp_annual"
+file="coordinates_annual"
 
 ###
-# Export bioclimatic coordinates.
+# Export annual coordinates.
 ###
 echo "----------------------------------------"
 echo "==> Dump ${dump}"
-arangoexport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--output-directory "$expo" \
-	--custom-query "FOR doc IN ${coll} RETURN {_key: doc._key, geometry: doc.geometry}" \
-	--overwrite true \
-	--compress-output true \
-	--type "jsonl"
+$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
+	 "${path}/Chelsa/script_query/export_points.aql" \
+	 '{"@@collection": "$3"}'
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -49,32 +40,19 @@ then
 fi
 
 ###
-# Move file to its directory.
-###
-mv --force "${expo}query.jsonl.gz" "$dump"	
-
-###
 # Parameters.
 ###
 coll="temp_monthly"
-file_name="coordinates_monthly"
-dump="${epoc}/data/properties/${file_name}.jsonl.gz"
+file="coordinates_monthly"
 
 ###
 # Export monthly coordinates.
 ###
 echo "----------------------------------------"
 echo "==> Dump ${dump}"
-arangoexport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--output-directory "$expo" \
-	--custom-query "FOR doc IN ${coll} RETURN {_key: doc._key, geometry: doc.geometry}" \
-	--overwrite true \
-	--compress-output true \
-	--type "jsonl"
+$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
+	 "${path}/Chelsa/script_query/export_points.aql" \
+	 "{@@collection: $coll}"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -82,12 +60,7 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Move file to its directory.
-###
-mv --force "${expo}query.jsonl.gz" "$dump"	
-		
+	
 end=$(date +%s)
 elapsed=$((end-start))
 echo "Elapsed time: $elapsed seconds"

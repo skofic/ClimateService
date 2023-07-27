@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Load bioclimatic data.
+# Dump annual data.
 ###
 
 ###
@@ -12,16 +12,21 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-coll="temp_monthly"
-file="combined_monthly"
-epoc="$path/Chelsa/1981-2010"
+coll="temp_pong"
+file="combined_annual"
+epoc="${path}/Chelsa/1981-2010"
+cmd="${path}/Chelsa/script_data/dump.sh"
+
+echo "----------------------------------------"
+echo "==> Dump ${dump}"
+start=$(date +%s)
 
 ###
-# Import data from JSONL file.
+# Export data to JSONL file.
 ###
-cmd="${path}/Chelsa/script_data/load.sh"
 $cmd "${epoc}/data/properties/${file}.jsonl.gz" \
-	 "$coll"
+	 "${epoc}/script_query/dump_annual.aql" \
+	 '{"@@collection": "$3"}'
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -29,7 +34,7 @@ then
 	echo "*************"
 	exit 1
 fi
-		
+	
 end=$(date +%s)
 elapsed=$((end-start))
 echo "Elapsed time: $elapsed seconds"

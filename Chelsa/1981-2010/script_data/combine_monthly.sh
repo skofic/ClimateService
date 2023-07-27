@@ -12,19 +12,18 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-base="Climate"
-epoc="$path/Chelsa/1981-2010"
-head="$path/Chelsa/config/header.csv"
-expo="$path/exports/"
+coll="temp_pong"
+epoc="${path}/Chelsa/1981-2010"
+
+echo "====================================================================="
+echo "= Stack annual data into temp_pong"
+echo "====================================================================="
 
 ###
 # Iterate processed files.
 ###
-
-echo "====================================================================="
-echo "= Stack files into temp_pong"
-echo "====================================================================="
 first=1
+cmd="${path}/Chelsa/script_data/combine.sh"
 for name in "pr" "tas" "tasmax" "tasmin"
 do
 
@@ -36,56 +35,28 @@ do
 	echo "====================================================================="
 	for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 	do
-		echo "==> $name_$month"
+		echo "==> ${name}_${month}"
 		start=$(date +%s)
-		
+	
 		###
 		# Import file into database.
 		###
-		if [ $first -eq 1 ]
+		$cmd "${epoc}/data/${name}/${name}_${month}.csv.gz" \
+			 "$coll" \
+			 $first
+		if [ $? -ne 0 ]
 		then
-			arangoimport \
-				--server.endpoint "$host" \
-				--server.database "$base" \
-				--server.username "$user" \
-				--server.password "$pass" \
-				--file "$epoc/data/$name/${name}_${month}.csv.gz" \
-				--type "csv" \
-				--collection "temp_pong" \
-				--auto-rate-limit true \
-				--ignore-missing \
-				--overwrite
-			if [ $? -ne 0 ]
-			then
-				echo "*************"
-				echo "*** ERROR ***"
-				echo "*************"
-				exit 1
-			fi
-		else
-			arangoimport \
-				--server.endpoint "$host" \
-				--server.database "$base" \
-				--server.username "$user" \
-				--server.password "$pass" \
-				--file "$epoc/data/$name/${name}_${month}.csv.gz" \
-				--type "csv" \
-				--collection "temp_pong" \
-				--auto-rate-limit true \
-				--ignore-missing
-			if [ $? -ne 0 ]
-			then
-				echo "*************"
-				echo "*** ERROR ***"
-				echo "*************"
-				exit 1
-			fi
+			echo "*************"
+			echo "*** ERROR ***"
+			echo "*************"
+			exit 1
 		fi
+		
 		first=0
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
-		echo "Elapsed time: $elapsed seconds"
+		echo "Elapsed time: ${elapsed} seconds"
 	done
 	
 done

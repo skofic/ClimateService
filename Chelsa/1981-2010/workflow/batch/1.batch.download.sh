@@ -26,7 +26,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="$path/Chelsa/1981-2010"
+epoc="${path}/Chelsa/1981-2010"
 scripts="${epoc}/script_geo"
 
 ###

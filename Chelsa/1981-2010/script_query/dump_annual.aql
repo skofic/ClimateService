@@ -1,7 +1,7 @@
 ///
 // Merge bioclimatic data
 ///
-FOR doc IN temp_pong
+FOR doc IN @@collection
 	COLLECT longitude = doc.lon, latitude = doc.lat INTO items
 	
 	LET geo = GEO_POINT(longitude, latitude)

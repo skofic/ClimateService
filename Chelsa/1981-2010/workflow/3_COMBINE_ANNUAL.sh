@@ -16,6 +16,13 @@ source "${HOME}/.ClimateService"
 ###
 # Execute script.
 ###
-epoc="$path/Chelsa/1981-2010"
-cmd="${epoc}/workflow/COMBINE_BIO.sh"
-$cmd | tee "${epoc}/log/3_COMBINE_BIO.log"
+epoc="${path}/Chelsa/1981-2010"
+cmd="${epoc}/workflow/COMBINE_ANNUAL.sh"
+$cmd | tee "${epoc}/log/3_COMBINE_ANNUAL.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
