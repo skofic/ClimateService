@@ -51,7 +51,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/process.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -86,7 +86,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/koppen_geiger_0_1_2.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -121,7 +121,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/koppen_geiger_3.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -156,7 +156,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/koppen_geiger_4.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -191,7 +191,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/koppen_geiger_5.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -226,7 +226,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/process_scale01.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -261,7 +261,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/process_scale001.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -296,7 +296,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/process_scale0001.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
@@ -331,7 +331,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/process_scale01_offset27315.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${variable}"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]

@@ -48,7 +48,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${name}_${month}.csv.gz" \
 			 "${epoc}/data/${name}/${name}_${month}.csv.gz" \
 			 "${path}/Chelsa/script_query/process_scale001_month.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${name}", "std_month": "$month"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${name}\", \"month\": \"$month\"}" \
 			 "$coll" \
 			 "${pref}_${name}"
 		if [ $? -ne 0 ]
@@ -90,7 +90,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${name}_${month}.csv.gz" \
 			 "${epoc}/data/${name}/${name}_${month}.csv.gz" \
 			 "${path}/Chelsa/script_query/process_scale01_month.aql" \
-			 '{"@@collection": "$coll", "@variable": "${pref}_${name}", "std_month": "$month"}' \
+			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${name}\", \"month\": \"$month\"}" \
 			 "$coll" \
 			 "${pref}_${name}"
 		if [ $? -ne 0 ]

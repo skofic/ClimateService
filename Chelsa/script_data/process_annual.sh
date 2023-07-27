@@ -62,7 +62,7 @@ arangoexport \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
-	--custom-query-file "${2}" \
+	--custom-query-file "${3}" \
 	--custom-query-bindvars "$4" \
 	--fields "lon","lat","$6" \
 	--compress-output true \
