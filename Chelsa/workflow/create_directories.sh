@@ -36,7 +36,7 @@ CREATE_START=$(date +%s)
 ###
 # Create period directories.
 ###
-for period in period_1 period_2 period_3 period_4
+for period in "$period_1" "$period_2" "$period_3" "$period_4"
 do
 
 	echo ""
