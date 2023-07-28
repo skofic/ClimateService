@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Load bioclimatic data.
+# Load merged data.
 ###
 
 ###
@@ -10,16 +10,16 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Load annual data."
+echo "= Load merged data."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-coll="temp_annual"
-file="combined_annual"
+file="properties"
+coll="temp_period_1"
 epoc="$path/Chelsa/1981-2010"
-dump="${epoc}/data/properties/${file}.jsonl.gz"
+dump="${epoc}/${file}.jsonl.gz"
 
 echo "----------------------------------------"
 echo "==> Load ${dump}"

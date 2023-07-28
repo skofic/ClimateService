@@ -18,8 +18,10 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Clear top level log files.
+# Create top level log folder,
+# and empty it if it exists.
 ###
+mkdir "${path}/Chelsa/log/"
 rm -fv "${path}/Chelsa/log/*.log"
 
 ###
@@ -88,6 +90,11 @@ do
 	mkdir "${period}/Full/tas/"
 	mkdir "${period}/Full/tasmax/"
 	mkdir "${period}/Full/tasmin/"
+
+	###
+	# Create other directories.
+	###
+	mkdir "${period}/log/"
 	
 	###
 	# Remove log files.
@@ -123,7 +130,7 @@ do
 	###
 	# Combine bioclimatic data.
 	###
-	cmd="${period}/workflow/3_COMBINE_BIO.sh"
+	cmd="${period}/workflow/3_COMBINE_ANNUAL.sh"
 	$cmd
 	if [ $? -ne 0 ]
 	then

@@ -1,7 +1,11 @@
 #!/bin/sh
 
 ###
-# Prepare data: download, clip to region and convert to GeoJSON.
+# Prepare data.
+#
+# Download GeoIFF maps,
+# clip maps to useful region,
+# convert maps to CSV files
 ###
 
 ###

@@ -9,6 +9,10 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Clip bioclimatic variables to EUFGIS region."
+echo "====================================================================="
+
 ###
 # Globals.
 ###
@@ -26,6 +30,7 @@ poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
 # Clip bioclimatic variables global TIFF to Forgenius region.
 ###
 echo "--------------------------------------------------"
+echo "==> ${name}"
 start=$(date +%s)
 
 ###

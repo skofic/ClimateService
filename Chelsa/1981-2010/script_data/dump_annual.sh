@@ -9,13 +9,18 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Dump annual data."
+echo "====================================================================="
+
 ###
 # Globals.
 ###
 coll="temp_pong"
 file="combined_annual"
 epoc="${path}/Chelsa/1981-2010"
-cmd="${path}/Chelsa/script_data/dump.sh"
+dump="${epoc}/data/properties/${file}.jsonl.gz"
+query="${epoc}/script_query/dump_annual.aql"
 
 echo "----------------------------------------"
 echo "==> Dump ${dump}"
@@ -24,9 +29,8 @@ start=$(date +%s)
 ###
 # Export data to JSONL file.
 ###
-$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
-	 "${epoc}/script_query/dump_annual.aql" \
-	 '{"@@collection": "$3"}'
+cmd="${path}/Chelsa/script_data/dump.sh"
+$cmd "$dump" "$query" "{\"@@collection\": \"$coll\"}"
 if [ $? -ne 0 ]
 then
 	echo "*************"

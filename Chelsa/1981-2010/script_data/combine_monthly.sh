@@ -9,15 +9,15 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Stack monthly data."
+echo "====================================================================="
+
 ###
 # Globals.
 ###
 coll="temp_pong"
 epoc="${path}/Chelsa/1981-2010"
-
-echo "====================================================================="
-echo "= Stack annual data into temp_pong"
-echo "====================================================================="
 
 ###
 # Iterate processed files.
@@ -30,11 +30,9 @@ do
 	###
 	# Iterate months.
 	###
-	echo "====================================================================="
-	echo "= $name"
-	echo "====================================================================="
 	for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 	do
+		echo "----------------------------------------"
 		echo "==> ${name}_${month}"
 		start=$(date +%s)
 	
@@ -56,7 +54,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
-		echo "Elapsed time: ${elapsed} seconds"
+		echo "Elapsed time: $elapsed seconds"
+		echo "----------------------------------------"
 	done
 	
 done

@@ -1,7 +1,11 @@
 #!/bin/sh
 
 ###
-# Process data: import GeoJSON data, process variables and dump to data folder.
+# Process data.
+#
+# import GeoJSON data,
+# process variables
+# and dump to data folder.
 ###
 
 ###

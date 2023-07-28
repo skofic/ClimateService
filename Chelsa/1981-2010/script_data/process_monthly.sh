@@ -4,8 +4,7 @@
 # Process all monthly variables.
 #
 # Will iterate all monthly data files,
-# eventually normalising the value
-# adding the month number,
+# normalising the value according to Chelsa instructions
 # and generating a compressed CSV file
 # moving it in its directory.
 #
@@ -16,6 +15,10 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+
+echo "====================================================================="
+echo "= Process monthly data."
+echo "====================================================================="
 
 ###
 # Globals.

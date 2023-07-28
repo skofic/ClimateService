@@ -2,6 +2,9 @@
 
 ###
 # Dump data coordinates.
+#
+# It will dump the geometries of annual and
+# monthly data to their respective dump files.
 ###
 
 ###
@@ -9,28 +12,34 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Dump coordinates"
+echo "====================================================================="
+
 ###
 # Globals.
 ###
-epoc="$path/Chelsa/1981-2010"
 cmd="${path}/Chelsa/script_data/dump.sh"
-
-start=$(date +%s)
+epoc="$path/Chelsa/1981-2010"
+query="${path}/Chelsa/script_query/export_points.aql"
 
 ###
 # Parameters.
 ###
 coll="temp_annual"
 file="coordinates_annual"
+dump="${epoc}/data/properties/${file}.jsonl.gz"
+
+echo "----------------------------------------"
+echo "==> Dump ${dump}"
+start=$(date +%s)
 
 ###
 # Export annual coordinates.
 ###
-echo "----------------------------------------"
-echo "==> Dump ${dump}"
-$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
-	 "${path}/Chelsa/script_query/export_points.aql" \
-	 '{"@@collection": "$3"}'
+$cmd "$dump" \
+	 "$query" \
+	 "{\"@@collection\": \"$coll\"}"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -38,21 +47,29 @@ then
 	echo "*************"
 	exit 1
 fi
+	
+end=$(date +%s)
+elapsed=$((end-start))
+echo "Elapsed time: $elapsed seconds"
+echo "----------------------------------------"
 
 ###
 # Parameters.
 ###
 coll="temp_monthly"
 file="coordinates_monthly"
+dump="${epoc}/data/properties/${file}.jsonl.gz"
+
+echo "----------------------------------------"
+echo "==> Dump ${dump}"
+start=$(date +%s)
 
 ###
 # Export monthly coordinates.
 ###
-echo "----------------------------------------"
-echo "==> Dump ${dump}"
-$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
-	 "${path}/Chelsa/script_query/export_points.aql" \
-	 "{@@collection: $coll}"
+$cmd "$dump" \
+	 "$query" \
+	 "{\"@@collection\": \"$coll\"}"
 if [ $? -ne 0 ]
 then
 	echo "*************"

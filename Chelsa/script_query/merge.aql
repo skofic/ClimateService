@@ -2,10 +2,10 @@
 // Merge bioclimatic and monthly data.
 ///
 FOR doc IN @@collection
-	LET bio = DOCUMENT(temp_bio doc._key)
+	LET annual = DOCUMENT(temp_annual, doc._key)
 	LET monthly = DOCUMENT(temp_monthly, doc._key)
 RETURN {
 	_key: doc._key,
 	geometry: doc.geometry,
-	properties: MERGE(bio.properties, monthly.properties)
+	properties: MERGE_RECURSIVE(annual.properties, monthly.properties)
 }

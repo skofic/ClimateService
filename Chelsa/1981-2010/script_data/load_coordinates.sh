@@ -2,6 +2,9 @@
 
 ###
 # Load coordinates in collection.
+#
+# When done, temp_pong will contain
+# the coordinates for the current period.
 ###
 
 ###
@@ -9,25 +12,33 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Load coordinates."
+echo "====================================================================="
+
 ###
 # Globals.
 ###
 coll="temp_pong"
 epoc="$path/Chelsa/1981-2010"
 
+###
+# Properties.
+###
+file="coordinates_annual"
+dump="${epoc}/data/properties/${file}.jsonl.gz"
+
 echo "----------------------------------------"
-echo "==> Load ${coll}"
+echo "==> Load ${dump}"
 start=$(date +%s)
 
 ###
-# Import bioclimatic coordinates from JSONL file.
+# Import yearly coordinates from JSONL file.
 # Note that here we use the temp_pong collection and we clear it,
 # a good thing, since it is holding more than 2 billion records...
 ###
-file="coordinates_annual"
 cmd="${path}/Chelsa/script_data/load.sh"
-$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
-	 "$coll"
+$cmd "$dump" "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -36,13 +47,26 @@ then
 	exit 1
 fi
 
+end=$(date +%s)
+elapsed=$((end-start))
+echo "Elapsed time: $elapsed seconds"
+echo "----------------------------------------"
+
+###
+# Properties.
+###
+file="coordinates_monthly"
+dump="${epoc}/data/properties/${file}.jsonl.gz"
+
+echo "----------------------------------------"
+echo "==> Load ${dump}"
+start=$(date +%s)
+
 ###
 # Import monthly coordinates from JSONL file.
 ###
-file="coordinates_monthly"
 cmd="${path}/Chelsa/script_data/load_ignore.sh"
-$cmd "${epoc}/data/properties/${file}.jsonl.gz" \
-	 "$coll"
+$cmd "$dump" "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"

@@ -2,7 +2,6 @@
 // Data process query: no change.
 ///
 FOR doc IN @@collection
-    LIMIT 10
 RETURN {
     lon: doc.lon,
     lat: doc.lat,

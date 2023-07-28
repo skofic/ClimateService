@@ -3,7 +3,7 @@
 ###
 # Process all annual variables.
 #
-# Will iterate all bioclimatic data files,
+# Will iterate all annual data files,
 # normalising the value according to Chelsa instructions
 # and generating a compressed CSV file
 # moving it in its directory.
@@ -15,6 +15,10 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+
+echo "====================================================================="
+echo "= Process annual data."
+echo "====================================================================="
 
 ###
 # Globals.

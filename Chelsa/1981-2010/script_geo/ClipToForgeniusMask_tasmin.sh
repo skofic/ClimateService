@@ -9,6 +9,10 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Clip monthly minimum temperature variables to EUFGIS region."
+echo "====================================================================="
+
 ###
 # Globals.
 ###
@@ -24,6 +28,7 @@ poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
 
 
 echo "--------------------------------------------------"
+echo "==> ${name}"
 start=$(date +%s)
 
 ###

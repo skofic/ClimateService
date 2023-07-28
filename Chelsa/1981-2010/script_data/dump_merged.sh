@@ -9,12 +9,18 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Dump merged period"
+echo "====================================================================="
+
 ###
 # Globals.
 ###
 coll="temp_pong"
+file="properties"
 epoc="$path/Chelsa/1981-2010"
-cmd="${path}/Chelsa/script_data/dump.sh"
+dump="${epoc}/${file}.jsonl.gz"
+query="${path}/Chelsa/script_query/merge.aql"
 
 echo "----------------------------------------"
 echo "==> Dump $dump"
@@ -23,9 +29,8 @@ start=$(date +%s)
 ###
 # Export merged data.
 ###
-$cmd "${epoc}/properties.jsonl.gz" \
-	 "${path}/Chelsa/script_query/merge.aql" \
-	 '{"@@collection": "$3"}'
+cmd="${path}/Chelsa/script_data/dump.sh"
+$cmd "$dump" "$query" "{\"@@collection\": \"$coll\"}"
 if [ $? -ne 0 ]
 then
 	echo "*************"

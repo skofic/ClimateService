@@ -9,6 +9,10 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Convert precipitation variables to CSV."
+echo "====================================================================="
+
 ###
 # Globals.
 ###
@@ -22,6 +26,7 @@ from="${epoc}/ForgeniusClipped/${name}"
 dest="${epoc}/CSV/${name}"
 
 echo "--------------------------------------------------"
+echo "==> ${name}"
 start=$(date +%s)
 
 ###
