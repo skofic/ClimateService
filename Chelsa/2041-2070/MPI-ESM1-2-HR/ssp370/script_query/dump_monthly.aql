@@ -1,0 +1,32 @@
+///
+// Merge monthly data.
+///
+FOR doc IN @@collection
+    COLLECT longitude = doc.lon, latitude = doc.lat INTO items
+
+    LET point_data = (
+        FOR doc IN items[*].doc
+        RETURN UNSET(doc, '_id', '_key', '_rev', 'lon', 'lat')
+    )
+    
+    LET month_data = (
+        FOR doc IN point_data
+            COLLECT month = doc.std_month INTO months
+        RETURN MERGE(months[*].doc)
+    )
+    
+    LET geo = GEO_POINT(longitude, latitude)
+
+RETURN {
+    _key: MD5(TO_STRING(geo)),
+    geometry: geo,
+	properties: {
+		`2041-2070`: {
+			`MPI-ESM1-2-HR`: {
+				`ssp370`: {
+					monthly: month_data
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+///
+// Merge bioclimatic data
+///
+FOR doc IN @@collection
+	COLLECT longitude = doc.lon, latitude = doc.lat INTO items
+	
+	LET geo = GEO_POINT(longitude, latitude)
+	
+RETURN {
+	_key: MD5(TO_STRING(geo)),
+	geometry: geo,
+	properties: {
+		`2071-2100`: {
+			`MPI-ESM1-2-HR`: {
+				`ssp370`: UNSET(MERGE(items[*].doc), '_id', '_key', '_rev', 'lon', 'lat')
+			}
+		}
+	}
+}
