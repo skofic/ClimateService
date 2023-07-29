@@ -14,17 +14,23 @@ echo "= Download minimum temperature data."
 echo "====================================================================="
 
 ###
+# Globals.
+###
+name="tasmin"
+epoc="${path}/Chelsa/1981-2010"
+
+###
 # Start timer.
 ###
-echo "==> tasmin"
 echo "--------------------------------------------------"
+echo "==> ${name}"
 start=$(date +%s)
 
 ###
 # Call download script.
 ###
 cmd="${path}/Chelsa/script_geo/download.sh"
-$cmd "${path}/Chelsa/1981-2010" "tasmin" "path_1981_2010_tasmin.txt"
+$cmd "$epoc" "$name" "path_1981_2010_${name}.txt"
 if [ $? -ne 0 ]
 then
 	echo "*************"

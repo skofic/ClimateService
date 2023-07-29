@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Download precipitation files.
+# Load merged data.
 ###
 
 ###
@@ -10,27 +10,26 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Download precipitation data."
+echo "= Load merged data."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-name="pr"
-epoc="${path}/Chelsa/1981-2010"
+file="properties"
+coll="temp_period_1"
+epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
+dump="${epoc}/${file}.jsonl.gz"
 
-###
-# Start timer.
-###
-echo "--------------------------------------------------"
-echo "==> ${name}"
+echo "----------------------------------------"
+echo "==> Load ${dump}"
 start=$(date +%s)
 
 ###
-# Call download script.
+# Import data from JSONL file.
 ###
-cmd="${path}/Chelsa/script_geo/download.sh"
-$cmd "$epoc" "$name" "path_1981_2010_${name}.txt"
+cmd="${path}/Chelsa/script_data/load.sh"
+$cmd "$dump" "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -38,11 +37,8 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# End timer.
-###
+		
 end=$(date +%s)
 elapsed=$((end-start))
 echo "Elapsed time: $elapsed seconds"
-echo "--------------------------------------------------"
+echo "----------------------------------------"

@@ -17,7 +17,7 @@ echo "====================================================================="
 # Globals.
 ###
 name="tasmax"
-epoc="${path}/Chelsa/1981-2010"
+epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 
 ###
 # Parameters.

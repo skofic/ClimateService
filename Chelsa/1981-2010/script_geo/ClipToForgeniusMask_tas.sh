@@ -17,11 +17,11 @@ echo "====================================================================="
 # Globals.
 ###
 name="tas"
+epoc="${path}/Chelsa/1981-2010"
 
 ###
 # Parameters.
 ###
-epoc="${path}/Chelsa/1981-2010"
 full="${epoc}/Full/${name}"
 clip="${epoc}/ForgeniusClipped/${name}"
 poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"

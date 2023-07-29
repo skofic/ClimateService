@@ -10,14 +10,14 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Convert maximum temperature variables to CSV."
+echo "= Convert precipitation variables to CSV."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-name="tasmax"
-epoc="${path}/Chelsa/1981-2010"
+name="pr"
+epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 
 ###
 # Parameters.
