@@ -15,7 +15,7 @@ source "${HOME}/.ClimateService"
 # Create top level log folder,
 # and empty it if it exists.
 ###
-mkdir "${path}/Chelsa/log/"
+mkdir -p "${path}/Chelsa/log/"
 rm -fv "${path}/Chelsa/log/*.log"
 
 ###
@@ -47,48 +47,48 @@ do
 	###
 	# Create CSV directories.
 	###
-	mkdir "${period}/CSV/"
-	mkdir "${period}/CSV/bio/"
-	mkdir "${period}/CSV/pr/"
-	mkdir "${period}/CSV/tas/"
-	mkdir "${period}/CSV/tasmax/"
-	mkdir "${period}/CSV/tasmin/"
+	mkdir -p "${period}/CSV/"
+	mkdir -p "${period}/CSV/bio/"
+	mkdir -p "${period}/CSV/pr/"
+	mkdir -p "${period}/CSV/tas/"
+	mkdir -p "${period}/CSV/tasmax/"
+	mkdir -p "${period}/CSV/tasmin/"
 
 	###
 	# Create data directories.
 	###
-	mkdir "${period}/data/"
-	mkdir "${period}/data/bio/"
-	mkdir "${period}/data/pr/"
-	mkdir "${period}/data/tas/"
-	mkdir "${period}/data/tasmax/"
-	mkdir "${period}/data/tasmin/"
-	mkdir "${period}/data/properties/"
+	mkdir -p "${period}/data/"
+	mkdir -p "${period}/data/bio/"
+	mkdir -p "${period}/data/pr/"
+	mkdir -p "${period}/data/tas/"
+	mkdir -p "${period}/data/tasmax/"
+	mkdir -p "${period}/data/tasmin/"
+	mkdir -p "${period}/data/properties/"
 
 	###
 	# Create clipped directories.
 	###
-	mkdir "${period}/ForgeniusClipped/"
-	mkdir "${period}/ForgeniusClipped/bio/"
-	mkdir "${period}/ForgeniusClipped/pr/"
-	mkdir "${period}/ForgeniusClipped/tas/"
-	mkdir "${period}/ForgeniusClipped/tasmax/"
-	mkdir "${period}/ForgeniusClipped/tasmin/"
+	mkdir -p "${period}/ForgeniusClipped/"
+	mkdir -p "${period}/ForgeniusClipped/bio/"
+	mkdir -p "${period}/ForgeniusClipped/pr/"
+	mkdir -p "${period}/ForgeniusClipped/tas/"
+	mkdir -p "${period}/ForgeniusClipped/tasmax/"
+	mkdir -p "${period}/ForgeniusClipped/tasmin/"
 
 	###
 	# Create clipped directories.
 	###
-	mkdir "${period}/Full/"
-	mkdir "${period}/Full/bio/"
-	mkdir "${period}/Full/pr/"
-	mkdir "${period}/Full/tas/"
-	mkdir "${period}/Full/tasmax/"
-	mkdir "${period}/Full/tasmin/"
+	mkdir -p "${period}/Full/"
+	mkdir -p "${period}/Full/bio/"
+	mkdir -p "${period}/Full/pr/"
+	mkdir -p "${period}/Full/tas/"
+	mkdir -p "${period}/Full/tasmax/"
+	mkdir -p "${period}/Full/tasmin/"
 
 	###
 	# Create other directories.
 	###
-	mkdir "${period}/log/"
+	mkdir -p "${period}/log/"
 	rm -fv "${period}/log/*.log"
 	
 done

@@ -44,7 +44,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv --force "${expo}query.jsonl.gz" "${1}"
+mv -f "${expo}query.jsonl.gz" "${1}"
 if [ $? -ne 0 ]
 then
 	echo "*************"

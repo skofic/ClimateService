@@ -1,7 +1,13 @@
 #!/bin/sh
 
 ###
-# Download, clip and convert bioclimatic files.
+# Download files to folder.
+#
+# This script expects the following parameters:
+# - $1: Remote file URL.
+# - $2: Destination directory.
+# - $3: File name text table full path
+# - $4: Temp file name.
 ###
 
 ###
@@ -12,15 +18,12 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-dest="${path}/WorldClim/1970-2000/Full"
-
-echo "--------------------------------------------------"
-start=$(date +%s)
+comp="${2}/${4}.zip"
 
 ###
 # Download zip file.
 ###
-wget --continue "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip" --output-document="${dest}/bio.zip"
+wget --continue "$1" --output-document="$comp"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -32,7 +35,7 @@ fi
 ###
 # Unzip file.
 ###
-unzip "${dest}/bio.zip" -d "$dest"
+unzip "$comp" -d "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -56,7 +59,7 @@ do
 	###
 	# Move file.
 	###
-	mv --force "${dest}/${old}" "${dest}/bio/${new}"
+	mv -f "${2}/${old}" "${2}/${new}"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -65,14 +68,9 @@ do
 		exit 1
 	fi
     
-done < "${path}/WorldClim/config/path_1970_2000_bio.txt"
+done < "$3"
 
 ###
 # Remove zip file.
 ###
-rm -f "${dest}/bio.zip"
-
-end=$(date +%s)
-elapsed=$((end-start))
-echo "Elapsed time: $elapsed seconds"
-echo "--------------------------------------------------"
+rm -f "$comp"
