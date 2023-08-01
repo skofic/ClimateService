@@ -66,3 +66,43 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Load dumps into temporary period collections
+# and dump periods coordinates.
+###
+cmd="${path}/Chelsa/workflow/load_periods.sh"
+$cmd | tee "${path}/Chelsa/log/load_periods.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Load coordinate dumps into Chelsa map collection.
+###
+cmd="${path}/Chelsa/workflow/load_map.sh"
+$cmd | tee "${path}/Chelsa/log/load_map.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Dump Chelsa and dump Chelsa map.
+###
+cmd="${path}/Chelsa/workflow/dump_chelsa.sh"
+$cmd | tee "${path}/Chelsa/log/dump_chelsa.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi

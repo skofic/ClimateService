@@ -1,0 +1,18 @@
+///
+// Merge Chelsa period data.
+///
+FOR doc IN map_chelsa
+	LET period_1 = DOCUMENT(temp_period_1, doc._key)
+	LET period_2 = DOCUMENT(temp_period_2, doc._key)
+	LET period_3 = DOCUMENT(temp_period_3, doc._key)
+	LET period_4 = DOCUMENT(temp_period_4, doc._key)
+RETURN {
+	_key: doc._key,
+	geometry: doc.geometry,
+	properties: MERGE_RECURSIVE(
+		period_1.properties,
+		period_2.properties,
+		period_3.properties,
+		period_4.properties
+	)
+}
