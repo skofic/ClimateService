@@ -32,7 +32,7 @@ echo "**************************************************"
 MERGE_START=$(date +%s)
 	
 ###
-# Dump bioclimatic coordinates.
+# Dump annual and monthly coordinates.
 ###
 cmd="${epoc}/script_data/dump_coordinates.sh"
 $cmd
@@ -45,7 +45,7 @@ then
 fi
 	
 ###
-# Load bioclimatic coordinates.
+# Combine annual and monthly coordinates.
 ###
 cmd="${epoc}/script_data/load_coordinates.sh"
 $cmd

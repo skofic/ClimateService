@@ -3,8 +3,7 @@
 ###
 # Load periods.
 #
-# This script will load all periods into their respective collections
-# and it will dump all period coordinates into a file in the respective data folder.
+# This script will load all periods into their respective collections.
 ###
 
 ###
@@ -33,7 +32,7 @@ echo "**************************************************"
 LOAD_PERIODS_START=$(date +%s)
 
 ###
-# Create period directories.
+# Iterate periods.
 ###
 first=1
 for number in "1" "2" "3" "4"
@@ -50,34 +49,24 @@ do
 	epoc="${!period}"
 	coll="${!collection}"
 	dump="${epoc}/${file}.jsonl.gz"
-	save="${epoc}/data/properties/map.jsonl.gz"
 
 	echo ""
 	echo "**************************************************"
-	echo "*** $coll"
-	echo "*** $dump"
+	echo "*** Load $dump"
+	echo "*** into collection $coll"
 	echo "**************************************************"
 
 	###
 	# Load to collection.
 	###
 	cmd="${path}/Chelsa/script_data/load.sh"
-	$cmd "${epoc}/properties.jsonl.gz" "$coll"
-	if [ $? -ne 0 ]
-	then
-		echo "*************"
-		echo "*** ERROR ***"
-		echo "*************"
-		exit 1
-	fi
-
-	###
-	# Dump to map.
-	###
-	cmd="${path}/Chelsa/script_data/dump.sh"
-	$cmd "$save" \
-		"${path}/Chelsa/script_query/export_points.aql" \
-		"{\"@@collection\": \"$coll\"}"
+	$cmd "${epoc}/properties.jsonl.gz" \
+		 "$coll"
+# 	echo "--------------------------------------------------"
+# 	echo "$cmd"
+# 	echo "${epoc}/properties.jsonl.gz"
+# 	echo "$coll"
+# 	echo "--------------------------------------------------"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

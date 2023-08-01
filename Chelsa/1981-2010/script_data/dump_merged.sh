@@ -38,6 +38,20 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Export map data.
+###
+cmd="${path}/Chelsa/script_data/save.sh"
+$cmd "${epoc}/data/map.jsonl.gz" \
+	 "$coll"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 	
 end=$(date +%s)
 elapsed=$((end-start))

@@ -1,7 +1,9 @@
 ///
 // Merge Chelsa period data.
+// Read all records in Chelsa coordinates
+// and merge all related period records.
 ///
-FOR doc IN map_chelsa
+FOR doc IN @@collection
 	LET period_1 = DOCUMENT(temp_period_1, doc._key)
 	LET period_2 = DOCUMENT(temp_period_2, doc._key)
 	LET period_3 = DOCUMENT(temp_period_3, doc._key)

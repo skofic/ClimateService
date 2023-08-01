@@ -8,6 +8,7 @@
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+CHELSA=$(date +%s)
 
 ###
 # Create directories.
@@ -106,3 +107,11 @@ then
 	echo "*************"
 	exit 1
 fi
+
+CHELSA_END=$(date +%s)
+elapsed=$((CHELSA_END-CHELSA_START))
+echo ""
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
+echo "==> CHELSA.sh - TOTAL TIME: $elapsed seconds"
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
+echo ""

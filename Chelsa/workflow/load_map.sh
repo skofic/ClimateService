@@ -47,16 +47,29 @@ do
 
 	echo ""
 	echo "**************************************************"
-	echo "*** $dump"
+	echo "*** Load $dump"
+	echo "*** into collection $collection"
+	if [ $first -ne 0 ]
+	then
+		echo "*** clearing its contents."
+	else
+		echo "*** ignoring duplicates."
+	fi
 	echo "**************************************************"
 
 	###
 	# Load to collection.
 	###
 	cmd="${path}/Chelsa/script_data/map.sh"
-	$cmd "dump" \
+	$cmd "$dump" \
 		 "$collection" \
 		 $first
+# 	echo "--------------------------------------------------"
+# 	echo "$cmd"
+# 	echo "$dump"
+# 	echo "$collection"
+# 	echo "$first"
+# 	echo "--------------------------------------------------"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

@@ -16,9 +16,9 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-collection_map="Chelsa"
-collection_chelsa="ChelsaMap"
-cmd="${path}/Chelsa/script_data/dump.sh"
+collection="map_chelsa"
+collection_map="ChelsaMap"
+collection_chelsa="Chelsa"
 
 echo "**************************************************"
 echo "**************************************************"
@@ -27,12 +27,25 @@ echo "**************************************************"
 echo "**************************************************"
 DUMP_CHELSA_START=$(date +%s)
 
+echo ""
+echo "**************************************************"
+echo "*** Dump Chelsa properties"
+echo "*** into ${path}/${collection_chelsa}.jsonl.gz"
+echo "**************************************************"
+
 ###
 # Dump Chelsa.
 ###
+cmd="${path}/Chelsa/script_data/dump.sh"
 $cmd "${path}/${collection_chelsa}.jsonl.gz" \
 	 "${path}/Chelsa/script_query/merge_chelsa.aql" \
-	 "{}"
+	 "{\"@@collection\": \"$collection\"}"
+# echo "--------------------------------------------------"
+# echo "$cmd"
+# echo "${path}/${collection_chelsa}.jsonl.gz"
+# echo "${path}/Chelsa/script_query/merge_chelsa.aql"
+# echo "{\"@@collection\": \"$collection\"}"
+# echo "--------------------------------------------------"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -41,12 +54,23 @@ then
 	exit 1
 fi
 
+echo ""
+echo "**************************************************"
+echo "*** Dump Chelsa geometries"
+echo "*** into ${path}/${collection_map}.jsonl.gz"
+echo "**************************************************"
+
 ###
 # Dump Chelsa map.
 ###
+cmd="${path}/Chelsa/script_data/save.sh"
 $cmd "${path}/${collection_map}.jsonl.gz" \
-	 "${path}/Chelsa/script_query/export_points.aql" \
-	 "{\"@@collection\": map_chelsa}"
+	 "$collection"
+# echo "--------------------------------------------------"
+# echo "$cmd"
+# echo "${path}/${collection_map}.jsonl.gz"
+# echo "$collection"
+# echo "--------------------------------------------------"
 if [ $? -ne 0 ]
 then
 	echo "*************"
