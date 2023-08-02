@@ -23,6 +23,11 @@ echo "--------------------------------------------------"
 start=$(date +%s)
 
 ###
+# Create top level directories.
+###
+mkdir -p "${path}/WorldClim/log/"
+
+###
 # Create elevation directories.
 ###
 mkdir -p "${elevation}/Full/"
@@ -88,6 +93,11 @@ do
 	mkdir -p "${period}/data/vapr/"
 	mkdir -p "${period}/data/wind/"
 	mkdir -p "${period}/data/properties/"
+
+	###
+	# Create other directories.
+	###
+	mkdir -p "${period}/log/"
 
 done
 

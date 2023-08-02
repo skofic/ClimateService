@@ -12,13 +12,6 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Create top level log folder,
-# and empty it if it exists.
-###
-mkdir -p "${path}/Chelsa/log/"
-rm -fv "${path}/Chelsa/log/*.log"
-
-###
 # Globals.
 ###
 period_1="${path}/Chelsa/1981-2010"
@@ -32,6 +25,11 @@ echo "*** create_directories.sh"
 echo "**************************************************"
 echo "**************************************************"
 CREATE_START=$(date +%s)
+
+###
+# Create top level log folder,
+###
+mkdir -p "${path}/Chelsa/log/"
 
 ###
 # Create period directories.
@@ -89,7 +87,6 @@ do
 	# Create other directories.
 	###
 	mkdir -p "${period}/log/"
-	rm -fv "${period}/log/*.log"
 	
 done
 

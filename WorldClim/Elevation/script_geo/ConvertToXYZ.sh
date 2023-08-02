@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Download elevation files.
+# Convert map to CSV.
 ###
 
 ###
@@ -9,26 +9,31 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Convert map to CSV."
+echo "====================================================================="
+
 ###
-# Parameters.
+# Globals.
 ###
 name="elevation"
 epoc="${path}/WorldClim/Elevation"
-dest="${epoc}/Full"
-dict="${path}/WorldClim/config/path_elevation.txt"
-remo="https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_elev.zip"
+
+###
+# Parameters.
+###
+from="${epoc}/ForgeniusClipped"
+dest="${epoc}/CSV"
 
 echo "--------------------------------------------------"
+echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Download and place files.
+# Convert clipped bioclimatic variables to CSV format.
 ###
-cmd="${path}/WorldClim/script_geo/download.sh"
-$cmd	"$remo" \
-		"$dest" \
-		"$dict" \
-		"$name"
+cmd="${path}/WorldClim/script_geo/convert.sh"
+$cmd "${from}/${name}.tif" "${dest}/${name}.csv"
 if [ $? -ne 0 ]
 then
 	echo "*************"

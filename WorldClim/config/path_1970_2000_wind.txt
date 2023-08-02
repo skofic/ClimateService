@@ -1,0 +1,12 @@
+wc2.1_30s_wind_01.tif wind_01.tif
+wc2.1_30s_wind_02.tif wind_02.tif
+wc2.1_30s_wind_03.tif wind_03.tif
+wc2.1_30s_wind_04.tif wind_04.tif
+wc2.1_30s_wind_05.tif wind_05.tif
+wc2.1_30s_wind_06.tif wind_06.tif
+wc2.1_30s_wind_07.tif wind_07.tif
+wc2.1_30s_wind_08.tif wind_08.tif
+wc2.1_30s_wind_09.tif wind_09.tif
+wc2.1_30s_wind_10.tif wind_10.tif
+wc2.1_30s_wind_11.tif wind_11.tif
+wc2.1_30s_wind_12.tif wind_12.tif

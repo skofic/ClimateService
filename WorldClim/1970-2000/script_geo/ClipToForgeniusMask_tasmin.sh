@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip bioclimatic maps to EUFGIS region.
+# Clip minimum temperature maps to EUFGIS region.
 ###
 
 ###
@@ -10,13 +10,13 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Clip bioclimatic variables to EUFGIS region."
+echo "= Clip monthly minimum temperature variables to EUFGIS region."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-name="bio"
+name="tasmin"
 epoc="${path}/WorldClim/1970-2000"
 
 ###
@@ -26,17 +26,18 @@ full="${epoc}/Full/${name}"
 clip="${epoc}/ForgeniusClipped/${name}"
 poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
 
+
 echo "--------------------------------------------------"
 echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Clip maps.
+# Clip maximum temperature global TIFF to Forgenius region.
 ###
 cmd="${path}/WorldClim/script_geo/clip.sh"
-for var in "bio01" "bio02" "bio03" "bio04" "bio05" "bio06" "bio07" "bio08" "bio09" "bio10" "bio11" "bio12" "bio13" "bio14" "bio15" "bio16" "bio17" "bio18" "bio19"
+for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 do
-	$cmd "${full}/${var}.tif" "${clip}/${var}.tif" "$poly"
+	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif" "$poly"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

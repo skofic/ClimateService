@@ -1,0 +1,12 @@
+wc2.1_30s_tmin_01.tif tasmin_01.tif
+wc2.1_30s_tmin_02.tif tasmin_02.tif
+wc2.1_30s_tmin_03.tif tasmin_03.tif
+wc2.1_30s_tmin_04.tif tasmin_04.tif
+wc2.1_30s_tmin_05.tif tasmin_05.tif
+wc2.1_30s_tmin_06.tif tasmin_06.tif
+wc2.1_30s_tmin_07.tif tasmin_07.tif
+wc2.1_30s_tmin_08.tif tasmin_08.tif
+wc2.1_30s_tmin_09.tif tasmin_09.tif
+wc2.1_30s_tmin_10.tif tasmin_10.tif
+wc2.1_30s_tmin_11.tif tasmin_11.tif
+wc2.1_30s_tmin_12.tif tasmin_12.tif

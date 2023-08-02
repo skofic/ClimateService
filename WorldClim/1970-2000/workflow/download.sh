@@ -12,14 +12,14 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/Chelsa/1981-2010"
+epoc="${path}/WorldClim/1970-2000"
 
 echo "=================================================="
 echo "= DOWNLOAD FILES"
 echo "=================================================="
 start=$(date +%s)
 
-for code in "bio" "pr" "tas" "tasmax" "tasmin"
+for code in "bio" "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"
 do
 
 	echo "--------------------------------------------------"

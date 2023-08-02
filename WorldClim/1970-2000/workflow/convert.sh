@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Download full maps.
+# Convert clipped bioclimatic variables to CSV format.
 ###
 
 ###
@@ -12,20 +12,20 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/Chelsa/1981-2010"
+epoc="${path}/WorldClim/1970-2000"
 
 echo "=================================================="
-echo "= DOWNLOAD FILES"
+echo "= CONVERT FILES"
 echo "=================================================="
 start=$(date +%s)
 
-for code in "bio" "pr" "tas" "tasmax" "tasmin"
+for code in "bio" "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"
 do
 
 	echo "--------------------------------------------------"
 	echo "$code"
 	echo "--------------------------------------------------"
-	cmd="${epoc}/script_geo/download_${code}.sh"
+	cmd="${epoc}/script_geo/ConvertToXYZ_${code}.sh"
 	$cmd
 	if [ $? -ne 0 ]
 	then
@@ -40,6 +40,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= DOWNLOAD FILES: $elapsed seconds"
+echo "= CONVERT FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

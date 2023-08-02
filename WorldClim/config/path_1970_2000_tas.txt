@@ -1,0 +1,12 @@
+wc2.1_30s_tavg_01.tif tas_01.tif
+wc2.1_30s_tavg_02.tif tas_02.tif
+wc2.1_30s_tavg_03.tif tas_03.tif
+wc2.1_30s_tavg_04.tif tas_04.tif
+wc2.1_30s_tavg_05.tif tas_05.tif
+wc2.1_30s_tavg_06.tif tas_06.tif
+wc2.1_30s_tavg_07.tif tas_07.tif
+wc2.1_30s_tavg_08.tif tas_08.tif
+wc2.1_30s_tavg_09.tif tas_09.tif
+wc2.1_30s_tavg_10.tif tas_10.tif
+wc2.1_30s_tavg_11.tif tas_11.tif
+wc2.1_30s_tavg_12.tif tas_12.tif

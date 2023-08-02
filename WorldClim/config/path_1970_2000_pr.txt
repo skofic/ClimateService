@@ -1,0 +1,12 @@
+wc2.1_30s_prec_01.tif pr_01.tif
+wc2.1_30s_prec_02.tif pr_02.tif
+wc2.1_30s_prec_03.tif pr_03.tif
+wc2.1_30s_prec_04.tif pr_04.tif
+wc2.1_30s_prec_05.tif pr_05.tif
+wc2.1_30s_prec_06.tif pr_06.tif
+wc2.1_30s_prec_07.tif pr_07.tif
+wc2.1_30s_prec_08.tif pr_08.tif
+wc2.1_30s_prec_09.tif pr_09.tif
+wc2.1_30s_prec_10.tif pr_10.tif
+wc2.1_30s_prec_11.tif pr_11.tif
+wc2.1_30s_prec_12.tif pr_12.tif

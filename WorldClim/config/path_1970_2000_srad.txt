@@ -1,0 +1,12 @@
+wc2.1_30s_srad_01.tif srad_01.tif
+wc2.1_30s_srad_02.tif srad_02.tif
+wc2.1_30s_srad_03.tif srad_03.tif
+wc2.1_30s_srad_04.tif srad_04.tif
+wc2.1_30s_srad_05.tif srad_05.tif
+wc2.1_30s_srad_06.tif srad_06.tif
+wc2.1_30s_srad_07.tif srad_07.tif
+wc2.1_30s_srad_08.tif srad_08.tif
+wc2.1_30s_srad_09.tif srad_09.tif
+wc2.1_30s_srad_10.tif srad_10.tif
+wc2.1_30s_srad_11.tif srad_11.tif
+wc2.1_30s_srad_12.tif srad_12.tif

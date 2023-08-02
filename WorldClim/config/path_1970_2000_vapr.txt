@@ -1,0 +1,12 @@
+wc2.1_30s_vapr_01.tif vapr_01.tif
+wc2.1_30s_vapr_02.tif vapr_02.tif
+wc2.1_30s_vapr_03.tif vapr_03.tif
+wc2.1_30s_vapr_04.tif vapr_04.tif
+wc2.1_30s_vapr_05.tif vapr_05.tif
+wc2.1_30s_vapr_06.tif vapr_06.tif
+wc2.1_30s_vapr_07.tif vapr_07.tif
+wc2.1_30s_vapr_08.tif vapr_08.tif
+wc2.1_30s_vapr_09.tif vapr_09.tif
+wc2.1_30s_vapr_10.tif vapr_10.tif
+wc2.1_30s_vapr_11.tif vapr_11.tif
+wc2.1_30s_vapr_12.tif vapr_12.tif
