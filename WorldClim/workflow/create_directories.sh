@@ -34,64 +34,104 @@ mkdir -p "${elevation}/Full/"
 mkdir -p "${elevation}/ForgeniusClipped/"
 mkdir -p "${elevation}/CSV/"
 mkdir -p "${elevation}/data/"
+mkdir -p "${elevation}/log/"
 
 ###
-# Create period directories.
+# Create historical period directories.
 ###
-for period in "$period_1" "$period_2" "$period_3" "$period_4" "$period_5"
+period="$period_1"
+
+###
+# Create full maps directories.
+###
+mkdir -p "${period}/Full/bio/"
+mkdir -p "${period}/Full/pr/"
+mkdir -p "${period}/Full/srad/"
+mkdir -p "${period}/Full/tas/"
+mkdir -p "${period}/Full/tasmax/"
+mkdir -p "${period}/Full/tasmin/"
+mkdir -p "${period}/Full/vapr/"
+mkdir -p "${period}/Full/wind/"
+
+###
+# Create clipped maps directories.
+###
+mkdir -p "${period}/ForgeniusClipped/bio/"
+mkdir -p "${period}/ForgeniusClipped/pr/"
+mkdir -p "${period}/ForgeniusClipped/srad/"
+mkdir -p "${period}/ForgeniusClipped/tas/"
+mkdir -p "${period}/ForgeniusClipped/tasmax/"
+mkdir -p "${period}/ForgeniusClipped/tasmin/"
+mkdir -p "${period}/ForgeniusClipped/vapr/"
+mkdir -p "${period}/ForgeniusClipped/wind/"
+
+###
+# Create CSV directories.
+###
+mkdir -p "${period}/CSV/bio/"
+mkdir -p "${period}/CSV/pr/"
+mkdir -p "${period}/CSV/srad/"
+mkdir -p "${period}/CSV/tas/"
+mkdir -p "${period}/CSV/tasmax/"
+mkdir -p "${period}/CSV/tasmin/"
+mkdir -p "${period}/CSV/vapr/"
+mkdir -p "${period}/CSV/wind/"
+
+###
+# Create data directories.
+###
+mkdir -p "${period}/data/bio/"
+mkdir -p "${period}/data/pr/"
+mkdir -p "${period}/data/srad/"
+mkdir -p "${period}/data/tas/"
+mkdir -p "${period}/data/tasmax/"
+mkdir -p "${period}/data/tasmin/"
+mkdir -p "${period}/data/vapr/"
+mkdir -p "${period}/data/wind/"
+mkdir -p "${period}/data/properties/"
+
+###
+# Create other directories.
+###
+mkdir -p "${period}/log/"
+
+###
+# Create future period directories.
+###
+for period in "$period_2" "$period_3" "$period_4" "$period_5"
 do
 
 	###
 	# Create full maps directories.
 	###
-	mkdir -p "${period}/Full/"
 	mkdir -p "${period}/Full/bio/"
 	mkdir -p "${period}/Full/pr/"
-	mkdir -p "${period}/Full/srad/"
-	mkdir -p "${period}/Full/tas/"
 	mkdir -p "${period}/Full/tasmax/"
 	mkdir -p "${period}/Full/tasmin/"
-	mkdir -p "${period}/Full/vapr/"
-	mkdir -p "${period}/Full/wind/"
 
 	###
 	# Create clipped maps directories.
 	###
-	mkdir -p "${period}/ForgeniusClipped/"
 	mkdir -p "${period}/ForgeniusClipped/bio/"
 	mkdir -p "${period}/ForgeniusClipped/pr/"
-	mkdir -p "${period}/ForgeniusClipped/srad/"
-	mkdir -p "${period}/ForgeniusClipped/tas/"
 	mkdir -p "${period}/ForgeniusClipped/tasmax/"
 	mkdir -p "${period}/ForgeniusClipped/tasmin/"
-	mkdir -p "${period}/ForgeniusClipped/vapr/"
-	mkdir -p "${period}/ForgeniusClipped/wind/"
 	
 	###
 	# Create CSV directories.
 	###
-	mkdir -p "${period}/CSV/"
 	mkdir -p "${period}/CSV/bio/"
 	mkdir -p "${period}/CSV/pr/"
-	mkdir -p "${period}/CSV/srad/"
-	mkdir -p "${period}/CSV/tas/"
 	mkdir -p "${period}/CSV/tasmax/"
 	mkdir -p "${period}/CSV/tasmin/"
-	mkdir -p "${period}/CSV/vapr/"
-	mkdir -p "${period}/CSV/wind/"
 
 	###
 	# Create data directories.
 	###
-	mkdir -p "${period}/data/"
 	mkdir -p "${period}/data/bio/"
 	mkdir -p "${period}/data/pr/"
-	mkdir -p "${period}/data/srad/"
-	mkdir -p "${period}/data/tas/"
 	mkdir -p "${period}/data/tasmax/"
 	mkdir -p "${period}/data/tasmin/"
-	mkdir -p "${period}/data/vapr/"
-	mkdir -p "${period}/data/wind/"
 	mkdir -p "${period}/data/properties/"
 
 	###

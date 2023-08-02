@@ -24,7 +24,7 @@ fi
 # Compress file.
 ###
 echo "=> Compress..."
-gzip "$2"
+gzip -f "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"

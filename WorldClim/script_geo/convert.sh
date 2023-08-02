@@ -11,7 +11,7 @@
 ###
 # Convert to CSV.
 ###
-gdal2xyz.py -skipnodata -csv "$1" "$2"
+gdal2xyz.py -allbands -skipnodata -csv "$1" "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -24,11 +24,12 @@ fi
 # Compress file.
 ###
 echo "=> Compress..."
-gzip "$2"
+gzip -f "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"
 	echo "*** ERROR ***"
+	echo "*** $LINENO"
 	echo "*************"
 	exit 1
 fi

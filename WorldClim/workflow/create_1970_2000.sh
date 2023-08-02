@@ -32,65 +32,13 @@ CREATE_1970_2000_START=$(date +%s)
 ###
 # Create logs directory and remove eventual existing logs.
 ###
-mkdir "${epoc}/log/"
+mkdir -p "${epoc}/log/"
 rm -fv "${epoc}/log/*.log"
 
 ###
 # Prepare data.
 ###
 cmd="${epoc}/workflow/1_PREPARE.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Process data.
-###
-cmd="${epoc}/workflow/2_PROCESS.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Combine bioclimatic data.
-###
-cmd="${epoc}/workflow/3_COMBINE_ANNUAL.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Combine monthly data.
-###
-cmd="${epoc}/workflow/4_COMBINE_MONTHLY.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Merge data.
-###
-cmd="${epoc}/workflow/5_MERGE.sh"
 $cmd
 if [ $? -ne 0 ]
 then
