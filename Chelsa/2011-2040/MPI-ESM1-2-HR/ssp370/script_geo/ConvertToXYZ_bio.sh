@@ -39,6 +39,7 @@ do
 	###
 	# Convert to CSV and gzip.
 	###
+	echo "=> ${var}"
 	$cmd "${from}/${var}.tif" "${dest}/${var}.csv"
 	if [ $? -ne 0 ]
 	then
