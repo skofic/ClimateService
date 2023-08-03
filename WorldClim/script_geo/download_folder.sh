@@ -35,7 +35,7 @@ fi
 ###
 # Unzip file.
 ###
-unzip "$comp" -d "$2"
+unzip -o "$comp" -d "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"
