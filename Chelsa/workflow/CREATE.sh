@@ -16,7 +16,7 @@ CHELSA=$(date +%s)
 echo ""
 echo "<<< CREATE DIRECTORIES >>>"
 echo ""
-cmd="${path}/Cjelsa/workflow/create_directories.sh"
+cmd="${path}/Chelsa/workflow/create_directories.sh"
 $cmd
 
 ###
