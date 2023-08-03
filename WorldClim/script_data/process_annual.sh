@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Process monthly files, set variable, scale and offset.
+# Process annual files, set variable, scale and offset.
 #
 # The script expects the following parameters:
 # - $1: Full file path of dump to import.
@@ -10,10 +10,6 @@
 # - $4: Bind variables dictionary.
 # - $5: Import collection name.
 # - $6: Variable name
-#
-# This script will first import the raw CSV file into a temporary collection
-# then it will export that collection using a query, to process the values
-# into a gzipped CSV dump file.
 ###
 
 ###
@@ -25,7 +21,7 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 expo="${path}/exports/"
-head="${path}/Chelsa/config/header.csv"
+head="${path}/WorldClim/config/header_single.csv"
 
 ###
 # Import file into database.
@@ -61,7 +57,7 @@ arangoexport \
 	--output-directory "$expo" \
 	--custom-query-file "${3}" \
 	--custom-query-bindvars "$4" \
-	--fields "lon","lat","std_month","$6" \
+	--fields "lon","lat","$6" \
 	--compress-output true \
 	--overwrite true \
 	--type "csv"

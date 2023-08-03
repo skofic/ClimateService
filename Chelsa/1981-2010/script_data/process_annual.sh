@@ -3,12 +3,13 @@
 ###
 # Process all annual variables.
 #
-# Will iterate all annual data files,
-# normalising the value according to Chelsa instructions
-# and generating a compressed CSV file
-# moving it in its directory.
+# The script will process all annual CSV files by:
+# - loading the data into the database,
+# - setting the value variable name to the correct descriptor name,
+# - performing eventual scaling and offsets,
+# - and exporting the result to a dump file.
 #
-# This is the first step in the PREPARE workflow.
+# This is the first step in the PROCESS workflow.
 ###
 
 ###

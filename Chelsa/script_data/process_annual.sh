@@ -14,9 +14,6 @@
 # This script will first import the raw CSV file into a temporary collection
 # then it will export that collection using a query, to process the values
 # into a gzipped CSV dump file.
-#
-# The second parameter indicates
-# whether the collection should be cleared.
 ###
 
 ###

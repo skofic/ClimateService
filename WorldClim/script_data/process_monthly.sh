@@ -25,7 +25,7 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 expo="${path}/exports/"
-head="${path}/Chelsa/config/header.csv"
+head="${path}/WorldClim/config/header_single.csv"
 
 ###
 # Import file into database.

@@ -47,6 +47,19 @@ then
 	exit 1
 fi
 
+###
+# Process data.
+###
+cmd="${epoc}/workflow/2_PROCESS.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
 CREATE_1970_2000_END=$(date +%s)
 elapsed=$((CREATE_1970_2000_END-CREATE_1970_2000_START))
 echo ""
