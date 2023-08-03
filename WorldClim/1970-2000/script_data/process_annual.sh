@@ -55,7 +55,7 @@ do
 		###
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
-			 "${path}/Chelsa/script_query/process.aql" \
+			 "${path}/WorldClim/script_query/process.aql" \
 			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
@@ -90,7 +90,7 @@ do
 		###
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
-			 "${path}/Chelsa/script_query/process_scale001.aql" \
+			 "${path}/WorldClim/script_query/process_scale001.aql" \
 			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"

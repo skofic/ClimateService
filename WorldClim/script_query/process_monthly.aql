@@ -1,0 +1,10 @@
+///
+// Process monthly data.
+///
+FOR doc IN @@collection
+RETURN {
+	lon: doc.lon,
+	lat: doc.lat,
+	std_month: TO_NUMBER(@month),
+	@variable: doc.value
+}

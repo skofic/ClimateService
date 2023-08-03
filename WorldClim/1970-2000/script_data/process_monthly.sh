@@ -4,7 +4,7 @@
 # Process all monthly variables.
 #
 # Will iterate all monthly data files,
-# normalising the value according to Chelsa instructions
+# normalising the value according to WorldClim instructions
 # and generating a compressed CSV file
 # moving it in its directory.
 #
@@ -45,11 +45,11 @@ do
 		start=$(date +%s)
 	
 		###
-		# Process variable name and scale to 0.01.
+		# Process variable name.
 		###
 		$cmd "${epoc}/CSV/${name}/${name}_${month}.csv.gz" \
 			 "${epoc}/data/${name}/${name}_${month}.csv.gz" \
-			 "${path}/WorldClim/script_query/process.aql" \
+			 "${path}/WorldClim/script_query/process_monthly.aql" \
 			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${name}\", \"month\": \"$month\"}" \
 			 "$coll" \
 			 "${pref}_${name}"
