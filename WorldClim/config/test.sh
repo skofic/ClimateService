@@ -1,46 +1,42 @@
 #!/bin/sh
 
 ###
-# Dump query data to a file.
-#
-# The script expects the following parameters:
-# - $1: Full file path of dump to export.
-# - $2: Full file path of AQL query.
-# - $3: Bind variables dictionary.
-#
-# The dump will be a JSONL gzipped file.
+# Prepare data: download, clip to region and convert to GeoJSON.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
-base="ForgeniusRemoteSensing"
 
 ###
 # Globals.
 ###
-expo="${path}/exports/"
+epoc="${path}/WorldClim/1970-2000"
 
-# echo "HOST: $host"
-# echo "BASE: $base"
-# echo "USER: $user"
-# echo "PASS: $pass"
-# echo "EXPO: $expo"
+echo "**************************************************"
+echo "*** PREPARE.sh"
+echo "**************************************************"
+PREPARE_START=$(date +%s)
+	
+# ###
+# # Download full maps.
+# ###
+# cmd="${epoc}/workflow/download.sh"
+# $cmd
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
 ###
-# Export data to JSONL file.
+# Clip full maps to EUFGIS region.
 ###
-arangoexport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--output-directory "${expo}" \
-	--custom-query "FOR doc IN unit_shapes RETURN UNSET(doc, '_key', '_id', '_rev')" \
-	--compress-output true \
-	--overwrite true \
-	--type "jsonl"
+cmd="${epoc}/workflow/clip.sh"
+$cmd
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -48,3 +44,24 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Convert clipped maps to CSV (longitude, latitude and value).
+###
+cmd="${epoc}/workflow/convert.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+PREPARE_END=$(date +%s)
+elapsed=$((PREPARE_END-PREPARE_START))
+echo ""
+echo "**************************************************"
+echo "*** PREPARE.sh - TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
+echo ""

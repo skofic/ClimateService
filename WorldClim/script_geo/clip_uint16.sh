@@ -12,7 +12,7 @@
 ###
 # Run warp to clip region.
 ###
-gdalwarp -overwrite -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$3" -crop_to_cutline -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$1" "$2"
+gdalwarp -overwrite -ot UInt16 -of GTiff -tr 0.008333333333333338 -0.008333333333333338 -tap -cutline "$3" -cl ForgeniusRegionClipGeoJSON -crop_to_cutline -dstnodata 65535 -multi -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$1" "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"

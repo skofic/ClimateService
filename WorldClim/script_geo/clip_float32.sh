@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip map to EUFGIS region and convert values to Float32.
+# Clip map to EUFGIS region.
 #
 # The script expects the following parameters:
 # - $1: Source map full file path.
@@ -12,7 +12,7 @@
 ###
 # Run warp to clip region.
 ###
-gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$3" -cl ForgeniusRegionClipGeoJSON -crop_to_cutline -dstnodata -999999999.0 -multi -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$1" "$2"
+gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.008333333333333338 -0.008333333333333338 -tap -cutline "$3" -cl ForgeniusRegionClipGeoJSON -crop_to_cutline -dstnodata -999999999.0 -multi -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$1" "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"

@@ -52,7 +52,7 @@ done
 ###
 # Clip integer point variables.
 ###
-cmd="${path}/Chelsa/script_geo/clip.sh"
+cmd="${path}/Chelsa/script_geo/clip_uint16.sh"
 for var in "fcf" "fgd" "gddlgd0" "gddlgd5" "gddlgd10" "gdgfgd0" "gdgfgd5" "gdgfgd10" "gsl" "kg0" "kg1" "kg2" "kg3" "kg4" "kg5" "lgd" "ngd0" "ngd5" "ngd10" "scd"
 do
 	$cmd "${full}/${var}.tif" "${clip}/${var}.tif" "$poly"

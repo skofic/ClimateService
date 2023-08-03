@@ -1,0 +1,9 @@
+Pixel data types:
+----------------
+
+bio:	Float32
+pr:		Int16
+srad:	UInt16
+tas:	Float32
+vapr:	Float32
+wind:	Float32

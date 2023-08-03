@@ -33,7 +33,7 @@ start=$(date +%s)
 ###
 # Clip map.
 ###
-cmd="${path}/WorldClim/script_geo/clip.sh"
+cmd="${path}/WorldClim/script_geo/clip_int16.sh"
 $cmd "${full}/${name}.tif" "${clip}/${name}.tif" "$poly"
 if [ $? -ne 0 ]
 then

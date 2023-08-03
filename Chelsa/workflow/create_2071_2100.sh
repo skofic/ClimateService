@@ -33,7 +33,6 @@ CREATE_2071_2100_START=$(date +%s)
 # Create logs directory and remove eventual existing logs.
 ###
 mkdir "${epoc}/log/"
-rm -fv "${epoc}/log/*.log"
 
 ###
 # Prepare data.

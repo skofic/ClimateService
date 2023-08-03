@@ -1,0 +1,19 @@
+Pixel data types
+not Float32:
+----------------
+
+fcf:		UInt16
+fgd:		UInt16
+gddlgd0:	UInt16
+gddlgd5:	UInt16
+gddlgd10:	UInt16
+gdgfgd0:	UInt16
+gdgfgd5:	UInt16
+gdgfgd10:	UInt16
+gsl:		UInt16
+kg0-5:		UInt16
+lgd:		UInt16
+ngd0:		UInt16
+ngd5:		UInt16
+ngd10:		UInt16
+scd:		UInt16

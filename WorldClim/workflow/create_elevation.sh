@@ -33,7 +33,6 @@ CREATE_ELEVATION_START=$(date +%s)
 # Create logs directory and remove eventual existing logs.
 ###
 mkdir -p "${epoc}/log/"
-rm -fv "${epoc}/log/*.log"
 
 ###
 # Prepare data.

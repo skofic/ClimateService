@@ -34,7 +34,7 @@ start=$(date +%s)
 ###
 # Clip precipitation global TIFF to Forgenius region.
 ###
-cmd="${path}/Chelsa/script_geo/clip.sh"
+cmd="${path}/Chelsa/script_geo/clip_float32.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 do
 	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif" "$poly"
