@@ -17,8 +17,12 @@ echo "====================================================================="
 # Globals.
 ###
 coll="temp_pong"
-file="properties"
 epoc="${path}/WorldClim/1970-2000"
+
+###
+# Properties.
+###
+file="properties"
 dump="${epoc}/${file}.jsonl.gz"
 query="${path}/WorldClim/script_query/merge.aql"
 
@@ -40,11 +44,16 @@ then
 fi
 
 ###
+# Properties.
+###
+file="map"
+dump="${epoc}/data/${file}.jsonl.gz"
+
+###
 # Export map data.
 ###
 cmd="${path}/WorldClim/script_data/save.sh"
-$cmd "${epoc}/data/map.jsonl.gz" \
-	 "$coll"
+$cmd "$dump" "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"

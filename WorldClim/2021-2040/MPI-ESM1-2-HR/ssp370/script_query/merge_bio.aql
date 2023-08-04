@@ -1,0 +1,13 @@
+///
+// Format bioclimatic multiband data for future periods.
+///
+FOR doc IN @@collection
+	LET geo = GEO_POINT(doc.lon, doc.lat)
+
+RETURN {
+	_key: MD5(TO_STRING(geo)),
+	geometry: geo,
+	properties: {
+		`2021-2040`: UNSET(doc, '_id', '_key', '_rev', 'lon', 'lat')
+	}
+}
