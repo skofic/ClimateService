@@ -1,13 +1,13 @@
 #!/bin/sh
 
 ###
-# Download files to folder.
+# Download zipped files to directory.
 #
 # This script expects the following parameters:
 # - $1: Remote file URL.
 # - $2: Destination directory.
-# - $3: File name text table full path
-# - $4: Folder and temp file name.
+# - $3: File name text table full path.
+# - $4: Temp file name.
 ###
 
 ###
@@ -59,7 +59,7 @@ do
 	###
 	# Move file.
 	###
-	mv -f "${2}/${old}" "${2}/${4}/${new}"
+	mv -f "${2}/${old}" "${2}/${new}"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

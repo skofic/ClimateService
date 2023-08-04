@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Download average temperature files.
+# Download period file.
 ###
 
 ###
@@ -12,11 +12,8 @@ source "${HOME}/.ClimateService"
 ###
 # Parameters.
 ###
-name="tas"
-epoc="${path}/WorldClim/1970-2000"
-dest="${epoc}/Full"
-dict="${path}/WorldClim/config/path_1970_2000_tas.txt"
-remo="https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_tavg.zip"
+epoc="${path}/WorldClim/2011-2040/MPI-ESM1-2-HR/ssp370"
+dict="${path}/WorldClim/config/path_2011_2040.txt"
 
 echo "--------------------------------------------------"
 start=$(date +%s)
@@ -24,11 +21,9 @@ start=$(date +%s)
 ###
 # Download and place files.
 ###
-cmd="${path}/WorldClim/script_geo/download_folder_zip.sh"
-$cmd	"$remo" \
-		"$dest" \
-		"$dict" \
-		"$name"
+cmd="${path}/WorldClim/script_geo/download.sh"
+$cmd	"$epoc" \
+		"$dict"
 if [ $? -ne 0 ]
 then
 	echo "*************"

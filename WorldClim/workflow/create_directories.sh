@@ -101,36 +101,16 @@ for period in "$period_2" "$period_3" "$period_4" "$period_5"
 do
 
 	###
-	# Create full maps directories.
+	# Create top level directories.
 	###
-	mkdir -p "${period}/Full/bio/"
-	mkdir -p "${period}/Full/pr/"
-	mkdir -p "${period}/Full/tasmax/"
-	mkdir -p "${period}/Full/tasmin/"
+	mkdir -p "${period}/Full/"
+	mkdir -p "${period}/ForgeniusClipped/"
+	mkdir -p "${period}/CSV/"
+	mkdir -p "${period}/data/"
 
 	###
-	# Create clipped maps directories.
+	# Create data properties directory.
 	###
-	mkdir -p "${period}/ForgeniusClipped/bio/"
-	mkdir -p "${period}/ForgeniusClipped/pr/"
-	mkdir -p "${period}/ForgeniusClipped/tasmax/"
-	mkdir -p "${period}/ForgeniusClipped/tasmin/"
-	
-	###
-	# Create CSV directories.
-	###
-	mkdir -p "${period}/CSV/bio/"
-	mkdir -p "${period}/CSV/pr/"
-	mkdir -p "${period}/CSV/tasmax/"
-	mkdir -p "${period}/CSV/tasmin/"
-
-	###
-	# Create data directories.
-	###
-	mkdir -p "${period}/data/bio/"
-	mkdir -p "${period}/data/pr/"
-	mkdir -p "${period}/data/tasmax/"
-	mkdir -p "${period}/data/tasmin/"
 	mkdir -p "${period}/data/properties/"
 
 	###

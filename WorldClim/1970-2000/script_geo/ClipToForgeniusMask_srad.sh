@@ -24,7 +24,6 @@ epoc="${path}/WorldClim/1970-2000"
 ###
 full="${epoc}/Full/${name}"
 clip="${epoc}/ForgeniusClipped/${name}"
-poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
 
 
 echo "--------------------------------------------------"
@@ -37,7 +36,7 @@ start=$(date +%s)
 cmd="${path}/WorldClim/script_geo/clip_uint16.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 do
-	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif" "$poly"
+	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

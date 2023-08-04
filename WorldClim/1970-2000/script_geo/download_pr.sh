@@ -24,7 +24,7 @@ start=$(date +%s)
 ###
 # Download and place files.
 ###
-cmd="${path}/WorldClim/script_geo/download_folder.sh"
+cmd="${path}/WorldClim/script_geo/download_folder_zip.sh"
 $cmd	"$remo" \
 		"$dest" \
 		"$dict" \

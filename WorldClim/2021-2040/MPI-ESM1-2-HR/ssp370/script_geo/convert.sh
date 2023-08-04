@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip precipitation maps to EUFGIS region.
+# Convert bioclimatic maps to CSV.
 ###
 
 ###
@@ -10,33 +10,36 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Clip monthly precipitation variables to EUFGIS region."
+echo "= Convert maps to CSV."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-name="pr"
-epoc="${path}/Chelsa/1981-2010"
+cmd="${path}/WorldClim/script_geo/convert.sh"
+epoc="${path}/WorldClim/2011-2040/MPI-ESM1-2-HR/ssp370"
 
 ###
 # Parameters.
 ###
-full="${epoc}/Full/${name}"
-clip="${epoc}/ForgeniusClipped/${name}"
-
+from="${epoc}/ForgeniusClipped"
+dest="${epoc}/CSV"
 
 echo "--------------------------------------------------"
 echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Clip precipitation global TIFF to Forgenius region.
+# Convert clipped maps to CSV format.
 ###
-cmd="${path}/Chelsa/script_geo/clip_float32.sh"
-for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
+for var in "bio" "pr" "tasmax" "tasmin"
 do
-	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif"
+
+	###
+	# Convert to CSV and gzip.
+	###
+	echo "=> ${var}"
+	$cmd "${from}/${var}.tif" "${dest}/${var}.csv"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -44,6 +47,7 @@ do
 		echo "*************"
 		exit 1
 	fi
+	
 done
 
 end=$(date +%s)

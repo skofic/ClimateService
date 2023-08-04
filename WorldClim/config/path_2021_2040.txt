@@ -1,0 +1,4 @@
+https://geodata.ucdavis.edu/cmip6/30s/MPI-ESM1-2-HR/ssp370/wc2.1_30s_bioc_MPI-ESM1-2-HR_ssp370_2021-2040.tif bio.tif
+https://geodata.ucdavis.edu/cmip6/30s/MPI-ESM1-2-HR/ssp370/wc2.1_30s_prec_MPI-ESM1-2-HR_ssp370_2021-2040.tif pr.tif
+https://geodata.ucdavis.edu/cmip6/30s/MPI-ESM1-2-HR/ssp370/wc2.1_30s_tmax_MPI-ESM1-2-HR_ssp370_2021-2040.tif tasmax.tif
+https://geodata.ucdavis.edu/cmip6/30s/MPI-ESM1-2-HR/ssp370/wc2.1_30s_tmin_MPI-ESM1-2-HR_ssp370_2021-2040.tif tasmin.tif

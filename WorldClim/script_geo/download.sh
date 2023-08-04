@@ -1,13 +1,11 @@
 #!/bin/sh
 
 ###
-# Download files to folder.
+# Download yearly data files.
 #
-# This script expects the following parameters:
-# - $1: Remote file URL.
-# - $2: Destination directory.
-# - $3: File name text table full path
-# - $4: Temp file name.
+# The script expects the following parameters:
+# - $1: Base directory path to period root.
+# - $2: Download files list filename.
 ###
 
 ###
@@ -18,34 +16,10 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-comp="${2}/${4}.zip"
+dest="${1}/Full"
 
 ###
-# Download zip file.
-###
-wget --continue "$1" --output-document="$comp"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Unzip file.
-###
-unzip -o "$comp" -d "$2"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Place files.
+# Iterate list of files.
 ###
 while read -r line
 do
@@ -53,24 +27,19 @@ do
 	###
 	# Get source URL and destination file path.
 	###
-    old=$(echo $line | cut -d ' ' -f 1)
-    new=$(echo $line | cut -d ' ' -f 2)
+    url=$(echo $line | cut -d ' ' -f 1)
+    name=$(echo $line | cut -d ' ' -f 2)
     
 	###
-	# Move file.
+	# Download file.
 	###
-	mv -f "${2}/${old}" "${2}/${new}"
-	if [ $? -ne 0 ]
+	wget --continue --output-document="${1}/Full/${name}" "${url}"
+ 	if [ $? -ne 0 ]
 	then
 		echo "*************"
 		echo "*** ERROR ***"
 		echo "*************"
 		exit 1
 	fi
-    
-done < "$3"
-
-###
-# Remove zip file.
-###
-rm -f "$comp"
+   
+done < "${path}/Chelsa/config/$2"

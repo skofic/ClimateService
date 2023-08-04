@@ -30,7 +30,9 @@ start=$(date +%s)
 # Call download script.
 ###
 cmd="${path}/Chelsa/script_geo/download.sh"
-$cmd "$epoc" "$name" "path_1981_2010_${name}.txt"
+$cmd "$epoc" \
+	 "$name" \
+	 "path_1981_2010_${name}.txt"
 if [ $? -ne 0 ]
 then
 	echo "*************"

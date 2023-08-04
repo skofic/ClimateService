@@ -24,7 +24,6 @@ epoc="${path}/WorldClim/Elevation"
 ###
 full="${epoc}/Full"
 clip="${epoc}/ForgeniusClipped"
-poly="${path}/ForgeniusRegion/GeoJSON/ForgeniusRegionClipGeoJSON.geojson"
 
 echo "--------------------------------------------------"
 echo "==> ${name}"
@@ -34,7 +33,7 @@ start=$(date +%s)
 # Clip map.
 ###
 cmd="${path}/WorldClim/script_geo/clip_int16.sh"
-$cmd "${full}/${name}.tif" "${clip}/${name}.tif" "$poly"
+$cmd "${full}/${name}.tif" "${clip}/${name}.tif"
 if [ $? -ne 0 ]
 then
 	echo "*************"
