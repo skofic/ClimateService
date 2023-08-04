@@ -13,7 +13,7 @@ source "${HOME}/.ClimateService"
 # Parameters.
 ###
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/"
-dict="${path}/WorldClim/config/path_2011_2040.txt"
+dict="${path}/WorldClim/config/path_2021_2040.txt"
 
 echo "--------------------------------------------------"
 start=$(date +%s)
