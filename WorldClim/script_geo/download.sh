@@ -42,4 +42,4 @@ do
 		exit 1
 	fi
    
-done < "${path}/Chelsa/config/$2"
+done < "$2"
