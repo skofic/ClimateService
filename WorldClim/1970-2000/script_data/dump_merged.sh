@@ -19,21 +19,21 @@ echo "====================================================================="
 coll="temp_pong"
 epoc="${path}/WorldClim/1970-2000"
 
-###
-# Properties.
-###
-file="properties"
-dump="${epoc}/${file}.jsonl.gz"
-query="${path}/WorldClim/script_query/merge.aql"
-
 echo "----------------------------------------"
 echo "==> Dump $dump"
 start=$(date +%s)
 
 ###
+# Properties.
+###
+file="properties"
+dump="${epoc}/data/${file}.jsonl.gz"
+query="${path}/Chelsa/script_query/merge.aql"
+
+###
 # Export merged data.
 ###
-cmd="${path}/WorldClim/script_data/dump.sh"
+cmd="${path}/Chelsa/script_data/dump.sh"
 $cmd "$dump" "$query" "{\"@@collection\": \"$coll\"}"
 if [ $? -ne 0 ]
 then
@@ -52,7 +52,7 @@ dump="${epoc}/data/${file}.jsonl.gz"
 ###
 # Export map data.
 ###
-cmd="${path}/WorldClim/script_data/save.sh"
+cmd="${path}/Chelsa/script_data/save.sh"
 $cmd "$dump" "$coll"
 if [ $? -ne 0 ]
 then

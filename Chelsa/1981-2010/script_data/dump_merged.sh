@@ -17,14 +17,18 @@ echo "====================================================================="
 # Globals.
 ###
 coll="temp_pong"
-file="properties"
 epoc="$path/Chelsa/1981-2010"
-dump="${epoc}/${file}.jsonl.gz"
-query="${path}/Chelsa/script_query/merge.aql"
 
 echo "----------------------------------------"
 echo "==> Dump $dump"
 start=$(date +%s)
+
+###
+# Properties.
+###
+file="properties"
+dump="${epoc}/data/${file}.jsonl.gz"
+query="${path}/Chelsa/script_query/merge.aql"
 
 ###
 # Export merged data.
@@ -40,11 +44,16 @@ then
 fi
 
 ###
+# Properties.
+###
+file="map"
+dump="${epoc}/data/${file}.jsonl.gz"
+
+###
 # Export map data.
 ###
 cmd="${path}/Chelsa/script_data/save.sh"
-$cmd "${epoc}/data/map.jsonl.gz" \
-	 "$coll"
+$cmd "$dump" "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"
