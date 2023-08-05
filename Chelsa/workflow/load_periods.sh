@@ -15,14 +15,17 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 file="properties"
-period_1="${path}/Chelsa/1981-2010"
+cmd="${path}/Chelsa/script_data/load.sh"
+
 collection_1="temp_period_1"
-period_2="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 collection_2="temp_period_2"
-period_3="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
 collection_3="temp_period_3"
-period_4="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
 collection_4="temp_period_4"
+
+period_1="${path}/Chelsa/1981-2010"
+period_2="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
+period_3="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
+period_4="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
 
 echo "**************************************************"
 echo "**************************************************"
@@ -48,7 +51,7 @@ do
 	###
 	epoc="${!period}"
 	coll="${!collection}"
-	dump="${epoc}/${file}.jsonl.gz"
+	dump="${epoc}/data/${file}.jsonl.gz"
 
 	echo ""
 	echo "**************************************************"
@@ -58,15 +61,9 @@ do
 
 	###
 	# Load to collection.
+	# Load period dump files into related collection.
 	###
-	cmd="${path}/Chelsa/script_data/load.sh"
-	$cmd "${epoc}/properties.jsonl.gz" \
-		 "$coll"
-# 	echo "--------------------------------------------------"
-# 	echo "$cmd"
-# 	echo "${epoc}/properties.jsonl.gz"
-# 	echo "$coll"
-# 	echo "--------------------------------------------------"
+	$cmd "dump" "$coll"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

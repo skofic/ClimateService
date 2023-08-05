@@ -16,6 +16,8 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 collection="map_chelsa"
+cmd="${path}/Chelsa/script_data/map.sh"
+
 period_1="${path}/Chelsa/1981-2010"
 period_2="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 period_3="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
@@ -29,7 +31,7 @@ echo "**************************************************"
 LOAD_MAP_START=$(date +%s)
 
 ###
-# Create period directories.
+# Create periods map.
 ###
 first=1
 for number in "1" "2" "3" "4"
@@ -42,8 +44,9 @@ do
 	###
 	# Set parameters.
 	###
+	file="map"
 	epoc="${!period}"
-	dump="${epoc}/data/properties/map.jsonl.gz"
+	dump="${epoc}/data/${file}.jsonl.gz"
 
 	echo ""
 	echo "**************************************************"
@@ -59,17 +62,13 @@ do
 
 	###
 	# Load to collection.
+	# Load period geometries
+	# inserting first period and
+	# ignoring duplicates for subsequent periods.
 	###
-	cmd="${path}/Chelsa/script_data/map.sh"
 	$cmd "$dump" \
 		 "$collection" \
 		 $first
-# 	echo "--------------------------------------------------"
-# 	echo "$cmd"
-# 	echo "$dump"
-# 	echo "$collection"
-# 	echo "$first"
-# 	echo "--------------------------------------------------"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

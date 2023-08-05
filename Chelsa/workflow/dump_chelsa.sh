@@ -35,17 +35,14 @@ echo "**************************************************"
 
 ###
 # Dump Chelsa.
+# Iterate Chelsa geometries collection loading all
+# relative period records matching the geometry and
+# merge all records recursively, dumping the result.
 ###
 cmd="${path}/Chelsa/script_data/dump.sh"
 $cmd "${path}/${collection_chelsa}.jsonl.gz" \
 	 "${path}/Chelsa/script_query/merge_chelsa.aql" \
 	 "{\"@@collection\": \"$collection\"}"
-# echo "--------------------------------------------------"
-# echo "$cmd"
-# echo "${path}/${collection_chelsa}.jsonl.gz"
-# echo "${path}/Chelsa/script_query/merge_chelsa.aql"
-# echo "{\"@@collection\": \"$collection\"}"
-# echo "--------------------------------------------------"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -62,6 +59,7 @@ echo "**************************************************"
 
 ###
 # Dump Chelsa map.
+# Dump the Cjelsa geometries collection.
 ###
 cmd="${path}/Chelsa/script_data/save.sh"
 $cmd "${path}/${collection_map}.jsonl.gz" \
