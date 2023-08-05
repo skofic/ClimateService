@@ -26,7 +26,8 @@ full="${epoc}/Full"
 clip="${epoc}/ForgeniusClipped"
 
 echo "--------------------------------------------------"
-echo "==> ${name}"
+echo "<== ${full}/${name}.tif"
+echo "==> ${clip}/${name}.tif"
 start=$(date +%s)
 
 ###

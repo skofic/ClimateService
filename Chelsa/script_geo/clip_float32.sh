@@ -9,6 +9,11 @@
 ###
 
 ###
+# Load default parameters.
+###
+source "${HOME}/.ClimateService"
+
+###
 # Run warp to clip region.
 ###
 gdalwarp -overwrite -ot Float32 -of GTiff -tr 0.0083333333 -0.0083333333 -tap -cutline "$poly" -cl "$pnam" -crop_to_cutline -dstnodata -999999999.0 -multi -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 "$1" "$2"
