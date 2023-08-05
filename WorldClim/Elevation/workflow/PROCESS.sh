@@ -14,22 +14,23 @@ source "${HOME}/.ClimateService"
 ###
 epoc="${path}/WorldClim/Elevation"
 
+echo "**************************************************"
+echo "*** PROCESS.sh"
+echo "**************************************************"
+PROCESS_START=$(date +%s)
+
 ###
 # Remove downloaded and clipped maps,
 # leaving only the contents of the CSV folder.
 # We do this here, because at this point
 # you will not use GeoTIFF files any more.
 ###
+echo "==> Removing maps from Full and ForgeniusClipped."
 for directory in "Full" "ForgeniusClipped"
 do
 	rm -fv "${epoc}/${directory}/*.tif"	
 done
 
-echo "**************************************************"
-echo "*** PROCESS.sh"
-echo "**************************************************"
-PROCESS_START=$(date +%s)
-	
 ###
 # Process elevation data.
 ###
