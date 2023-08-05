@@ -33,6 +33,7 @@ mkdir -p "${path}/WorldClim/log/"
 mkdir -p "${elevation}/Full/"
 mkdir -p "${elevation}/ForgeniusClipped/"
 mkdir -p "${elevation}/CSV/"
+mkdir -p "${elevation}/data/"
 mkdir -p "${elevation}/log/"
 
 ###
