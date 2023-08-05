@@ -26,7 +26,7 @@ epoc="${path}/Chelsa/1981-2010"
 ###
 for folder in "bio"
 do
-	rm -fv "${epoc}/CSV/${folder}/*.csv.gz"
+	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
 done
 
 echo "**************************************************"

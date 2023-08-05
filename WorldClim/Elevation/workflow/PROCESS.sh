@@ -25,10 +25,10 @@ PROCESS_START=$(date +%s)
 # We do this here, because at this point
 # you will not use GeoTIFF files any more.
 ###
-echo "==> Removing maps from Full and ForgeniusClipped."
 for directory in "Full" "ForgeniusClipped"
 do
-	rm -fv "${epoc}/${directory}/*.tif"	
+	echo "- Removing ${epoc}/${directory}/*.tif"
+	rm -f "${epoc}/${directory}/*.tif"	
 done
 
 ###

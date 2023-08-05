@@ -26,7 +26,7 @@ epoc="${path}/Chelsa/1981-2010"
 ###
 for folder in "pr" "tas" "tasmax" "tasmin"
 do
-	rm -fv "${epoc}/CSV/${folder}/*.csv.gz"
+	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
 done
 
 echo "**************************************************"

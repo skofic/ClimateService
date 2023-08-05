@@ -23,7 +23,7 @@ epoc="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
 ###
 for folder in "bio" "pr" "tas" "tasmax" "tasmin"
 do
-	rm -fv "${epoc}/data/${folder}/*.csv.gz"
+	rm -f "${epoc}/data/${folder}/*.csv.gz"
 done
 
 echo "**************************************************"
@@ -78,7 +78,7 @@ fi
 ###
 for folder in "properties"
 do
-	rm -fv "${epoc}/data/${folder}/*.csv.gz"
+	rm -f "${epoc}/data/${folder}/*.csv.gz"
 done
 
 MERGE_END=$(date +%s)

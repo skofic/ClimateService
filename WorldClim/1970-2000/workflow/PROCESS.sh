@@ -25,7 +25,7 @@ do
 	
 	for folder in "bio" "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"
 	do
-		rm -fv "${epoc}/${directory}/${folder}/*.tif"
+		rm -f "${epoc}/${directory}/${folder}/*.tif"
 	done
 	
 done

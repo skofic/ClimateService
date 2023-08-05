@@ -26,7 +26,7 @@ epoc="${path}/WorldClim/1970-2000"
 ###
 for folder in "bio"
 do
-	rm -fv "${epoc}/CSV/${folder}/*.csv.gz"
+	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
 done
 
 echo "**************************************************"

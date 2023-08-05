@@ -26,7 +26,7 @@ epoc="${path}/WorldClim/1970-2000"
 ###
 for folder in "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"
 do
-	rm -fv "${epoc}/CSV/${folder}/*.csv.gz"
+	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
 done
 
 echo "**************************************************"
