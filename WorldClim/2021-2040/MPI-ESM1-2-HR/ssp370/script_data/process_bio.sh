@@ -24,16 +24,17 @@ echo "====================================================================="
 # Globals.
 ###
 coll="temp_ping"
-epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/"
+epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 cmd="${path}/WorldClim/script_data/process_multi_bio.sh"
 
 ###
 # Parameters.
 ###
+name="bio"
 file="${epoc}/CSV/${name}.csv.gz"
 expo="${epoc}/data/${name}.csv.gz"
+echo "==> $expo"
 
-echo "==> $variable"
 start=$(date +%s)
 
 ###

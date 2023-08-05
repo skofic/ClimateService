@@ -16,7 +16,7 @@ source "${HOME}/.ClimateService"
 ###
 # Execute script.
 ###
-epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/"
+epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 cmd="${epoc}/workflow/PREPARE.sh"
 $cmd | tee "${epoc}/log/1_PREPARE.log"
 if [ $? -ne 0 ]
