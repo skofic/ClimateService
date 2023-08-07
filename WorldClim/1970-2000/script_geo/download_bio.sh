@@ -15,7 +15,7 @@ source "${HOME}/.ClimateService"
 name="bio"
 epoc="${path}/WorldClim/1970-2000"
 dest="${epoc}/Full"
-dict="${path}/WorldClim/config/path_1970_2000_bio.txt"
+dict="${path}/WorldClim/config/path_1970_2000_${name}.txt"
 remo="https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip"
 
 echo "--------------------------------------------------"

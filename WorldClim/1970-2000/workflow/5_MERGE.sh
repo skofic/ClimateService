@@ -12,10 +12,14 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Execute script.
+# Globals.
 ###
 epoc="${path}/WorldClim/1970-2000"
 cmd="${epoc}/workflow/MERGE.sh"
+
+###
+# Execute script.
+###
 $cmd | tee "${epoc}/log/5_MERGE.log"
 if [ $? -ne 0 ]
 then

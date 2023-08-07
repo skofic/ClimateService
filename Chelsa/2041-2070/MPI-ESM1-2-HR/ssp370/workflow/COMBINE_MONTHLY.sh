@@ -16,18 +16,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
-
-###
-# Remove contents of the CSV folder.
-# We do this here, because at this point
-# only the files in the data directory are relevant.
-# Note that the data folder is not touched yet.
-###
-for folder in "pr" "tas" "tasmax" "tasmin"
-do
-	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
-done
+epoc="${path}/Chelsa/2041_2070/MPI-ESM1-2-HR/ssp370"
 
 echo "**************************************************"
 echo "*** COMBINE_MONTHLY.sh"

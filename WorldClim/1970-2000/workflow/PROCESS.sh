@@ -14,22 +14,6 @@ source "${HOME}/.ClimateService"
 ###
 epoc="${path}/WorldClim/1970-2000"
 
-###
-# Remove downloaded and clipped maps,
-# leaving only the contents of the CSV folder.
-# We do this here, because at this point
-# you will not use GeoTIFF files any more.
-###
-for directory in "Full" "ForgeniusClipped"
-do
-	
-	for folder in "bio" "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"
-	do
-		rm -f "${epoc}/${directory}/${folder}/*.tif"
-	done
-	
-done
-
 echo "**************************************************"
 echo "*** PROCESS.sh"
 echo "**************************************************"

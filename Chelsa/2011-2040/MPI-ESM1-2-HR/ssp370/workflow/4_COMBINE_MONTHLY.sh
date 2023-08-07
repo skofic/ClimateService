@@ -14,10 +14,14 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Execute script.
+# Globals.
 ###
 epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 cmd="${epoc}/workflow/COMBINE_MONTHLY.sh"
+
+###
+# Execute script.
+###
 $cmd | tee "${epoc}/log/4_COMBINE_MONTHLY.log"
 if [ $? -ne 0 ]
 then
@@ -26,3 +30,12 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove converted CSV files in monthly folders.
+# We do this here because we assume combining was successful.
+###
+for folder in "pr" "tas" "tasmax" "tasmin"
+do
+	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
+done

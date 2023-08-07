@@ -16,16 +16,6 @@ source "${HOME}/.ClimateService"
 ###
 epoc="${path}/Chelsa/1981-2010"
 
-###
-# Remove files from the data directory.
-# We assume here that the two previous steps were successful.
-# Only the properties folder will be untouched.
-###
-for folder in "bio" "pr" "tas" "tasmax" "tasmin"
-do
-	rm -f "${epoc}/data/${folder}/*.csv.gz"
-done
-
 echo "**************************************************"
 echo "*** MERGE.sh"
 echo "**************************************************"
@@ -69,17 +59,6 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Remove files from the properties folder in the data directory.
-# We assume here that all previous scripts have been run,
-# after this point we should be left with the "properties.jsonl.gz"
-# at the root level of the period.
-###
-for folder in "properties"
-do
-	rm -f "${epoc}/data/${folder}/*.csv.gz"
-done
 
 MERGE_END=$(date +%s)
 elapsed=$((MERGE_END-MERGE_START))

@@ -14,22 +14,6 @@ source "${HOME}/.ClimateService"
 ###
 epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 
-###
-# Remove downloaded and clipped maps,
-# leaving only the contents of the CSV folder.
-# We do this here, because at this point
-# you will not use GeoTIFF files any more.
-###
-for directory in "Full" "ForgeniusClipped"
-do
-	
-	for folder in "bio" "pr" "tas" "tasmax" "tasmin"
-	do
-		rm -f "${epoc}/${directory}/${folder}/*.tif"
-	done
-	
-done
-
 echo "**************************************************"
 echo "*** PROCESS.sh"
 echo "**************************************************"

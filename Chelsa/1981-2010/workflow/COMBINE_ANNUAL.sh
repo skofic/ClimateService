@@ -18,17 +18,6 @@ source "${HOME}/.ClimateService"
 ###
 epoc="${path}/Chelsa/1981-2010"
 
-###
-# Remove contents of the CSV folder.
-# We do this here, because at this point
-# only the files in the data directory are relevant.
-# Note that the data folder is not touched yet.
-###
-for folder in "bio"
-do
-	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
-done
-
 echo "**************************************************"
 echo "*** COMBINE_ANNUAL.sh"
 echo "**************************************************"

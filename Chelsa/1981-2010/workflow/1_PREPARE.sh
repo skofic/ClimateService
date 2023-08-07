@@ -14,10 +14,14 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Execute script.
+# Globals.
 ###
 epoc="${path}/Chelsa/1981-2010"
 cmd="${epoc}/workflow/PREPARE.sh"
+
+###
+# Execute script.
+###
 $cmd | tee "${epoc}/log/1_PREPARE.log"
 if [ $? -ne 0 ]
 then

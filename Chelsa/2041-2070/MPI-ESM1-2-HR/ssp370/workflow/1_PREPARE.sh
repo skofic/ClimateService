@@ -14,10 +14,14 @@
 source "${HOME}/.ClimateService"
 
 ###
+# Globals.
+###
+epoc="${path}/Chelsa/2041_2070/MPI-ESM1-2-HR/ssp370"
+cmd="${epoc}/workflow/PREPARE.sh"
+
+###
 # Execute script.
 ###
-epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
-cmd="${epoc}/workflow/PREPARE.sh"
 $cmd | tee "${epoc}/log/1_PREPARE.log"
 if [ $? -ne 0 ]
 then

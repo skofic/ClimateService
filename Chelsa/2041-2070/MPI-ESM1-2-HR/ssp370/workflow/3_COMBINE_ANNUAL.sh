@@ -14,10 +14,14 @@
 source "${HOME}/.ClimateService"
 
 ###
+# Globals.
+###
+epoc="${path}/Chelsa/2041_2070/MPI-ESM1-2-HR/ssp370"
+cmd="${epoc}/workflow/COMBINE_ANNUAL.sh"
+
+###
 # Execute script.
 ###
-epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
-cmd="${epoc}/workflow/COMBINE_ANNUAL.sh"
 $cmd | tee "${epoc}/log/3_COMBINE_ANNUAL.log"
 if [ $? -ne 0 ]
 then
@@ -26,3 +30,12 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove converted CSV files in bio.
+# We do this here because we assume combining was successful.
+###
+for folder in "bio"
+do
+	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
+done
