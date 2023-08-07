@@ -16,11 +16,6 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Globals.
-###
-expo="${path}/exports/"
-
-###
 # Export data to JSONL file.
 ###
 arangoexport \

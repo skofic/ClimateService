@@ -24,7 +24,6 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-expo="${path}/exports/"
 head="${path}/Chelsa/config/header.csv"
 
 ###

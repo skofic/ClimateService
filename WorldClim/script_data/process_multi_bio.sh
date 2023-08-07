@@ -18,7 +18,6 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-expo="${path}/exports/"
 head="${path}/WorldClim/config/header_bio.csv"
 query="${path}/WorldClim/script_query/process_multi_bio.aql"
 

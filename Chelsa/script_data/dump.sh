@@ -17,11 +17,6 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Globals.
-###
-expo="${path}/exports/"
-
-###
 # Export data to JSONL file.
 ###
 arangoexport \
@@ -29,7 +24,7 @@ arangoexport \
 	--server.database "$base" \
 	--server.username "$user" \
 	--server.password "$pass" \
-	--output-directory "${expo}" \
+	--output-directory "$expo" \
 	--custom-query-file "${2}" \
 	--custom-query-bindvars "${3}" \
 	--compress-output true \
