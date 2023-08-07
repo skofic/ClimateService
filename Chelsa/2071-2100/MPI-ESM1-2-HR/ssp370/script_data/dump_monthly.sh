@@ -41,5 +41,7 @@ fi
 		
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2071-2100 dump_monthly.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"

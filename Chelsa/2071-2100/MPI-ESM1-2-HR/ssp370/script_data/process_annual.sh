@@ -68,6 +68,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (no transform)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -103,6 +105,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (lookup Koppen Geiger 0, 1, 2)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -138,6 +142,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (lookup Koppen Geiger 3)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -173,6 +179,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (lookup Koppen Geiger 4)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -208,6 +216,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (lookup Koppen Geiger 5)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -243,6 +253,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (scale 0.1)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -278,6 +290,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (scale 0.001)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -313,6 +327,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2071-2100 process_annual.sh (scale 0.1 offset -273.15)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done

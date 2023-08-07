@@ -54,6 +54,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2041-2070 combine_monthly.sh (${name}_${month})"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done

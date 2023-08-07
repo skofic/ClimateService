@@ -53,5 +53,7 @@ done
 
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2011-2040 convert_bio.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

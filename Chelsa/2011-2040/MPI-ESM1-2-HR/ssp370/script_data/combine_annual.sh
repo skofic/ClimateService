@@ -55,6 +55,8 @@ do
 	
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "2011-2040 combine_annual.sh (${name})"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 

@@ -41,5 +41,7 @@ fi
 	
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "1970-2000 dump_annual.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"

@@ -48,5 +48,7 @@ done
 
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2011-2040 clip_tasmax.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

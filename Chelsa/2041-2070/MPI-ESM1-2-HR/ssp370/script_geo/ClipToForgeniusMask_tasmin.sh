@@ -48,5 +48,7 @@ done
 
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2041-2070 clip_tasmin.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

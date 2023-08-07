@@ -49,6 +49,8 @@ fi
 
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "1981-2010 load_coordinates.sh (annual)"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"
 
@@ -77,5 +79,7 @@ fi
 
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "1981-2010 load_coordinates.sh (monthly)"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"

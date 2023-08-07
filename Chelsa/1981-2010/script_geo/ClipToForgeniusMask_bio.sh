@@ -66,5 +66,7 @@ done
 
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "1981-2010 clip_bio.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

@@ -40,5 +40,7 @@ fi
 		
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "1970-2000 load_monthly.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"

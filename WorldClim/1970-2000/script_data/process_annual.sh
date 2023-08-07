@@ -69,6 +69,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "1970-2000 process_annual.sh (no transform)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done
@@ -104,6 +106,8 @@ do
 		
 		end=$(date +%s)
 		elapsed=$((end-start))
+		echo "--------------------------------------------------"
+		echo "1970-2000 process_annual.sh (scale 0.01)"
 		echo "Elapsed time: $elapsed seconds"
 		echo "----------------------------------------"
 	done

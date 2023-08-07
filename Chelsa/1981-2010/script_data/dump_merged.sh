@@ -64,5 +64,7 @@ fi
 	
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "1981-2010 dump_merged.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"

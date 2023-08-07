@@ -50,6 +50,8 @@ fi
 	
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2011-2040 dump_coordinates.sh (annual)"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"
 
@@ -80,5 +82,7 @@ fi
 	
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2011-2040 dump_coordinates.sh (monthly)"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"

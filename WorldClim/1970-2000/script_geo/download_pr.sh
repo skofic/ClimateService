@@ -39,5 +39,7 @@ fi
 
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "1970-2000 download_pr.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

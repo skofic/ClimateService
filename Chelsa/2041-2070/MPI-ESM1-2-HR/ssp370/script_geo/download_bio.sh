@@ -17,7 +17,6 @@ echo "====================================================================="
 # Globals.
 ###
 name="bio"
-peri="2041_2070"
 epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
 
 ###
@@ -33,7 +32,7 @@ start=$(date +%s)
 cmd="${path}/Chelsa/script_geo/download.sh"
 $cmd "$epoc" \
 	 "$name" \
-	 "${path}/Chelsa/config/path_${peri}_${name}.txt"
+	 "${path}/Chelsa/config/path_2011_2040_${name}.txt"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -47,5 +46,7 @@ fi
 ###
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2041-2070 download_bio.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"
