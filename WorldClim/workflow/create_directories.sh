@@ -1,7 +1,9 @@
 #!/bin/sh
 
 ###
-# Clip maps to useful region.
+# Create directories.
+#
+# This script will create all necessary directories.
 ###
 
 ###
@@ -19,11 +21,15 @@ period_4="${path}/WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370"
 period_5="${path}/WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370"
 elevation="${path}/WorldClim/Elevation"
 
-echo "--------------------------------------------------"
-start=$(date +%s)
+echo "**************************************************"
+echo "**************************************************"
+echo "*** create_directories.sh"
+echo "**************************************************"
+echo "**************************************************"
+CREATE_START=$(date +%s)
 
 ###
-# Create top level directories.
+# Create top level log folder,
 ###
 mkdir -p "${path}/WorldClim/log/"
 
@@ -121,7 +127,12 @@ do
 
 done
 
-end=$(date +%s)
-elapsed=$((end-start))
-echo "Elapsed time: $elapsed seconds"
-echo "--------------------------------------------------"
+CREATE_END=$(date +%s)
+elapsed=$((CREATE_END-CREATE_START))
+echo ""
+echo "**************************************************"
+echo "**************************************************"
+echo "*** create_directories.sh - TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
+echo "**************************************************"
+echo ""
