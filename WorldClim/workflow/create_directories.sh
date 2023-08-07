@@ -47,6 +47,11 @@ mkdir -p "${elevation}/log/"
 ###
 period="$period_1"
 
+echo ""
+echo "**************************************************"
+echo "*** $period"
+echo "**************************************************"
+
 ###
 # Create full maps directories.
 ###
@@ -106,6 +111,11 @@ mkdir -p "${period}/log/"
 ###
 for period in "$period_2" "$period_3" "$period_4" "$period_5"
 do
+
+	echo ""
+	echo "**************************************************"
+	echo "*** $period"
+	echo "**************************************************"
 
 	###
 	# Create top level directories.
