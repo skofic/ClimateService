@@ -34,7 +34,10 @@ cmd="${path}/WorldClim/script_geo/clip_int16.sh"
 for var in "bio" "tasmax" "tasmin"
 do
 	echo "==> Clip Float32 ${var}"
-	$cmd "${full}/${var}.tif" "${clip}/${var}.tif"
+	$cmd "${full}/${var}.tif" \
+		 "${clip}/${var}.tif" \
+		 "$poly" \
+		 "$pnam"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -51,7 +54,10 @@ cmd="${path}/WorldClim/script_geo/clip_float32.sh"
 for var in "pr"
 do
 	echo "==> Clip Int16 ${var}"
-	$cmd "${full}/${var}.tif" "${clip}/${var}.tif"
+	$cmd "${full}/${var}.tif" \
+		 "${clip}/${var}.tif" \
+		 "$poly" \
+		 "$pnam"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

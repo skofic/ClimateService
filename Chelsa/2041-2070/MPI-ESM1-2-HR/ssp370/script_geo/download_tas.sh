@@ -17,6 +17,7 @@ echo "====================================================================="
 # Globals.
 ###
 name="tas"
+peri="2041_2070"
 epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
 
 ###
@@ -30,7 +31,9 @@ start=$(date +%s)
 # Call download script.
 ###
 cmd="${path}/Chelsa/script_geo/download.sh"
-$cmd "$epoc" "$name" "path_2041_2070_${name}.txt"
+$cmd "$epoc" \
+	 "$name" \
+	 "${path}/Chelsa/config/path_${peri}_${name}.txt"
 if [ $? -ne 0 ]
 then
 	echo "*************"

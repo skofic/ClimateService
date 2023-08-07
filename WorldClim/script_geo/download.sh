@@ -5,13 +5,8 @@
 #
 # The script expects the following parameters:
 # - $1: Base directory path to period root.
-# - $2: Download files list filename.
+# - $2: Download files list file path.
 ###
-
-###
-# Load default parameters.
-###
-source "${HOME}/.ClimateService"
 
 ###
 # Globals.
@@ -33,7 +28,7 @@ do
 	###
 	# Download file.
 	###
-	wget --continue --output-document="${1}/Full/${name}" "${url}"
+	wget --continue --output-document="${dest}/${name}" "${url}"
  	if [ $? -ne 0 ]
 	then
 		echo "*************"

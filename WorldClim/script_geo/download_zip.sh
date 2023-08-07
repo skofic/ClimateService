@@ -11,11 +11,6 @@
 ###
 
 ###
-# Load default parameters.
-###
-source "${HOME}/.ClimateService"
-
-###
 # Globals.
 ###
 comp="${2}/${4}.zip"

@@ -36,7 +36,10 @@ start=$(date +%s)
 cmd="${path}/WorldClim/script_geo/clip_float32.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 do
-	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif"
+	$cmd "${full}/${name}_${month}.tif" \
+		 "${clip}/${name}_${month}.tif" \
+		 "$poly" \
+		 "$pnam"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
