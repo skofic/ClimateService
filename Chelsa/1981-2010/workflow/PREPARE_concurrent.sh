@@ -2,6 +2,7 @@
 
 ###
 # Prepare data: download, clip to region and convert to GeoJSON.
+# Concurrent version.
 ###
 
 ###
@@ -12,17 +13,17 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
+epoc="${path}/Chelsa/1981-2010"
 
 echo "**************************************************"
-echo "*** PREPARE.sh"
+echo "*** PREPARE_concurrent.sh"
 echo "**************************************************"
 PREPARE_START=$(date +%s)
 	
 ###
 # Download full maps.
 ###
-cmd="${epoc}/workflow/download.sh"
+cmd="${epoc}/workflow/download_concurrent.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -35,7 +36,7 @@ fi
 ###
 # Clip full maps to EUFGIS region.
 ###
-cmd="${epoc}/workflow/clip.sh"
+cmd="${epoc}/workflow/clip_concurrent.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -48,7 +49,7 @@ fi
 ###
 # Convert clipped maps to CSV (longitude, latitude and value).
 ###
-cmd="${epoc}/workflow/convert.sh"
+cmd="${epoc}/workflow/convert_concurrent.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -62,6 +63,6 @@ PREPARE_END=$(date +%s)
 elapsed=$((PREPARE_END-PREPARE_START))
 echo ""
 echo "**************************************************"
-echo "*** PREPARE.sh - TOTAL TIME: $elapsed seconds"
+echo "*** PREPARE_concurrent.sh - TOTAL TIME: $elapsed seconds"
 echo "**************************************************"
 echo ""

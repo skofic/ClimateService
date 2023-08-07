@@ -14,7 +14,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/Chelsa/2041_2070/MPI-ESM1-2-HR/ssp370"
+epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
 
 echo "**************************************************"
 echo "*** MERGE.sh"

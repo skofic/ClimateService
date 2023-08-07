@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Create Worldclim period data.
+# Create Chelsa period data.
 #
 # This script will create everything, it is supposed to be run
 # just after cloning the git repository.
@@ -20,24 +20,24 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/WorldClim/1970-2000"
+epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 
 echo "**************************************************"
 echo "**************************************************"
-echo "*** create_1970_2000_concurrent.sh"
+echo "*** create_2011_2040_concurrent.sh"
 echo "**************************************************"
 echo "**************************************************"
-CREATE_1970_2000_START=$(date +%s)
+CREATE_2011_2040_START=$(date +%s)
 
 ###
 # Create logs directory and remove eventual existing logs.
 ###
-mkdir -p "${epoc}/log/"
+mkdir "${epoc}/log/"
 
 ###
 # Prepare data.
 ###
-cmd="${epoc}/workflow/1_PREPARE_cocnurrent.sh"
+cmd="${epoc}/workflow/1_PREPARE_concurrent.sh"
 $cmd
 if [ $? -ne 0 ]
 then
@@ -61,7 +61,7 @@ then
 fi
 
 ###
-# Combine annual data.
+# Combine bioclimatic data.
 ###
 cmd="${epoc}/workflow/3_COMBINE_ANNUAL.sh"
 $cmd
@@ -99,12 +99,12 @@ then
 	exit 1
 fi
 
-CREATE_1970_2000_END=$(date +%s)
-elapsed=$((CREATE_1970_2000_END-CREATE_1970_2000_START))
+CREATE_2011_2040_END=$(date +%s)
+elapsed=$((CREATE_2011_2040_END-CREATE_2011_2040_START))
 echo ""
 echo "**************************************************"
 echo "**************************************************"
-echo "*** create_1970_2000_concurrent.sh - TOTAL TIME: $elapsed seconds"
+echo "*** create_2011_2040_concurrent.sh - TOTAL TIME: $elapsed seconds"
 echo "**************************************************"
 echo "**************************************************"
 echo ""
