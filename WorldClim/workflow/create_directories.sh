@@ -37,7 +37,7 @@ mkdir -p "${path}/WorldClim/log/"
 # Create elevation directories.
 ###
 mkdir -p "${elevation}/Full/"
-mkdir -p "${elevation}/ForgeniusClipped/"
+mkdir -p "${elevation}/Clipped/"
 mkdir -p "${elevation}/CSV/"
 mkdir -p "${elevation}/data/"
 mkdir -p "${elevation}/log/"
@@ -67,14 +67,14 @@ mkdir -p "${period}/Full/wind/"
 ###
 # Create clipped maps directories.
 ###
-mkdir -p "${period}/ForgeniusClipped/bio/"
-mkdir -p "${period}/ForgeniusClipped/pr/"
-mkdir -p "${period}/ForgeniusClipped/srad/"
-mkdir -p "${period}/ForgeniusClipped/tas/"
-mkdir -p "${period}/ForgeniusClipped/tasmax/"
-mkdir -p "${period}/ForgeniusClipped/tasmin/"
-mkdir -p "${period}/ForgeniusClipped/vapr/"
-mkdir -p "${period}/ForgeniusClipped/wind/"
+mkdir -p "${period}/Clipped/bio/"
+mkdir -p "${period}/Clipped/pr/"
+mkdir -p "${period}/Clipped/srad/"
+mkdir -p "${period}/Clipped/tas/"
+mkdir -p "${period}/Clipped/tasmax/"
+mkdir -p "${period}/Clipped/tasmin/"
+mkdir -p "${period}/Clipped/vapr/"
+mkdir -p "${period}/Clipped/wind/"
 
 ###
 # Create CSV directories.
@@ -121,7 +121,7 @@ do
 	# Create top level directories.
 	###
 	mkdir -p "${period}/Full/"
-	mkdir -p "${period}/ForgeniusClipped/"
+	mkdir -p "${period}/Clipped/"
 	mkdir -p "${period}/CSV/"
 	mkdir -p "${period}/data/"
 

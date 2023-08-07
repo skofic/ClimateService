@@ -23,7 +23,7 @@ epoc="${path}/WorldClim/Elevation"
 # Parameters.
 ###
 full="${epoc}/Full"
-clip="${epoc}/ForgeniusClipped"
+clip="${epoc}/Clipped"
 
 echo "--------------------------------------------------"
 echo "<== ${full}/${name}.tif"

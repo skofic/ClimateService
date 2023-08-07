@@ -22,7 +22,7 @@ epoc="${path}/WorldClim/Elevation"
 ###
 # Parameters.
 ###
-from="${epoc}/ForgeniusClipped"
+from="${epoc}/Clipped"
 dest="${epoc}/CSV"
 
 echo "--------------------------------------------------"

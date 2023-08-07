@@ -22,7 +22,7 @@ epoc="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
 ###
 # Parameters.
 ###
-from="${epoc}/ForgeniusClipped/${name}"
+from="${epoc}/Clipped/${name}"
 dest="${epoc}/CSV/${name}"
 
 echo "--------------------------------------------------"

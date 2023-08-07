@@ -22,7 +22,7 @@ epoc="${path}/Chelsa/1981-2010"
 ###
 # Parameters.
 ###
-from="${epoc}/ForgeniusClipped/${name}"
+from="${epoc}/Clipped/${name}"
 dest="${epoc}/CSV/${name}"
 
 echo "--------------------------------------------------"

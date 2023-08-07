@@ -29,7 +29,7 @@ do
 	###
 	# Set command.
 	###
-	cmd="${epoc}/script_geo/ClipToForgeniusMask_${code}.sh"
+	cmd="${epoc}/script_geo/ClipToMask_${code}.sh"
 	
 	###
 	# Launch script in batch.

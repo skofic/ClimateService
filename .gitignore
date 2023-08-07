@@ -13,7 +13,7 @@ Chelsa/1981-2010/CSV/
 
 Chelsa/1981-2010/data/
 
-Chelsa/1981-2010/ForgeniusClipped/
+Chelsa/1981-2010/Clipped/
 
 Chelsa/1981-2010/Full/
 
@@ -23,7 +23,7 @@ Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/CSV/
 
 Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/data/
 
-Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/ForgeniusClipped/
+Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Clipped/
 
 Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370/Full/
 
@@ -33,7 +33,7 @@ Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370/CSV/
 
 Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370/data/
 
-Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370/ForgeniusClipped/
+Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370/Clipped/
 
 Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370/Full/
 
@@ -43,7 +43,7 @@ Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370/CSV/
 
 Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370/data/
 
-Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370/ForgeniusClipped/
+Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370/Clipped/
 
 Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370/Full/
 
@@ -53,7 +53,7 @@ WorldClim/1970-2000/CSV/
 
 WorldClim/1970-2000/data/
 
-WorldClim/1970-2000/ForgeniusClipped/
+WorldClim/1970-2000/Clipped/
 
 WorldClim/1970-2000/Full/
 
@@ -63,7 +63,7 @@ WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/CSV/
 
 WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/data/
 
-WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/ForgeniusClipped/
+WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/Clipped/
 
 WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370/Full/
 
@@ -73,7 +73,7 @@ WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370/CSV/
 
 WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370/data/
 
-WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370/ForgeniusClipped/
+WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370/Clipped/
 
 WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370/Full/
 
@@ -83,7 +83,7 @@ WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370/CSV/
 
 WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370/data/
 
-WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370/ForgeniusClipped/
+WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370/Clipped/
 
 WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370/Full/
 
@@ -93,7 +93,7 @@ WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370/CSV/
 
 WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370/data/
 
-WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370/ForgeniusClipped/
+WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370/Clipped/
 
 WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370/Full/
 
@@ -103,7 +103,7 @@ WorldClim/Elevation/CSV/
 
 WorldClim/Elevation/data/
 
-WorldClim/Elevation/ForgeniusClipped/
+WorldClim/Elevation/Clipped/
 
 WorldClim/Elevation/Full/
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip minimum temperature maps to EUFGIS region.
+# Clip bioclimatic maps to EUFGIS region.
 ###
 
 ###
@@ -10,33 +10,35 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Clip monthly minimum temperature variables to EUFGIS region."
+echo "= Clip bioclimatic variables to EUFGIS region."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-name="tasmin"
-epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
+name="bio"
+epoc="${path}/WorldClim/1970-2000"
 
 ###
 # Parameters.
 ###
 full="${epoc}/Full/${name}"
-clip="${epoc}/ForgeniusClipped/${name}"
-
+clip="${epoc}/Clipped/${name}"
 
 echo "--------------------------------------------------"
 echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Clip precipitation global TIFF to Forgenius region.
+# Clip maps.
 ###
-cmd="${path}/Chelsa/script_geo/clip_float32.sh"
-for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
+cmd="${path}/WorldClim/script_geo/clip_float32.sh"
+for var in "bio01" "bio02" "bio03" "bio04" "bio05" "bio06" "bio07" "bio08" "bio09" "bio10" "bio11" "bio12" "bio13" "bio14" "bio15" "bio16" "bio17" "bio18" "bio19"
 do
-	$cmd "${full}/${name}_${month}.tif" "${clip}/${name}_${month}.tif" "$poly" "$pnam"
+	$cmd "${full}/${var}.tif" \
+		 "${clip}/${var}.tif" \
+		 "$poly" \
+		 "$pnam"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -49,6 +51,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "2011-2040 clip_tasmin.sh"
+echo "1970-2000 clip_bio.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

@@ -25,7 +25,7 @@ do
 	echo "--------------------------------------------------"
 	echo "$code"
 	echo "--------------------------------------------------"
-	cmd="${epoc}/script_geo/ClipToForgeniusMask_${code}.sh"
+	cmd="${epoc}/script_geo/ClipToMask_${code}.sh"
 	$cmd
 	if [ $? -ne 0 ]
 	then

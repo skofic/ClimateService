@@ -66,12 +66,12 @@ do
 	###
 	# Create clipped directories.
 	###
-	mkdir -p "${period}/ForgeniusClipped/"
-	mkdir -p "${period}/ForgeniusClipped/bio/"
-	mkdir -p "${period}/ForgeniusClipped/pr/"
-	mkdir -p "${period}/ForgeniusClipped/tas/"
-	mkdir -p "${period}/ForgeniusClipped/tasmax/"
-	mkdir -p "${period}/ForgeniusClipped/tasmin/"
+	mkdir -p "${period}/Clipped/"
+	mkdir -p "${period}/Clipped/bio/"
+	mkdir -p "${period}/Clipped/pr/"
+	mkdir -p "${period}/Clipped/tas/"
+	mkdir -p "${period}/Clipped/tasmax/"
+	mkdir -p "${period}/Clipped/tasmin/"
 
 	###
 	# Create clipped directories.

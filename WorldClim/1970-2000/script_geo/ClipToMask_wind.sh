@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip precipitation maps to EUFGIS region.
+# Clip wind speed maps to EUFGIS region.
 ###
 
 ###
@@ -10,20 +10,20 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Clip monthly precipitation variables to EUFGIS region."
+echo "= Clip monthly wind speed variables to EUFGIS region."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-name="pr"
+name="wind"
 epoc="${path}/WorldClim/1970-2000"
 
 ###
 # Parameters.
 ###
 full="${epoc}/Full/${name}"
-clip="${epoc}/ForgeniusClipped/${name}"
+clip="${epoc}/Clipped/${name}"
 
 
 echo "--------------------------------------------------"
@@ -31,9 +31,9 @@ echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Clip precipitation global TIFF to Forgenius region.
+# Clip wind speed global TIFF to region.
 ###
-cmd="${path}/WorldClim/script_geo/clip_int16.sh"
+cmd="${path}/WorldClim/script_geo/clip_float32.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
 do
 	$cmd "${full}/${name}_${month}.tif" \
@@ -52,6 +52,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "1970-2000 clip_pr.sh"
+echo "1970-2000 clip_wind.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

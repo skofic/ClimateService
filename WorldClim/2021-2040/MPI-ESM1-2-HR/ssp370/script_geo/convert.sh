@@ -22,7 +22,7 @@ epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 ###
 # Parameters.
 ###
-from="${epoc}/ForgeniusClipped"
+from="${epoc}/Clipped"
 dest="${epoc}/CSV"
 
 echo "--------------------------------------------------"

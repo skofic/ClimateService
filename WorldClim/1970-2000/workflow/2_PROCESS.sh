@@ -35,7 +35,7 @@ fi
 # Remove maps.
 # We do it here assuming the current script was successful.
 ###
-for directory in "Full" "ForgeniusClipped"
+for directory in "Full" "Clipped"
 do
 	
 	for folder in "bio" "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"

@@ -32,7 +32,7 @@ start=$(date +%s)
 cmd="${path}/Chelsa/script_geo/download.sh"
 $cmd "$epoc" \
 	 "$name" \
-	 "${path}/Chelsa/config/path_2011_2040_${name}.txt"
+	 "${path}/Chelsa/config/path_2071_2100_${name}.txt"
 if [ $? -ne 0 ]
 then
 	echo "*************"

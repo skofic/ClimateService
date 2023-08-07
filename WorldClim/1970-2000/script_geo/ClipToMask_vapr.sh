@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip average temperature maps to EUFGIS region.
+# Clip water vapour pressure maps to EUFGIS region.
 ###
 
 ###
@@ -10,20 +10,20 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Clip monthly average temperature variables to EUFGIS region."
+echo "= Clip monthly water vapour pressure variables to EUFGIS region."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
-name="tas"
+name="vapr"
 epoc="${path}/WorldClim/1970-2000"
 
 ###
 # Parameters.
 ###
 full="${epoc}/Full/${name}"
-clip="${epoc}/ForgeniusClipped/${name}"
+clip="${epoc}/Clipped/${name}"
 
 
 echo "--------------------------------------------------"
@@ -31,7 +31,7 @@ echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Clip average temperature global TIFF to Forgenius region.
+# Clip water vapour pressure global TIFF to region.
 ###
 cmd="${path}/WorldClim/script_geo/clip_float32.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
@@ -52,6 +52,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "1970-2000 clip_tas.sh"
+echo "1970-2000 clip_vapr.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

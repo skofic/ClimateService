@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip mean temperature maps to EUFGIS region.
+# Clip mean temperature maps to region.
 ###
 
 ###
@@ -23,7 +23,7 @@ epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
 # Parameters.
 ###
 full="${epoc}/Full/${name}"
-clip="${epoc}/ForgeniusClipped/${name}"
+clip="${epoc}/Clipped/${name}"
 
 
 echo "--------------------------------------------------"
@@ -31,7 +31,7 @@ echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Clip precipitation global TIFF to Forgenius region.
+# Clip precipitation global TIFF to region.
 ###
 cmd="${path}/Chelsa/script_geo/clip_float32.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"

@@ -35,7 +35,7 @@ fi
 ###
 # Clip full maps to EUFGIS region.
 ###
-cmd="${epoc}/script_geo/ClipToForgeniusMask.sh"
+cmd="${epoc}/script_geo/ClipToMask.sh"
 $cmd
 if [ $? -ne 0 ]
 then

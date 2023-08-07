@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip maximum temperature maps to EUFGIS region.
+# Clip maximum temperature maps to region.
 ###
 
 ###
@@ -17,13 +17,13 @@ echo "====================================================================="
 # Globals.
 ###
 name="tasmax"
-epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
+epoc="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
 
 ###
 # Parameters.
 ###
 full="${epoc}/Full/${name}"
-clip="${epoc}/ForgeniusClipped/${name}"
+clip="${epoc}/Clipped/${name}"
 
 
 echo "--------------------------------------------------"
@@ -31,7 +31,7 @@ echo "==> ${name}"
 start=$(date +%s)
 
 ###
-# Clip precipitation global TIFF to Forgenius region.
+# Clip precipitation global TIFF to region.
 ###
 cmd="${path}/Chelsa/script_geo/clip_float32.sh"
 for month in "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12"
@@ -49,6 +49,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "2011-2040 clip_tasmax.sh"
+echo "2071-2100 clip_tasmax.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"

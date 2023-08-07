@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Clip bioclimatic maps to EUFGIS region.
+# Clip bioclimatic maps to region.
 ###
 
 ###
@@ -17,16 +17,16 @@ echo "====================================================================="
 # Globals.
 ###
 name="bio"
-epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
+epoc="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
 
 ###
 # Parameters.
 ###
 full="${epoc}/Full/${name}"
-clip="${epoc}/ForgeniusClipped/${name}"
+clip="${epoc}/Clipped/${name}"
 
 ###
-# Clip bioclimatic variables global TIFF to Forgenius region.
+# Clip bioclimatic variables global TIFF to region.
 ###
 echo "--------------------------------------------------"
 echo "==> ${name}"
@@ -67,6 +67,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "2041-2070 clip_bio.sh"
+echo "2071-2100 clip_bio.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "--------------------------------------------------"
