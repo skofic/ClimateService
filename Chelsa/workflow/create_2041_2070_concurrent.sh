@@ -21,14 +21,14 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
+epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
 
 echo "**************************************************"
 echo "**************************************************"
-echo "*** create_2011_2040_concurrent.sh"
+echo "*** create_2041_2070.sh"
 echo "**************************************************"
 echo "**************************************************"
-CREATE_2011_2040_START=$(date +%s)
+CREATE_2041_2070_START=$(date +%s)
 
 ###
 # Create logs directory and remove eventual existing logs.
@@ -100,12 +100,12 @@ then
 	exit 1
 fi
 
-CREATE_2011_2040_END=$(date +%s)
-elapsed=$((CREATE_2011_2040_END-CREATE_2011_2040_START))
+CREATE_2041_2070_END=$(date +%s)
+elapsed=$((CREATE_2041_2070_END-CREATE_2041_2070_START))
 echo ""
 echo "**************************************************"
 echo "**************************************************"
-echo "*** create_2011_2040_concurrent.sh - TOTAL TIME: $elapsed seconds"
+echo "*** create_2041_2070.sh - TOTAL TIME: $elapsed seconds"
 echo "**************************************************"
 echo "**************************************************"
 echo ""

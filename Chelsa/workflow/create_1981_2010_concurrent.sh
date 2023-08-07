@@ -2,6 +2,7 @@
 
 ###
 # Create Chelsa period data.
+# Concurrent version.
 #
 # This script will create everything, it is supposed to be run
 # just after cloning the git repository.
