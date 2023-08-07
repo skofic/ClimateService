@@ -1,9 +1,12 @@
 #!/bin/sh
 
 ###
-# Check configuration file values.
+# Prepare data.
+# Concurrent version.
 #
-# This script will display the conficuration file values.
+# Download GeoIFF maps,
+# clip maps to useful region,
+# convert maps to CSV files
 ###
 
 ###
@@ -12,19 +15,19 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Display.
+# Globals.
 ###
-echo "--------------------------------------------------"
-echo "- CONFIGURATION FILE VALUES"
-echo "--------------------------------------------------"
-echo "Configuration file path: ${HOME}/.ClimateService"
-echo "--------------------------------------------------"
-echo "Database name (base):                $base"
-echo "Database host (host):                $host"
-echo "Database user (user):                $user"
-echo "Database pass (pass):                $pass"
-echo "Climate service path (path):         $path"
-echo "Clip mask shape file path (poly):    $poly"
-echo "Clip mask layer name (pnam):         $pnam"
-echo "Common variable names prefix (pref): $pref"
-echo "--------------------------------------------------"
+epoc="${path}/WorldClim/1970-2000"
+cmd="${epoc}/workflow/PREPARE_concurrent.sh"
+
+###
+# Execute script.
+###
+$cmd | tee "${epoc}/log/1_PREPARE_concurrent.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
