@@ -3,5 +3,5 @@
 ///
 FOR doc IN @@collection
 	LET before = UNSET(doc, '_id', '_key', '_rev', 'lon', 'lat')
-	LET after = MERGE(before, {bio04: before.bio04 * 0.01})
-RETURN MERGE( {lon: doc,lon, lat: doc.lat}, after )
+	LET after = MERGE(before, {@variable: before.@variable * 0.01})
+RETURN MERGE( {lon: doc.lon, lat: doc.lat}, after )

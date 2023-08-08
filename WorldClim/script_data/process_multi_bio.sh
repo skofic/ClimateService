@@ -32,6 +32,25 @@ arangoimport \
 	--server.password "$pass" \
 	--file "$1" \
 	--headers-file "$head" \
+	--translate "bio01=${pref}_bio01" \
+	--translate "bio02=${pref}_bio02" \
+	--translate "bio03=${pref}_bio03" \
+	--translate "bio04=${pref}_bio04" \
+	--translate "bio05=${pref}_bio05" \
+	--translate "bio06=${pref}_bio06" \
+	--translate "bio07=${pref}_bio07" \
+	--translate "bio08=${pref}_bio08" \
+	--translate "bio09=${pref}_bio09" \
+	--translate "bio10=${pref}_bio10" \
+	--translate "bio11=${pref}_bio11" \
+	--translate "bio12=${pref}_bio12" \
+	--translate "bio13=${pref}_bio13" \
+	--translate "bio14=${pref}_bio14" \
+	--translate "bio15=${pref}_bio15" \
+	--translate "bio16=${pref}_bio16" \
+	--translate "bio17=${pref}_bio17" \
+	--translate "bio18=${pref}_bio18" \
+	--translate "bio19=${pref}_bio19" \
 	--type "csv" \
 	--collection "$3" \
 	--auto-rate-limit true \
@@ -56,27 +75,8 @@ arangoexport \
 	--server.password "$pass" \
 	--output-directory "$expo" \
 	--custom-query-file "$query" \
-	--custom-query-bindvars "{\"@@collection\": \"$3\"}" \
-	--fields "lon","lat","bio01","bio02","bio03","bio04","bio05","bio06","bio07","bio08","bio09","bio10","bio11","bio12","bio13","bio14","bio15","bio16","bio17","bio18","bio19" \
-	--translate "bio01=${pref}_bio01" \
-	--translate "bio02=${pref}_bio02" \
-	--translate "bio03=${pref}_bio03" \
-	--translate "bio04=${pref}_bio04" \
-	--translate "bio05=${pref}_bio05" \
-	--translate "bio06=${pref}_bio06" \
-	--translate "bio07=${pref}_bio07" \
-	--translate "bio08=${pref}_bio08" \
-	--translate "bio09=${pref}_bio09" \
-	--translate "bio10=${pref}_bio10" \
-	--translate "bio11=${pref}_bio11" \
-	--translate "bio12=${pref}_bio12" \
-	--translate "bio13=${pref}_bio13" \
-	--translate "bio14=${pref}_bio14" \
-	--translate "bio15=${pref}_bio15" \
-	--translate "bio16=${pref}_bio16" \
-	--translate "bio17=${pref}_bio17" \
-	--translate "bio18=${pref}_bio18" \
-	--translate "bio19=${pref}_bio19" \
+	--custom-query-bindvars "{\"@@collection\": \"$3\", \"variable\": \"${pref}_bio04\"}" \
+	--fields "lon","lat","${pref}_bio01","${pref}_bio02","${pref}_bio03","${pref}_bio04","${pref}_bio05","${pref}_bio06","${pref}_bio07","${pref}_bio08","${pref}_bio09","${pref}_bio10","${pref}_bio11","${pref}_bio12","${pref}_bio13","${pref}_bio14","${pref}_bio15","${pref}_bio16","${pref}_bio17","${pref}_bio18","${pref}_bio19" \
 	--compress-output true \
 	--overwrite true \
 	--type "csv"
