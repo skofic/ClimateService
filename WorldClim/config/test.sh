@@ -1,8 +1,14 @@
 #!/bin/sh
 
 ###
-# Prepare data: download, clip to region and convert to GeoJSON.
-# Concurrent version.
+# Process multi-band bioclimatic variables.
+#
+# The script will process all bioclimatic CSV files by:
+# - loading the data into the database,
+# - mapping variable names to descriptor names
+# - and dump a JSONL file with the final period data format.
+#
+# This is the first step in the PROCESS workflow.
 ###
 
 ###
@@ -10,34 +16,31 @@
 ###
 source "${HOME}/.ClimateService"
 
+echo "====================================================================="
+echo "= Process bioclimatic data."
+echo "====================================================================="
+
 ###
 # Globals.
 ###
+coll="temp_ping"
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
-
-echo "**************************************************"
-echo "*** PREPARE.sh"
-echo "**************************************************"
-PREPARE_START=$(date +%s)
-	
-# ###
-# # Download full maps.
-# ###
-# cmd="${epoc}/script_geo/download_concurrent.sh"
-# $cmd
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+cmd="${path}/WorldClim/script_data/process_multi_bio.sh"
 
 ###
-# Clip full maps to EUFGIS region.
+# Parameters.
 ###
-cmd="${epoc}/script_geo/clip_concurrent.sh"
-$cmd
+name="bio"
+file="${epoc}/CSV/${name}.csv.gz"
+expo="${epoc}/data/${name}.csv.gz"
+
+start=$(date +%s)
+echo "==> $expo"
+
+###
+# Process converted CSV data.
+###
+$cmd "$file" "$expo" "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -45,24 +48,8 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Convert clipped maps to CSV (longitude, latitude and value).
-###
-cmd="${epoc}/script_geo/convert_concurrent.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-PREPARE_END=$(date +%s)
-elapsed=$((PREPARE_END-PREPARE_START))
-echo ""
-echo "**************************************************"
-echo "*** PREPARE.sh - TOTAL TIME: $elapsed seconds"
-echo "**************************************************"
-echo ""
+		
+end=$(date +%s)
+elapsed=$((end-start))
+echo "Elapsed time: $elapsed seconds"
+echo "----------------------------------------"

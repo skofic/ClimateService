@@ -33,9 +33,9 @@ cmd="${path}/WorldClim/script_data/process_multi_bio.sh"
 name="bio"
 file="${epoc}/CSV/${name}.csv.gz"
 expo="${epoc}/data/${name}.csv.gz"
-echo "==> $expo"
 
 start=$(date +%s)
+echo "==> $expo"
 
 ###
 # Process converted CSV data.
