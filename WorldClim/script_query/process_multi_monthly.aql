@@ -1,0 +1,10 @@
+///
+// Collect monthly variables.
+// The query will collect all monthly data into an array.
+///
+FOR doc IN @@collection
+RETURN {
+	lon: doc.lon,
+	lat: doc.lat,
+	@variable: VALUES(UNSET(doc, '_id', '_key', '_rev', 'lon', 'lat'))
+}
