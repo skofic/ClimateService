@@ -1,7 +1,8 @@
 #!/bin/sh
 
 ###
-# Download period file.
+# Download period files.
+# Download all files.
 ###
 
 ###
@@ -13,29 +14,43 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 peri="2021_2040"
+cmd="${path}/WorldClim/script_geo/download.sh"
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 
 ###
 # Parameters.
 ###
+dest="${epoc}/Full"
 dict="${path}/WorldClim/config/path_${peri}.txt"
 
 echo "--------------------------------------------------"
 start=$(date +%s)
 
 ###
-# Download and place files.
+# Iterate list of files.
 ###
-cmd="${path}/WorldClim/script_geo/download.sh"
-$cmd	"$epoc" \
-		"$dict"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+while read -r line
+do
+
+	###
+	# Get source URL and destination file path.
+	###
+    url=$(echo $line | cut -d ' ' -f 1)
+    name=$(echo $line | cut -d ' ' -f 2)
+    
+	###
+	# Download file.
+	###
+	$cmd "${url}" "${dest}/${name}"
+ 	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
+   
+done < "$dict"
 
 end=$(date +%s)
 elapsed=$((end-start))

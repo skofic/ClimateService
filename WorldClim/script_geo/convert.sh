@@ -23,13 +23,12 @@ fi
 ###
 # Compress file.
 ###
-echo "=> Compress..."
+echo "=> Compress $2"
 gzip -f "$2"
 if [ $? -ne 0 ]
 then
 	echo "*************"
 	echo "*** ERROR ***"
-	echo "*** $LINENO"
 	echo "*************"
 	exit 1
 fi

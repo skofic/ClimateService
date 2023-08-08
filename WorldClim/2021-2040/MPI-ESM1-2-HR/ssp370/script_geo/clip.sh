@@ -30,7 +30,7 @@ start=$(date +%s)
 ###
 # Clip Float32 maps.
 ###
-cmd="${path}/WorldClim/script_geo/clip_int16.sh"
+cmd="${path}/WorldClim/script_geo/clip_float32.sh"
 for var in "bio" "tasmax" "tasmin"
 do
 	echo "==> Clip Float32 ${var}"
@@ -50,7 +50,7 @@ done
 ###
 # Clip Int16 maps.
 ###
-cmd="${path}/WorldClim/script_geo/clip_float32.sh"
+cmd="${path}/WorldClim/script_geo/clip_int16.sh"
 for var in "pr"
 do
 	echo "==> Clip Int16 ${var}"

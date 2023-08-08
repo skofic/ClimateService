@@ -20,18 +20,18 @@ echo "*** PREPARE.sh"
 echo "**************************************************"
 PREPARE_START=$(date +%s)
 	
-# ###
-# # Download full maps.
-# ###
-# cmd="${epoc}/script_geo/download_concurrent.sh"
-# $cmd
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# Download full maps.
+###
+cmd="${epoc}/script_geo/download_concurrent.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Clip full maps to EUFGIS region.
