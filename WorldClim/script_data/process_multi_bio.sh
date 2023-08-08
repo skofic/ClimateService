@@ -91,7 +91,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv -f "${expo}query.csv.gz" "$2"	
+mv -f "${expo}/query.csv.gz" "$2"	
 if [ $? -ne 0 ]
 then
 	echo "*************"
