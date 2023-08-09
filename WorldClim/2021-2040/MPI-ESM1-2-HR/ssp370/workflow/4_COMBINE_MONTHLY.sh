@@ -35,7 +35,7 @@ fi
 # Remove converted CSV files in monthly folders.
 # We do this here because we assume combining was successful.
 ###
-for folder in "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"
+for name in "pr" "tasmax" "tasmin"
 do
-	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
+	rm -f "${epoc}/CSV/${name}.csv.gz"
 done
