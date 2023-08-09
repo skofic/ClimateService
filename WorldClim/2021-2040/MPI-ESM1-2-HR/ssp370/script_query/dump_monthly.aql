@@ -1,0 +1,29 @@
+///
+// Combine monthly data merging by coordinates and month.
+///
+FOR doc IN temp_pong
+	COLLECT longitude = doc.lon, latitude = doc.lat INTO items
+	
+	LET data = UNSET(MERGE(items[*].doc), '_id', '_key', '_rev', 'lon', 'lat')
+	LET keys = ATTRIBUTES(data)
+	LET geo = GEO_POINT(longitude, latitude)
+
+	FOR month IN 1..12
+	    LET values = (
+	        FOR key IN keys
+	        RETURN data[key][month - 1]
+	    )
+	    
+RETURN {
+	_key: MD5(TO_STRING(geo)),
+	geometry: geo,
+	properties: {
+		`2021-2040`: {
+			`MPI-ESM1-2-HR`: {
+				`ssp370`: {
+					monthly: MERGE({std_month: month}, ZIP(keys, values))
+				}
+			}
+		}
+	}
+}

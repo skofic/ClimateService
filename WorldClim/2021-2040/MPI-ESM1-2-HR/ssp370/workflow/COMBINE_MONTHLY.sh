@@ -23,18 +23,18 @@ echo "*** COMBINE_MONTHLY.sh"
 echo "**************************************************"
 COMBINE_monthly_START=$(date +%s)
 	
-# ###
-# # Stack all data into a single collection.
-# ###
-# cmd="${epoc}/script_data/combine_monthly.sh"
-# $cmd
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# Stack all data into a single collection.
+###
+cmd="${epoc}/script_data/combine_monthly.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Group stacked data by coordinate and dump export file.
