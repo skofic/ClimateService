@@ -14,9 +14,14 @@
 source "${HOME}/.ClimateService"
 
 ###
+# Globals.
+###
+name="elevation"
+epoc="${path}/WorldClim/Elevation"
+
+###
 # Execute script.
 ###
-epoc="${path}/WorldClim/Elevation"
 cmd="${epoc}/workflow/PROCESS.sh"
 $cmd | tee "${epoc}/log/2_PROCESS.log"
 if [ $? -ne 0 ]
@@ -33,10 +38,10 @@ fi
 ###
 for folder in "Clipped" "Full"
 do
-	rm -f "${epoc}/${folder}/*.tif"
+	rm -f "${epoc}/${folder}/${name}.tif"
 done
 
 for folder in "CSV"
 do
-	rm -f "${epoc}/${folder}/*.csv.gz"
+	rm -f "${epoc}/${folder}/${name}.csv.gz"
 done

@@ -14,9 +14,14 @@
 source "${HOME}/.ClimateService"
 
 ###
+# Globals.
+###
+name="elevation"
+epoc="${path}/WorldClim/Elevation"
+
+###
 # Execute script.
 ###
-epoc="${path}/WorldClim/Elevation"
 cmd="${epoc}/workflow/PROCESS.sh"
 $cmd | tee "${epoc}/log/2_PROCESS.log"
 if [ $? -ne 0 ]
@@ -26,3 +31,17 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove obsolete files.
+# We do this here because we assume combining was successful.
+###
+for folder in "Clipped" "Full"
+do
+	rm -f "${epoc}/${folder}/${name}.tif"
+done
+
+for folder in "CSV"
+do
+	rm -f "${epoc}/${folder}/${name}.csv.gz"
+done
