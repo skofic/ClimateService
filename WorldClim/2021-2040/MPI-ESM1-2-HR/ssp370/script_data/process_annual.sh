@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Process multi-band monthly variables.
+# Process multi-band bioclimatic variables.
 #
 # The script will process all bioclimatic CSV files by:
 # - loading the data into the database,
@@ -17,7 +17,7 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Process monthly data."
+echo "= Process bioclimatic data."
 echo "====================================================================="
 
 ###
@@ -25,38 +25,32 @@ echo "====================================================================="
 ###
 coll="temp_ping"
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
-cmd="${path}/WorldClim/script_data/process_multi_monthly.sh"
+cmd="${path}/WorldClim/script_data/process_multi_bio.sh"
 
-echo "----------------------------------------"
+###
+# Parameters.
+###
+name="bio"
+file="${epoc}/CSV/${name}.csv.gz"
+expo="${epoc}/data/${name}.csv.gz"
+
 start=$(date +%s)
 
-for name in "pr" "tasmax" "tasmin"
-do
-
-	###
-	# Parameters.
-	###
-	file="${epoc}/CSV/${name}.csv.gz"
-	expo="${epoc}/data/${name}.jsonl.gz"
-
-	###
-	# Process converted CSV data.
-	###
-	$cmd "$file" "$expo" "$coll" "$name"
-	if [ $? -ne 0 ]
-	then
-		echo "*************"
-		echo "*** ERROR ***"
-		echo "*************"
-		exit 1
-	fi
-
-done
-
+###
+# Process converted CSV data.
+###
+$cmd "$file" "$expo" "$coll"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 		
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "2021-2040 process_monthly.sh"
+echo "2021-2040 process_bio.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"

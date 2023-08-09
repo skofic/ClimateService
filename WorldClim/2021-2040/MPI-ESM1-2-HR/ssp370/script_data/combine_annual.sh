@@ -1,14 +1,9 @@
 #!/bin/sh
 
 ###
-# Process multi-band bioclimatic variables.
+# Combine multi-band bioclimatic variables.
 #
-# The script will process all bioclimatic CSV files by:
-# - loading the data into the database,
-# - mapping variable names to descriptor names
-# - and dump a JSONL file with the final period data format.
-#
-# This is the first step in the PROCESS workflow.
+# The script will convert the CSV dump into the final JSONL format.
 ###
 
 ###
@@ -17,30 +12,31 @@
 source "${HOME}/.ClimateService"
 
 echo "====================================================================="
-echo "= Process bioclimatic data."
+echo "= Combine bioclimatic data."
 echo "====================================================================="
 
 ###
 # Globals.
 ###
 coll="temp_ping"
+name="combined_annual"
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
-cmd="${path}/WorldClim/script_data/process_multi_bio.sh"
+cmd="${path}/WorldClim/script_data/combine_multi_bio.sh"
+
+echo "--------------------------------------------------"
+start=$(date +%s)
 
 ###
 # Parameters.
 ###
-name="bio"
-file="${epoc}/CSV/${name}.csv.gz"
-expo="${epoc}/data/${name}.csv.gz"
-
-start=$(date +%s)
-echo "==> $expo"
+file="${epoc}/data/bio.csv.gz"
+expo="${epoc}/data/properties/${name}.jsonl.gz"
+query="${epoc}/script_query/merge_bio.aql"
 
 ###
-# Process converted CSV data.
+# Load and dump bioclimatic data.
 ###
-$cmd "$file" "$expo" "$coll"
+$cmd "$expo" "$file" "$query" "$coll"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -51,5 +47,7 @@ fi
 		
 end=$(date +%s)
 elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "2021-2040 combine_bio.sh"
 echo "Elapsed time: $elapsed seconds"
 echo "----------------------------------------"
