@@ -1,7 +1,11 @@
 #!/bin/sh
 
 ###
-# Prepare data: download, clip to region and convert to GeoJSON.
+# Process data.
+#
+# import GeoJSON data,
+# process variables
+# and dump to data folder.
 ###
 
 ###
@@ -10,33 +14,11 @@
 source "${HOME}/.ClimateService"
 
 ###
-# Globals.
+# Execute script.
 ###
 epoc="${path}/WorldClim/Elevation"
-
-echo "**************************************************"
-echo "*** PREPARE.sh"
-echo "**************************************************"
-PREPARE_START=$(date +%s)
-	
-# ###
-# # Download full maps.
-# ###
-# cmd="${epoc}/script_geo/download.sh"
-# $cmd
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
-
-###
-# Clip full maps to EUFGIS region.
-###
-cmd="${epoc}/script_geo/ClipToMask.sh"
-$cmd
+cmd="${epoc}/workflow/PROCESS.sh"
+$cmd | tee "${epoc}/log/2_PROCESS.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -44,24 +26,3 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Convert clipped maps to CSV (longitude, latitude and value).
-###
-cmd="${epoc}/script_geo/ConvertToXYZ.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-PREPARE_END=$(date +%s)
-elapsed=$((PREPARE_END-PREPARE_START))
-echo ""
-echo "**************************************************"
-echo "*** PREPARE.sh - TOTAL TIME: $elapsed seconds"
-echo "**************************************************"
-echo ""
