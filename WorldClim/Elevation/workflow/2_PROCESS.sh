@@ -26,3 +26,17 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove obsolete files.
+# We do this here because we assume combining was successful.
+###
+for folder in "Clipped" "Full"
+do
+	rm -f "${epoc}/${folder}/*.tif"
+done
+
+for folder in "CSV"
+do
+	rm -f "${epoc}/${folder}/*.csv.gz"
+done
