@@ -1,96 +1,157 @@
 #!/bin/sh
 
 ###
-# Load map.
-#
-# This script will iterate all coordinates dumps
-# and load the result into the Chelsa map collection.
+# Create WorldClim database.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+WORLDCLIM=$(date +%s)
 
 ###
-# Globals.
-###
-collection="map_worldclim"
-cmd="${path}/WorldClim/script_data/map.sh"
-
-period_0="${path}/WorldClim/Elevation"
-period_1="${path}/WorldClim/1970-2000"
-period_2="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
-period_3="${path}/WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370"
-period_4="${path}/WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370"
-period_5="${path}/WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370"
-
-echo "**************************************************"
-echo "**************************************************"
-echo "*** load_map.sh"
-echo "**************************************************"
-echo "**************************************************"
-LOAD_MAP_START=$(date +%s)
-
-###
-# Create periods map.
-###
-first=1
-for period in "$period_0" \
-			  "$period_1" \
-			  "$period_2" \
-			  "$period_3" \
-			  "$period_4" \
-			  "$period_5"
-do
-	set -- $i
-	
-	###
-	# Set parameters.
-	###
-	file="map"
-	epoc="$period"
-	dump="${epoc}/data/${file}.jsonl.gz"
-
-	echo ""
-	echo "**************************************************"
-	echo "*** Load $dump"
-	echo "*** into collection $collection"
-	if [ $first -ne 0 ]
-	then
-		echo "*** clearing its contents."
-	else
-		echo "*** ignoring duplicates."
-	fi
-	echo "**************************************************"
-
-	###
-	# Load to collection.
-	# Load period geometries
-	# inserting first period and
-	# ignoring duplicates for subsequent periods.
-	###
-	$cmd "$dump" \
-		 "$collection" \
-		 $first
-	if [ $? -ne 0 ]
-	then
-		echo "*************"
-		echo "*** ERROR ***"
-		echo "*************"
-		exit 1
-	fi
-	
-	first=0
-	
-done
-
-LOAD_MAP_END=$(date +%s)
-elapsed=$((LOAD_MAP_END-LOAD_MAP_START))
+# Create directories.
+##
 echo ""
-echo "**************************************************"
-echo "**************************************************"
-echo "*** load_map.sh - TOTAL TIME: $elapsed seconds"
-echo "**************************************************"
-echo "**************************************************"
+echo "<<< CREATE DIRECTORIES >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/create_directories.sh"
+$cmd
+
+# ###
+# # 1981-2010.
+# ###
+# echo ""
+# echo "<<< ELEVATION >>>"
+# echo ""
+# cmd="${path}/WorldClim/workflow/create_elevation.sh"
+# $cmd | tee "${path}/WorldClim/log/Elevation.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
+# ###
+# # 1970-2000.
+# ###
+# echo ""
+# echo "<<< PERIOD 1970-2000 >>>"
+# echo ""
+# cmd="${path}/WorldClim/workflow/create_1970_2000.sh"
+# $cmd | tee "${path}/WorldClim/log/1970_2000.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
+# ###
+# # 2021-2040.
+# ###
+# echo ""
+# echo "<<< PERIOD 2021-2040 >>>"
+# echo ""
+# cmd="${path}/WorldClim/workflow/create_2021_2040.sh"
+# $cmd | tee "${path}/WorldClim/log/2021_2040.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
+# ###
+# # 2061-2080.
+# ###
+# echo ""
+# echo "<<< PERIOD 2061-2080 >>>"
+# echo ""
+# cmd="${path}/WorldClim/workflow/create_2061_2080.sh"
+# $cmd | tee "${path}/WorldClim/log/2061_2080.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
+# ###
+# # 2081-2100.
+# ###
+# echo ""
+# echo "<<< PERIOD 2081-2100 >>>"
+# echo ""
+# cmd="${path}/WorldClim/workflow/create_2081_2100.sh"
+# $cmd | tee "${path}/WorldClim/log/2081_2100.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
+###
+# Load dumps into temporary period collections
+# and dump periods coordinates.
+###
+echo ""
+echo "<<< LOAD PERIOD DUMPS INTO DATABASE >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/load_periods.sh"
+$cmd | tee "${path}/WorldClim/log/load_periods.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Load coordinate dumps into map collection.
+###
+echo ""
+echo "<<< LOAD COORDINATES INTO DATABASE >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/load_map.sh"
+$cmd | tee "${path}/WorldClim/log/load_map.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Dump Chelsa and dump map.
+###
+echo ""
+echo "<<< DUMP PROPERTIES AND COORDINATES >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/dump_worldclim.sh"
+$cmd | tee "${path}/WorldClim/log/dump_worldclim.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+WORLDCLIM_END=$(date +%s)
+elapsed=$((WORLDCLIM_END-WORLDCLIM_START))
+echo ""
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
+echo "==> WORLDCLIM.sh - TOTAL TIME: $elapsed seconds"
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""

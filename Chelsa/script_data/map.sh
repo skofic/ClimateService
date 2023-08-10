@@ -34,7 +34,7 @@ then
 		--type "jsonl" \
 		--collection "$2" \
 		--auto-rate-limit true \
-		--ignore-missing \
+		--on-duplicate "error" \
 		--overwrite
 	if [ $? -ne 0 ]
 	then
@@ -53,7 +53,7 @@ else
 		--type "jsonl" \
 		--collection "$2" \
 		--auto-rate-limit true \
-		--ignore-missing
+		--on-duplicate "ignore"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

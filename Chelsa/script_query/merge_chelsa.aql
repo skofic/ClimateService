@@ -20,10 +20,10 @@ FOR doc IN @@collection
 RETURN {
 	_key: doc._key,
 	geometry: doc.geometry,
-	properties: MERGE_RECURSIVE(
-		period_1.properties,
-		period_2.properties,
-		period_3.properties,
-		period_4.properties
-	)
+	properties: {
+		`1981-2010`: period_1.properties.`1981-2010`,
+		`2011-2040`: period_2.properties.`2011-2040`,
+		`2041-2070`: period_3.properties.`2041-2070`,
+		`2071-2100`: period_4.properties.`2071-2100`
+	}
 }

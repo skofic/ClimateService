@@ -132,6 +132,22 @@ then
 	exit 1
 fi
 
+###
+# Dump Chelsa and dump map.
+###
+echo ""
+echo "<<< DUMP PROPERTIES AND COORDINATES >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/dump_worldclim.sh"
+$cmd | tee "${path}/WorldClim/log/dump_worldclim.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
 WORLDCLIM_END=$(date +%s)
 elapsed=$((WORLDCLIM_END-WORLDCLIM_START))
 echo ""

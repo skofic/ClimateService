@@ -26,12 +26,12 @@ FOR doc IN @@collection
 RETURN {
 	_key: doc._key,
 	geometry: doc.geometry,
-	properties: MERGE_RECURSIVE(
-		period_0.properties,
-		period_1.properties,
-		period_2.properties,
-		period_3.properties,
-		period_4.properties,
-		period_5.properties
-	)
+	properties: {
+		topography: period_0.properties.topography,
+		`1970-2000`: period_1.properties.`1970-2000`,
+		`2021-2040`: period_2.properties.`2021-2040`,
+		`2041-2060`: period_3.properties.`2041-2060`,
+		`2061-2080`: period_4.properties.`2061-2080`,
+		`2081-2100`: period_5.properties.`2081-2100`
+	}
 }
