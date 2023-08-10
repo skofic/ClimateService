@@ -15,17 +15,21 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 file="properties"
-cmd="${path}/Chelsa/script_data/load.sh"
+cmd="${path}/WorldClim/script_data/load.sh"
 
+collection_0="temp_period_0"
 collection_1="temp_period_1"
 collection_2="temp_period_2"
 collection_3="temp_period_3"
 collection_4="temp_period_4"
+collection_4="temp_period_5"
 
-period_1="${path}/Chelsa/1981-2010"
-period_2="${path}/Chelsa/2011-2040/MPI-ESM1-2-HR/ssp370"
-period_3="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
-period_4="${path}/Chelsa/2071-2100/MPI-ESM1-2-HR/ssp370"
+period_0="${path}/WorldClim/Elevation"
+period_1="${path}/WorldClim/1970-2000"
+period_2="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
+period_3="${path}/WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370"
+period_4="${path}/WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370"
+period_5="${path}/WorldClim/2081-2100/MPI-ESM1-2-HR/ssp370"
 
 echo "**************************************************"
 echo "**************************************************"
@@ -37,10 +41,13 @@ LOAD_PERIODS_START=$(date +%s)
 ###
 # Iterate periods.
 ###
-for i in "${collection_1} ${period_1}" \
-		 "${collection_2} ${period_2}" \
-		 "${collection_3} ${period_3}" \
-		 "${collection_4} ${period_4}"
+first=1
+for i in "${collection_0} ${period_0}" \
+         "${collection_1} ${period_1}" \
+         "${collection_2} ${period_2}" \
+         "${collection_3} ${period_3}" \
+         "${collection_4} ${period_4}" \
+         "${collection_5} ${period_5}"
 do
 	set -- $i
 	

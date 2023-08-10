@@ -34,18 +34,18 @@ LOAD_MAP_START=$(date +%s)
 # Create periods map.
 ###
 first=1
-for number in "1" "2" "3" "4"
+for period in "$period_1" \
+			  "$period_2" \
+			  "$period_3" \
+			  "$period_4"
 do
-	###
-	# Set run parameters.
-	###
-	period="period_${number}"
-
+	set -- $i
+	
 	###
 	# Set parameters.
 	###
 	file="map"
-	epoc="${!period}"
+	epoc="$period"
 	dump="${epoc}/data/${file}.jsonl.gz"
 
 	echo ""

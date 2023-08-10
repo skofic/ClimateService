@@ -41,8 +41,8 @@ fi
 echo ""
 echo "<<< PERIOD 1970-2000 >>>"
 echo ""
-cmd="${path}/WorldClim/workflow/create_1970_2000.sh"
-$cmd | tee "${path}/WorldClim/log/1970_2000.log"
+cmd="${path}/Chelsa/workflow/create_1970_2000_concurrent.sh"
+$cmd | tee "${path}/Chelsa/log/1970_2000_concurrent.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -57,8 +57,8 @@ fi
 echo ""
 echo "<<< PERIOD 2021-2040 >>>"
 echo ""
-cmd="${path}/WorldClim/workflow/create_2021_2040.sh"
-$cmd | tee "${path}/WorldClim/log/2021_2040.log"
+cmd="${path}/Chelsa/workflow/create_2021_2040_concurrent.sh"
+$cmd | tee "${path}/Chelsa/log/2021_2040_concurrent.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -73,8 +73,8 @@ fi
 echo ""
 echo "<<< PERIOD 2061-2080 >>>"
 echo ""
-cmd="${path}/WorldClim/workflow/create_2061_2080.sh"
-$cmd | tee "${path}/WorldClim/log/2061_2080.log"
+cmd="${path}/Chelsa/workflow/create_2061_2080_concurrent.sh"
+$cmd | tee "${path}/Chelsa/log/2061_2080_concurrent.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -89,25 +89,8 @@ fi
 echo ""
 echo "<<< PERIOD 2081-2100 >>>"
 echo ""
-cmd="${path}/WorldClim/workflow/create_2081_2100.sh"
-$cmd | tee "${path}/WorldClim/log/2081_2100.log"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Load dumps into temporary period collections
-# and dump periods coordinates.
-###
-echo ""
-echo "<<< LOAD PERIOD DUMPS INTO DATABASE >>>"
-echo ""
-cmd="${path}/WorldClim/workflow/load_periods.sh"
-$cmd | tee "${path}/WorldClim/log/load_periods.log"
+cmd="${path}/Chelsa/workflow/create_2081_2100_concurrent.sh"
+$cmd | tee "${path}/Chelsa/log/2081_2100_concurrent.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
