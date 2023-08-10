@@ -27,7 +27,7 @@ coll="temp_ping"
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 cmd="${path}/WorldClim/script_data/process_multi_monthly.sh"
 
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 start=$(date +%s)
 
 for name in "pr" "tasmax" "tasmin"
@@ -59,4 +59,4 @@ elapsed=$((end-start))
 echo "--------------------------------------------------"
 echo "2021-2040 process_monthly.sh"
 echo "Elapsed time: $elapsed seconds"
-echo "----------------------------------------"
+echo "--------------------------------------------------"

@@ -30,7 +30,7 @@ coll="temp_annual"
 file="coordinates_annual"
 dump="${epoc}/data/properties/${file}.jsonl.gz"
 
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 echo "==> Dump ${dump}"
 start=$(date +%s)
 
@@ -51,9 +51,9 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "1970-2000 dump_coordinates.sh (annual)"
+echo "2021-2040 dump_coordinates.sh (annual)"
 echo "Elapsed time: $elapsed seconds"
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 
 ###
 # Parameters.
@@ -62,7 +62,7 @@ coll="temp_monthly"
 file="coordinates_monthly"
 dump="${epoc}/data/properties/${file}.jsonl.gz"
 
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 echo "==> Dump ${dump}"
 start=$(date +%s)
 
@@ -83,6 +83,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "1970-2000 dump_coordinates.sh (monthly)"
+echo "2021-2040 dump_coordinates.sh (monthly)"
 echo "Elapsed time: $elapsed seconds"
-echo "----------------------------------------"
+echo "--------------------------------------------------"

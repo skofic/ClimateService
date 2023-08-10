@@ -1,6 +1,9 @@
 ///
 // Merge bioclimatic and monthly data.
 ///
+///
+// Merge bioclimatic and monthly data.
+///
 FOR doc IN @@collection
 	LET annual = DOCUMENT(temp_annual, doc._key)
 	LET monthly = DOCUMENT(temp_monthly, doc._key)

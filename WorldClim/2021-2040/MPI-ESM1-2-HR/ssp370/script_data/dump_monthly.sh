@@ -22,7 +22,7 @@ epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 dump="${epoc}/data/properties/${file}.jsonl.gz"
 query="${epoc}/script_query/dump_monthly.aql"
 
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 echo "==> Dump ${dump}"
 start=$(date +%s)
 
@@ -42,6 +42,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "1970-2000 dump_monthly.sh"
+echo "2021-2040 dump_monthly.sh"
 echo "Elapsed time: $elapsed seconds"
-echo "----------------------------------------"
+echo "--------------------------------------------------"

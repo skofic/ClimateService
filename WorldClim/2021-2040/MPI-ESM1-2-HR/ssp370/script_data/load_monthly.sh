@@ -21,7 +21,7 @@ file="combined_monthly"
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 dump="${epoc}/data/properties/${file}.jsonl.gz"
 
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 echo "==> Load ${dump}"
 start=$(date +%s)
 
@@ -43,4 +43,4 @@ elapsed=$((end-start))
 echo "--------------------------------------------------"
 echo "2021-2040 load_monthly.sh"
 echo "Elapsed time: $elapsed seconds"
-echo "----------------------------------------"
+echo "--------------------------------------------------"

@@ -15,12 +15,17 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
-cmd="${epoc}/workflow/MERGE.sh"
 
+echo "**************************************************"
+echo "*** MERGE.sh"
+echo "**************************************************"
+MERGE_START=$(date +%s)
+	
 # ###
-# # Execute script.
+# # Dump annual and monthly coordinates.
 # ###
-# $cmd | tee "${epoc}/log/5_MERGE.log"
+# cmd="${epoc}/script_data/dump_coordinates.sh"
+# $cmd
 # if [ $? -ne 0 ]
 # then
 # 	echo "*************"
@@ -28,17 +33,37 @@ cmd="${epoc}/workflow/MERGE.sh"
 # 	echo "*************"
 # 	exit 1
 # fi
-
+	
+# ###
+# # Combine annual and monthly coordinates.
+# ###
+# cmd="${epoc}/script_data/load_coordinates.sh"
+# $cmd
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+	
 ###
-# Remove processed CSV and JSONL files.
-# We do this here because we assume merging was successful.
+# Dump merged data.
 ###
-for name in "bio"
-do
-	rm -f "${epoc}/data/${name}.csv.gz"
-done
+cmd="${epoc}/script_data/dump_merged.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-for name in "pr" "tasmax" "tasmin"
-do
-	rm -f "${epoc}/data/${name}.jsonl.gz"
-done
+MERGE_END=$(date +%s)
+elapsed=$((MERGE_END-MERGE_START))
+echo ""
+echo "**************************************************"
+echo "*** MERGE.sh - TOTAL TIME: $elapsed seconds"
+echo "**************************************************"
+echo ""

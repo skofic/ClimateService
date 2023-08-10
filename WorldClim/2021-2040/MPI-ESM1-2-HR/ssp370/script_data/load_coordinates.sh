@@ -28,7 +28,7 @@ epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 file="coordinates_annual"
 dump="${epoc}/data/properties/${file}.jsonl.gz"
 
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 echo "==> Load ${dump}"
 start=$(date +%s)
 
@@ -50,9 +50,9 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "1970-2000 load_coordinates.sh (annual)"
+echo "2021-2040 load_coordinates.sh (annual)"
 echo "Elapsed time: $elapsed seconds"
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 
 ###
 # Properties.
@@ -60,7 +60,7 @@ echo "----------------------------------------"
 file="coordinates_monthly"
 dump="${epoc}/data/properties/${file}.jsonl.gz"
 
-echo "----------------------------------------"
+echo "--------------------------------------------------"
 echo "==> Load ${dump}"
 start=$(date +%s)
 
@@ -80,6 +80,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "1970-2000 load_coordinates.sh (monthly)"
+echo "2021-2040 load_coordinates.sh (monthly)"
 echo "Elapsed time: $elapsed seconds"
-echo "----------------------------------------"
+echo "--------------------------------------------------"
