@@ -72,7 +72,7 @@ do
 	# Load to collection.
 	# Load period dump files into related collection.
 	###
-	$cmd "dump" "$coll"
+	$cmd "$dump" "$coll"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
