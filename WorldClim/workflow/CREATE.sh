@@ -116,6 +116,22 @@ then
 	exit 1
 fi
 
+###
+# Load coordinate dumps into map collection.
+###
+echo ""
+echo "<<< LOAD COORDINATES INTO DATABASE >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/load_map.sh"
+$cmd | tee "${path}/WorldClim/log/load_map.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
 WORLDCLIM_END=$(date +%s)
 elapsed=$((WORLDCLIM_END-WORLDCLIM_START))
 echo ""

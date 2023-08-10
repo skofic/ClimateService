@@ -101,7 +101,7 @@ then
 fi
 
 ###
-# Load coordinate dumps into Chelsa map collection.
+# Load coordinate dumps into map collection.
 ###
 echo ""
 echo "<<< LOAD COORDINATES INTO DATABASE >>>"
@@ -117,7 +117,7 @@ then
 fi
 
 ###
-# Dump Chelsa and dump Chelsa map.
+# Dump Chelsa and dump map.
 ###
 echo ""
 echo "<<< DUMP PROPERTIES AND COORDINATES >>>"

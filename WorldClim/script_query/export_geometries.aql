@@ -1,0 +1,10 @@
+///
+// Export geometry data.
+///
+FOR doc IN @@collection
+	LET geo = GEO_POINT(doc.lon, doc.lat)
+	
+RETURN {
+	_key: MD5(TO_STRING(geo)),
+	geometry: geo
+}

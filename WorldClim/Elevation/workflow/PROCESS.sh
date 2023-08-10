@@ -20,18 +20,6 @@ echo "**************************************************"
 PROCESS_START=$(date +%s)
 
 ###
-# Remove downloaded and clipped maps,
-# leaving only the contents of the CSV folder.
-# We do this here, because at this point
-# you will not use GeoTIFF files any more.
-###
-for directory in "Full" "Clipped"
-do
-	echo "- Removing ${epoc}/${directory}/*.tif"
-	rm -f "${epoc}/${directory}/*.tif"	
-done
-
-###
 # Process elevation data.
 ###
 cmd="${epoc}/script_data/process.sh"
