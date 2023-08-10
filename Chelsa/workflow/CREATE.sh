@@ -120,7 +120,7 @@ fi
 # Dump Chelsa and dump map.
 ###
 echo ""
-echo "<<< DUMP PROPERTIES AND COORDINATES >>>"
+echo "<<< DUMP AND LOAD IN DATABASE >>>"
 echo ""
 cmd="${path}/Chelsa/workflow/dump_chelsa.sh"
 $cmd | tee "${path}/Chelsa/log/dump_chelsa.log"

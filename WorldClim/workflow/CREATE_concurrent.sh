@@ -99,6 +99,55 @@ then
 	exit 1
 fi
 
+###
+# Load dumps into temporary period collections
+# and dump periods coordinates.
+###
+echo ""
+echo "<<< LOAD PERIOD DUMPS INTO DATABASE >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/load_periods.sh"
+$cmd | tee "${path}/WorldClim/log/load_periods.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Load coordinate dumps into map collection.
+###
+echo ""
+echo "<<< LOAD COORDINATES INTO DATABASE >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/load_map.sh"
+$cmd | tee "${path}/WorldClim/log/load_map.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Dump Chelsa and dump map.
+###
+echo ""
+echo "<<< DUMP AND LOAD IN DATABASE >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/dump_worldclim.sh"
+$cmd | tee "${path}/WorldClim/log/dump_worldclim.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
 WORLDCLIM_END=$(date +%s)
 elapsed=$((WORLDCLIM_END-WORLDCLIM_START))
 echo ""

@@ -136,7 +136,7 @@ fi
 # Dump Chelsa and dump map.
 ###
 echo ""
-echo "<<< DUMP PROPERTIES AND COORDINATES >>>"
+echo "<<< DUMP AND LOAD IN DATABASE >>>"
 echo ""
 cmd="${path}/WorldClim/workflow/dump_worldclim.sh"
 $cmd | tee "${path}/WorldClim/log/dump_worldclim.log"
