@@ -40,5 +40,5 @@ done
 
 for name in "pr" "tasmax" "tasmin"
 do
-	rm -f "${epoc}/CSV/${name}.jsonl.gz"
+	rm -f "${epoc}/data/${name}.jsonl.gz"
 done

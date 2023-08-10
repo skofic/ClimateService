@@ -28,3 +28,12 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove converted CSV files in monthly folders.
+# We do this here because we assume combining was successful.
+###
+for folder in "pr" "srad" "tas" "tasmax" "tasmin" "vapr" "wind"
+do
+	rm -f "${epoc}/data/${folder}/*.csv.gz"
+done

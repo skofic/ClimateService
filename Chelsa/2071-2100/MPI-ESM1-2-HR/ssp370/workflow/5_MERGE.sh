@@ -28,3 +28,12 @@ then
 	echo "*************"
 	exit 1
 fi
+
+###
+# Remove processed CSV files.
+# We do this here because we assume merging was successful.
+###
+for folder in "pr" "tas" "tasmax" "tasmin"
+do
+	rm -f "${epoc}/data/${folder}/*.csv.gz"
+done

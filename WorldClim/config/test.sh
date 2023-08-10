@@ -17,17 +17,17 @@ source "${HOME}/.ClimateService"
 epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 cmd="${epoc}/workflow/MERGE.sh"
 
-###
-# Execute script.
-###
-$cmd | tee "${epoc}/log/5_MERGE.log"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# ###
+# # Execute script.
+# ###
+# $cmd | tee "${epoc}/log/5_MERGE.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
 ###
 # Remove processed CSV and JSONL files.
@@ -40,5 +40,5 @@ done
 
 for name in "pr" "tasmax" "tasmin"
 do
-	rm -f "${epoc}/CSV/${name}.jsonl.gz"
+	rm -f "${epoc}/data/${name}.jsonl.gz"
 done

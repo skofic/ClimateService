@@ -1,0 +1,24 @@
+///
+// Merge WorldClim period data.
+// Read all records in WorldClim coordinates
+// and merge all related period records.
+///
+FOR doc IN @@collection
+	LET period_1 = DOCUMENT(temp_period_1, doc._key)
+	LET period_2 = DOCUMENT(temp_period_2, doc._key)
+	LET period_3 = DOCUMENT(temp_period_3, doc._key)
+	LET period_4 = DOCUMENT(temp_period_4, doc._key)
+	LET period_5 = DOCUMENT(temp_period_5, doc._key)
+	LET period_topo = DOCUMENT(temp_period_topography, doc._key)
+RETURN {
+	_key: doc._key,
+	geometry: doc.geometry,
+	properties: MERGE_RECURSIVE(
+		period_topo.properties,
+		period_1.properties,
+		period_2.properties,
+		period_3.properties,
+		period_4.properties,
+		period_5.properties
+	)
+}
