@@ -1,5 +1,7 @@
 ///
 // Translate Köppen Geiger kg0, kg1 and kg2.
+// @type represents the enumeration type, it will prefix codes.
+// @variable represents the variable name.
 ///
 FOR doc IN @@collection
 
@@ -46,6 +48,6 @@ RETURN  MERGE(
 				lat: doc.lat
 			},
 			ZIP(
-				[@variable], [CONCAT_SEPARATOR('_', @variable, value)]
+				[@variable], [CONCAT_SEPARATOR('_', @type, value)]
 			)
 		)
