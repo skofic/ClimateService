@@ -47,31 +47,31 @@ mkdir "${epoc}/log/"
 # 	exit 1
 # fi
 
-###
-# Process data.
-###
-cmd="${epoc}/workflow/2_PROCESS.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# ###
+# # Process data.
+# ###
+# cmd="${epoc}/workflow/2_PROCESS.sh"
+# $cmd
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
-###
-# Combine bioclimatic data.
-###
-cmd="${epoc}/workflow/3_COMBINE_ANNUAL.sh"
-$cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# ###
+# # Combine bioclimatic data.
+# ###
+# cmd="${epoc}/workflow/3_COMBINE_ANNUAL.sh"
+# $cmd
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
 ###
 # Combine monthly data.
