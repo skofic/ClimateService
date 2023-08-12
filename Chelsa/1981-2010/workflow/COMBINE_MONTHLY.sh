@@ -43,10 +43,12 @@ cmd="${epoc}/script_data/dump_monthly.sh"
 $cmd
 if [ $? -ne 0 ]
 then
+
 	echo "*************"
 	echo "*** ERROR ***"
 	echo "*************"
 	exit 1
+	
 fi
 
 ###

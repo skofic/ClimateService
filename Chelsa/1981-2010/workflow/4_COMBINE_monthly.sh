@@ -37,5 +37,7 @@ fi
 ###
 for folder in "pr" "tas" "tasmax" "tasmin"
 do
+
 	rm -f "${epoc}/CSV/${folder}/*.csv.gz"
+	
 done
