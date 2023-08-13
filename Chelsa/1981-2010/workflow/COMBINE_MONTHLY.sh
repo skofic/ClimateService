@@ -71,3 +71,5 @@ echo "**************************************************"
 echo "*** COMBINE_MONTHLY.sh - TOTAL TIME: $elapsed seconds"
 echo "**************************************************"
 echo ""
+
+sleep 15

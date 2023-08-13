@@ -80,3 +80,5 @@ echo "**************************************************"
 echo "*** COMBINE_ANNUAL.sh - TOTAL TIME: $elapsed seconds"
 echo "**************************************************"
 echo ""
+
+sleep 15
