@@ -17,7 +17,7 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 epoc="${path}/Chelsa/1981-2010"
-cmd="${epoc}/workflow/COMBINE_MONTH.sh"
+cmd="${epoc}/workflow/COMBINE_MONTHLY.sh"
 
 ###
 # Execute script.
