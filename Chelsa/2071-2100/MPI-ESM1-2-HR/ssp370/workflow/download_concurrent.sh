@@ -29,7 +29,7 @@ do
 	###
 	# Set command.
 	###
-	cmd="${epoc}/script_geo/ConvertToXYZ_${code}.sh"
+	cmd="${epoc}/script_geo/download_${code}.sh"
 	
 	###
 	# Launch script in batch.
