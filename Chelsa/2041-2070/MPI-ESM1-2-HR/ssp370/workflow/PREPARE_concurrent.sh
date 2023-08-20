@@ -22,7 +22,7 @@ PREPARE_START=$(date +%s)
 ###
 # Download full maps.
 ###
-cmd="${epoc}/workflow/download_concurrent.sh"
+cmd="${epoc}/workflow/download.sh"
 $cmd
 if [ $? -ne 0 ]
 then
