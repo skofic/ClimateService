@@ -22,7 +22,7 @@ RETURN {
     geometry: geo,
     properties: {
         `1970-2000`: {
-            monthly: month_data
+            std_date_span_month: month_data
         }
     }
 }

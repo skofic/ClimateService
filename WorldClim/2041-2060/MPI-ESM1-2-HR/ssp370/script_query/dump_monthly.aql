@@ -25,7 +25,7 @@ RETURN {
 		`2041-2060`: {
 			`MPI-ESM1-2-HR`: {
 				`ssp370`: {
-					monthly: monthly
+					std_date_span_month: monthly
 				}
 			}
 		}
