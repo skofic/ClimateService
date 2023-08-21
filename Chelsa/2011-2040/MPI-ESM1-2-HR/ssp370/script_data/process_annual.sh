@@ -92,7 +92,7 @@ do
 		$cmd "${epoc}/CSV/${name}/${variable}.csv.gz" \
 			 "${epoc}/data/${name}/${variable}.csv.gz" \
 			 "${path}/Chelsa/script_query/koppen_geiger_0_1_2.aql" \
-			 "{\"@@collection\": \"$coll\", \"variable\": \"${pref}_${variable}\"}" \
+			 "{\"@@collection\": \"$coll\", \"type\": \"${pref}_${enum}\", \"variable\": \"${pref}_${variable}\"}" \
 			 "$coll" \
 			 "${pref}_${variable}"
 		if [ $? -ne 0 ]
