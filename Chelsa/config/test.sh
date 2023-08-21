@@ -23,9 +23,9 @@ $cmd
 # ###
 # # 1981-2010.
 # ###
-# echo ""
-# echo "<<< PERIOD 1981-2010 >>>"
-# echo ""
+echo ""
+echo "<<< PERIOD 1981-2010 >>>"
+echo ""
 # cmd="${path}/Chelsa/workflow/create_1981_2010_concurrent.sh"
 # $cmd | tee "${path}/Chelsa/log/1981_2010.log"
 # if [ $? -ne 0 ]
