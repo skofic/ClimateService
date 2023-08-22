@@ -1,0 +1,52 @@
+///
+// Update ShapeData fields and structure.
+//
+// The query will create the properties struct,
+// and update all obsolete variable names.
+///
+FOR doc IN @@collection
+
+	LET variables = ATTRIBUTES(UNSET(doc, 'GeometryID', 'std_span', 'std_date', 'std_terms'), true)
+	
+	LET keys = (
+		FOR variable IN variables
+		RETURN TRANSLATE(variable, {
+			"canopy_height": "chr_envi_AvCanopyHeight",
+			"dominant_forest_type": "chr_envi_DLT",
+			"biomass_2010": "chr_envi_AvBiomass",
+			"LST_Day_1km": "chr_envi_LST",
+			"Lai_500m": "chr_envi_AvLai",
+			"Gpp": "chr_envi_AvGpp",
+			"ndvi": "chr_envi_AvNDVI",
+			"NDWI": "chr_envi_AvNDWI",
+			"temperature_2m": "env_climate_temp-2m",
+			"total_precipitation": "env_climate_tpr",
+			"wind_speed": "env_climate_wind",
+			"soil_water_0_7cm": "env_climate_soil_water_7",
+			"soil_water_7_28cm": "env_climate_soil_water_28",
+			"soil_water_28_100cm": "env_climate_soil_water_100",
+			"soil_water_100_289cm": "env_climate_soil_water_289",
+			"soil_temperature_0_7cm": "env_climate_soil_temp_7",
+			"soil_temperature_7_28cm": "env_climate_soil_temp_28",
+			"soil_temperature_28_100cm": "env_climate_soil_temp_100",
+			"soil_temperature_100_289cm": "env_climate_soil_temp_289",
+			"surface_latent_heat_flux": "env_climate_slhf",
+			"surface_net_solar_radiation": "env_climate_snsrad",
+			"relative_humidity": "chr_envi_RH"
+		})
+	)
+	
+	LET values = (
+		FOR variable IN variables
+		RETURN doc[variable]
+	)
+	
+	LET properties = ZIP(keys, values)
+	
+RETURN {
+		geo_shape_id: doc.GeometryID,
+		std_date: doc.std_date,
+		properties: ZIP(keys, values),
+		std_date_span: doc.std_span,
+		std_terms: keys,
+}
