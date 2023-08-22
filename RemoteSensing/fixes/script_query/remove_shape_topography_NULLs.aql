@@ -1,0 +1,23 @@
+///
+// Remove NULL properties from topography and update legacy variable names.
+//
+// The query will iterate all records, tracking which topography variables
+// are not NULL, it will then return the record with updated variable names
+// and only the topography variables that are not NULL.
+///
+FOR doc IN @@collection
+
+	LET filled = (
+		FOR key IN ATTRIBUTES(doc.properties.topography)
+			FILTER doc.properties.topography[key] != null
+		RETURN { [key]: doc.properties.topography[key] }
+	)
+
+RETURN {
+    _key: doc._key,
+    geo_shape: doc.geometry,
+    geo_shape_bounds: doc.bounds,
+    properties: {
+        topography: MERGE(filled)
+    }
+}
