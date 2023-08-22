@@ -1,0 +1,14 @@
+///
+// Update unit shapes (UnitShapes) legacy variables.
+//
+// The query will iterate all records and dump the updated variable names
+// reloading the dump in the collection.
+///
+FOR doc IN @@collection
+
+RETURN {
+    _key: doc._key,
+    geo_shape_id: PARSE_IDENTIFIER(doc.GeometryID).key,
+    gcu_id_number: doc.UnitNumber,
+    `gcu_id_unit-id`: doc.UnitID
+}
