@@ -52,7 +52,7 @@ fi
 ###
 arangoimport \
 	--server.endpoint "$host" \
-	--server.database "$1" \
+	--server.database "$base" \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--file "${expo}/query.jsonl.gz" \
