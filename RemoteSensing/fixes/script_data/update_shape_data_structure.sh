@@ -1,15 +1,18 @@
 #!/bin/sh
 
 ###
-# Update ShapeData structure.
+# Update shape data (ShapeData) structure.
 #
 # The script wil:
 # - Update GeometryID to geo_shape_id.
 # - Aggregate all properties into a 'properties' property.
 #
 # The script expects the following parameters:
-# - $1: Database name.
-# - $2: Collection name.
+# - $1: Collection name.
+#
+# You should delete the old indexes, before running the script,
+# and re-create the indexes, with the new variable names,
+# after running the script.
 ###
 
 ###
@@ -27,12 +30,12 @@ epoc="$path/RemoteSensing/fixes"
 ###
 arangoexport \
 	--server.endpoint "$host" \
-	--server.database "$1" \
+	--server.database "$base" \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
 	--custom-query-file "${epoc}/script_query/update_shape_data_structure.aql" \
-	--custom-query-bindvars "{\"@@collection\": \"$2\"}" \
+	--custom-query-bindvars "{\"@@collection\": \"$1\"}" \
 	--compress-output true \
 	--overwrite true \
 	--type "jsonl"
@@ -54,7 +57,7 @@ arangoimport \
 	--server.password "$pass" \
 	--file "${expo}/query.jsonl.gz" \
 	--type "jsonl" \
-	--collection "$2" \
+	--collection "$1" \
 	--create-collection true \
 	--create-collection-type "document" \
 	--auto-rate-limit true \
