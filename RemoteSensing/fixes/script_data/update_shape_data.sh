@@ -18,7 +18,7 @@
 ###
 # Load default parameters.
 ###
-source "${HOME}/.ClimateService"
+source "${HOME}/.GeoService"
 
 ###
 # Set path parameters.
@@ -34,7 +34,7 @@ arangoexport \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
-	--custom-query-file "${epoc}/script_query/update_shape_data_structure.aql" \
+	--custom-query-file "${epoc}/script_query/update_shape_data.aql" \
 	--custom-query-bindvars "{\"@@collection\": \"$1\"}" \
 	--compress-output true \
 	--overwrite true \
@@ -48,20 +48,10 @@ then
 fi
 
 ###
-# Import data from JSONL file.
+# Copy and rename dump into data directory.
 ###
-arangoimport \
-	--server.endpoint "$host" \
-	--server.database "$base" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--file "${expo}/query.jsonl.gz" \
-	--type "jsonl" \
-	--collection "$1" \
-	--create-collection true \
-	--create-collection-type "document" \
-	--auto-rate-limit true \
-	--overwrite true
+# cp -f "${expo}/query.jsonl.gz" "${epoc}/data/${1}.jsonl.gz"
+mv -f "${expo}/query.jsonl.gz" "${epoc}/data/${1}.jsonl.gz"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -69,3 +59,26 @@ then
 	echo "*************"
 	exit 1
 fi
+
+# ###
+# # Import data from JSONL file.
+# ###
+# arangoimport \
+# 	--server.endpoint "$host" \
+# 	--server.database "$base" \
+# 	--server.username "$user" \
+# 	--server.password "$pass" \
+# 	--file "${expo}/query.jsonl.gz" \
+# 	--type "jsonl" \
+# 	--collection "$1" \
+# 	--create-collection true \
+# 	--create-collection-type "document" \
+# 	--auto-rate-limit true \
+# 	--overwrite true
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
