@@ -41,8 +41,6 @@ FOR doc IN @@collection
 		RETURN doc[variable]
 	)
 	
-	LET properties = ZIP(keys, values)
-	
 RETURN {
 		geo_shape_id: doc.GeometryID,
 		std_date: doc.std_date,
