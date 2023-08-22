@@ -31,7 +31,7 @@ arangoexport \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
-	--custom-query-file "${epoc}/script_query/update_shape_data_structures.aql" \
+	--custom-query-file "${epoc}/script_query/update_shape_data_structure.aql" \
 	--custom-query-bindvars "{\"@@collection\": \"$2\"}" \
 	--compress-output true \
 	--overwrite true \
