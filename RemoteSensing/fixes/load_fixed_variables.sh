@@ -12,24 +12,25 @@
 ###
 source "${HOME}/.GeoService"
 epoc="$path/RemoteSensing/fixes"
-fix_variables=$(date +%s)
 
 ###
-# Create directories.
-##
+# Parameters.
+###
+cmd="${epoc}/script_data/load_data.sh"
+
 echo ""
-echo "<<< CREATE CACHE DIRECTORY >>>"
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
+echo "==> load_fixed_variables.sh"
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
-mkdir -p "$expo"
-mkdir -p "${epoc}/data"
+load_fixed_variables_START=$(date +%s)
 
 ###
 # Fix Shapes collection.
 ###
 echo ""
-echo "<<< FIX SHAPES >>>"
+echo "<<< LOAD SHAPES >>>"
 echo ""
-cmd="${epoc}/script_data/update_shapes.sh"
 $cmd "Shapes"
 if [ $? -ne 0 ]
 then
@@ -45,7 +46,6 @@ fi
 echo ""
 echo "<<< FIX UNIT-SHAPES >>>"
 echo ""
-cmd="${epoc}/script_data/update_unit_shapes.sh"
 $cmd "UnitShapes"
 if [ $? -ne 0 ]
 then
@@ -61,7 +61,6 @@ fi
 echo ""
 echo "<<< FIX SHAPE-DATA >>>"
 echo ""
-cmd="${epoc}/script_data/update_shape_data.sh"
 $cmd "ShapeData"
 if [ $? -ne 0 ]
 then
@@ -71,10 +70,10 @@ then
 	exit 1
 fi
 
-fix_variables_END=$(date +%s)
-elapsed=$((fix_variables_END-fix_variables_START))
+load_fixed_variables_END=$(date +%s)
+elapsed=$((load_fixed_variables_END-load_fixed_variables_START))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> fix_variables.sh - TOTAL TIME: $elapsed seconds"
+echo "==> load_fixed_variables.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
