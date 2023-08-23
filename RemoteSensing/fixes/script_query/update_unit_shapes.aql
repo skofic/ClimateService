@@ -8,7 +8,7 @@ FOR doc IN @@collection
 
 RETURN {
     _key: doc._key,
-    geo_shape_id: PARSE_IDENTIFIER(doc.GeometryID).key,
+    geometry_hash: PARSE_IDENTIFIER(doc.GeometryID).key,
     gcu_id_number: doc.UnitNumber,
     `gcu_id_unit-id`: doc.UnitID
 }

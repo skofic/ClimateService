@@ -42,7 +42,7 @@ FOR doc IN @@collection
 	)
 	
 RETURN {
-		geo_shape_id: doc.GeometryID,
+		geometry_hash: doc.GeometryID,
 		std_date: doc.std_date,
 		properties: ZIP(keys, values),
 		std_date_span: doc.std_span,

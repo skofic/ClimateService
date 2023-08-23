@@ -15,8 +15,8 @@ FOR doc IN @@collection
 
 RETURN {
     _key: doc._key,
-    geo_shape: doc.geometry,
-    geo_shape_bounds: doc.bounds,
+    geometry: doc.geometry,
+    geometry_bounds: doc.bounds,
     properties: {
         topography: MERGE(filled)
     }
