@@ -3,6 +3,7 @@
 ///
 FOR doc IN @@collection
     COLLECT longitude = doc.lon, latitude = doc.lat INTO items
+    LET geo = GEO_POINT(longitude, latitude)
 
     LET point_data = (
         FOR doc IN items[*].doc
@@ -14,8 +15,6 @@ FOR doc IN @@collection
             COLLECT month = doc.std_month INTO months
         RETURN MERGE(months[*].doc)
     )
-    
-    LET geo = GEO_POINT(longitude, latitude)
 
 RETURN {
     _key: MD5(TO_STRING(geo)),
