@@ -26,33 +26,33 @@ start_extract_zip_files=$(date +%s)
 ###
 epoc="$path/RemoteSensing/CSV"
 
-# ###
-# # Unzip all files ignoring directory and overwriting.
-# ###
-# echo "--------------------------------------------------"
-# echo "- Extracting zip files to: ${epoc}/download/"
-# echo "--------------------------------------------------"
-# start=$(date +%s)
-# # I am using a loop, because unzip doesn't accept wildcards
-# # in the ArangoDB docker installation.
-# for name in "${epoc}/download/"*.zip
-# do
-# 	unzip -jo "$name" -d "${epoc}/download/"
-# 	if [ $? -ne 0 ]
-# 	then
-# 		echo "*************"
-# 		echo "*** ERROR ***"
-# 		echo "*************"
-# 		exit 1
-# 	fi
-# done
-# 
-# end=$(date +%s)
-# elapsed=$((end-start))
-# echo "--------------------------------------------------"
-# echo "= Extracting zip files: $elapsed seconds"
-# echo "--------------------------------------------------"
-# echo ""
+###
+# Unzip all files ignoring directory and overwriting.
+###
+echo "--------------------------------------------------"
+echo "- Extracting zip files to: ${epoc}/download/"
+echo "--------------------------------------------------"
+start=$(date +%s)
+# I am using a loop, because unzip doesn't accept wildcards
+# in the ArangoDB docker installation.
+for name in "${epoc}/download/"*.zip
+do
+	unzip -jo "$name" -d "${epoc}/download/"
+	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
+done
+
+end=$(date +%s)
+elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "= Extracting zip files: $elapsed seconds"
+echo "--------------------------------------------------"
+echo ""
 
 ###
 # GZip all .csv files.
