@@ -18,6 +18,8 @@ source "${HOME}/.GeoService"
 echo "=================================================="
 echo "= extract_zip_files.sh"
 echo "=================================================="
+echo $$
+echo "=================================================="
 echo ""
 start_extract_zip_files=$(date +%s)
 
