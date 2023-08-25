@@ -33,7 +33,7 @@ echo "--------------------------------------------------"
 echo "- Extracting zip files to: ${epoc}/download/"
 echo "--------------------------------------------------"
 start=$(date +%s)
-unzip -j -o -d "${epoc}/download/" "${epoc}/download/*.zip"
+unzip -j -o -d "${epoc}/download/" "${epoc}/download/"*.zip
 if [ $? -ne 0 ]
 then
 	echo "*************"
