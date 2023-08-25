@@ -49,28 +49,6 @@ echo "--------------------------------------------------"
 echo ""
 
 ###
-# Delete all zip files.
-###
-echo "--------------------------------------------------"
-echo "- Removing zip files"
-echo "--------------------------------------------------"
-start=$(date +%s)
-rm -f "${epoc}/download/"*.zip
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-end=$(date +%s)
-elapsed=$((end-start))
-echo "--------------------------------------------------"
-echo "= Removing zip files: $elapsed seconds"
-echo "--------------------------------------------------"
-echo ""
-
-###
 # GZip all .csv files.
 ###
 echo "--------------------------------------------------"
@@ -214,6 +192,28 @@ do
 	done
 	
 done
+
+###
+# Delete all zip files.
+###
+echo "--------------------------------------------------"
+echo "- Removing zip files"
+echo "--------------------------------------------------"
+start=$(date +%s)
+rm -f "${epoc}/download/"*.zip
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+end=$(date +%s)
+elapsed=$((end-start))
+echo "--------------------------------------------------"
+echo "= Removing zip files: $elapsed seconds"
+echo "--------------------------------------------------"
+echo ""
 
 end=$(date +%s)
 elapsed=$((end-start))
