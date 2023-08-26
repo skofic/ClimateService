@@ -37,9 +37,9 @@ echo "--------------------------------------------------"
 start=$(date +%s)
 # I am using a loop, because unzip doesn't accept wildcards
 # in the ArangoDB docker installation.
-for name in "${epoc}/download/"*.zip
+for name in "${path}/RemoteSensing/download/"*.zip
 do
-	unzip -jo "$name" -d "${epoc}/download/"
+	unzip -jo "$name" -d "${path}/RemoteSensing/download/"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -63,7 +63,7 @@ echo "--------------------------------------------------"
 echo "- GZipping CSV files"
 echo "--------------------------------------------------"
 start=$(date +%s)
-gzip "${epoc}/download/"*.csv
+gzip "${path}/RemoteSensing/download/"*.csv
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -90,7 +90,7 @@ dir="topography"
 mkdir -p "${epoc}/${dir}"
 for name in "aspect" "elevation" "slope"
 do
-	mv -f "${epoc}/download/${name}.csv.gz" "${epoc}/${dir}/${name}.csv.gz"
+	mv -f "${path}/RemoteSensing/download/${name}.csv.gz" "${epoc}/${dir}/${name}.csv.gz"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -107,7 +107,7 @@ dir="std_date_span_year"
 mkdir -p "${epoc}/${dir}"
 for name in "biomass_2010" "canopy_height_2019" "dominant_forest_type"
 do
-	mv -f "${epoc}/download/${name}.csv.gz" "${epoc}/${dir}/${name}.csv.gz"
+	mv -f "${path}/RemoteSensing/download/${name}.csv.gz" "${epoc}/${dir}/${name}.csv.gz"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -124,7 +124,7 @@ dir="std_date_span_month"
 mkdir -p "${epoc}/${dir}"
 for name in "Lai_500m" "LST_Day_1km" "ndvi" "NDWI"
 do
-	mv -f "${epoc}/download/${name}.csv.gz" "${epoc}/${dir}/${name}.csv.gz"
+	mv -f "${path}/RemoteSensing/download/${name}.csv.gz" "${epoc}/${dir}/${name}.csv.gz"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -153,7 +153,7 @@ do
 		exit 1
 	fi
 	
-	mv -f "${epoc}/download/${name}"* "${dir}/${name}/"
+	mv -f "${path}/RemoteSensing/download/${name}"* "${dir}/${name}/"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -188,7 +188,7 @@ do
 			exit 1
 		fi
 	
-		mv -f "${epoc}/download/${name}_${kind}"* "${dir}/${name}/${name}_${kind}/"
+		mv -f "${path}/RemoteSensing/download/${name}_${kind}"* "${dir}/${name}/${name}_${kind}/"
 		if [ $? -ne 0 ]
 		then
 			echo "*************"
@@ -215,7 +215,7 @@ echo "--------------------------------------------------"
 echo "- Removing zip files"
 echo "--------------------------------------------------"
 start=$(date +%s)
-rm -f "${epoc}/download/"*.zip
+rm -f "${path}/RemoteSensing/download/"*.zip
 if [ $? -ne 0 ]
 then
 	echo "*************"
