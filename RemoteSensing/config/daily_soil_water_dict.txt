@@ -1,1 +1,4 @@
 soil_water_7cm env_climate_soil_water_7 soil_water_0_7cm process_daily_data.aql
+soil_water_28cm env_climate_soil_water_28 soil_water_7_28cm process_daily_data.aql
+soil_water_100cm env_climate_soil_water_100 soil_water_28_100cm process_daily_data.aql
+soil_water_289cm env_climate_soil_water_289 soil_water_100_289cm process_daily_data.aql
