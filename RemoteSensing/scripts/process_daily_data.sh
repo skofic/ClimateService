@@ -100,7 +100,7 @@ do
 		fi
 	
 		echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-		echo ">>> Process and dump ${filename} to file."
+		echo ">>> Process and dump ${filename} to query.jsonl.gz."
 		echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 		###
 		# Load data in temporary collection.
@@ -125,7 +125,7 @@ do
 		fi
 	
 		echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-		echo "<<< Load ${filename} in ${2} collection."
+		echo "<<< Load query.jsonl.gz in ${2} collection."
 		echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 		###
 		# Load data in stack collection.
@@ -172,7 +172,7 @@ do
 	done
 	
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	echo ">>> Dump ${folder} to file."
+	echo ">>> Dump ${variable} to file."
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	###
 	# Load data in temporary collection.

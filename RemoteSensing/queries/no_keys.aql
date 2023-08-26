@@ -2,4 +2,4 @@
 // Return all properties except ArangoDB ones.
 ///
 FOR doc IN @@collection
-RETURN DROP(doc, '_id', '_key', '_rev')
+RETURN UNSET(doc, '_id', '_key', '_rev')

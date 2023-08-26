@@ -25,6 +25,11 @@ echo "=================================================="
 echo ""
 CREATE_start=$(date +%s)
 
+###
+# Create log directory.
+###
+mkdir -f "${path}/RemoteSensing/log"
+
 # ###
 # # Unzip all files and place them in respective directories.
 # ###
@@ -37,6 +42,12 @@ CREATE_start=$(date +%s)
 # 	echo "*************"
 # 	exit 1
 # fi
+
+###
+# Create other directories.
+###
+mkdir -f "${path}/RemoteSensing/data"
+mkdir -f "${path}/RemoteSensing/JSONL"
 
 # ###
 # # Process and stack all yearly data.
