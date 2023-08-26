@@ -9,6 +9,12 @@
 
 RemoteSensing/CSV/
 
+RemoteSensing/JSONL/
+
+RemoteSensing/data/
+
+RemoteSensing/log/
+
 RemoteSensing/fixes/data/
 
 Chelsa/log/

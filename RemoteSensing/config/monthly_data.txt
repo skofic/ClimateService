@@ -1,0 +1,3 @@
+biomass_2010 chr_envi_AvBiomass biomass_2010 process_yearly_data.aql
+canopy_height_2019 chr_envi_AvCanopyHeight canopy_height process_yearly_data.aql
+dominant_forest_type chr_envi_DLT dominant_forest_type process_forest_type.aql

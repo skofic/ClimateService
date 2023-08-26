@@ -1,0 +1,21 @@
+///
+// Merge stacked remote sensing records.
+// We expect all records to belong to a single period span:
+// yearly, monthly or daily.
+///
+FOR doc IN @@collection
+
+	COLLECT hash = doc.geometry_hash,
+	        span = doc.std_date_span,
+	        date = doc.std_date
+	INTO items
+	
+	LET values = MERGE_RECURSIVE(items[*].doc.properties)
+	
+RETURN {
+    geometry_hash: hash,
+    std_date_span: span,
+    std_date: date,
+    properties: values,
+    std_terms: ATTRIBUTES(values)
+}

@@ -13,7 +13,7 @@
 ###
 # Load default parameters.
 ###
-source "${HOME}/.GeoService"
+source "${HOME}/.ClimateService"
 
 echo "=================================================="
 echo "= extract_zip_files.sh"
@@ -26,7 +26,7 @@ start_extract_zip_files=$(date +%s)
 ###
 # Set path parameters.
 ###
-epoc="$path/RemoteSensing/CSV"
+epoc="${path}/RemoteSensing/CSV"
 
 ###
 # Unzip all files ignoring directory and overwriting.
