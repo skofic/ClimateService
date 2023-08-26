@@ -38,11 +38,37 @@ CREATE_start=$(date +%s)
 # 	exit 1
 # fi
 
+# ###
+# # Process and stack all yearly data.
+# ###
+# cmd="${path}/RemoteSensing/scripts/process_yearly_data.sh"
+# $cmd "temp_ping" "temp_annual" "${path}/RemoteSensing/config/yearly_dict.txt" | tee "${path}/RemoteSensing/log/2_process_yearly_data.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
+# ###
+# # Process and stack all monthly data.
+# ###
+# cmd="${path}/RemoteSensing/scripts/process_monthly_data.sh"
+# $cmd "temp_ping" "temp_monthly" "${path}/RemoteSensing/config/monthly_dict.txt" | tee "${path}/RemoteSensing/log/3_process_monthly_data.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
 ###
-# Process and stack all yearly data.
+# Process and stack all daily data.
 ###
-cmd="${path}/RemoteSensing/scripts/process_yearly_data.sh"
-$cmd "temp_ping" "temp_annual" "${path}/RemoteSensing/config/yearly_dict.txt" | tee "${path}/RemoteSensing/log/2_process_yearly_data.log"
+cmd="${path}/RemoteSensing/scripts/process_daily_data.sh"
+$cmd "temp_ping" "temp_pong" "temp_daily" "${path}/RemoteSensing/config/daily_dict.txt" | tee "${path}/RemoteSensing/log/4_process_daily_data.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"

@@ -1,0 +1,22 @@
+///
+// Process monthly data.
+// The query will structure and translate
+// provided remote sensing monthly data.
+//
+// No processing or filtering is done.
+///
+LET NA = -9999
+
+FOR doc IN @@collection
+
+	FILTER doc.value != null
+	FILTER doc.value != NA
+	
+RETURN {
+	geometry_hash: doc.GeometryID,
+	std_date_span: 'std_date_span_year',
+	std_date: DATE_FORMAT(DATE_TIMESTAMP(doc.year, doc.month, 1), '%yyyy%mm'),
+	properties: {
+		@variable: doc.value
+	}
+}

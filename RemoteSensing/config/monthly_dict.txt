@@ -1,0 +1,5 @@
+Gpp chr_envi_AvGpp Gpp process_monthly_data.aql
+Lai_500m chr_envi_AvLai Lai_500m process_monthly_data.aql
+LST_Day_1km chr_envi_LST LST_Day_1km process_monthly_data.aql
+ndvi chr_envi_AvNDVI ndvi process_monthly_data.aql
+NDWI chr_envi_AvNDWI NDWI process_monthly_data.aql

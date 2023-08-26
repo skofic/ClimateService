@@ -109,12 +109,12 @@ do
 	fi
 
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	echo ">>> Move ${filename} to JSONL directory."
+	echo ">>> Move ${variable} to JSONL directory."
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	###
 	# Move file to its directory.
 	###
-	mv -f "${expo}/query.jsonl.gz" "${path}/RemoteSensing/JSONL/${filename}.jsonl.gz"
+	mv -f "${expo}/query.jsonl.gz" "${path}/RemoteSensing/JSONL/${variable}.jsonl.gz"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"
@@ -124,7 +124,7 @@ do
 	fi
 	
 	echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-	echo "<<< Load ${filename} in ${2} collection."
+	echo "<<< Load ${variable} in ${2} collection."
 	echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 	###
 	# Load data in merge collection.
@@ -136,7 +136,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "${path}/RemoteSensing/JSONL/${filename}.jsonl.gz" \
+			--file "${path}/RemoteSensing/JSONL/${variable}.jsonl.gz" \
 			--type "jsonl" \
 			--collection "$2" \
 			--auto-rate-limit true \
@@ -155,7 +155,7 @@ do
 			--server.database "$base" \
 			--server.username "$user" \
 			--server.password "$pass" \
-			--file "${path}/RemoteSensing/JSONL/${filename}.jsonl.gz" \
+			--file "${path}/RemoteSensing/JSONL/${variable}.jsonl.gz" \
 			--type "jsonl" \
 			--collection "$2" \
 			--auto-rate-limit true
