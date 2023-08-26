@@ -28,7 +28,7 @@ CREATE_start=$(date +%s)
 ###
 # Create log directory.
 ###
-mkdir -f "${path}/RemoteSensing/log"
+mkdir -p "${path}/RemoteSensing/log"
 
 # ###
 # # Unzip all files and place them in respective directories.
@@ -46,40 +46,53 @@ mkdir -f "${path}/RemoteSensing/log"
 ###
 # Create other directories.
 ###
-mkdir -f "${path}/RemoteSensing/data"
-mkdir -f "${path}/RemoteSensing/JSONL"
+mkdir -p "${path}/RemoteSensing/data"
+mkdir -p "${path}/RemoteSensing/JSONL"
 
-# ###
-# # Process and stack all yearly data.
-# ###
-# cmd="${path}/RemoteSensing/scripts/process_yearly_data.sh"
-# $cmd "temp_ping" "temp_annual" "${path}/RemoteSensing/config/yearly_dict.txt" | tee "${path}/RemoteSensing/log/2_process_yearly_data.log"
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# Process and stack all yearly data.
+###
+cmd="${path}/RemoteSensing/scripts/process_yearly_data.sh"
+$cmd "temp_ping" "temp_annual" "${path}/RemoteSensing/config/yearly_dict.txt" | tee "${path}/RemoteSensing/log/2_process_yearly_data.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-# ###
-# # Process and stack all monthly data.
-# ###
-# cmd="${path}/RemoteSensing/scripts/process_monthly_data.sh"
-# $cmd "temp_ping" "temp_monthly" "${path}/RemoteSensing/config/monthly_dict.txt" | tee "${path}/RemoteSensing/log/3_process_monthly_data.log"
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# Process and stack all monthly data.
+###
+cmd="${path}/RemoteSensing/scripts/process_monthly_data.sh"
+$cmd "temp_ping" "temp_monthly" "${path}/RemoteSensing/config/monthly_dict.txt" | tee "${path}/RemoteSensing/log/3_process_monthly_data.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Process and stack all daily data.
 ###
 cmd="${path}/RemoteSensing/scripts/process_daily_data.sh"
 $cmd "temp_ping" "temp_pong" "temp_daily" "${path}/RemoteSensing/config/daily_dict.txt" | tee "${path}/RemoteSensing/log/4_process_daily_data.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Process and stack all daily soil temperature.
+###
+cmd="${path}/RemoteSensing/scripts/process_daily_soil_temp_data.sh"
+$cmd "temp_ping" "temp_pong" "temp_daily" "${path}/RemoteSensing/config/daily_soil_temp_dict.txt" | tee "${path}/RemoteSensing/log/5_process_daily_soil_temp_data.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"

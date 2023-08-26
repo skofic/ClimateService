@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Process daily data and save in temp_daily collection.
+# Process daily soil temperature data and save in temp_daily collection.
 #
 # Parameters:
 # - $1: Temporary cache collection.
@@ -27,12 +27,12 @@ source "${HOME}/.ClimateService"
 span="std_date_span_day"
 
 echo "=================================================="
-echo "= process_daily_data.sh"
+echo "= process_daily_soil_temp_data.sh"
 echo "=================================================="
 echo $$
 echo "=================================================="
 echo ""
-process_daily_data_start=$(date +%s)
+process_daily_soil_temp_data_start=$(date +%s)
 
 ###
 # Set path parameters.
@@ -42,7 +42,7 @@ epoc="${path}/RemoteSensing/CSV"
 ###
 # Iterate daily single level variables.
 ###
-first=1
+first=0
 while read -r line
 do
 
@@ -64,10 +64,10 @@ do
 	start=$(date +%s)
 	
 	###
-	#  Iterate folder files.
+	#  Iterate folder folders.
 	###
 	first_file=1
-	for item in "${epoc}/${span}/${folder}/"*.csv.gz
+	for item in "${epoc}/${span}/soil_temperature/${folder}/"*.csv.gz
 	do
 	
 		filename="$(basename ${item})"
@@ -264,9 +264,9 @@ do
    
 done < "$4"
 
-process_daily_data_end=$(date +%s)
-elapsed=$((process_daily_data_end-process_daily_data_start))
+process_daily_soil_temp_data_end=$(date +%s)
+elapsed=$((process_daily_soil_temp_data_end-process_daily_soil_temp_data_start))
 echo "=================================================="
-echo "= process_daily_data.sh duration: $elapsed seconds"
+echo "= process_daily_soil_temp_data.sh duration: $elapsed seconds"
 echo "=================================================="
 echo ""

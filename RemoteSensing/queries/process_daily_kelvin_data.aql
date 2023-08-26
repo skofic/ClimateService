@@ -1,0 +1,21 @@
+///
+// Process daily Kelvin data.
+// The query will structure and translate
+// provided remote sensing daily data.
+// It will also convert Kelvin to *C.
+//
+// No processing or filtering is done.
+///
+FOR doc IN @@collection
+
+	FILTER doc.value != null
+	FILTER doc.value > 0
+	
+RETURN {
+	geometry_hash: doc.GeometryID,
+	std_date_span: 'std_date_span_year',
+	std_date: DATE_FORMAT(DATE_ADD(DATE_TIMESTAMP(doc.year, 1, 1), doc.day - 1, 'd'), '%yyyy%mm%dd'),
+	properties: {
+		@variable: doc.value
+	}
+}
