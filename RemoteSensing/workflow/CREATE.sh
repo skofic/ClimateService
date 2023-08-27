@@ -60,7 +60,7 @@ then
 	echo "*** ERROR ***"
 	echo "*************"
 	exit 1
-fi
+# fi
 
 ###
 # Process and stack all monthly data.
@@ -106,6 +106,19 @@ fi
 ###
 cmd="${path}/RemoteSensing/scripts/process_daily_soil_water_data.sh"
 $cmd "temp_ping" "temp_pong" "temp_daily" "${path}/RemoteSensing/config/daily_soil_water_dict.txt" | tee "${path}/RemoteSensing/log/6_process_daily_soil_water_data.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Merge daily data.
+###
+cmd="${path}/RemoteSensing/scripts/merge_daily_data.sh"
+$cmd "temp_daily" | tee "${path}/RemoteSensing/log/7_merge_daily_data.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
