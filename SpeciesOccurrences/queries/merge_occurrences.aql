@@ -1,0 +1,15 @@
+///
+// Merge occurrences.
+///
+FOR doc IN @@collection
+    COLLECT longitude = doc.LON,
+	        latitude = doc.LAT
+	INTO items
+	LET geo = GEO_POINT(longitude, latitude)
+
+RETURN {
+    geometry: GEO_POINT(longitude, latitude),
+    properties: {
+        species_list: UNIQUE(FLATTEN(items[*].doc.species_list))
+    }
+}

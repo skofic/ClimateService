@@ -1,0 +1,9 @@
+///
+// Stack occurrences.
+///
+FOR doc IN @@collection
+RETURN {
+	LON: doc.LON,
+	LAT: doc.LAT,
+	species_list: [ SUBSTITUTE(@species, '_', ' ') ]
+}

@@ -127,6 +127,19 @@ then
 	exit 1
 fi
 
+###
+# Load remote sensing data.
+###
+cmd="${path}/RemoteSensing/scripts/load_data.sh"
+$cmd "GeoService" "ShapeData" | tee "${path}/RemoteSensing/log/8_load_data.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
 CREATE_end=$(date +%s)
 elapsed=$((CREATE_end-CREATE_start))
 echo ""

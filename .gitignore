@@ -19,6 +19,12 @@ RemoteSensing/download/*.zip
 
 RemoteSensing/fixes/data/
 
+SpeciesOccurrences/data/
+
+SpeciesOccurrences/EU-Trees4F/*.txt
+
+SpeciesOccurrences/EU-Trees4F/species_occurrences/*
+
 Chelsa/log/
 
 Chelsa/1981-2010/CSV/
