@@ -13,7 +13,7 @@ FOR doc IN @@collection
 RETURN {
 	geometry_hash: doc.GeometryID,
 	std_date_span: 'std_date_span_year',
-	std_date: DATE_FORMAT(DATE_TIMESTAMP(doc.year, 1, 1), '%yyyy'),
+	std_date: DATE_FORMAT(DATE_TIMESTAMP(doc.year, 1, 1), '%yyyy')+,
 	properties: {
 		@variable: TRANSLATE(
 			TO_STRING(doc.value),

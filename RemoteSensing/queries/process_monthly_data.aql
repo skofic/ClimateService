@@ -14,7 +14,7 @@ FOR doc IN @@collection
 	
 RETURN {
 	geometry_hash: doc.GeometryID,
-	std_date_span: 'std_date_span_year',
+	std_date_span: 'std_date_span_month',
 	std_date: DATE_FORMAT(DATE_TIMESTAMP(doc.year, doc.month, 1), '%yyyy%mm'),
 	properties: {
 		@variable: doc.value

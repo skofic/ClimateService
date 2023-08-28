@@ -147,10 +147,10 @@ echo "<<< Load occurrences into occurrences."
 echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 arangoimport \
 	--server.endpoint "$host" \
-	--server.database "$base" \
+	--server.database "GeoService" \
 	--server.username "$user" \
 	--server.password "$pass" \
-	--collection "occurrences" \
+	--collection "SpeciesOccurrences" \
 	--file "${path}/SpeciesOccurrences/data/occurrences.jsonl.gz" \
 	--type "jsonl" \
 	--auto-rate-limit true \
