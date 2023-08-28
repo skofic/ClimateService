@@ -8,8 +8,8 @@ FOR doc IN @@collection
 	LET geo = GEO_POINT(longitude, latitude)
 
 RETURN {
-	_key: geo,
-    geometry: GEO_POINT(longitude, latitude),
+	_key: MD5(TO_STRING(geo)),
+    geometry: geo,
     properties: {
         species_list: UNIQUE(FLATTEN(items[*].doc.species_list))
     }
