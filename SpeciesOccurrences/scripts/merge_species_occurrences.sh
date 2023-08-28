@@ -133,7 +133,7 @@ mkdir -p "${path}/SpeciesOccurrences/data"
 ###
 # Move file to its directory.
 ###
-mv -f "${expo}/query.jsonl.gz" "${path}/SpeciesOccurrences/data/occurrences.jsonl.gz"
+mv -f "${expo}/query.jsonl.gz" "${path}/SpeciesOccurrences/data/SpeciesOccurrences.jsonl.gz"
 if [ $? -ne 0 ]
 then
 	echo "*************"

@@ -60,7 +60,7 @@ then
 	echo "*** ERROR ***"
 	echo "*************"
 	exit 1
-# fi
+fi
 
 ###
 # Process and stack all monthly data.
