@@ -25,7 +25,7 @@ echo ""
 merge_daily_data_start=$(date +%s)
 
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-echo ">>> Merge monthly data and dump ${span}."
+echo ">>> Merge daily data and dump ${span}."
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 ###
 # Load data in temporary collection.
