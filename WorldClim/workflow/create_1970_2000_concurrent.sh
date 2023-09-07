@@ -37,7 +37,7 @@ mkdir -p "${epoc}/log"
 ###
 # Prepare data.
 ###
-cmd="${epoc}/workflow/1_PREPARE_cocnurrent.sh"
+cmd="${epoc}/workflow/1_PREPARE_concurrent.sh"
 $cmd
 if [ $? -ne 0 ]
 then
