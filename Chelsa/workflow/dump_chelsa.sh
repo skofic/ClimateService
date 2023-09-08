@@ -27,6 +27,7 @@ dump_chelsa_name="Chelsa"
 mdump="${path}/${dump_map_name}.jsonl.gz"
 ddump="${path}/${dump_chelsa_name}.jsonl.gz"
 query="${path}/Chelsa/script_query/merge_chelsa.aql"
+query_map="${path}/Chelsa/script_query/dump_map.aql"
 
 echo "**************************************************"
 echo "**************************************************"
@@ -67,11 +68,12 @@ echo "**************************************************"
 
 ###
 # Dump Chelsa map.
-# Dump the Chelsa geometries collection.
+# Dump the Chelsa geometries collection setting polygon as geometry.
 ###
-cmd="${path}/Chelsa/script_data/save.sh"
+cmd="${path}/Chelsa/script_data/dump.sh"
 $cmd "$mdump" \
-	 "$collection_map"
+	 "$query_map" \
+	 "{\"@@collection\": \"$collection_map\"}"
 if [ $? -ne 0 ]
 then
 	echo "*************"

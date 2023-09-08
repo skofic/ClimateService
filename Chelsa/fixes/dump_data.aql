@@ -1,15 +1,8 @@
 ///
-// Merge bioclimatic and monthly data.
+// Dump Chelsa data.
 ///
 LET radius = 0.004167
 FOR doc IN @@collection
-
-	FOR annual IN temp_annual
-		FILTER annual._key == doc._key
-
-	FOR monthly IN temp_monthly
-		FILTER monthly._key == doc._key
-
 RETURN {
 	_key: doc._key,
 	geometry: doc.geometry,
@@ -25,5 +18,5 @@ RETURN {
             ]
         ]
 	},
-	properties: MERGE_RECURSIVE(annual.properties, monthly.properties)
+	properties: doc.properties
 }

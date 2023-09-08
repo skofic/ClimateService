@@ -1,19 +1,11 @@
 ///
-// Merge bioclimatic and monthly data.
+// Dump Chelsa map.
 ///
 LET radius = 0.004167
 FOR doc IN @@collection
-
-	FOR annual IN temp_annual
-		FILTER annual._key == doc._key
-
-	FOR monthly IN temp_monthly
-		FILTER monthly._key == doc._key
-
 RETURN {
 	_key: doc._key,
-	geometry: doc.geometry,
-	geometry_bounds: {
+	geometry: {
       "type": "Polygon",
        "coordinates": [
             [
@@ -25,5 +17,5 @@ RETURN {
             ]
         ]
 	},
-	properties: MERGE_RECURSIVE(annual.properties, monthly.properties)
+	geometry_point: doc.geometry
 }
