@@ -1,7 +1,6 @@
 ///
 // Merge bioclimatic and monthly data.
 ///
-LET radius = 0.004167
 FOR doc IN @@collection
 
 	FOR annual IN temp_annual
@@ -13,17 +12,5 @@ FOR doc IN @@collection
 RETURN {
 	_key: doc._key,
 	geometry: doc.geometry,
-	geometry_bounds: {
-      "type": "Polygon",
-       "coordinates": [
-            [
-                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ],
-                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]-radius ],
-                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]+radius ],
-                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]+radius ],
-                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ]
-            ]
-        ]
-	},
 	properties: MERGE_RECURSIVE(annual.properties, monthly.properties)
 }

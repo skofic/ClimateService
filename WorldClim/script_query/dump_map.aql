@@ -1,26 +1,11 @@
 ///
-// Merge Chelsa period data.
-// Read all records in Chelsa coordinates
-// and merge all related period records.
+// Dump map data.
 ///
 LET radius = 0.004167
 FOR doc IN @@collection
-
-	FOR period_1 IN temp_period_1
-		FILTER period_1._key == doc._key
-		
-	FOR period_2 IN temp_period_2
-		FILTER period_2._key == doc._key
-		
-	FOR period_3 IN temp_period_3
-		FILTER period_3._key == doc._key
-		
-	FOR period_4 IN temp_period_4
-		FILTER period_4._key == doc._key
-
 RETURN {
 	_key: doc._key,
-	geometry_point: doc.geometry,
+	geometry: doc.geometry,
 	geometry_bounds: {
       "type": "Polygon",
        "coordinates": [
@@ -32,11 +17,5 @@ RETURN {
                 [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ]
             ]
         ]
-	},
-	properties: {
-		`1981-2010`: period_1.properties.`1981-2010`,
-		`2011-2040`: period_2.properties.`2011-2040`,
-		`2041-2070`: period_3.properties.`2041-2070`,
-		`2071-2100`: period_4.properties.`2071-2100`
 	}
 }

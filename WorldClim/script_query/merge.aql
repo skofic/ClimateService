@@ -1,9 +1,6 @@
 ///
 // Merge bioclimatic and monthly data.
 ///
-///
-// Merge bioclimatic and monthly data.
-///
 FOR doc IN @@collection
 
 	FOR annual IN temp_annual

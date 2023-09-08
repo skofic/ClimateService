@@ -27,6 +27,7 @@ dump_worldclim_name="WorldClim"
 mdump="${path}/${dump_map_name}.jsonl.gz"
 ddump="${path}/${dump_worldclim_name}.jsonl.gz"
 query="${path}/WorldClim/script_query/merge_worldclim.aql"
+query_map="${path}/WorldClim/script_query/dump_map.aql"
 
 echo "**************************************************"
 echo "**************************************************"
@@ -69,9 +70,10 @@ echo "**************************************************"
 # Dump WorldClim map.
 # Dump the WorldClim geometries collection.
 ###
-cmd="${path}/WorldClim/script_data/save.sh"
+cmd="${path}/WorldClim/script_data/dump.sh"
 $cmd "$mdump" \
-	 "$collection_map"
+	 "$query_map" \
+	 "{\"@@collection\": \"$collection_map\"}"
 if [ $? -ne 0 ]
 then
 	echo "*************"

@@ -3,6 +3,7 @@
 // Read all records in WorldClim coordinates
 // and merge all related period records.
 ///
+LET radius = 0.004167
 FOR doc IN @@collection
 	
 	FOR period_0 IN temp_period_0
@@ -25,7 +26,19 @@ FOR doc IN @@collection
 
 RETURN {
 	_key: doc._key,
-	geometry: doc.geometry,
+	geometry_point: doc.geometry,
+	geometry_bounds: {
+      "type": "Polygon",
+       "coordinates": [
+            [
+                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ],
+                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]-radius ],
+                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]+radius ],
+                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]+radius ],
+                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ]
+            ]
+        ]
+	},
 	properties: {
 		topography: period_0.properties.topography,
 		`1970-2000`: period_1.properties.`1970-2000`,
