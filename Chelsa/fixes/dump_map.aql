@@ -5,7 +5,8 @@ LET radius = 0.004167
 FOR doc IN @@collection
 RETURN {
 	_key: doc._key,
-	geometry: {
+	geometry: doc.geometry,
+	geometry_bounds: {
       "type": "Polygon",
        "coordinates": [
             [
@@ -16,6 +17,5 @@ RETURN {
                 [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ]
             ]
         ]
-	},
-	geometry_point: doc.geometry
+	}
 }
