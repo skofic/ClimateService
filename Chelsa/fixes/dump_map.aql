@@ -1,5 +1,5 @@
 ///
-// Dump Chelsa map.
+// Dump Chelsa geometries.
 ///
 LET radius = 0.004167
 FOR doc IN @@collection

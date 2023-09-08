@@ -1,5 +1,5 @@
 ///
-// Dump Chelsa data.
+// Dump Chelsa properties.
 ///
 LET radius = 0.004167
 FOR doc IN @@collection
