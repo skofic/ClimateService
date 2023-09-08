@@ -19,7 +19,19 @@ FOR doc IN @@collection
 
 RETURN {
 	_key: doc._key,
-	geometry: doc.geometry,
+	geometry_point: doc.geometry,
+	geometry_bounds: {
+      "type": "Polygon",
+       "coordinates": [
+            [
+                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ],
+                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]-radius ],
+                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]+radius ],
+                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]+radius ],
+                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ]
+            ]
+        ]
+	},
 	properties: {
 		`1981-2010`: period_1.properties.`1981-2010`,
 		`2011-2040`: period_2.properties.`2011-2040`,

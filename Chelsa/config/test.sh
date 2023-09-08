@@ -62,34 +62,34 @@ then
 	exit 1
 fi
 
-# echo ""
-# echo "**************************************************"
-# echo "*** Load Chelsa properties"
-# echo "*** from ${path}/${dump_chelsa_name}.jsonl.gz"
-# echo "**************************************************"
-# 
-# ###
-# # Import data from JSONL file.
-# ###
-# arangoimport \
-# 	--server.endpoint "$host" \
-# 	--server.database "GeoService" \
-# 	--server.username "$user" \
-# 	--server.password "$pass" \
-# 	--file "$mdump" \
-# 	--type "jsonl" \
-# 	--collection "$collection_data" \
-# 	--create-collection true \
-# 	--create-collection-type "document" \
-# 	--auto-rate-limit true \
-# 	--overwrite true
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+echo ""
+echo "**************************************************"
+echo "*** Load Chelsa properties"
+echo "*** from ${path}/${dump_chelsa_name}.jsonl.gz"
+echo "**************************************************"
+
+###
+# Import data from JSONL file.
+###
+arangoimport \
+	--server.endpoint "$host" \
+	--server.database "GeoService" \
+	--server.username "$user" \
+	--server.password "$pass" \
+	--file "$mdump" \
+	--type "jsonl" \
+	--collection "$collection_data" \
+	--create-collection true \
+	--create-collection-type "document" \
+	--auto-rate-limit true \
+	--overwrite true
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 LOAD_DATA_END=$(date +%s)
 elapsed=$((LOAD_DATA_END-LOAD_DATA_START))
