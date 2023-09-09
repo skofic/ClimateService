@@ -76,7 +76,7 @@ arangoimport \
 	--server.database "GeoService" \
 	--server.username "$user" \
 	--server.password "$pass" \
-	--file "$mdump" \
+	--file "$ddump" \
 	--type "jsonl" \
 	--collection "$collection_data" \
 	--create-collection true \
