@@ -12,7 +12,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/WorldClim/2061-2080"
+epoc="${path}/WorldClim/2061-2080/MPI-ESM1-2-HR/ssp370"
 
 echo "**************************************************"
 echo "*** PROCESS.sh"

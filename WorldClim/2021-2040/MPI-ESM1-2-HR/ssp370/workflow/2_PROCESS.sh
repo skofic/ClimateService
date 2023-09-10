@@ -16,7 +16,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/WorldClim/2021-2040"
+epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
 cmd="${epoc}/workflow/PROCESS.sh"
 
 ###
