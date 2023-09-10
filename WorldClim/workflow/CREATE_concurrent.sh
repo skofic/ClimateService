@@ -20,7 +20,7 @@ cmd="${path}/WorldClim/workflow/create_directories.sh"
 $cmd
 
 ###
-# 1981-2010.
+# ELEVATION.
 ###
 echo ""
 echo "<<< ELEVATION >>>"

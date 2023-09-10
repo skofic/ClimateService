@@ -20,13 +20,13 @@ cmd="${path}/WorldClim/workflow/create_directories.sh"
 $cmd
 
 # ###
-# # 1981-2010.
+# # ELEVATION.
 # ###
 # echo ""
 # echo "<<< ELEVATION >>>"
 # echo ""
 # cmd="${path}/WorldClim/workflow/create_elevation.sh"
-# $cmd | tee "${path}/WorldClim/log/Elevation.log"
+# $cmd | tee "${path}/WorldClim/log/1_Elevation.log"
 # if [ $? -ne 0 ]
 # then
 # 	echo "*************"
@@ -41,8 +41,8 @@ $cmd
 # echo ""
 # echo "<<< PERIOD 1970-2000 >>>"
 # echo ""
-# cmd="${path}/WorldClim/workflow/create_1970_2000.sh"
-# $cmd | tee "${path}/WorldClim/log/1970_2000.log"
+# cmd="${path}/WorldClim/workflow/create_1970_2000_concurrent.sh"
+# $cmd | tee "${path}/WorldClim/log/2_1970_2000_concurrent.log"
 # if [ $? -ne 0 ]
 # then
 # 	echo "*************"
@@ -51,53 +51,53 @@ $cmd
 # 	exit 1
 # fi
 
-# ###
-# # 2021-2040.
-# ###
-# echo ""
-# echo "<<< PERIOD 2021-2040 >>>"
-# echo ""
-# cmd="${path}/WorldClim/workflow/create_2021_2040.sh"
-# $cmd | tee "${path}/WorldClim/log/2021_2040.log"
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# 2021-2040.
+###
+echo ""
+echo "<<< PERIOD 2021-2040 >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/create_2021_2040_concurrent.sh"
+$cmd | tee "${path}/WorldClim/log/3_2021_2040_concurrent.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-# ###
-# # 2061-2080.
-# ###
-# echo ""
-# echo "<<< PERIOD 2061-2080 >>>"
-# echo ""
-# cmd="${path}/WorldClim/workflow/create_2061_2080.sh"
-# $cmd | tee "${path}/WorldClim/log/2061_2080.log"
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# 2061-2080.
+###
+echo ""
+echo "<<< PERIOD 2061-2080 >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/create_2061_2080_concurrent.sh"
+$cmd | tee "${path}/WorldClim/log/4_2061_2080_concurrent.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
-# ###
-# # 2081-2100.
-# ###
-# echo ""
-# echo "<<< PERIOD 2081-2100 >>>"
-# echo ""
-# cmd="${path}/WorldClim/workflow/create_2081_2100.sh"
-# $cmd | tee "${path}/WorldClim/log/2081_2100.log"
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# 2081-2100.
+###
+echo ""
+echo "<<< PERIOD 2081-2100 >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/create_2081_2100_concurrent.sh"
+$cmd | tee "${path}/WorldClim/log/5_2081_2100_concurrent.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Load dumps into temporary period collections
@@ -107,7 +107,7 @@ echo ""
 echo "<<< LOAD PERIOD DUMPS INTO DATABASE >>>"
 echo ""
 cmd="${path}/WorldClim/workflow/load_periods.sh"
-$cmd | tee "${path}/WorldClim/log/load_periods.log"
+$cmd | tee "${path}/WorldClim/log/6_load_periods.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -123,7 +123,7 @@ echo ""
 echo "<<< LOAD COORDINATES INTO DATABASE >>>"
 echo ""
 cmd="${path}/WorldClim/workflow/load_map.sh"
-$cmd | tee "${path}/WorldClim/log/load_map.log"
+$cmd | tee "${path}/WorldClim/log/7_load_map.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -136,10 +136,10 @@ fi
 # Dump Chelsa and dump map.
 ###
 echo ""
-echo "<<< DUMP PROPERTIES AND COORDINATES >>>"
+echo "<<< DUMP AND LOAD IN DATABASE >>>"
 echo ""
 cmd="${path}/WorldClim/workflow/dump_worldclim.sh"
-$cmd | tee "${path}/WorldClim/log/dump_worldclim.log"
+$cmd | tee "${path}/WorldClim/log/8_dump_worldclim.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
