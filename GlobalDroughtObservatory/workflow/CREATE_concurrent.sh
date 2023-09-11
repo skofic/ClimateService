@@ -26,12 +26,13 @@ echo "<<< CREATE DIRECTORIES >>>"
 echo ""
 cmd="${path}/GlobalDroughtObservatory/workflow/create_directories.sh"
 $cmd
+$cmd | tee "${path}/GlobalDroughtObservatory/log/0_create_directories.log"
 
 ###
 # 1981-2010.
 ###
 echo ""
-echo "<<< PERIOD 1981-2010 >>>"
+echo "<<< EXPAND FILES >>>"
 echo ""
 cmd="${path}/Chelsa/workflow/create_1981_2010_concurrent.sh"
 $cmd | tee "${path}/Chelsa/log/1981_2010.log"
