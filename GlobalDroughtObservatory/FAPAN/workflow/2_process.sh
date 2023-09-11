@@ -1,8 +1,7 @@
 #!/bin/sh
 
 ###
-# Convert clipped bioclimatic variables to CSV format.
-# Concurrent version.
+# Process files.
 ###
 
 ###
@@ -17,18 +16,25 @@ epoc="${path}/GlobalDroughtObservatory/FAPAN"
 start=$(date +%s)
 
 echo "=================================================="
-echo "= PREPARE FILES"
+echo "= PROCESS FILES"
 echo "=================================================="
 
 ###
 # Expand and place files.
 ###
 cmd="${epoc}/workflow/expand.sh"
-$cmd | tee "${epoc}/log/1_expand.log"
+$cmd | tee "${epoc}/log/3_process.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= PREPARE FILES: $elapsed seconds"
+echo "= PROCESS FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

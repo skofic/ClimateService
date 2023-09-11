@@ -29,10 +29,10 @@ $cmd
 $cmd | tee "${path}/GlobalDroughtObservatory/log/0_create_directories.log"
 
 ###
-# 1981-2010.
+# Prepare files.
 ###
 echo ""
-echo "<<< EXPAND FILES >>>"
+echo "<<< PREPARE FILES >>>"
 echo ""
 cmd="${path}/Chelsa/workflow/create_1981_2010_concurrent.sh"
 $cmd | tee "${path}/Chelsa/log/1981_2010.log"

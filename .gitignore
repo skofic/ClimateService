@@ -131,6 +131,8 @@ WorldClim/Elevation/log/
 
 GlobalDroughtObservatory/FAPAN/log/
 
+GlobalDroughtObservatory/FAPAN/CSV/
+
 GlobalDroughtObservatory/FAPAN/converted/
 
 GlobalDroughtObservatory/FAPAN/data/
@@ -138,6 +140,8 @@ GlobalDroughtObservatory/FAPAN/data/
 GlobalDroughtObservatory/FAPAN/download/
 
 GlobalDroughtObservatory/FAPAR/log/
+
+GlobalDroughtObservatory/FAPAR/CSV/
 
 GlobalDroughtObservatory/FAPAR/converted/
 
@@ -149,6 +153,8 @@ GlobalDroughtObservatory/HCWI/log/
 
 GlobalDroughtObservatory/HCWI/download_ano/log/
 
+GlobalDroughtObservatory/HCWI/download_ano/CSV/
+
 GlobalDroughtObservatory/HCWI/download_ano/converted/
 
 GlobalDroughtObservatory/HCWI/download_ano/data/
@@ -156,6 +162,8 @@ GlobalDroughtObservatory/HCWI/download_ano/data/
 GlobalDroughtObservatory/HCWI/download_ano/download/
 
 GlobalDroughtObservatory/HCWI/download_max/log/
+
+GlobalDroughtObservatory/HCWI/download_max/CSV/
 
 GlobalDroughtObservatory/HCWI/download_max/converted/
 
@@ -165,6 +173,8 @@ GlobalDroughtObservatory/HCWI/download_max/download/
 
 GlobalDroughtObservatory/HCWI/download_min/log/
 
+GlobalDroughtObservatory/HCWI/download_min/CSV/
+
 GlobalDroughtObservatory/HCWI/download_min/converted/
 
 GlobalDroughtObservatory/HCWI/download_min/data/
@@ -172,6 +182,8 @@ GlobalDroughtObservatory/HCWI/download_min/data/
 GlobalDroughtObservatory/HCWI/download_min/download/
 
 GlobalDroughtObservatory/SMA/log/
+
+GlobalDroughtObservatory/SMA/CSV/
 
 GlobalDroughtObservatory/SMA/converted/
 
@@ -181,6 +193,8 @@ GlobalDroughtObservatory/SMA/download/
 
 GlobalDroughtObservatory/SMI/log/
 
+GlobalDroughtObservatory/SMI/CSV/
+
 GlobalDroughtObservatory/SMI/converted/
 
 GlobalDroughtObservatory/SMI/data/
@@ -188,6 +202,8 @@ GlobalDroughtObservatory/SMI/data/
 GlobalDroughtObservatory/SMI/download/
 
 GlobalDroughtObservatory/TWS/log/
+
+GlobalDroughtObservatory/TWS/CSV/
 
 GlobalDroughtObservatory/TWS/converted/
 

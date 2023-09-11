@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Expand Zip files and place them in download folder.
+# Expand ZIP files and place them in download folder.
 ###
 
 ###
@@ -44,7 +44,7 @@ do
 done
 
 ###
-# Delete zip files.
+# Delete ZIP files.
 ###
 for file in "${epoc}/download/"*.zip
 do

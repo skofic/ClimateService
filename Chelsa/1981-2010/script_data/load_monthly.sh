@@ -12,6 +12,7 @@ source "${HOME}/.ClimateService"
 echo "====================================================================="
 echo "= Load monthly data."
 echo "====================================================================="
+start=$(date +%s)
 
 ###
 # Globals.
@@ -23,7 +24,6 @@ dump="${epoc}/data/properties/${file}.jsonl.gz"
 
 echo "----------------------------------------"
 echo "==> Load ${dump}"
-start=$(date +%s)
 
 ###
 # Import data from JSONL file.

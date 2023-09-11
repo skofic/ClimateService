@@ -37,6 +37,7 @@ do
 	mkdir -p "${epoc}/${folder}/download/"
 	mkdir -p "${epoc}/${folder}/converted/"
 	mkdir -p "${epoc}/${folder}/data/"
+	mkdir -p "${epoc}/${folder}/CSV/"
 done
 
 ###
@@ -51,6 +52,7 @@ do
 		mkdir -p "${epoc}/HCWI/${folder}/download/"
 		mkdir -p "${epoc}/HCWI/${folder}/converted/"
 		mkdir -p "${epoc}/HCWI/${folder}/data/"
+		mkdir -p "${epoc}/HCWI/${folder}/CSV/"
 	done
 done
 

@@ -12,6 +12,7 @@ source "${HOME}/.ClimateService"
 echo "====================================================================="
 echo "= Dump annual data."
 echo "====================================================================="
+start=$(date +%s)
 
 ###
 # Globals.
@@ -24,7 +25,6 @@ query="${epoc}/script_query/dump_annual.aql"
 
 echo "----------------------------------------"
 echo "==> Dump ${dump}"
-start=$(date +%s)
 
 ###
 # Export data to JSONL file.
