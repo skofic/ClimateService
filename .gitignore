@@ -151,35 +151,29 @@ GlobalDroughtObservatory/FAPAR/download/
 
 GlobalDroughtObservatory/HCWI/log/
 
-GlobalDroughtObservatory/HCWI/download_ano/log/
+GlobalDroughtObservatory/HCWI/ano/CSV/
 
-GlobalDroughtObservatory/HCWI/download_ano/CSV/
+GlobalDroughtObservatory/HCWI/ano/converted/
 
-GlobalDroughtObservatory/HCWI/download_ano/converted/
+GlobalDroughtObservatory/HCWI/ano/data/
 
-GlobalDroughtObservatory/HCWI/download_ano/data/
+GlobalDroughtObservatory/HCWI/ano/download/
 
-GlobalDroughtObservatory/HCWI/download_ano/download/
+GlobalDroughtObservatory/HCWI/max/CSV/
 
-GlobalDroughtObservatory/HCWI/download_max/log/
+GlobalDroughtObservatory/HCWI/max/converted/
 
-GlobalDroughtObservatory/HCWI/download_max/CSV/
+GlobalDroughtObservatory/HCWI/max/data/
 
-GlobalDroughtObservatory/HCWI/download_max/converted/
+GlobalDroughtObservatory/HCWI/max/download/
 
-GlobalDroughtObservatory/HCWI/download_max/data/
+GlobalDroughtObservatory/HCWI/min/CSV/
 
-GlobalDroughtObservatory/HCWI/download_max/download/
+GlobalDroughtObservatory/HCWI/min/converted/
 
-GlobalDroughtObservatory/HCWI/download_min/log/
+GlobalDroughtObservatory/HCWI/min/data/
 
-GlobalDroughtObservatory/HCWI/download_min/CSV/
-
-GlobalDroughtObservatory/HCWI/download_min/converted/
-
-GlobalDroughtObservatory/HCWI/download_min/data/
-
-GlobalDroughtObservatory/HCWI/download_min/download/
+GlobalDroughtObservatory/HCWI/min/download/
 
 GlobalDroughtObservatory/SMA/log/
 
