@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Process files.
+# Prepare files.
 ###
 
 ###
@@ -12,18 +12,31 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/GlobalDroughtObservatory/FAPAN"
+epoc="${path}/GlobalDroughtObservatory/FAPAR"
 start=$(date +%s)
 
 echo "=================================================="
-echo "= PROCESS FILES"
+echo "= PREPARE FILES"
 echo "=================================================="
 
 ###
 # Expand and place files.
 ###
-cmd="${epoc}/workflow/process.sh"
-$cmd | tee "${epoc}/log/3_process.log"
+cmd="${epoc}/workflow/expand.sh"
+$cmd | tee "${epoc}/log/1_expand.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Convert and place files.
+###
+cmd="${epoc}/workflow/convert.sh"
+$cmd | tee "${epoc}/log/2_convert.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -35,6 +48,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= PROCESS FILES: $elapsed seconds"
+echo "= PREPARE FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

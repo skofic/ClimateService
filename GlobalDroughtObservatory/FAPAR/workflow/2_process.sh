@@ -12,7 +12,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/GlobalDroughtObservatory/FAPAN"
+epoc="${path}/GlobalDroughtObservatory/FAPAR"
 start=$(date +%s)
 
 echo "=================================================="

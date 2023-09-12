@@ -12,9 +12,9 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-epoc="${path}/GlobalDroughtObservatory/FAPAN"
+epoc="${path}/GlobalDroughtObservatory/FAPAR"
 head="${path}/GlobalDroughtObservatory/config/header.csv"
-variable="env_climate_fapan"
+variable="env_climate_fapar"
 
 ###
 # Parameters.
@@ -40,7 +40,7 @@ do
 
 	echo ""
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	echo ">>> IMPORT FAPAN/CSV/${name}.csv"
+	echo ">>> IMPORT FAPAR/CSV/${name}.csv"
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	
 	###
@@ -67,7 +67,7 @@ do
 	fi
 	
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	echo ">>> PROCESS FAPAN/data/${name}.jsonl"
+	echo ">>> PROCESS FAPAR/data/${name}.jsonl"
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	
 	###
