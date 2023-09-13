@@ -68,10 +68,10 @@ $cmd
 # fi
 
 ###
-# 2041-2046.
+# 2041-2060.
 ###
 echo ""
-echo "<<< PERIOD 2041-2046 >>>"
+echo "<<< PERIOD 2041-2060 >>>"
 echo ""
 cmd="${path}/WorldClim/workflow/create_2041_2060_concurrent.sh"
 $cmd | tee "${path}/WorldClim/log/3_2041_2060_concurrent.log"
