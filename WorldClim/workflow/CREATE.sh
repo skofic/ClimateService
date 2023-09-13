@@ -68,6 +68,22 @@ then
 fi
 
 ###
+# 2041-2060.
+###
+echo ""
+echo "<<< PERIOD 2041-2060 >>>"
+echo ""
+cmd="${path}/WorldClim/workflow/create_2041_2060.sh"
+$cmd | tee "${path}/WorldClim/log/3_2041_2060.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
 # 2061-2080.
 ###
 echo ""

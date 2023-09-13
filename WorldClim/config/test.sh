@@ -51,14 +51,30 @@ $cmd
 # 	exit 1
 # fi
 
+# ###
+# # 2021-2040.
+# ###
+# echo ""
+# echo "<<< PERIOD 2021-2040 >>>"
+# echo ""
+# cmd="${path}/WorldClim/workflow/create_2021_2040_concurrent.sh"
+# $cmd | tee "${path}/WorldClim/log/3_2021_2040_concurrent.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
 ###
-# 2021-2040.
+# 2041-2046.
 ###
 echo ""
-echo "<<< PERIOD 2021-2040 >>>"
+echo "<<< PERIOD 2041-2046 >>>"
 echo ""
-cmd="${path}/WorldClim/workflow/create_2021_2040_concurrent.sh"
-$cmd | tee "${path}/WorldClim/log/3_2021_2040_concurrent.log"
+cmd="${path}/WorldClim/workflow/create_2041_2060_concurrent.sh"
+$cmd | tee "${path}/WorldClim/log/3_2041_2060_concurrent.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
