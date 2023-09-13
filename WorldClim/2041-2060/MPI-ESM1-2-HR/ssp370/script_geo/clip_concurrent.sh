@@ -17,7 +17,7 @@ echo "====================================================================="
 ###
 # Globals.
 ###
-epoc="${path}/WorldClim/2021-2040/MPI-ESM1-2-HR/ssp370"
+epoc="${path}/WorldClim/2041-2060/MPI-ESM1-2-HR/ssp370"
 
 ###
 # Parameters.
