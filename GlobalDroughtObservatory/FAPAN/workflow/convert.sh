@@ -16,7 +16,7 @@ prefix="fapan_m_euu_"
 epoc="${path}/GlobalDroughtObservatory/FAPAN"
 
 echo "--------------------------------------------------"
-echo "- CONVERT FILES"
+echo "- CONVERT FAPAN FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -119,6 +119,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- CONVERT FILES: $elapsed seconds"
+echo "- CONVERT FAPAN FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

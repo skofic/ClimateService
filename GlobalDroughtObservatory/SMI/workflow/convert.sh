@@ -16,7 +16,7 @@ prefix="sminx_m_euu_"
 epoc="${path}/GlobalDroughtObservatory/SMI"
 
 echo "--------------------------------------------------"
-echo "- CONVERT FILES"
+echo "- CONVERT SMI FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -119,6 +119,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- CONVERT FILES: $elapsed seconds"
+echo "- CONVERT SMI FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

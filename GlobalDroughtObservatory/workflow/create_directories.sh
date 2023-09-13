@@ -27,6 +27,7 @@ CREATE_DIRECTORIES_START=$(date +%s)
 # Create top level folders.
 ###
 mkdir -p "${epoc}/log/"
+mkdir -p "${epoc}/data/"
 
 ###
 # Iterate single level descriptors.
@@ -46,9 +47,8 @@ done
 for folder in "HCWI"
 do
 	mkdir -p "${epoc}/${folder}/log/"
-	for folder in "download_ano" "download_max" "download_min"
+	for folder in "ano" "max" "min"
 	do
-		mkdir -p "${epoc}/HCWI/${folder}/log/"
 		mkdir -p "${epoc}/HCWI/${folder}/download/"
 		mkdir -p "${epoc}/HCWI/${folder}/converted/"
 		mkdir -p "${epoc}/HCWI/${folder}/data/"

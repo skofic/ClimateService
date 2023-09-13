@@ -16,7 +16,7 @@ prefix="twsan_m_euu_"
 epoc="${path}/GlobalDroughtObservatory/TWS"
 
 echo "--------------------------------------------------"
-echo "- CONVERT FILES"
+echo "- CONVERT TWS FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -119,6 +119,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- CONVERT FILES: $elapsed seconds"
+echo "- CONVERT TWS FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

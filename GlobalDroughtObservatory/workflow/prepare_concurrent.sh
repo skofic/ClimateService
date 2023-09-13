@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Convert clipped bioclimatic variables to CSV format.
+# Convert TIF maps to CSV format.
 # Concurrent version.
 ###
 
@@ -10,31 +10,27 @@
 ###
 source "${HOME}/.ClimateService"
 
-###
-# Globals.
-###
-epoc="${path}/Chelsa/1981-2010"
-
 echo "=================================================="
-echo "= CONVERT FILES"
+echo "= PREPARE FILES"
 echo "=================================================="
 start=$(date +%s)
 
 ###
 # Launch jobs in batch mode.
 ###
-for code in "bio" "pr" "tas" "tasmax" "tasmin"
+for folder in "FAPAN" "FAPAR" "HCWI" "SMA" "SMI" "TWS"
 do
 	
 	###
-	# Set command.
+	# Parameters.
 	###
-	cmd="${epoc}/script_geo/ConvertToXYZ_${code}.sh"
-	
+	epoc="${path}/GlobalDroughtObservatory/${folder}"
+
 	###
 	# Launch script in batch.
 	###
-	$cmd | tee "${epoc}/log/1_PREPARE_CONVERT_${code}.log" &
+	cmd="${epoc}/workflow/1_prepare.sh"
+	$cmd &
 	
 	###
 	# Get job number.
@@ -91,6 +87,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= CONVERT FILES: $elapsed seconds"
+echo "= PREPARE FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

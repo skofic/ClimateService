@@ -15,7 +15,7 @@ source "${HOME}/.ClimateService"
 epoc="${path}/GlobalDroughtObservatory/SMA"
 
 echo "--------------------------------------------------"
-echo "- EXPAND FILES"
+echo "- EXPAND SMA FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -70,6 +70,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- EXPAND FILES: $elapsed seconds"
+echo "- EXPAND SMA FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

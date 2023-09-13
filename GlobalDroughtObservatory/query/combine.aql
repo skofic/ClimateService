@@ -1,0 +1,22 @@
+///
+// Combine data into dump.
+///
+FOR doc IN @@collection
+    LET properties = doc.properties
+    COLLECT longitude = doc.lon,
+            latitude = doc.lat,
+            date = doc.std_date
+    INTO data
+    KEEP properties
+RETURN {
+    geometry: GEO_POLYGON([
+        [ longitude-@radius, latitude-@radius ],
+        [ longitude+@radius, latitude-@radius ],
+        [ longitude+@radius, latitude+@radius ],
+        [ longitude-@radius, latitude+@radius ],
+        [ longitude-@radius, latitude-@radius ]
+    ]),
+	geometry_point: GEO_POINT(longitude, latitude),
+	std_date: date,
+	properties: MERGE_RECURSIVE(data[*].properties)
+}

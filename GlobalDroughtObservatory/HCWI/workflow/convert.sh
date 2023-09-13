@@ -10,7 +10,7 @@
 source "${HOME}/.ClimateService"
 
 echo "--------------------------------------------------"
-echo "- CONVERT FILES"
+echo "- CONVERT HCWI FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -143,6 +143,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- CONVERT FILES: $elapsed seconds"
+echo "- CONVERT HCWI FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

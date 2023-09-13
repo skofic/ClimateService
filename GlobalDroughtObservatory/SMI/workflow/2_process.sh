@@ -16,7 +16,7 @@ epoc="${path}/GlobalDroughtObservatory/SMI"
 start=$(date +%s)
 
 echo "=================================================="
-echo "= PROCESS FILES"
+echo "= PROCESS SMI FILES"
 echo "=================================================="
 
 ###
@@ -35,6 +35,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= PROCESS FILES: $elapsed seconds"
+echo "= PROCESS SMI FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

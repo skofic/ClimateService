@@ -10,7 +10,7 @@
 source "${HOME}/.ClimateService"
 
 echo "--------------------------------------------------"
-echo "- EXPAND FILES"
+echo "- EXPAND HCWI FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -78,6 +78,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- EXPAND FILES: $elapsed seconds"
+echo "- EXPAND HCWI FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

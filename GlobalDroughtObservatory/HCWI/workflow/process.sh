@@ -26,7 +26,7 @@ variable="env_climate_hcwi"
 # Iterate 
 
 echo "--------------------------------------------------"
-echo "- PROCESS FILES"
+echo "- PROCESS HCWI FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -137,18 +137,6 @@ do
 	
 	done
 
-	echo "--------------------------------------------------"
-	echo "- COMPRESS FILES"
-	echo "--------------------------------------------------"
-
-	###
-	# Compress JSONL files.
-	###
-	for file in "${epoc}/data/"*.jsonl
-	do
-		gzip -f "$file"
-	done
-
 	echo "␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡"
 	echo "␡ DELETE imported files"
 	echo "␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡"
@@ -179,6 +167,6 @@ end=$(date +%s)
 elapsed=$((end-start))
 echo ""
 echo "--------------------------------------------------"
-echo "- PROCESS FILES: $elapsed seconds"
+echo "- PROCESS HCWI FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

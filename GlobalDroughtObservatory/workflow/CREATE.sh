@@ -2,11 +2,11 @@
 
 ###
 # Create Global Drought Observatory database.
-# Concurrent version.
+# Serial version.
 ###
 
 echo "=================================================="
-echo "= CREATE_consurrent.sh"
+echo "= CREATE.sh"
 echo "=================================================="
 echo $$
 echo "=================================================="
@@ -34,8 +34,8 @@ $cmd | tee "${epoc}/log/0_create_directories.log"
 echo ""
 echo "<<< PREPARE FILES >>>"
 echo ""
-cmd="${epoc}/workflow/prepare_concurrent.sh"
-$cmd | tee "${epoc}/log/1_prepare_concurrent.log"
+cmd="${epoc}/workflow/prepare.sh"
+$cmd | tee "${epoc}/log/prepare.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -80,6 +80,6 @@ CREATE_concurrent_END=$(date +%s)
 elapsed=$((CREATE_concurrent_END-CREATE_concurrent_TART))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> CREATE_consurrent.sh - TOTAL TIME: $elapsed seconds"
+echo "==> CREATE.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""

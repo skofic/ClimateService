@@ -16,7 +16,7 @@ epoc="${path}/GlobalDroughtObservatory/FAPAR"
 start=$(date +%s)
 
 echo "=================================================="
-echo "= PROCESS FILES"
+echo "= PROCESS FAPAR FILES"
 echo "=================================================="
 
 ###
@@ -35,6 +35,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= PROCESS FILES: $elapsed seconds"
+echo "= PROCESS FAPAR FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

@@ -15,7 +15,7 @@ source "${HOME}/.ClimateService"
 epoc="${path}/GlobalDroughtObservatory/FAPAR"
 
 echo "--------------------------------------------------"
-echo "- EXPAND FILES"
+echo "- EXPAND FAPAR FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -70,6 +70,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- EXPAND FILES: $elapsed seconds"
+echo "- EXPAND FAPAR FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

@@ -16,7 +16,7 @@ prefix="smian_m_euu_"
 epoc="${path}/GlobalDroughtObservatory/SMA"
 
 echo "--------------------------------------------------"
-echo "- CONVERT FILES"
+echo "- CONVERT SMA FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -119,6 +119,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "--------------------------------------------------"
-echo "- CONVERT FILES: $elapsed seconds"
+echo "- CONVERT SMA FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""

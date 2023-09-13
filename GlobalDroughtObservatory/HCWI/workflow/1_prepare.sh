@@ -16,7 +16,7 @@ epoc="${path}/GlobalDroughtObservatory/HCWI"
 start=$(date +%s)
 
 echo "=================================================="
-echo "= PREPARE FILES"
+echo "= PREPARE HCWI FILES"
 echo "=================================================="
 
 ###
@@ -48,6 +48,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= PREPARE FILES: $elapsed seconds"
+echo "= PREPARE HCWI FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

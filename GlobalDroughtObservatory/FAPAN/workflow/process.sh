@@ -23,7 +23,7 @@ collection="temp_ping"
 query="${path}/GlobalDroughtObservatory/query/process.aql"
 
 echo "--------------------------------------------------"
-echo "- PROCESS FILES"
+echo "- PROCESS FAPAN FILES"
 echo "--------------------------------------------------"
 start=$(date +%s)
 
@@ -73,7 +73,7 @@ do
 	###
 	# Set destination file path.
 	###
-	dest="${epoc}/data/${name}.jsonl"
+	dest="${epoc}/data/${name}.jsonl.gz"
 
 	###
 	# Export data into data folder.
@@ -111,18 +111,6 @@ do
 	
 done
 
-echo "--------------------------------------------------"
-echo "- COMPRESS FILES"
-echo "--------------------------------------------------"
-
-###
-# Compress JSONL files.
-###
-for file in "${epoc}/data/"*.jsonl
-do
-	gzip -f "$file"
-done
-
 echo "␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡"
 echo "␡ DELETE imported files"
 echo "␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡␡"
@@ -151,6 +139,6 @@ end=$(date +%s)
 elapsed=$((end-start))
 echo ""
 echo "--------------------------------------------------"
-echo "- PROCESS FILES: $elapsed seconds"
+echo "- PROCESS FAPAN FILES: $elapsed seconds"
 echo "--------------------------------------------------"
 echo ""
