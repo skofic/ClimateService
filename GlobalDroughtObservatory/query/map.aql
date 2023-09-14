@@ -1,14 +1,9 @@
 ///
-// Combine properties into dump.
+// Map into dump.
 ///
 FOR doc IN @@collection
-    LET properties = doc.properties
     COLLECT longitude = doc.lon,
-            latitude = doc.lat,
-            date = doc.std_date
-    INTO data
-    KEEP properties
-    LET vars = MERGE_RECURSIVE(data[*].properties)
+            latitude = doc.lat
     LET spot = GEO_POINT(longitude, latitude)
     LET area = GEO_POLYGON([
         [ longitude-@radius, latitude-@radius ],
@@ -18,11 +13,8 @@ FOR doc IN @@collection
         [ longitude-@radius, latitude-@radius ]
     ])
 RETURN {
-    _key: CONCAT(MD5(TO_STRING(area)), date),
-    geometry_hash: MD5(TO_STRING(area)),
+    _key: MD5(TO_STRING(area)),
+    geometry: area,
 	geometry_point: spot,
-    geometry_bounds: area,
-	std_date: date,
-	properties: vars,
-	std_terms: ATTRIBUTES(vars)
+    geometry_point_radius: @radius
 }

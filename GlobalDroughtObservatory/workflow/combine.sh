@@ -39,10 +39,23 @@ do
 	fi
 	
 	###
-	# Combine dumps.
+	# Combine map dumps.
+	###
+	cmd="${epoc}/workflow/map_${area}.sh"
+	$cmd | tee "${epoc}/log/4_MAP_${area}.log"
+	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
+	
+	###
+	# Combine data dumps.
 	###
 	cmd="${epoc}/workflow/combine_${area}.sh"
-	$cmd | tee "${epoc}/log/4_COMBINE_${area}.log"
+	$cmd | tee "${epoc}/log/5_COMBINE_${area}.log"
 	if [ $? -ne 0 ]
 	then
 		echo "*************"

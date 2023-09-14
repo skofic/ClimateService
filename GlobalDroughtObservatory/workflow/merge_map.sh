@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Merge data into GeoService collection.
+# Merge map into GeoService collection.
 ###
 
 ###
@@ -13,11 +13,11 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 base="GeoService"
-collection="DroughtObservatory"
+collection="DroughtObservatoryMap"
 epoc="${path}/GlobalDroughtObservatory"
 
 echo "=================================================="
-echo "= MERGE FILES"
+echo "= MERGE MAP FILES"
 echo "=================================================="
 start=$(date +%s)
 
@@ -31,11 +31,11 @@ do
 	###
 	# Set dump file path.
 	###
-	dump="${epoc}/data/GDO_${area}.jsonl.gz"
+	dump="${epoc}/data/GDO_map_${area}.jsonl.gz"
 
 	echo ""
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	echo ">>> IMPORT GDO_${area}.jsonl.gz"
+	echo ">>> IMPORT GDO_map_${area}.jsonl.gz"
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	
 	###
@@ -87,6 +87,6 @@ done
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= MERGE FILES: $elapsed seconds"
+echo "= MERGE MAP FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

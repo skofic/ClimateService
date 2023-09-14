@@ -15,7 +15,7 @@ source "${HOME}/.ClimateService"
 radius=0.02085
 collection="temp_pang"
 epoc="${path}/GlobalDroughtObservatory"
-dump="${epoc}/data/GDO_1km.jsonl.gz"
+dump="${epoc}/data/GDO_data_1km.jsonl.gz"
 query="${epoc}/query/combine.aql"
 
 echo "=================================================="

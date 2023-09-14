@@ -77,13 +77,29 @@ then
 fi
 
 ###
-# Merge files.
+# Merge map files.
 ###
 echo ""
-echo "<<< MERGE FILES >>>"
+echo "<<< MERGE MAP FILES >>>"
 echo ""
-cmd="${epoc}/workflow/merge.sh"
-$cmd | tee "${epoc}/log/4_merge.log"
+cmd="${epoc}/workflow/merge_map.sh"
+$cmd | tee "${epoc}/log/4_merge_map.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Merge map files.
+###
+echo ""
+echo "<<< MERGE DATA FILES >>>"
+echo ""
+cmd="${epoc}/workflow/merge_data.sh"
+$cmd | tee "${epoc}/log/5_merge_data.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"

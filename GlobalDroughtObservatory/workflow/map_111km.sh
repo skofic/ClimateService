@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###
-# Combine files.
+# Map files.
 ###
 
 ###
@@ -15,11 +15,11 @@ source "${HOME}/.ClimateService"
 radius=0.03174691
 collection="temp_pang"
 epoc="${path}/GlobalDroughtObservatory"
-dump="${epoc}/data/GDO_data_111km.jsonl.gz"
-query="${epoc}/query/combine.aql"
+dump="${epoc}/data/GDO_map_111km.jsonl.gz"
+query="${epoc}/query/map.aql"
 
 echo "=================================================="
-echo "= COMBINE 111km FILES"
+echo "= MAP 111km FILES"
 echo "=================================================="
 start=$(date +%s)
 
@@ -60,6 +60,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= COMBINE 111km FILES: $elapsed seconds"
+echo "= MAP 111km FILES: $elapsed seconds"
 echo "=================================================="
 echo ""
