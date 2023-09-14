@@ -60,29 +60,29 @@ do
 	echo "$epoc"
 	echo "$coll"
 	
-# 	###
-# 	# Set parameters.
-# 	###
-# 	dump="${epoc}/data/${file}.jsonl.gz"
-# 
-# 	echo ""
-# 	echo "**************************************************"
-# 	echo "*** Load $dump"
-# 	echo "*** into collection $coll"
-# 	echo "**************************************************"
-# 
-# 	###
-# 	# Load to collection.
-# 	# Load period dump files into related collection.
-# 	###
-# 	$cmd "$dump" "$coll"
-# 	if [ $? -ne 0 ]
-# 	then
-# 		echo "*************"
-# 		echo "*** ERROR ***"
-# 		echo "*************"
-# 		exit 1
-# 	fi
+	###
+	# Set parameters.
+	###
+	dump="${epoc}/data/${file}.jsonl.gz"
+
+	echo ""
+	echo "**************************************************"
+	echo "*** Load $dump"
+	echo "*** into collection $coll"
+	echo "**************************************************"
+
+	###
+	# Load to collection.
+	# Load period dump files into related collection.
+	###
+	$cmd "$dump" "$coll"
+	if [ $? -ne 0 ]
+	then
+		echo "*************"
+		echo "*** ERROR ***"
+		echo "*************"
+		exit 1
+	fi
 	
 done
 
