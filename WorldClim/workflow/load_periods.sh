@@ -22,7 +22,7 @@ collection_1="temp_period_1"
 collection_2="temp_period_2"
 collection_3="temp_period_3"
 collection_4="temp_period_4"
-collection_4="temp_period_5"
+collection_5="temp_period_5"
 
 period_0="${path}/WorldClim/Elevation"
 period_1="${path}/WorldClim/1970-2000"
