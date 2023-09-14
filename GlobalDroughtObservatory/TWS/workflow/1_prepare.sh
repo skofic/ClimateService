@@ -19,6 +19,19 @@ echo "=================================================="
 echo "= PREPARE TWS FILES"
 echo "=================================================="
 
+# ###
+# # Download files.
+# ###
+# cmd="${epoc}/workflow/download.sh"
+# $cmd | tee "${epoc}/log/1_download.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+
 ###
 # Expand and place files.
 ###

@@ -18,7 +18,7 @@ start=$(date +%s)
 ###
 # Launch jobs in batch mode.
 ###
-for folder in "FAPAN" "FAPAR" "HCWI" "SMA" "SMI" "TWS"
+for folder in "FAPAN" "FAPAR" "HCWI" "CDI" "SMA" "SMI" "TWS"
 do
 	
 	###
