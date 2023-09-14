@@ -58,7 +58,6 @@ do
 				echo "*************"
 				exit 1
 			fi
-			first=0
 		else
 			arangoimport \
 				--server.endpoint "$host" \
@@ -77,6 +76,8 @@ do
 				exit 1
 			fi
 		fi
+		
+		first=0
 		
 	done
 	

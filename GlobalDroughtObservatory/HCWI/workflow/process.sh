@@ -20,7 +20,6 @@ head="${path}/GlobalDroughtObservatory/config/header.csv"
 # Parameters.
 ###
 epoc="${path}/GlobalDroughtObservatory/HCWI"
-variable="env_climate_hcwi"
 
 ###
 # Iterate 

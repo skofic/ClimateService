@@ -60,6 +60,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= COMBINE 1km FILES: $elapsed seconds"
+echo "= COMBINE 5km FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

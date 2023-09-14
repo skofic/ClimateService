@@ -12,14 +12,14 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-radius=0.5
+radius=0.125
 collection="temp_pang"
 epoc="${path}/GlobalDroughtObservatory"
-dump="${epoc}/data/GDO_111km.jsonl.gz"
+dump="${epoc}/data/GDO_25km.jsonl.gz"
 query="${epoc}/query/combine.aql"
 
 echo "=================================================="
-echo "= COMBINE 111km FILES"
+echo "= COMBINE 25km FILES"
 echo "=================================================="
 start=$(date +%s)
 
@@ -60,6 +60,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= COMBINE 1km FILES: $elapsed seconds"
+echo "= COMBINE 25km FILES: $elapsed seconds"
 echo "=================================================="
 echo ""

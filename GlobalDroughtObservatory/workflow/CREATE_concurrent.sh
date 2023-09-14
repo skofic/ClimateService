@@ -76,6 +76,22 @@ then
 	exit 1
 fi
 
+###
+# Merge files.
+###
+echo ""
+echo "<<< MERGE FILES >>>"
+echo ""
+cmd="${epoc}/workflow/merge.sh"
+$cmd | tee "${epoc}/log/4_merge.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
 CREATE_concurrent_END=$(date +%s)
 elapsed=$((CREATE_concurrent_END-CREATE_concurrent_TART))
 echo ""
