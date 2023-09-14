@@ -24,8 +24,7 @@ start=$(date +%s)
 # Iterate folders.
 ###
 first=1
-# for folder in "FAPAN" "FAPAR"
-for folder in "FAPAN"
+for folder in "FAPAN" "FAPAR"
 do
 	
 	###
@@ -35,6 +34,7 @@ do
 	do
 		
 		echo "==> ${file}"
+		echo "==> ${first}"
 	
 		###
 		# Stack data dumps.

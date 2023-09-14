@@ -32,6 +32,9 @@ do
 	###
 	for file in "${epoc}/${folder}"/data/*.jsonl.gz
 	do
+		
+		echo "==> ${file}"
+		echo "==> ${first}"
 	
 		###
 		# Stack data dumps.

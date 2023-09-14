@@ -73,7 +73,7 @@ do
 	###
 	# Set destination file path.
 	###
-	dest="${epoc}/data/${name}.jsonl"
+	dest="${epoc}/data/${name}.jsonl.gz"
 
 	###
 	# Export data into data folder.

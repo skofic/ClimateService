@@ -34,7 +34,7 @@ epoc="${path}/GlobalDroughtObservatory"
 # echo ""
 # echo "<<< PREPARE FILES >>>"
 # echo ""
-# cmd="${epoc}/workflow/prepare.sh"
+# cmd="${epoc}/workflow/prepare_concurrent.sh"
 # $cmd | tee "${epoc}/log/1_prepare_concurrent.log"
 # if [ $? -ne 0 ]
 # then
@@ -52,6 +52,22 @@ echo "<<< PROCESS FILES >>>"
 echo ""
 cmd="${epoc}/workflow/process.sh"
 $cmd | tee "${epoc}/log/2_process.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Combine files.
+###
+echo ""
+echo "<<< COMBINE FILES >>>"
+echo ""
+cmd="${epoc}/workflow/combine.sh"
+$cmd | tee "${epoc}/log/3_combine.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
