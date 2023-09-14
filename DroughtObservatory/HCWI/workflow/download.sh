@@ -51,13 +51,13 @@ do
 		# Download file.
 		###
 		wget --continue "$url" --output-document="${epoc}/download/${year}.zip"
-		if [ $? -ne 0 ]
-		then
-			echo "*************"
-			echo "*** ERROR ***"
-			echo "*************"
-			exit 1
-		fi
+# 		if [ $? -ne 0 ]
+# 		then
+# 			echo "*************"
+# 			echo "*** ERROR ***"
+# 			echo "*************"
+# 			exit 1
+# 		fi
 
 	done
 
