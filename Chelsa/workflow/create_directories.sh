@@ -30,6 +30,7 @@ CREATE_START=$(date +%s)
 # Create top level log folder,
 ###
 mkdir -p "${path}/Chelsa/log/"
+mkdir -p "${path}/Chelsa/data/"
 
 ###
 # Create period directories.

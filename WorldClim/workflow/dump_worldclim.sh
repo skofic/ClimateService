@@ -20,14 +20,15 @@ collection_map="map_worldclim"
 collection_data="worldclim"
 dump_map_name="WorldClimaMap"
 dump_worldclim_name="WorldClim"
+epoc="${path}/WorldClim"
 
 ###
 # Parameters.
 ###
-mdump="${path}/${dump_map_name}.jsonl.gz"
-ddump="${path}/${dump_worldclim_name}.jsonl.gz"
-query="${path}/WorldClim/script_query/merge_worldclim.aql"
-query_map="${path}/WorldClim/script_query/dump_map.aql"
+mdump="${epoc}/data/${dump_map_name}.jsonl.gz"
+ddump="${epoc}/data/${dump_worldclim_name}.jsonl.gz"
+query="${epoc}/script_query/merge_worldclim.aql"
+query_map="${epoc}/script_query/dump_map.aql"
 
 echo "**************************************************"
 echo "**************************************************"
@@ -82,26 +83,26 @@ then
 	exit 1
 fi
 
-echo ""
-echo "**************************************************"
-echo "*** Load WorldClim into database"
-echo "*** dump ${path}/${dump_worldclim_name}.jsonl.gz"
-echo "*** into collection $collection_data"
-echo "**************************************************"
-
-###
-# Load worldclim.
-###
-cmd="${path}/WorldClim/script_data/load.sh"
-$cmd "$ddump" \
-	 "$collection_data"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# echo ""
+# echo "**************************************************"
+# echo "*** Load WorldClim into database"
+# echo "*** dump ${path}/${dump_worldclim_name}.jsonl.gz"
+# echo "*** into collection $collection_data"
+# echo "**************************************************"
+# 
+# ###
+# # Load worldclim.
+# ###
+# cmd="${path}/WorldClim/script_data/load.sh"
+# $cmd "$ddump" \
+# 	 "$collection_data"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
 DUMP_WORLDCLIM_END=$(date +%s)
 elapsed=$((DUMP_WORLDCLIM_END-DUMP_WORLDCLIM_START))

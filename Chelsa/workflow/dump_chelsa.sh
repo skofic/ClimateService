@@ -20,14 +20,15 @@ collection_map="map_chelsa"
 collection_data="chelsa"
 dump_map_name="ChelsaMap"
 dump_chelsa_name="Chelsa"
+epoc="${path}/Chelsa"
 
 ###
 # Parameters.
 ###
-mdump="${path}/${dump_map_name}.jsonl.gz"
-ddump="${path}/${dump_chelsa_name}.jsonl.gz"
-query="${path}/Chelsa/script_query/merge_chelsa.aql"
-query_map="${path}/Chelsa/script_query/dump_map.aql"
+mdump="${epoc}/data/${dump_map_name}.jsonl.gz"
+ddump="${epoc}/data/${dump_chelsa_name}.jsonl.gz"
+query="${epoc}/script_query/merge_chelsa.aql"
+query_map="${epoc}/script_query/dump_map.aql"
 
 echo "**************************************************"
 echo "**************************************************"
@@ -82,26 +83,26 @@ then
 	exit 1
 fi
 
-echo ""
-echo "**************************************************"
-echo "*** Load Chelsa into database"
-echo "*** dump ${path}/${dump_chelsa_name}.jsonl.gz"
-echo "*** into collection $collection_data"
-echo "**************************************************"
-
-###
-# Load chelsa.
-###
-cmd="${path}/Chelsa/script_data/load.sh"
-$cmd "$ddump" \
-	 "$collection_data"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# echo ""
+# echo "**************************************************"
+# echo "*** Load Chelsa into database"
+# echo "*** dump ${path}/${dump_chelsa_name}.jsonl.gz"
+# echo "*** into collection $collection_data"
+# echo "**************************************************"
+# 
+# ###
+# # Load chelsa.
+# ###
+# cmd="${path}/Chelsa/script_data/load.sh"
+# $cmd "$ddump" \
+# 	 "$collection_data"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
 DUMP_CHELSA_END=$(date +%s)
 elapsed=$((DUMP_CHELSA_END-DUMP_CHELSA_START))

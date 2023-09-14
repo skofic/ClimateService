@@ -26,7 +26,14 @@ echo ""
 echo "<<< CREATE DIRECTORIES >>>"
 echo ""
 cmd="${epoc}/workflow/create_directories.sh"
-$cmd | tee "${epoc}/log/0_create_directories.log"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 ###
 # Prepare files.

@@ -32,7 +32,7 @@ mkdir -p "${epoc}/data/"
 ###
 # Iterate single level descriptors.
 ###
-for folder in "FAPAN" "FAPAR" "SMA" "SMI" "TWS"
+for folder in "FAPAN" "FAPAR" "CDI" "SMA" "SMI" "TWS"
 do
 	mkdir -p "${epoc}/${folder}/log/"
 	mkdir -p "${epoc}/${folder}/download/"

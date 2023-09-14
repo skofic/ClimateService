@@ -20,7 +20,7 @@ variable="env_climate_cdi"
 # Parameters.
 ###
 collection="temp_ping"
-query="${path}/DroughtObservatory/query/process_string.aql"
+query="${path}/DroughtObservatory/query/process_enum.aql"
 
 echo "--------------------------------------------------"
 echo "- PROCESS CDI FILES"

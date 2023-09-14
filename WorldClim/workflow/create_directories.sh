@@ -32,6 +32,7 @@ CREATE_START=$(date +%s)
 # Create top level log folder,
 ###
 mkdir -p "${path}/WorldClim/log/"
+mkdir -p "${path}/WorldClim/data/"
 
 ###
 # Create elevation directories.
