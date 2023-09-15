@@ -40,17 +40,17 @@ do
 	###
 	rm -f "${epoc}/download"/*
 	
-# 	###
-# 	# Iterate files.
-# 	###
-# 	for file in "${home}/Backup/DroughtObservatory/${folder}/*.zip"
-# 	do
-# 	
-# 		###
-# 		# Copy files to download folder.
-# 		###
-# 		cp -f "$file" "${epoc}/download/"
-# 
-# 	done
+	###
+	# Iterate files.
+	###
+	for file in "${home}/Backup/DroughtObservatory/${folder}/"*.zip
+	do
+	
+		###
+		# Copy files to download folder.
+		###
+		cp -f "$file" "${epoc}/download/"
+
+	done
 	
 done
