@@ -42,6 +42,6 @@ do
 	###
 	# Copy files to download folder.
 	###
-	cp -f "${path}/Backup/DroughtObservatory/${folder}/*.zip" "${epoc}/download"
+	cp -f "${HOME}/Backup/DroughtObservatory/${folder}/*.zip" "${epoc}/download"
 
 done
