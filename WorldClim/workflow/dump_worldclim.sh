@@ -18,7 +18,7 @@ source "${HOME}/.ClimateService"
 ###
 collection_map="map_worldclim"
 collection_data="worldclim"
-dump_map_name="WorldClimaMap"
+dump_map_name="WorldClimMap"
 dump_worldclim_name="WorldClim"
 epoc="${path}/WorldClim"
 
