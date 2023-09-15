@@ -7,12 +7,13 @@
 ###
 # Globals.
 ###
+fol="CDI"
 ini=2012
 end=2022
-epoc="${path}/DroughtObservatory/FAPAR"
+epoc="${path}/DroughtObservatory/${fol}"
 
 echo "--------------------------------------------------"
-echo "- DOWNLOAD CDI FILES"
+echo "- DOWNLOAD ${fol} FILES"
 echo "--------------------------------------------------"
 
 ###
