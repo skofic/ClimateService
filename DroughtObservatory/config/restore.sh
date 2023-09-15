@@ -41,8 +41,16 @@ do
 	rm -f "${epoc}/download"/*
 	
 	###
-	# Copy files to download folder.
+	# Iterate files.
 	###
-	cp -f "${home}/Backup/DroughtObservatory/${folder}/*.zip" "${epoc}/download"
+	for file in "${home}/Backup/DroughtObservatory/${folder}/*.zip"
+	do
+	
+		###
+		# Copy files to download folder.
+		###
+		cp -f "$file" "${epoc}/download/"
 
+	done
+	
 done
