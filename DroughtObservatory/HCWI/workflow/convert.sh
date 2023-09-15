@@ -17,7 +17,7 @@ start=$(date +%s)
 ###
 # Iterate sub-directories.
 ###
-for sub in "ano" "max" "min"
+for sub in "ano" "day" "max" "min"
 do
 
 	###
@@ -28,6 +28,9 @@ do
 	case "$sub" in
 		"ano")
 		prefix="tpman_m_euu_"
+		;;
+		"day")
+		prefix="heatw_m_euu_"
 		;;
 		"max")
 		prefix="tpmax_m_euu_"

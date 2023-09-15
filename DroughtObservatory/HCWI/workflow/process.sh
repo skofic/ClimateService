@@ -32,7 +32,7 @@ start=$(date +%s)
 ###
 # Iterate sub-directories.
 ###
-for sub in "ano" "max" "min"
+for sub in "ano" "day" "max" "min"
 do
 
 	###
@@ -43,6 +43,9 @@ do
 	case "$sub" in
 		"ano")
 		variable="env_climate_hcwi_ano"
+		;;
+		"day")
+		prefix="heatw_m_euu_"
 		;;
 		"max")
 		variable="env_climate_hcwi_max"

@@ -24,7 +24,7 @@ start=$(date +%s)
 # Iterate folders.
 ###
 first=1
-for folder in "ano" "min" "max"
+for folder in "ano" "day" "min" "max"
 do
 	
 	###

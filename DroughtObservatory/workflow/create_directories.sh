@@ -47,7 +47,7 @@ done
 for folder in "HCWI"
 do
 	mkdir -p "${epoc}/${folder}/log/"
-	for folder in "ano" "max" "min"
+	for folder in "ano" "day" "max" "min"
 	do
 		mkdir -p "${epoc}/HCWI/${folder}/download/"
 		mkdir -p "${epoc}/HCWI/${folder}/converted/"
