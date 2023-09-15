@@ -5,6 +5,11 @@
 ###
 
 ###
+# Load default parameters.
+###
+source "${HOME}/.ClimateService"
+
+###
 # Globals.
 ###
 fol="CDI"
