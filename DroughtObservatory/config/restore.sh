@@ -12,6 +12,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
+home="/home/workuser"
 
 echo "--------------------------------------------------"
 echo "- RESTORE DOWNLOAD FILES"
@@ -42,6 +43,6 @@ do
 	###
 	# Copy files to download folder.
 	###
-	cp -f "${HOME}/Backup/DroughtObservatory/${folder}/*.zip" "${epoc}/download"
+	cp -f "${home}/Backup/DroughtObservatory/${folder}/*.zip" "${epoc}/download"
 
 done
