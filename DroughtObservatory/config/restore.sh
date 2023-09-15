@@ -85,7 +85,7 @@ do
 		###
 		# Iterate files.
 		###
-		for file in "${home}/Backup/DroughtObservatory/${folder}/"*.zip
+		for file in "${home}/Backup/DroughtObservatory/${folder}/${sub}/"*.zip
 		do
 	
 			###
