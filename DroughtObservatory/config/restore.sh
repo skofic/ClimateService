@@ -64,7 +64,7 @@ do
 	###
 	# Iterate subfolders.
 	###
-	for sub in "ano" "max" "min"
+	for sub in "ano" "day" "max" "min"
 	do
 	
 		###
