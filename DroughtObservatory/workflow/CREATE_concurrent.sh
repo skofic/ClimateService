@@ -6,7 +6,7 @@
 ###
 
 echo "=================================================="
-echo "= CREATE_consurrent.sh"
+echo "= CREATE_concurrent.sh"
 echo "=================================================="
 echo $$
 echo "=================================================="
@@ -119,6 +119,6 @@ CREATE_concurrent_END=$(date +%s)
 elapsed=$((CREATE_concurrent_END-CREATE_concurrent_TART))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> CREATE_consurrent.sh - TOTAL TIME: $elapsed seconds"
+echo "==> CREATE_concurrent.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
