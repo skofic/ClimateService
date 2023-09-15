@@ -20,7 +20,7 @@ echo "--------------------------------------------------"
 start=$(date +%s)
 
 ###
-# Iterate TIF files.
+# Iterate folders.
 ###
 for folder in "FAPAN" "FAPAR" "CDI" "SMA" "SMI" "TWS"
 do
@@ -51,6 +51,50 @@ do
 		###
 		cp -f "$file" "${epoc}/download/"
 
+	done
+	
+done
+
+###
+# Iterate HCWI.
+###
+for folder in "HCWI"
+do
+	
+	###
+	# Iterate subfolders.
+	###
+	for sub in "ano" "max" "min"
+	do
+	
+		###
+		# Set path.
+		###
+		epoc="${path}/DroughtObservatory/${folder}/${sub}"
+	
+		###
+		# Create download folder.
+		###
+		mkdir -p "${epoc}/download"
+	
+		###
+		# Empty download folder.
+		###
+		rm -f "${epoc}/download"/*
+	
+		###
+		# Iterate files.
+		###
+		for file in "${home}/Backup/DroughtObservatory/${folder}/"*.zip
+		do
+	
+			###
+			# Copy files to download folder.
+			###
+			cp -f "$file" "${epoc}/download/"
+
+		done
+	
 	done
 	
 done
