@@ -13,7 +13,7 @@ source "${HOME}/.ClimateService"
 # Globals.
 ###
 fol="FAPAN"
-ini=2012
+ini=2002
 end=2022
 epoc="${path}/DroughtObservatory/${fol}"
 
