@@ -30,7 +30,7 @@ do
 	###
 	# Set URL.
 	###
-	url="https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/DROUGHTOBS/Drought_Observatories_datasets/EDO_Fraction_of_Absorbed_Photosynthetically_Active_Radiation_Anomalies_fAPAR/ver1-3-2/fapan_m_euu_${year}0101_${year}1221_t.zip"
+	url="https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/DROUGHTOBS/Drought_Observatories_datasets/EDO_Fraction_of_Absorbed_Photosynthetically_Active_Radiation_fAPAR/ver1-3-2/fapar_m_euu_${year}0101_${year}1221_t.zip"
 	
 	echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 	echo "< DOWNLOAD FAPAR YEAR ${year}"
