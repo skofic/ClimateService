@@ -1,5 +1,9 @@
 #!/bin/sh
 
+##############################################################
+# NOT USED: FILE NAMES IN DOWNLOAD SERVER ARE NOT CONSISTENT #
+##############################################################
+
 ###
 # Download files in download folder.
 ###
