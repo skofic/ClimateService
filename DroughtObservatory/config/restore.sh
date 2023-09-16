@@ -67,7 +67,7 @@ done
 ###
 # Create ignored folders.
 ###
-rmkdir -p "${path}/DroughtObservatory/log"
+mkdir -p "${path}/DroughtObservatory/log"
 
 ###
 # Iterate HCWI.
@@ -122,6 +122,6 @@ do
 	###
 	# Create ignored folders.
 	###
-	rmkdir -p "${path}/DroughtObservatory/${folder}/log"
+	mkdir -p "${path}/DroughtObservatory/${folder}/log"
 	
 done
