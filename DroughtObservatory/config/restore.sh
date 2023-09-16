@@ -47,11 +47,7 @@ do
 	###
 	# Create ignored folders.
 	###
-	mkdir -p "${epoc}/converted"
-	mkdir -p "${epoc}/CSV"
-	mkdir -p "${epoc}/data"
 	mkdir -p "${epoc}/download"
-	mkdir -p "${epoc}/log"
 	
 	###
 	# Iterate files.
@@ -106,9 +102,6 @@ do
 		###
 		# Create ignored folders.
 		###
-		mkdir -p "${epoc}/converted"
-		mkdir -p "${epoc}/CSV"
-		mkdir -p "${epoc}/data"
 		mkdir -p "${epoc}/download"
 	
 		###
