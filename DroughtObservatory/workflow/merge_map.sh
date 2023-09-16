@@ -25,7 +25,8 @@ start=$(date +%s)
 # Launch jobs sequentially.
 ###
 first=1
-for area in "1km" "5km" "25km" "111km"
+# for area in "1km" "5km" "25km" "111km"
+for area in "1km" "5km" "25km"
 do
 	
 	###

@@ -22,6 +22,7 @@ RETURN {
     geometry_hash: MD5(TO_STRING(area)),
 	geometry_point: spot,
     geometry_bounds: area,
+    geometry_point_radius: @radius,
 	std_date: date,
 	properties: vars,
 	std_terms: ATTRIBUTES(vars)

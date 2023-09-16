@@ -20,6 +20,11 @@ echo "--------------------------------------------------"
 start=$(date +%s)
 
 ###
+# Delete ignored folders.
+###
+rm -rf "${path}/DroughtObservatory/log"
+
+###
 # Iterate folders.
 ###
 for folder in "FAPAN" "FAPAR" "CDI" "SMA" "SMI" "TWS"
@@ -31,14 +36,22 @@ do
 	epoc="${path}/DroughtObservatory/${folder}"
 	
 	###
-	# Create download folder.
+	# Delete ignored folders.
 	###
-	mkdir -p "${epoc}/download"
+	rm -rf "${epoc}/converted"
+	rm -rf "${epoc}/CSV"
+	rm -rf "${epoc}/data"
+	rm -rf "${epoc}/download"
+	rm -rf "${epoc}/log"
 	
 	###
-	# Empty download folder.
+	# Create ignored folders.
 	###
-	rm -f "${epoc}/download"/*
+	mkdir -p "${epoc}/converted"
+	mkdir -p "${epoc}/CSV"
+	mkdir -p "${epoc}/data"
+	mkdir -p "${epoc}/download"
+	mkdir -p "${epoc}/log"
 	
 	###
 	# Iterate files.
@@ -56,11 +69,21 @@ do
 done
 
 ###
+# Create ignored folders.
+###
+rmkdir -p "${path}/DroughtObservatory/log"
+
+###
 # Iterate HCWI.
 ###
 for folder in "HCWI"
 do
 	
+	###
+	# Delete ignored folders.
+	###
+	rm -rf "${path}/DroughtObservatory/${folder}/log"
+
 	###
 	# Iterate subfolders.
 	###
@@ -73,14 +96,20 @@ do
 		epoc="${path}/DroughtObservatory/${folder}/${sub}"
 	
 		###
-		# Create download folder.
+		# Delete ignored folders.
 		###
-		mkdir -p "${epoc}/download"
+		rm -rf "${epoc}/converted"
+		rm -rf "${epoc}/CSV"
+		rm -rf "${epoc}/data"
+		rm -rf "${epoc}/download"
 	
 		###
-		# Empty download folder.
+		# Create ignored folders.
 		###
-		rm -f "${epoc}/download"/*
+		mkdir -p "${epoc}/converted"
+		mkdir -p "${epoc}/CSV"
+		mkdir -p "${epoc}/data"
+		mkdir -p "${epoc}/download"
 	
 		###
 		# Iterate files.
@@ -96,5 +125,10 @@ do
 		done
 	
 	done
+
+	###
+	# Create ignored folders.
+	###
+	rmkdir -p "${path}/DroughtObservatory/${folder}/log"
 	
 done
