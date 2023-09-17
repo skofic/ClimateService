@@ -36,7 +36,7 @@ echo "=================================================="
 # Expand and place files.
 ###
 cmd="${epoc}/workflow/expand.sh"
-$cmd | tee "${epoc}/log/1_expand.log"
+$cmd | tee "${epoc}/log/2_expand.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -49,7 +49,7 @@ fi
 # Convert and place files.
 ###
 cmd="${epoc}/workflow/convert.sh"
-$cmd | tee "${epoc}/log/2_convert.log"
+$cmd | tee "${epoc}/log/3_convert.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"

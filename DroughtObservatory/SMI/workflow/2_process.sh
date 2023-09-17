@@ -23,7 +23,7 @@ echo "=================================================="
 # Expand and place files.
 ###
 cmd="${epoc}/workflow/process.sh"
-$cmd | tee "${epoc}/log/3_process.log"
+$cmd | tee "${epoc}/log/4_process.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
