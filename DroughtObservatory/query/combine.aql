@@ -17,9 +17,10 @@ FOR doc IN @@collection
         [ longitude-@radius, latitude+@radius ],
         [ longitude-@radius, latitude-@radius ]
     ])
+    LET hash = MD5(TO_STRING(area))
 RETURN {
-    _key: CONCAT(MD5(TO_STRING(area)), date),
-    geometry_hash: MD5(TO_STRING(area)),
+    _key: CONCAT(hash, date),
+    geometry_hash: hash,
 	geometry_point: spot,
     geometry_bounds: area,
     geometry_point_radius: @radius,
