@@ -12,7 +12,7 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-radius=0.020833333335
+radius=0.020833335
 collection="temp_pang"
 epoc="${path}/DroughtObservatory"
 dump="${epoc}/data/GDO_data_1km.jsonl.gz"
