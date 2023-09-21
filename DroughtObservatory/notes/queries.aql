@@ -1,29 +1,6 @@
 DATA
 
 ///
-// Return all data for given point.
-///
-FOR shape IN DroughtObservatoryMap
-    FILTER GEO_INTERSECTS(
-        GEO_POINT(@longitude, @latitude),
-        shape.geometry
-    )
-    SORT shape.geometry_point_radius DESC
-    LET data = (
-        FOR data IN DroughtObservatory
-            FILTER data.geometry_hash == shape._key
-        RETURN MERGE_RECURSIVE(
-            { std_date: data.std_date },
-            data.properties
-        )
-    )
-RETURN {
-    geometry: shape.geometry,
-    properties: data
-}
-
-
-///
 // Return all data for given point by geometry.
 ///
 FOR shape IN DroughtObservatoryMap
