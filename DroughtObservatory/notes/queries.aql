@@ -56,7 +56,7 @@ RETURN {
     geometry: shape.geometry,
     geometry_point: shape.geometry_point,
     geometry_point_radius: shape.geometry_point_radius,
-    data: (
+    properties: (
         FOR data IN DroughtObservatory
             FILTER data.geometry_hash == shape._key
             SORT data.std_date ASC
@@ -92,3 +92,136 @@ RETURN {
     end: end,
     terms: FLATTEN(terms)
 }
+
+
+///
+// Return all data for given point by date.
+///
+FOR shape IN DroughtObservatoryMap
+    FILTER GEO_INTERSECTS(
+        GEO_POINT(@longitude, @latitude),
+        shape.geometry
+    )
+    
+    FOR data IN DroughtObservatory
+        FILTER data.geometry_hash == shape._key
+        SORT data.std_date ASC
+        COLLECT date = data.std_date
+        INTO items
+        KEEP data
+
+    RETURN {
+        std_date: date,
+        properties: MERGE_RECURSIVE(items[*].data.properties)
+    }
+
+
+///
+// Return all data for given point by date range.
+///
+FOR shape IN DroughtObservatoryMap
+    FILTER GEO_INTERSECTS(
+        GEO_POINT(@longitude, @latitude),
+        shape.geometry
+    )
+    
+    FOR data IN DroughtObservatory
+        FILTER data.geometry_hash == shape._key AND
+               data.std_date >= @beg AND
+               data.std_date <= @end
+        SORT data.std_date ASC
+        COLLECT date = data.std_date
+        INTO items
+        KEEP data
+
+    RETURN {
+        std_date: date,
+        properties: MERGE_RECURSIVE(items[*].data.properties)
+    }
+    
+    
+///
+// Return all metadata for given point by date range.
+///
+FOR shape IN DroughtObservatoryMap
+    FILTER GEO_INTERSECTS(
+        GEO_POINT(@longitude, @latitude),
+        shape.geometry
+    )
+    
+    FOR data IN DroughtObservatory
+        FILTER data.geometry_hash == shape._key AND
+               data.std_date >= @beg AND
+               data.std_date <= @end
+               
+        COLLECT AGGREGATE start = MIN(data.std_date),
+                          end   = MAX(data.std_date),
+                          terms = UNIQUE(data.std_terms)
+
+    RETURN {
+        start: start,
+        end: end,
+        terms: FLATTEN(terms)
+    }
+
+
+///
+// Return all data for given point by date range and descriptor.
+///
+FOR shape IN DroughtObservatoryMap
+    FILTER GEO_INTERSECTS(
+        GEO_POINT(@longitude, @latitude),
+        shape.geometry
+    )
+    
+    FOR data IN DroughtObservatory
+        FILTER data.geometry_hash == shape._key AND
+               data.std_date >= @beg AND
+               data.std_date <= @end AND
+               @descriptors ANY IN data.std_terms
+        SORT data.std_date ASC
+        COLLECT date = data.std_date
+        INTO items
+        KEEP data
+
+    RETURN {
+        std_date: date,
+        properties: MERGE_RECURSIVE(items[*].data.properties)
+    }
+
+
+///
+// Return properties count for given point.
+///
+FOR shape IN DroughtObservatoryMap
+    FILTER GEO_INTERSECTS(
+        GEO_POINT(@longitude, @latitude),
+        shape.geometry
+    )
+
+    FOR data IN DroughtObservatory
+        FILTER data.geometry_hash == shape._key
+        
+        COLLECT AGGREGATE count = COUNT()
+
+RETURN count
+
+
+///
+// Return properties count for given point by geometry.
+///
+FOR shape IN DroughtObservatoryMap
+    FILTER GEO_INTERSECTS(
+        GEO_POINT(@longitude, @latitude),
+        shape.geometry
+    )
+
+    FOR data IN DroughtObservatory
+        FILTER data.geometry_hash == shape._key
+        COLLECT geo = shape.geometry
+        AGGREGATE properties = COUNT()
+
+    RETURN {
+        geometry: geo,
+        count: properties
+    }
