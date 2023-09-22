@@ -24,7 +24,7 @@ start=$(date +%s)
 # Iterate folders.
 ###
 first=1
-for folder in "CDI" "SMA" "SMI" "TWS"
+for folder in "CDI" "SMA" "SMI"
 do
 	
 	###
