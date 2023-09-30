@@ -2,11 +2,11 @@
 
 ###
 # Create Global Drought Observatory database.
-# Serial version.
+# Concurrent version.
 ###
 
 echo "=================================================="
-echo "= CREATE.sh"
+echo "= CREATE_concurrent.sh"
 echo "=================================================="
 echo $$
 echo "=================================================="
@@ -35,22 +35,22 @@ then
 	exit 1
 fi
 
-###
-# Prepare files.
-###
-echo ""
-echo "<<< PREPARE FILES >>>"
-echo ""
-cmd="${epoc}/workflow/prepare.sh"
-$cmd | tee "${epoc}/log/prepare.log"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
+# ###
+# # Prepare files.
+# ###
+# echo ""
+# echo "<<< PREPARE FILES >>>"
+# echo ""
+# cmd="${epoc}/workflow/prepare_concurrent.sh"
+# $cmd | tee "${epoc}/log/1_prepare_concurrent.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+# 
 # ###
 # # Process files.
 # ###
@@ -98,27 +98,27 @@ fi
 # 	echo "*************"
 # 	exit 1
 # fi
-# 
-# ###
-# # Merge map files.
-# ###
-# echo ""
-# echo "<<< MERGE DATA FILES >>>"
-# echo ""
-# cmd="${epoc}/workflow/merge_data.sh"
-# $cmd | tee "${epoc}/log/5_merge_data.log"
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+
+###
+# Merge map files.
+###
+echo ""
+echo "<<< MERGE DATA FILES >>>"
+echo ""
+cmd="${epoc}/workflow/merge_data.sh"
+$cmd | tee "${epoc}/log/5_merge_data.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 CREATE_concurrent_END=$(date +%s)
 elapsed=$((CREATE_concurrent_END-CREATE_concurrent_TART))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> CREATE.sh - TOTAL TIME: $elapsed seconds"
+echo "==> CREATE_concurrent.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
