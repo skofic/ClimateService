@@ -12,14 +12,13 @@ source "${HOME}/.ClimateService"
 ###
 # Globals.
 ###
-radius=0.020833335
-collection="temp_pang"
+base="GeoService"
+collection="DroughtObservatory"
 epoc="${path}/DroughtObservatory"
-dump="${epoc}/data/GDO_map_1km.jsonl.gz"
-query="${epoc}/query/map.aql"
+dump="${epoc}/data/${collection}.jsonl.gz"
 
 echo "=================================================="
-echo "= MAP 1km FILES"
+echo "= DUMP MAP FILE"
 echo "=================================================="
 start=$(date +%s)
 
@@ -32,8 +31,7 @@ arangoexport \
 	--server.username "$user" \
 	--server.password "$pass" \
 	--output-directory "$expo" \
-	--custom-query-file "$query" \
-	--custom-query-bindvars "{\"@@collection\": \"$collection\", \"radius\": $radius}" \
+	--collection "$collection" \
 	--compress-output true \
 	--overwrite true \
 	--type "jsonl"
@@ -60,6 +58,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= MAP 1km FILES: $elapsed seconds"
+echo "= DUMP MAP FILE: $elapsed seconds"
 echo "=================================================="
 echo ""

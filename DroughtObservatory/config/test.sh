@@ -100,13 +100,45 @@ then
 fi
 
 ###
-# Merge map files.
+# Merge data files.
 ###
 echo ""
 echo "<<< MERGE DATA FILES >>>"
 echo ""
 cmd="${epoc}/workflow/merge_data.sh"
 $cmd | tee "${epoc}/log/5_merge_data.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Merge map files.
+###
+echo ""
+echo "<<< DUMP MAP FILE >>>"
+echo ""
+cmd="${epoc}/workflow/dump_map.sh"
+$cmd | tee "${epoc}/log/6_dump_map.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+###
+# Merge map files.
+###
+echo ""
+echo "<<< MERGE DATA FILES >>>"
+echo ""
+cmd="${epoc}/workflow/dump_data.sh"
+$cmd | tee "${epoc}/log/7_dumpp_data.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
