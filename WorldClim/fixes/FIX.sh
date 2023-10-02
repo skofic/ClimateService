@@ -1,14 +1,14 @@
 #!/bin/sh
 
 ###
-# Fix Chelsa database.
+# Fix WorldClim database.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
-FIX_CHELSA_START=$(date +%s)
+FIX_WORLDCLIM_START=$(date +%s)
 
 ###
 # Add and fix geometries.
@@ -16,7 +16,7 @@ FIX_CHELSA_START=$(date +%s)
 echo ""
 echo ">>> DUMP FIXED DATA >>>"
 echo ""
-cmd="${path}/Chelsa/fixes/1_fix_polygon.sh"
+cmd="${path}/WorldClim/fixes/1_fix_polygon.sh"
 $cmd
 
 ###
@@ -25,13 +25,13 @@ $cmd
 echo ""
 echo "<<< LOAD FIXED DATA <<<"
 echo ""
-cmd="${path}/Chelsa/fixes/2_load_data.sh"
+cmd="${path}/WorldClim/fixes/2_load_data.sh"
 $cmd
 
-FIX_CHELSA_END=$(date +%s)
-elapsed=$((FIX_CHELSA_END-FIX_CHELSA_START))
+FIX_WORLDCLIM_END=$(date +%s)
+elapsed=$((FIX_WORLDCLIM_END-FIX_WORLDCLIM_START))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> FIX_CHELSA.sh - TOTAL TIME: $elapsed seconds"
+echo "==> FIX_WORLDCLIM.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""

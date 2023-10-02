@@ -1,5 +1,5 @@
 ///
-// Dump Chelsa geometries.
+// Dump WorldClim geometries.
 ///
 LET radius = 0.004166665
 FOR doc IN @@collection

@@ -1,7 +1,7 @@
 ///
 // Dump Chelsa properties.
 ///
-LET radius = 0.004167
+LET radius = 0.004166665
 FOR doc IN @@collection
 RETURN {
 	_key: doc._key,

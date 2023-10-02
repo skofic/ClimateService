@@ -3,7 +3,7 @@
 // Read all records in WorldClim coordinates
 // and merge all related period records.
 ///
-LET radius = 0.004167
+LET radius = 0.004166665
 FOR doc IN @@collection
 	
 	FOR period_0 IN temp_period_0

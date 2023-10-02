@@ -1,11 +1,11 @@
 ///
-// Dump Chelsa geometries.
+// Dump WorldClim properties.
 ///
 LET radius = 0.004166665
 FOR doc IN @@collection
 RETURN {
 	_key: doc._key,
-	geometry: doc.geometry,
+	geometry_point: doc.geometry,
 	geometry_bounds: {
       "type": "Polygon",
        "coordinates": [
@@ -17,5 +17,6 @@ RETURN {
                 [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ]
             ]
         ]
-	}
+	},
+	properties: doc.properties
 }
