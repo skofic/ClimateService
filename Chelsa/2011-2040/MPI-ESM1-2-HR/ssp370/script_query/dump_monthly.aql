@@ -23,7 +23,7 @@ RETURN {
 		`2011-2040`: {
 			`MPI-ESM1-2-HR`: {
 				`ssp370`: {
-					monthly: month_data
+					std_date_span_month: month_data
 				}
 			}
 		}

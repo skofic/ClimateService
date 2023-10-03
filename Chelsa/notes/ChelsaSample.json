@@ -1,0 +1,586 @@
+[
+  {
+    "geometry_hash": "26edfdea4c66421276d7c1009d299d7f",
+    "geometry_point": {
+      "type": "Point",
+      "coordinates": [
+        12.06249995,
+        42.08749983
+      ]
+    },
+    "geometry_bounds": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            12.058333285,
+            42.083333165
+          ],
+          [
+            12.066666614999999,
+            42.083333165
+          ],
+          [
+            12.066666614999999,
+            42.091666495
+          ],
+          [
+            12.058333285,
+            42.091666495
+          ],
+          [
+            12.058333285,
+            42.083333165
+          ]
+        ]
+      ]
+    },
+    "properties": {
+      "1981-2010": {
+        "env_climate_ai": 1.08328,
+        "env_climate_bio01": 14.850000000000023,
+        "env_climate_bio02": 6.300000000000001,
+        "env_climate_bio03": 0.282,
+        "env_climate_bio04": 5.658,
+        "env_climate_bio05": 26.850000000000023,
+        "env_climate_bio06": 4.550000000000011,
+        "env_climate_bio07": 22.3,
+        "env_climate_bio08": 12.450000000000045,
+        "env_climate_bio09": 22.350000000000023,
+        "env_climate_bio10": 22.350000000000023,
+        "env_climate_bio11": 8.050000000000011,
+        "env_climate_bio12": 903.7,
+        "env_climate_bio13": 129.20000000000002,
+        "env_climate_bio14": 20.900000000000002,
+        "env_climate_bio15": 46.900000000000006,
+        "env_climate_bio16": 381.1,
+        "env_climate_bio17": 88.30000000000001,
+        "env_climate_bio18": 88.30000000000001,
+        "env_climate_bio19": 270.40000000000003,
+        "env_climate_cmi_max": 87.10000000000001,
+        "env_climate_cmi_mean": -19,
+        "env_climate_cmi_min": -152.5,
+        "env_climate_cmi_range": 239.60000000000002,
+        "env_climate_gdd0": 5446.700000000001,
+        "env_climate_gdd10": 1975.8000000000002,
+        "env_climate_gdd5": 3621.7000000000003,
+        "env_climate_gddlgd10": 335,
+        "env_climate_gdgfgd10": 76,
+        "env_climate_gsl": 365,
+        "env_climate_gsp": 903.7,
+        "env_climate_gst": 14.950000000000045,
+        "env_climate_hurs_max": 63.67,
+        "env_climate_hurs_mean": 60.69,
+        "env_climate_hurs_min": 57.02,
+        "env_climate_hurs_range": 6.65,
+        "env_climate_kg0": "env_climate_kg_Csa",
+        "env_climate_kg1": "env_climate_kg_Csa",
+        "env_climate_kg2": "env_climate_kg_Csa",
+        "env_climate_kg3": "env_climate_kg3_II_Fb",
+        "env_climate_kg4": "env_climate_kg4_7",
+        "env_climate_kg5": "env_climate_kg5_IV_4",
+        "env_climate_ngd0": 365,
+        "env_climate_ngd10": 260,
+        "env_climate_ngd5": 365,
+        "env_climate_npp": 1317.6000000000001,
+        "env_climate_pet_penman_max": 172.34,
+        "env_climate_pet_penman_mean": 92.05,
+        "env_climate_pet_penman_min": 33.480000000000004,
+        "env_climate_pet_penman_range": 138.86,
+        "env_climate_rsds_max": 25.563,
+        "env_climate_rsds_mean": 15.532,
+        "env_climate_rsds_min": 5.667,
+        "env_climate_rsds_range": 19.896,
+        "env_climate_scd": 0,
+        "env_climate_sfcWind_max": 3.67,
+        "env_climate_sfcWind_mean": 2.995,
+        "env_climate_sfcWind_min": 2.441,
+        "env_climate_sfcWind_range": 1.229,
+        "env_climate_vpd_max": 1223.9,
+        "env_climate_vpd_mean": 711.9000000000001,
+        "env_climate_vpd_min": 399.6,
+        "env_climate_vpd_range": 824.3000000000001,
+        "monthly": [
+          {
+            "env_climate_pr": 7.53,
+            "env_climate_tas": 280.7,
+            "env_climate_tasmax": 283.5,
+            "std_month": 1,
+            "env_climate_tasmin": 277.90000000000003
+          },
+          {
+            "env_climate_pr": 7.04,
+            "env_climate_tas": 281,
+            "env_climate_tasmax": 283.90000000000003,
+            "std_month": 2,
+            "env_climate_tasmin": 277.7
+          },
+          {
+            "env_climate_pr": 6.75,
+            "env_climate_tas": 283.1,
+            "env_climate_tasmax": 286.1,
+            "std_month": 3,
+            "env_climate_tasmin": 279.5
+          },
+          {
+            "env_climate_pr": 8.22,
+            "env_climate_tas": 285.6,
+            "env_climate_tasmax": 288.5,
+            "std_month": 4,
+            "env_climate_tasmin": 281.90000000000003
+          },
+          {
+            "env_climate_pr": 5.7700000000000005,
+            "env_climate_tas": 289.7,
+            "env_climate_tasmax": 292.90000000000003,
+            "std_month": 5,
+            "env_climate_tasmin": 285.90000000000003
+          },
+          {
+            "env_climate_pr": 3.77,
+            "env_climate_tas": 293.40000000000003,
+            "env_climate_tasmax": 296.6,
+            "std_month": 6,
+            "env_climate_tasmin": 289.6
+          },
+          {
+            "env_climate_pr": 2.09,
+            "env_climate_tas": 296.40000000000003,
+            "env_climate_tasmax": 299.90000000000003,
+            "std_month": 7,
+            "env_climate_tasmin": 292.5
+          },
+          {
+            "env_climate_pr": 2.97,
+            "env_climate_tas": 296.6,
+            "env_climate_tasmax": 300,
+            "std_month": 8,
+            "env_climate_tasmin": 293
+          },
+          {
+            "env_climate_pr": 8.120000000000001,
+            "env_climate_tas": 293.2,
+            "env_climate_tasmax": 296.2,
+            "std_month": 9,
+            "env_climate_tasmin": 290
+          },
+          {
+            "env_climate_pr": 12.72,
+            "env_climate_tas": 289.7,
+            "env_climate_tasmax": 292.40000000000003,
+            "std_month": 10,
+            "env_climate_tasmin": 286.8
+          },
+          {
+            "env_climate_pr": 12.92,
+            "env_climate_tas": 285.1,
+            "env_climate_tasmax": 287.6,
+            "std_month": 11,
+            "env_climate_tasmin": 282.40000000000003
+          },
+          {
+            "env_climate_pr": 12.47,
+            "env_climate_tas": 281.90000000000003,
+            "env_climate_tasmax": 284.3,
+            "std_month": 12,
+            "env_climate_tasmin": 279.2
+          }
+        ]
+      },
+      "2011-2040": {
+        "MPI-ESM1-2-HR": {
+          "ssp370": {
+            "env_climate_bio01": 15.750000000000057,
+            "env_climate_bio02": 6.5,
+            "env_climate_bio03": 0.273658,
+            "env_climate_bio04": 5.962,
+            "env_climate_bio05": 28.650000000000034,
+            "env_climate_bio06": 5.050000000000011,
+            "env_climate_bio07": 23.6,
+            "env_climate_bio08": 12.950000000000045,
+            "env_climate_bio09": 23.650000000000034,
+            "env_climate_bio10": 23.750000000000057,
+            "env_climate_bio11": 8.650000000000034,
+            "env_climate_bio12": 883.6,
+            "env_climate_bio13": 134.1,
+            "env_climate_bio14": 20.900000000000002,
+            "env_climate_bio15": 46.400000000000006,
+            "env_climate_bio16": 364.6,
+            "env_climate_bio17": 89.9,
+            "env_climate_bio18": 133,
+            "env_climate_bio19": 290.6,
+            "env_climate_fgd": 247,
+            "env_climate_gdd0": 5769.200000000001,
+            "env_climate_gdd10": 2237.9,
+            "env_climate_gdd5": 3944.2000000000003,
+            "env_climate_gddlgd10": 341,
+            "env_climate_gdgfgd10": 63,
+            "env_climate_gsl": 357,
+            "env_climate_gsp": 883.6,
+            "env_climate_gst": 15.650000000000034,
+            "env_climate_kg0": "env_climate__Csa",
+            "env_climate_kg1": "env_climate__Csa",
+            "env_climate_kg2": "env_climate__Csa",
+            "env_climate_kg3": "env_climate_kg3_II_Fa",
+            "env_climate_kg4": "env_climate_kg4_7",
+            "env_climate_kg5": "env_climate_kg5_IV_4",
+            "env_climate_lgd": 239,
+            "env_climate_ngd0": 365,
+            "env_climate_ngd10": 279,
+            "env_climate_ngd5": 365,
+            "env_climate_npp": 1295.8000000000002,
+            "env_climate_scd": 0,
+            "monthly": [
+              {
+                "env_climate_pr": 8.25,
+                "env_climate_tas": 281,
+                "env_climate_tasmax": 283.8,
+                "std_month": 1,
+                "env_climate_tasmin": 278.2
+              },
+              {
+                "env_climate_pr": 7.4,
+                "env_climate_tas": 282,
+                "env_climate_tasmax": 284.90000000000003,
+                "std_month": 2,
+                "env_climate_tasmin": 278.8
+              },
+              {
+                "env_climate_pr": 6.42,
+                "env_climate_tas": 284,
+                "env_climate_tasmax": 287.2,
+                "std_month": 3,
+                "env_climate_tasmin": 280.40000000000003
+              },
+              {
+                "env_climate_pr": 6.8500000000000005,
+                "env_climate_tas": 286.1,
+                "env_climate_tasmax": 289.2,
+                "std_month": 4,
+                "env_climate_tasmin": 282.3
+              },
+              {
+                "env_climate_pr": 5.49,
+                "env_climate_tas": 290.8,
+                "env_climate_tasmax": 294.2,
+                "std_month": 5,
+                "env_climate_tasmin": 286.8
+              },
+              {
+                "env_climate_pr": 4.19,
+                "env_climate_tas": 294.2,
+                "env_climate_tasmax": 297.40000000000003,
+                "std_month": 6,
+                "env_climate_tasmin": 290.5
+              },
+              {
+                "env_climate_pr": 2.09,
+                "env_climate_tas": 297.90000000000003,
+                "env_climate_tasmax": 301.40000000000003,
+                "std_month": 7,
+                "env_climate_tasmin": 293.90000000000003
+              },
+              {
+                "env_climate_pr": 2.71,
+                "env_climate_tas": 298.2,
+                "env_climate_tasmax": 301.8,
+                "std_month": 8,
+                "env_climate_tasmin": 294.40000000000003
+              },
+              {
+                "env_climate_pr": 8.5,
+                "env_climate_tas": 294.5,
+                "env_climate_tasmax": 297.7,
+                "std_month": 9,
+                "env_climate_tasmin": 291.2
+              },
+              {
+                "env_climate_pr": 10.43,
+                "env_climate_tas": 290.2,
+                "env_climate_tasmax": 293.1,
+                "std_month": 10,
+                "env_climate_tasmin": 287.1
+              },
+              {
+                "env_climate_pr": 12.620000000000001,
+                "env_climate_tas": 285.7,
+                "env_climate_tasmax": 288.3,
+                "std_month": 11,
+                "env_climate_tasmin": 282.90000000000003
+              },
+              {
+                "env_climate_pr": 13.41,
+                "env_climate_tas": 282.40000000000003,
+                "env_climate_tasmax": 284.7,
+                "std_month": 12,
+                "env_climate_tasmin": 279.7
+              }
+            ]
+          }
+        }
+      },
+      "2041-2070": {
+        "MPI-ESM1-2-HR": {
+          "ssp370": {
+            "env_climate_bio01": 16.750000000000057,
+            "env_climate_bio02": 6.5,
+            "env_climate_bio03": 0.275424,
+            "env_climate_bio04": 6.168,
+            "env_climate_bio05": 29.650000000000034,
+            "env_climate_bio06": 6.050000000000011,
+            "env_climate_bio07": 23.6,
+            "env_climate_bio08": 13.850000000000023,
+            "env_climate_bio09": 24.850000000000023,
+            "env_climate_bio10": 25.05000000000001,
+            "env_climate_bio11": 9.550000000000011,
+            "env_climate_bio12": 814,
+            "env_climate_bio13": 115.5,
+            "env_climate_bio14": 20.8,
+            "env_climate_bio15": 44.5,
+            "env_climate_bio16": 316.20000000000005,
+            "env_climate_bio17": 79,
+            "env_climate_bio18": 131.4,
+            "env_climate_bio19": 237.8,
+            "env_climate_fgd": 228,
+            "env_climate_gdd0": 6131.1,
+            "env_climate_gdd10": 2532.2000000000003,
+            "env_climate_gdd5": 4306.1,
+            "env_climate_gddlgd10": 349,
+            "env_climate_gdgfgd10": 47,
+            "env_climate_gsl": 347,
+            "env_climate_gsp": 814,
+            "env_climate_gst": 16.350000000000023,
+            "env_climate_kg0": "env_climate__Csa",
+            "env_climate_kg1": "env_climate__Csa",
+            "env_climate_kg2": "env_climate__Csa",
+            "env_climate_kg3": "env_climate_kg3_II_Fa",
+            "env_climate_kg4": "env_climate_kg4_8",
+            "env_climate_kg5": "env_climate_kg5_IV_4",
+            "env_climate_lgd": 223,
+            "env_climate_ngd0": 365,
+            "env_climate_ngd10": 303,
+            "env_climate_ngd5": 365,
+            "env_climate_npp": 1218.1000000000001,
+            "env_climate_scd": 0,
+            "monthly": [
+              {
+                "env_climate_pr": 7.41,
+                "env_climate_tas": 281.90000000000003,
+                "env_climate_tasmax": 284.7,
+                "std_month": 1,
+                "env_climate_tasmin": 279.2
+              },
+              {
+                "env_climate_pr": 5.75,
+                "env_climate_tas": 283.1,
+                "env_climate_tasmax": 286.1,
+                "std_month": 2,
+                "env_climate_tasmin": 279.8
+              },
+              {
+                "env_climate_pr": 7.19,
+                "env_climate_tas": 284.6,
+                "env_climate_tasmax": 287.6,
+                "std_month": 3,
+                "env_climate_tasmin": 281
+              },
+              {
+                "env_climate_pr": 8.700000000000001,
+                "env_climate_tas": 286.40000000000003,
+                "env_climate_tasmax": 289.2,
+                "std_month": 4,
+                "env_climate_tasmin": 282.7
+              },
+              {
+                "env_climate_pr": 4.55,
+                "env_climate_tas": 291.7,
+                "env_climate_tasmax": 295.3,
+                "std_month": 5,
+                "env_climate_tasmin": 287.6
+              },
+              {
+                "env_climate_pr": 3.04,
+                "env_climate_tas": 295.7,
+                "env_climate_tasmax": 299.2,
+                "std_month": 6,
+                "env_climate_tasmin": 291.7
+              },
+              {
+                "env_climate_pr": 2.08,
+                "env_climate_tas": 299,
+                "env_climate_tasmax": 302.6,
+                "std_month": 7,
+                "env_climate_tasmin": 295
+              },
+              {
+                "env_climate_pr": 2.7800000000000002,
+                "env_climate_tas": 299.3,
+                "env_climate_tasmax": 302.8,
+                "std_month": 8,
+                "env_climate_tasmin": 295.6
+              },
+              {
+                "env_climate_pr": 8.28,
+                "env_climate_tas": 296.2,
+                "env_climate_tasmax": 299.5,
+                "std_month": 9,
+                "env_climate_tasmin": 292.8
+              },
+              {
+                "env_climate_pr": 9.450000000000001,
+                "env_climate_tas": 291.2,
+                "env_climate_tasmax": 294.1,
+                "std_month": 10,
+                "env_climate_tasmin": 288
+              },
+              {
+                "env_climate_pr": 11.55,
+                "env_climate_tas": 286.7,
+                "env_climate_tasmax": 289.3,
+                "std_month": 11,
+                "env_climate_tasmin": 284
+              },
+              {
+                "env_climate_pr": 10.620000000000001,
+                "env_climate_tas": 283.1,
+                "env_climate_tasmax": 285.5,
+                "std_month": 12,
+                "env_climate_tasmin": 280.5
+              }
+            ]
+          }
+        }
+      },
+      "2071-2100": {
+        "MPI-ESM1-2-HR": {
+          "ssp370": {
+            "env_climate_bio01": 17.950000000000045,
+            "env_climate_bio02": 6.5,
+            "env_climate_bio03": 0.269792,
+            "env_climate_bio04": 6.239,
+            "env_climate_bio05": 31.350000000000023,
+            "env_climate_bio06": 7.350000000000023,
+            "env_climate_bio07": 24,
+            "env_climate_bio08": 15.050000000000011,
+            "env_climate_bio09": 26.150000000000034,
+            "env_climate_bio10": 26.250000000000057,
+            "env_climate_bio11": 10.650000000000034,
+            "env_climate_bio12": 848.2,
+            "env_climate_bio13": 123.9,
+            "env_climate_bio14": 20.3,
+            "env_climate_bio15": 47.800000000000004,
+            "env_climate_bio16": 356.6,
+            "env_climate_bio17": 77.7,
+            "env_climate_bio18": 116.60000000000001,
+            "env_climate_bio19": 261.1,
+            "env_climate_fgd": 228,
+            "env_climate_gdd0": 6548.8,
+            "env_climate_gdd10": 2898.8,
+            "env_climate_gdd5": 4723.8,
+            "env_climate_gsl": 339,
+            "env_climate_gsp": 848.2,
+            "env_climate_gst": 17.250000000000057,
+            "env_climate_kg0": "env_climate__Csa",
+            "env_climate_kg1": "env_climate__Csa",
+            "env_climate_kg2": "env_climate__Csa",
+            "env_climate_kg3": "env_climate_kg3_II_Fa",
+            "env_climate_kg4": "env_climate_kg4_8",
+            "env_climate_kg5": "env_climate_kg5_IV_4",
+            "env_climate_lgd": 221,
+            "env_climate_ngd0": 365,
+            "env_climate_ngd10": 365,
+            "env_climate_ngd5": 365,
+            "env_climate_npp": 1256.7,
+            "env_climate_scd": 0,
+            "monthly": [
+              {
+                "env_climate_pr": 7.28,
+                "env_climate_tas": 283.2,
+                "env_climate_tasmax": 286,
+                "std_month": 1,
+                "env_climate_tasmin": 280.5
+              },
+              {
+                "env_climate_pr": 7.24,
+                "env_climate_tas": 284,
+                "env_climate_tasmax": 287,
+                "std_month": 2,
+                "env_climate_tasmin": 280.90000000000003
+              },
+              {
+                "env_climate_pr": 6.98,
+                "env_climate_tas": 285.40000000000003,
+                "env_climate_tasmax": 288.40000000000003,
+                "std_month": 3,
+                "env_climate_tasmin": 281.90000000000003
+              },
+              {
+                "env_climate_pr": 7.65,
+                "env_climate_tas": 287.7,
+                "env_climate_tasmax": 290.6,
+                "std_month": 4,
+                "env_climate_tasmin": 284
+              },
+              {
+                "env_climate_pr": 4.8500000000000005,
+                "env_climate_tas": 292.6,
+                "env_climate_tasmax": 296.1,
+                "std_month": 5,
+                "env_climate_tasmin": 288.5
+              },
+              {
+                "env_climate_pr": 3.5,
+                "env_climate_tas": 296.90000000000003,
+                "env_climate_tasmax": 300.3,
+                "std_month": 6,
+                "env_climate_tasmin": 292.90000000000003
+              },
+              {
+                "env_climate_pr": 2.0300000000000002,
+                "env_climate_tas": 300,
+                "env_climate_tasmax": 303.6,
+                "std_month": 7,
+                "env_climate_tasmin": 295.90000000000003
+              },
+              {
+                "env_climate_pr": 2.24,
+                "env_climate_tas": 300.90000000000003,
+                "env_climate_tasmax": 304.5,
+                "std_month": 8,
+                "env_climate_tasmin": 297.2
+              },
+              {
+                "env_climate_pr": 7.390000000000001,
+                "env_climate_tas": 297.3,
+                "env_climate_tasmax": 300.7,
+                "std_month": 9,
+                "env_climate_tasmin": 293.8
+              },
+              {
+                "env_climate_pr": 11.68,
+                "env_climate_tas": 292.6,
+                "env_climate_tasmax": 295.5,
+                "std_month": 10,
+                "env_climate_tasmin": 289.6
+              },
+              {
+                "env_climate_pr": 12.39,
+                "env_climate_tas": 287.8,
+                "env_climate_tasmax": 290.40000000000003,
+                "std_month": 11,
+                "env_climate_tasmin": 285.2
+              },
+              {
+                "env_climate_pr": 11.59,
+                "env_climate_tas": 284.2,
+                "env_climate_tasmax": 286.6,
+                "std_month": 12,
+                "env_climate_tasmin": 281.6
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+]
