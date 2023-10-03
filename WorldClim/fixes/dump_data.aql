@@ -10,11 +10,11 @@ RETURN {
       "type": "Polygon",
        "coordinates": [
             [
-                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ],
-                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]-radius ],
-                [ doc.geometry.coordinates[0]+radius, doc.geometry.coordinates[1]+radius ],
-                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]+radius ],
-                [ doc.geometry.coordinates[0]-radius, doc.geometry.coordinates[1]-radius ]
+                [ doc.geometry_point.coordinates[0]-radius, doc.geometry_point.coordinates[1]-radius ],
+                [ doc.geometry_point.coordinates[0]+radius, doc.geometry_point.coordinates[1]-radius ],
+                [ doc.geometry_point.coordinates[0]+radius, doc.geometry_point.coordinates[1]+radius ],
+                [ doc.geometry_point.coordinates[0]-radius, doc.geometry_point.coordinates[1]+radius ],
+                [ doc.geometry_point.coordinates[0]-radius, doc.geometry_point.coordinates[1]-radius ]
             ]
         ]
 	},
