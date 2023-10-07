@@ -135,7 +135,7 @@ fi
 # Merge map files.
 ###
 echo ""
-echo "<<< DUMP DATA FILES >>>"
+echo "<<< DUMP DATA FILE >>>"
 echo ""
 cmd="${epoc}/workflow/dump_data.sh"
 $cmd | tee "${epoc}/log/7_dumpp_data.log"
