@@ -19,21 +19,21 @@ CREATE_concurrent_START=$(date +%s)
 source "${HOME}/.ClimateService"
 epoc="${path}/DroughtObservatory"
 
-# ###
-# # Create directories.
-# ##
-# echo ""
-# echo "<<< CREATE DIRECTORIES >>>"
-# echo ""
-# cmd="${epoc}/workflow/create_directories.sh"
-# $cmd
-# if [ $? -ne 0 ]
-# then
-# 	echo "*************"
-# 	echo "*** ERROR ***"
-# 	echo "*************"
-# 	exit 1
-# fi
+###
+# Create directories.
+##
+echo ""
+echo "<<< CREATE DIRECTORIES >>>"
+echo ""
+cmd="${epoc}/workflow/create_directories.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
 
 # ###
 # # Prepare files.
@@ -67,53 +67,53 @@ epoc="${path}/DroughtObservatory"
 # 	exit 1
 # fi
 
-###
-# Combine files.
-###
-echo ""
-echo "<<< COMBINE FILES >>>"
-echo ""
-cmd="${epoc}/workflow/combine.sh"
-$cmd | tee "${epoc}/log/3_combine.log"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# ###
+# # Combine files.
+# ###
+# echo ""
+# echo "<<< COMBINE FILES >>>"
+# echo ""
+# cmd="${epoc}/workflow/combine.sh"
+# $cmd | tee "${epoc}/log/3_combine.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
-###
-# Merge map files.
-###
-echo ""
-echo "<<< MERGE MAP FILES >>>"
-echo ""
-cmd="${epoc}/workflow/merge_map.sh"
-$cmd | tee "${epoc}/log/4_merge_map.log"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# ###
+# # Merge map files.
+# ###
+# echo ""
+# echo "<<< MERGE MAP FILES >>>"
+# echo ""
+# cmd="${epoc}/workflow/merge_map.sh"
+# $cmd | tee "${epoc}/log/4_merge_map.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
-###
-# Merge data files.
-###
-echo ""
-echo "<<< MERGE DATA FILES >>>"
-echo ""
-cmd="${epoc}/workflow/merge_data.sh"
-$cmd | tee "${epoc}/log/5_merge_data.log"
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# ###
+# # Merge map files.
+# ###
+# echo ""
+# echo "<<< MERGE DATA FILES >>>"
+# echo ""
+# cmd="${epoc}/workflow/merge_data.sh"
+# $cmd | tee "${epoc}/log/5_merge_data.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 
 ###
 # Merge map files.

@@ -46,7 +46,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv -f "${expo}/query.jsonl.gz" "$dump"
+mv -f "${expo}/${collection}.jsonl.gz" "$dump"
 if [ $? -ne 0 ]
 then
 	echo "*************"
