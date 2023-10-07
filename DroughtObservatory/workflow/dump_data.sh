@@ -18,7 +18,7 @@ epoc="${path}/DroughtObservatory"
 dump="${epoc}/data/${collection}.jsonl.gz"
 
 echo "=================================================="
-echo "= DUMP MAP FILE"
+echo "= DUMP DATA FILE"
 echo "=================================================="
 start=$(date +%s)
 
@@ -58,6 +58,6 @@ fi
 end=$(date +%s)
 elapsed=$((end-start))
 echo "=================================================="
-echo "= DUMP MAP FILE: $elapsed seconds"
+echo "= DUMP DATA FILE: $elapsed seconds"
 echo "=================================================="
 echo ""
