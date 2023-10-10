@@ -26,7 +26,7 @@ mkdir -p "${dump}"
 
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> UPDATE_Shapes.sh"
+echo "==> UPDATE_ShapeData.sh"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
 
@@ -68,6 +68,6 @@ UPDATE_END=$(date +%s)
 elapsed=$((UPDATE__END-UPDATE_START))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> UPDATE_Shapes.sh - TOTAL TIME: $elapsed seconds"
+echo "==> UPDATE_ShapeData.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
