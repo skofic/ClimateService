@@ -1,0 +1,27 @@
+///
+// Shapes - Sump object with new descriptors.
+///
+LET dict = {
+	geo_shape_aspect: "chr_AvAspect",
+	geo_shape_elevation: "chr_AvElevation",
+	geo_shape_elevation_sd: "chr_StdElevation",
+	geo_shape_slope: "chr_AvSlope"
+}
+
+FOR doc IN @@collection
+	LET prop = doc.properties.topography
+	LET keys = ATTRIBUTES(prop)
+	
+RETURN {
+	_key: doc._key,
+    geometry: doc.geometry,
+    geometry_bounds: doc.geometry_bounds,
+    properties: {
+        topography: MERGE(
+    		FOR key IN keys
+    		RETURN {
+    			[TRANSLATE(key, dict)]: prop[key]
+    		}
+    	)
+    }
+}

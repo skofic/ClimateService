@@ -1,0 +1,36 @@
+///
+// ShapeData - Sump object with new descriptors.
+///
+LET dict = {
+	chr_envi_AvBiomass: "chr_AvBiomass",
+	chr_envi_DLT: "chr_DomLeafType",
+	chr_envi_DLT_broadleaved: "chr_DomLeafType_broadleaved",
+	chr_envi_DLT_coniferous: "chr_DomLeafType_coniferous",
+	chr_envi_AvCanopyHeight: "chr_AvCanopyHeight",
+	chr_envi_LST: "chr_envi_LandSurfTemp",
+	chr_envi_AvNDWI: "chr_AvNormDiffWaterIdx",
+	chr_envi_AvLai: "chr_AvLeafAreaIdx",
+	chr_envi_AvGpp: "chr_AvGrossPrimProd",
+	chr_envi_AvNDVI: "chr_AvNormDiffVegIdx",
+	chr_envi_RH: "chr_RelHumid"
+}
+
+FOR doc IN @@collection
+	LET prop = doc.properties
+	LET keys = ATTRIBUTES(prop)
+	
+RETURN {
+	geometry_hash: doc.geometry_hash,
+    std_date_span: doc.std_date_span,
+    std_date: doc.std_date,
+    properties: MERGE(
+		FOR key IN keys
+		RETURN {
+			[TRANSLATE(key, dict)]: TRANSLATE(prop[key], dict)
+		}
+	),
+	std_terms: (
+		FOR key IN doc.std_terms
+		RETURN TRANSLATE(key, dict)
+	)
+}
