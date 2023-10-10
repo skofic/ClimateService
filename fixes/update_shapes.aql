@@ -1,5 +1,5 @@
 ///
-// Shapes - Sump object with new descriptors.
+// Shapes - Update object with new descriptors.
 ///
 LET dict = {
 	geo_shape_aspect: "chr_AvAspect",
