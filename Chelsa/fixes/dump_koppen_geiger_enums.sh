@@ -17,7 +17,7 @@ source "${HOME}/.ClimateService"
 ###
 # Create data directory.
 ###
-mkdir -f "${path}/Data"
+mkdir -p "${path}/Data"
 
 ###
 # Globals.
