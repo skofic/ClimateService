@@ -1,0 +1,41 @@
+///
+// Dump corrected Chelsa Köppen/Geiger enumerations.
+///
+FOR doc IN @@collection
+RETURN {
+    _key: doc._key,
+    geometry_point: doc.geometry_point,
+    geometry_bounds: doc.geometry_bounds,
+    properties: MERGE_RECURSIVE(
+        doc.properties,
+        {
+            `2011-2040`: {
+                `MPI-ESM1-2-HR`: {
+                    "ssp370": {
+                        env_climate_kg0: SUBSTITUTE(doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg0, "__", "_kg_"),
+                        env_climate_kg1: SUBSTITUTE(doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg1, "__", "_kg_"),
+                        env_climate_kg2: SUBSTITUTE(doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg2, "__", "_kg_")
+                    }
+                }
+            },
+            `2041-2070`: {
+                "MPI-ESM1-2-HR": {
+                    "ssp370": {
+                        env_climate_kg0: SUBSTITUTE(doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg0, "__", "_kg_"),
+                        env_climate_kg1: SUBSTITUTE(doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg1, "__", "_kg_"),
+                        env_climate_kg2: SUBSTITUTE(doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg2, "__", "_kg_")
+                    }
+                }
+            },
+            `2071-2100`: {
+                "MPI-ESM1-2-HR": {
+                    "ssp370": {
+                        env_climate_kg0: SUBSTITUTE(doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg0, "__", "_kg_"),
+                        env_climate_kg1: SUBSTITUTE(doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg1, "__", "_kg_"),
+                        env_climate_kg2: SUBSTITUTE(doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370.env_climate_kg2, "__", "_kg_")
+                    }
+                }
+            }
+        }
+    )
+}
