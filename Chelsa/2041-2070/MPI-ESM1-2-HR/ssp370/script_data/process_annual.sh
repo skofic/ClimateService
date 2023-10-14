@@ -23,6 +23,7 @@ echo "====================================================================="
 ###
 # Globals.
 ###
+enum="kg"
 coll="temp_ping"
 epoc="${path}/Chelsa/2041-2070/MPI-ESM1-2-HR/ssp370"
 cmd="${path}/Chelsa/script_data/process_annual.sh"
