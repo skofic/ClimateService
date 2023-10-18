@@ -27,6 +27,11 @@ echo "**************************************************"
 CREATE_START=$(date +%s)
 
 ###
+# Create parent level data folder,
+###
+mkdir -p "${path}/Data/"
+
+###
 # Create top level log folder,
 ###
 mkdir -p "${path}/Chelsa/log/"

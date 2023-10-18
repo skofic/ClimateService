@@ -25,8 +25,8 @@ epoc="${path}/Chelsa"
 ###
 # Parameters.
 ###
-mdump="${epoc}/data/${dump_map_name}.jsonl.gz"
-ddump="${epoc}/data/${dump_chelsa_name}.jsonl.gz"
+mdump="${path}/Data/${dump_map_name}.jsonl.gz"
+ddump="${path}/Data/${dump_chelsa_name}.jsonl.gz"
 query="${epoc}/script_query/merge_chelsa.aql"
 query_map="${epoc}/script_query/dump_map.aql"
 
