@@ -68,3 +68,36 @@ FOR doc IN Metaset
         UNSET(dat, APPEND(attrs, groups[*].doc.chr_GenIndex)),
         MERGE_RECURSIVE(idxs)
     )
+
+
+///
+// Test genomic dataset merger - tris.
+///
+LET attrs = ["_id", "_key", "_rev", "std_dataset_id"]
+LET field = ["species", "gcu_id_number", "std_date", "chr_SampleSize"]
+
+FOR dat IN Data
+    FILTER dat.std_dataset_id == @dataset
+    
+    LET idx = ATTRIBUTES(UNSET(dat,APPEND(attrs, field)))
+    
+    LET meta = (
+        FOR doc IN Metaset
+            FILTER doc.std_dataset_id == @dataset
+            FILTER doc.species == dat.species
+            
+        RETURN {
+            [CONCAT_SEPARATOR("_", doc.chr_GenIndex, "marker")]: {
+                [doc.chr_GenIndex]: dat[doc.chr_GenIndex],
+                chr_MarkerType: doc.chr_MarkerType,
+                chr_NumberOfLoci: doc.chr_NumberOfLoci,
+                chr_SequenceLength: doc.chr_SequenceLength,
+                chr_GenoTech: doc.chr_GenoTech
+            }
+        }
+    )
+    
+RETURN MERGE(
+    UNSET(dat, APPEND(attrs, idx)),
+    MERGE_RECURSIVE(meta)
+)
