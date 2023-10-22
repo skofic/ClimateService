@@ -35,6 +35,52 @@ RETURN MERGE(
     MERGE_RECURSIVE(meta)
 )
 
+/*
+Rank 4 - Last one
+
+Execution plan:
+ Id   NodeType                  Est.   Comment
+  1   SingletonNode                1   * ROOT
+  3   EnumerateCollectionNode     43     - FOR dat IN Data   /* full collection scan  */   FILTER (dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092")   /* early pruning */
+ 30   SubqueryStartNode           43       - LET meta = ( /* subquery begin */
+ 27   IndexNode                   43         - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    FILTER (doc.`species` == dat.`species`)   /* early pruning */   
+ 21   CalculationNode             43           - LET #22 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: doc : Metaset, dat : Data */
+ 31   SubqueryEndNode             43           - RETURN  #22 ) /* subquery end */
+ 28   SubqueryStartNode           43       - LET idx = ( /* subquery begin */
+ 26   IndexNode                   43         - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup (projections: `chr_GenIndex`, `species`) */    FILTER (doc.`species` == dat.`species`)   /* early pruning */   
+ 12   CalculationNode             43           - LET #16 = doc.`chr_GenIndex`   /* attribute expression */   /* collections used: doc : Metaset */
+ 29   SubqueryEndNode             43           - RETURN  #16 ) /* subquery end */
+ 24   CalculationNode             43       - LET #24 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], idx)), MERGE_RECURSIVE(meta))   /* simple expression */   /* collections used: dat : Data */
+ 25   ReturnNode                  43       - RETURN #24
+
+Execution plan:
+ Id   NodeType                  Calls   Items   Filtered   Runtime [s]   Comment
+  1   SingletonNode                 1       1          0       0.00001   * ROOT
+  3   EnumerateCollectionNode       1      43          0       0.00017     - FOR dat IN Data   /* full collection scan  */   FILTER (dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092")   /* early pruning */
+ 30   SubqueryStartNode             1      86          0       0.00008       - LET meta = ( /* subquery begin */
+ 27   IndexNode                     1     278        496       0.00511         - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    FILTER (doc.`species` == dat.`species`)   /* early pruning */   
+ 21   CalculationNode               1     278          0       0.00081           - LET #22 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: doc : Metaset, dat : Data */
+ 31   SubqueryEndNode               1      43          0       0.00012           - RETURN  #22 ) /* subquery end */
+ 28   SubqueryStartNode             1      86          0       0.00019       - LET idx = ( /* subquery begin */
+ 26   IndexNode                     1     278        496       0.00975         - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup (projections: `chr_GenIndex`, `species`) */    FILTER (doc.`species` == dat.`species`)   /* early pruning */   
+ 12   CalculationNode               1     278          0       0.00009           - LET #16 = doc.`chr_GenIndex`   /* attribute expression */   /* collections used: doc : Metaset */
+ 29   SubqueryEndNode               1      43          0       0.00006           - RETURN  #16 ) /* subquery end */
+ 24   CalculationNode               1      43          0       0.00032       - LET #24 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], idx)), MERGE_RECURSIVE(meta))   /* simple expression */   /* collections used: dat : Data */
+ 25   ReturnNode                    1      43          0       0.00001       - RETURN #24
+
+Query Profile:
+ Query Stage               Duration [s]
+ initializing                   0.00000
+ parsing                        0.00017
+ optimizing ast                 0.00002
+ loading collections            0.00001
+ instantiating plan             0.00008
+ optimizing plan                0.00052
+ instantiating executors        0.00009
+ executing                      0.01676
+ finalizing                     0.00002
+*/
+
 
 ///
 // Test genomic dataset merger - bis.
@@ -69,6 +115,54 @@ FOR doc IN Metaset
         MERGE_RECURSIVE(idxs)
     )
 
+/*
+RANK 2 - Fastest without needing extra info.
+
+Execution plan:
+ Id   NodeType                  Est.   Comment
+  1   SingletonNode                1   * ROOT
+ 22   IndexNode                    1     - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    
+  6   CalculationNode              1       - LET #15 = doc.`species`   /* attribute expression */   /* collections used: doc : Metaset */
+  7   CollectNode                  1       - COLLECT species = #15 INTO groups KEEP doc   /* hash */
+ 21   SortNode                     1       - SORT species ASC   /* sorting strategy: standard */
+ 14   CalculationNode              1       - LET #21 = groups[*].`doc`   /* simple expression */
+  8   EnumerateCollectionNode     43       - FOR dat IN Data   /* full collection scan  */   FILTER ((dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092") && (dat.`species` == species))   /* early pruning */
+ 23   SubqueryStartNode           43         - LET idxs = ( /* subquery begin */
+ 15   EnumerateListNode         4300           - FOR doc IN #21   /* list iteration */
+ 16   CalculationNode           4300             - LET #23 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: dat : Data */
+ 24   SubqueryEndNode             43             - RETURN  #23 ) /* subquery end */
+ 19   CalculationNode             43         - LET #25 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], groups[*].`doc`.`chr_GenIndex`)), MERGE_RECURSIVE(idxs))   /* simple expression */   /* collections used: dat : Data */
+ 20   ReturnNode                  43         - RETURN #25
+
+Execution plan:
+ Id   NodeType                  Calls   Items   Filtered   Runtime [s]   Comment
+  1   SingletonNode                 1       1          0       0.00001   * ROOT
+ 22   IndexNode                     1      17          0       0.00029     - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    
+  6   CalculationNode               1      17          0       0.00001       - LET #15 = doc.`species`   /* attribute expression */   /* collections used: doc : Metaset */
+  7   CollectNode                   1       3          0       0.00007       - COLLECT species = #15 INTO groups KEEP doc   /* hash */
+ 21   SortNode                      1       3          0       0.00005       - SORT species ASC   /* sorting strategy: standard */
+ 14   CalculationNode               1       3          0       0.00006       - LET #21 = groups[*].`doc`   /* simple expression */
+  8   EnumerateCollectionNode       1      43         86       0.00024       - FOR dat IN Data   /* full collection scan  */   FILTER ((dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092") && (dat.`species` == species))   /* early pruning */
+ 23   SubqueryStartNode             1      86          0       0.00024         - LET idxs = ( /* subquery begin */
+ 15   EnumerateListNode             1     278          0       0.00020           - FOR doc IN #21   /* list iteration */
+ 16   CalculationNode               1     278          0       0.00115             - LET #23 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: dat : Data */
+ 24   SubqueryEndNode               1      43          0       0.00013             - RETURN  #23 ) /* subquery end */
+ 19   CalculationNode               1      43          0       0.00105         - LET #25 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], groups[*].`doc`.`chr_GenIndex`)), MERGE_RECURSIVE(idxs))   /* simple expression */   /* collections used: dat : Data */
+ 20   ReturnNode                    1      43          0       0.00001         - RETURN #25
+
+Query Profile:
+ Query Stage               Duration [s]
+ initializing                   0.00000
+ parsing                        0.00022
+ optimizing ast                 0.00003
+ loading collections            0.00005
+ instantiating plan             0.00018
+ optimizing plan                0.00242
+ instantiating executors        0.00016
+ executing                      0.00354
+ finalizing                     0.00005
+*/
+
 
 ///
 // Test genomic dataset merger - tris.
@@ -101,3 +195,136 @@ RETURN MERGE(
     UNSET(dat, APPEND(attrs, idx)),
     MERGE_RECURSIVE(meta)
 )
+
+/*
+RANK 1 - Fastest, but needs extra info.
+
+Execution plan:
+ Id   NodeType                  Est.   Comment
+  1   SingletonNode                1   * ROOT
+  4   EnumerateCollectionNode     43     - FOR dat IN Data   /* full collection scan  */   FILTER (dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092")   /* early pruning */
+ 20   SubqueryStartNode           43       - LET meta = ( /* subquery begin */
+ 19   IndexNode                   43         - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    FILTER (doc.`species` == dat.`species`)   /* early pruning */   
+ 14   CalculationNode             43           - LET #14 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: doc : Metaset, dat : Data */
+ 21   SubqueryEndNode             43           - RETURN  #14 ) /* subquery end */
+ 17   CalculationNode             43       - LET #16 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], ATTRIBUTES(UNSET(dat, [ "_id", "_key", "_rev", "std_dataset_id", "species", "gcu_id_number", "std_date", "chr_SampleSize" ])))), MERGE_RECURSIVE(meta))   /* simple expression */   /* collections used: dat : Data */
+ 18   ReturnNode                  43       - RETURN #16
+
+Execution plan:
+ Id   NodeType                  Calls   Items   Filtered   Runtime [s]   Comment
+  1   SingletonNode                 1       1          0       0.00000   * ROOT
+  4   EnumerateCollectionNode       1      43          0       0.00005     - FOR dat IN Data   /* full collection scan  */   FILTER (dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092")   /* early pruning */
+ 20   SubqueryStartNode             1      86          0       0.00001       - LET meta = ( /* subquery begin */
+ 19   IndexNode                     1     278        496       0.00103         - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    FILTER (doc.`species` == dat.`species`)   /* early pruning */   
+ 14   CalculationNode               1     278          0       0.00027           - LET #14 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: doc : Metaset, dat : Data */
+ 21   SubqueryEndNode               1      43          0       0.00003           - RETURN  #14 ) /* subquery end */
+ 17   CalculationNode               1      43          0       0.00022       - LET #16 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], ATTRIBUTES(UNSET(dat, [ "_id", "_key", "_rev", "std_dataset_id", "species", "gcu_id_number", "std_date", "chr_SampleSize" ])))), MERGE_RECURSIVE(meta))   /* simple expression */   /* collections used: dat : Data */
+ 18   ReturnNode                    1      43          0       0.00000       - RETURN #16
+
+Query Profile:
+ Query Stage               Duration [s]
+ initializing                   0.00000
+ parsing                        0.00009
+ optimizing ast                 0.00002
+ loading collections            0.00001
+ instantiating plan             0.00002
+ optimizing plan                0.00023
+ instantiating executors        0.00004
+ executing                      0.00164
+ finalizing                     0.00001
+*/
+
+
+///
+// Test genomic dataset merger - quadris.
+///
+LET attrs = ["_id", "_key", "_rev", "std_dataset_id"]
+LET species = (
+    FOR doc IN Metaset
+        FILTER doc.std_dataset_id == @dataset
+        COLLECT species = doc.species
+        INTO groups
+    RETURN {
+        species: species,
+        index: groups[*].doc.chr_GenIndex
+    }
+)
+
+FOR taxon IN species
+    FOR dat IN Data
+        FILTER dat.std_dataset_id == @dataset
+        FILTER dat.species == taxon.species
+    
+    LET metas = (
+        FOR doc IN Metaset
+            FILTER doc.std_dataset_id == @dataset
+            FILTER doc.species == taxon.species
+        RETURN {
+            [CONCAT_SEPARATOR("_", doc.chr_GenIndex, "marker")]: {
+                [doc.chr_GenIndex]: dat[doc.chr_GenIndex],
+                chr_MarkerType: doc.chr_MarkerType,
+                chr_NumberOfLoci: doc.chr_NumberOfLoci,
+                chr_SequenceLength: doc.chr_SequenceLength,
+                chr_GenoTech: doc.chr_GenoTech
+            }
+        }
+    )
+
+RETURN MERGE(
+    UNSET(dat, APPEND(attrs, taxon.index)),
+    MERGE_RECURSIVE(metas)
+)
+
+/*
+RANK 3 - Fastest, but needs extra info.
+
+Execution plan:
+ Id   NodeType                  Est.   Comment
+  1   SingletonNode                1   * ROOT
+ 34   SubqueryStartNode            1     - LET species = ( /* subquery begin */
+ 30   IndexNode                    1       - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    
+  7   CalculationNode              1         - LET #17 = doc.`species`   /* attribute expression */   /* collections used: doc : Metaset */
+  8   CollectNode                  1         - COLLECT species = #17 INTO groups KEEP doc   /* hash */
+ 29   SortNode                     1         - SORT species ASC   /* sorting strategy: standard */
+  9   CalculationNode              1         - LET #19 = { "species" : species, "index" : groups[*].`doc`.`chr_GenIndex` }   /* simple expression */
+ 35   SubqueryEndNode              1         - RETURN  #19 ) /* subquery end */
+ 12   EnumerateListNode          100     - FOR taxon IN species   /* list iteration */
+ 13   EnumerateCollectionNode   4300       - FOR dat IN Data   /* full collection scan  */   FILTER ((dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092") && (dat.`species` == taxon.`species`))   /* early pruning */
+ 32   SubqueryStartNode         4300         - LET metas = ( /* subquery begin */
+ 31   IndexNode                 4300           - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    FILTER (doc.`species` == taxon.`species`)   /* early pruning */   
+ 24   CalculationNode           4300             - LET #29 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: doc : Metaset, dat : Data */
+ 33   SubqueryEndNode           4300             - RETURN  #29 ) /* subquery end */
+ 27   CalculationNode           4300         - LET #31 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], taxon.`index`)), MERGE_RECURSIVE(metas))   /* simple expression */   /* collections used: dat : Data */
+ 28   ReturnNode                4300         - RETURN #31
+
+Execution plan:
+ Id   NodeType                  Calls   Items   Filtered   Runtime [s]   Comment
+  1   SingletonNode                 1       1          0       0.00001   * ROOT
+ 34   SubqueryStartNode             1       2          0       0.00001     - LET species = ( /* subquery begin */
+ 30   IndexNode                     1      18          0       0.00026       - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    
+  7   CalculationNode               1      18          0       0.00001         - LET #17 = doc.`species`   /* attribute expression */   /* collections used: doc : Metaset */
+  8   CollectNode                   1       4          0       0.00005         - COLLECT species = #17 INTO groups KEEP doc   /* hash */
+ 29   SortNode                      1       4          0       0.00004         - SORT species ASC   /* sorting strategy: standard */
+  9   CalculationNode               1       4          0       0.00002         - LET #19 = { "species" : species, "index" : groups[*].`doc`.`chr_GenIndex` }   /* simple expression */
+ 35   SubqueryEndNode               1       1          0       0.00001         - RETURN  #19 ) /* subquery end */
+ 12   EnumerateListNode             1       3          0       0.00001     - FOR taxon IN species   /* list iteration */
+ 13   EnumerateCollectionNode       1      43         86       0.00012       - FOR dat IN Data   /* full collection scan  */   FILTER ((dat.`std_dataset_id` == "Dataset/8194f5d7-b446-4dbc-b218-98fd2cb61092") && (dat.`species` == taxon.`species`))   /* early pruning */
+ 32   SubqueryStartNode             1      86          0       0.00005         - LET metas = ( /* subquery begin */
+ 31   IndexNode                     1     278        496       0.00389           - FOR doc IN Metaset   /* persistent index scan, index scan + document lookup */    FILTER (doc.`species` == taxon.`species`)   /* early pruning */   
+ 24   CalculationNode               1     278          0       0.00184             - LET #29 = { [ CONCAT_SEPARATOR("_", doc.`chr_GenIndex`, "marker") ] : { [ doc.`chr_GenIndex` ] : dat[doc.`chr_GenIndex`], "chr_MarkerType" : doc.`chr_MarkerType`, "chr_NumberOfLoci" : doc.`chr_NumberOfLoci`, "chr_SequenceLength" : doc.`chr_SequenceLength`, "chr_GenoTech" : doc.`chr_GenoTech` } }   /* simple expression */   /* collections used: doc : Metaset, dat : Data */
+ 33   SubqueryEndNode               1      43          0       0.00010             - RETURN  #29 ) /* subquery end */
+ 27   CalculationNode               1      43          0       0.00064         - LET #31 = MERGE(UNSET(dat, APPEND([ "_id", "_key", "_rev", "std_dataset_id" ], taxon.`index`)), MERGE_RECURSIVE(metas))   /* simple expression */   /* collections used: dat : Data */
+ 28   ReturnNode                    1      43          0       0.00001         - RETURN #31
+
+Query Profile:
+ Query Stage               Duration [s]
+ initializing                   0.00001
+ parsing                        0.00041
+ optimizing ast                 0.00002
+ loading collections            0.00001
+ instantiating plan             0.00021
+ optimizing plan                0.00216
+ instantiating executors        0.00012
+ executing                      0.00708
+ finalizing                     0.00005
+*/
