@@ -6,6 +6,9 @@
 # This script will:
 # - merge all Chelsa period data into a dump
 # - dump Chelsa map collection.
+#
+# Note that radius for data points is 0.004166665
+# hardcoded in merge_chelsa.aql query.
 ###
 
 ###

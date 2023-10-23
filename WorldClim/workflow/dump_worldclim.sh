@@ -6,6 +6,9 @@
 # This script will:
 # - merge all WorldClim period data into a dump
 # - dump WorldClim map collection.
+#
+# Note that radius for data points is 0.004166665
+# hardcoded in merge_worldclim.aql query.
 ###
 
 ###
