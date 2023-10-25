@@ -1,0 +1,21 @@
+///
+// Return Shapes GeoJSON record.
+///
+RETURN {
+	"type": "FeatureCollection",
+	"features": (
+		FOR doc IN Shapes
+		RETURN {
+			"type": "Feature",
+			"geometry": doc.geometry,
+			"properties": {
+				"geometry_bounds": doc.geometry_bounds,
+				"geo_shape_area": doc.properties.topography.geo_shape_area,
+				"chr_AvElevation": doc.properties.topography.chr_AvElevation,
+				"chr_StdElevation": doc.properties.topography.chr_StdElevation,
+				"chr_AvSlope": doc.properties.topography.chr_AvSlope,
+				"chr_AvAspect": doc.properties.topography.chr_AvAspect
+			}
+		}
+	)
+}
