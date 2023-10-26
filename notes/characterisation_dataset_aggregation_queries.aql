@@ -1,5 +1,5 @@
 ///
-// Genetic index minimum statistics (embedded markers).
+// Genetic index minimum statistics - embedded markers.
 ///
 FOR set IN Dataset
     FILTER set._key == @dataset
@@ -43,7 +43,7 @@ RETURN {
 
 
 ///
-// Genetic index minimum statistics (external markers).
+// Genetic index minimum statistics - external markers.
 ///
 LET items = (
     FOR dat IN Data

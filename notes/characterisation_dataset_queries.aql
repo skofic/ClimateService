@@ -38,7 +38,7 @@ RETURN MERGE(
 
 
 ///
-// Expand genetic dataset data (external metaset).
+// Expand genetic dataset data - external metaset.
 ///
 LET attrs = ["_id", "_key", "_rev", "std_dataset_id"]
 
@@ -69,4 +69,3 @@ FOR doc IN Metaset
         UNSET(dat, APPEND(attrs, groups[*].doc.chr_GenIndex)),
         MERGE_RECURSIVE(idxs)
     )
-
