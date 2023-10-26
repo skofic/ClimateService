@@ -1,5 +1,5 @@
 ///
-// ShapeData - Sump object with new descriptors.
+// ShapeData - Dump object with new descriptors.
 ///
 LET dict = {
 	chr_envi_AvBiomass: "chr_AvBiomass",
@@ -7,7 +7,7 @@ LET dict = {
 	chr_envi_DLT_broadleaved: "chr_DomLeafType_broadleaved",
 	chr_envi_DLT_coniferous: "chr_DomLeafType_coniferous",
 	chr_envi_AvCanopyHeight: "chr_AvCanopyHeight",
-	chr_envi_LST: "chr_envi_LandSurfTemp",
+	chr_envi_LandSurfTemp: "chr_LandSurfTemp",
 	chr_envi_AvNDWI: "chr_AvNormDiffWaterIdx",
 	chr_envi_AvLai: "chr_AvLeafAreaIdx",
 	chr_envi_AvGpp: "chr_AvGrossPrimProd",
