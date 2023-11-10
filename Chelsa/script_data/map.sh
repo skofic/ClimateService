@@ -33,6 +33,7 @@ then
 		--file "$1" \
 		--type "jsonl" \
 		--collection "$2" \
+		--create-collection true \
 		--auto-rate-limit true \
 		--on-duplicate "error" \
 		--overwrite

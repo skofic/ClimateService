@@ -1,59 +1,98 @@
 #!/bin/sh
 
 ###
-# Load data.
-#
-# This script will load the Chelsa and ChelsaMap dumps into the database.
-# Note that this script works on the GeoService database.
+# Create Chelsa database.
+# Concurrent version.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.ClimateService"
+CHELSA=$(date +%s)
 
 ###
-# Globals.
-###
-collection_map="ChelsaMap"
-collection_data="Chelsa"
-dump_map_name="ChelsaMap"
-dump_chelsa_name="Chelsa"
+# Create directories.
+##
+echo ""
+echo "<<< CREATE DIRECTORIES >>>"
+echo ""
+cmd="${path}/Chelsa/workflow/create_directories.sh"
+$cmd
 
-###
-# Parameters.
-###
-mdump="${path}/${dump_map_name}.jsonl.gz"
-ddump="${path}/${dump_chelsa_name}.jsonl.gz"
-
-echo "**************************************************"
-echo "**************************************************"
-echo "*** 2_load_data.sh"
-echo "**************************************************"
-echo "**************************************************"
-LOAD_DATA_START=$(date +%s)
-
+# ###
+# # 1981-2010.
+# ###
 # echo ""
-# echo "**************************************************"
-# echo "*** Load Chelsa geometries"
-# echo "*** from ${path}/${dump_map_name}.jsonl.gz"
-# echo "**************************************************"
+# echo "<<< PERIOD 1981-2010 >>>"
+# echo ""
+# cmd="${path}/Chelsa/workflow/create_1981_2010_concurrent.sh"
+# $cmd | tee "${path}/Chelsa/log/1981_2010.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
 # 
 # ###
-# # Import data from JSONL file.
+# # 2011-2040.
 # ###
-# arangoimport \
-# 	--server.endpoint "$host" \
-# 	--server.database "GeoService" \
-# 	--server.username "$user" \
-# 	--server.password "$pass" \
-# 	--file "$mdump" \
-# 	--type "jsonl" \
-# 	--collection "$collection_map" \
-# 	--create-collection true \
-# 	--create-collection-type "document" \
-# 	--auto-rate-limit true \
-# 	--overwrite true
+# echo ""
+# echo "<<< PERIOD 2011-2040 >>>"
+# echo ""
+# cmd="${path}/Chelsa/workflow/create_2011_2040_concurrent.sh"
+# $cmd | tee "${path}/Chelsa/log/2011_2040.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+# 
+# ###
+# # 2041-2070.
+# ###
+# echo ""
+# echo "<<< PERIOD 2041-2070 >>>"
+# echo ""
+# cmd="${path}/Chelsa/workflow/create_2041_2070_concurrent.sh"
+# $cmd | tee "${path}/Chelsa/log/2041_2070.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+# 
+# ###
+# # 2071-2100.
+# ###
+# echo ""
+# echo "<<< PERIOD 2071-2100 >>>"
+# echo ""
+# cmd="${path}/Chelsa/workflow/create_2071_2100_concurrent.sh"
+# $cmd | tee "${path}/Chelsa/log/2071_2100.log"
+# if [ $? -ne 0 ]
+# then
+# 	echo "*************"
+# 	echo "*** ERROR ***"
+# 	echo "*************"
+# 	exit 1
+# fi
+# 
+# ###
+# # Load dumps into temporary period collections
+# # and dump periods coordinates.
+# ###
+# echo ""
+# echo "<<< LOAD PERIOD DUMPS INTO DATABASE >>>"
+# echo ""
+# cmd="${path}/Chelsa/workflow/load_periods.sh"
+# $cmd | tee "${path}/Chelsa/log/FINALISE_1_load_periods.log"
 # if [ $? -ne 0 ]
 # then
 # 	echo "*************"
@@ -62,27 +101,14 @@ LOAD_DATA_START=$(date +%s)
 # 	exit 1
 # fi
 
+###
+# Load coordinate dumps into Chelsa map collection.
+###
 echo ""
-echo "**************************************************"
-echo "*** Load Chelsa properties"
-echo "*** from ${path}/${dump_chelsa_name}.jsonl.gz"
-echo "**************************************************"
-
-###
-# Import data from JSONL file.
-###
-arangoimport \
-	--server.endpoint "$host" \
-	--server.database "GeoService" \
-	--server.username "$user" \
-	--server.password "$pass" \
-	--file "$ddump" \
-	--type "jsonl" \
-	--collection "$collection_data" \
-	--create-collection true \
-	--create-collection-type "document" \
-	--auto-rate-limit true \
-	--overwrite true
+echo "<<< LOAD COORDINATES INTO DATABASE >>>"
+echo ""
+cmd="${path}/Chelsa/workflow/load_map.sh"
+$cmd | tee "${path}/Chelsa/log/FINALISE_2_load_map.log"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -91,12 +117,26 @@ then
 	exit 1
 fi
 
-LOAD_DATA_END=$(date +%s)
-elapsed=$((LOAD_DATA_END-LOAD_DATA_START))
+###
+# Dump Chelsa and dump Chelsa map.
+###
 echo ""
-echo "**************************************************"
-echo "**************************************************"
-echo "*** 2_load_data.sh - TOTAL TIME: $elapsed seconds"
-echo "**************************************************"
-echo "**************************************************"
+echo "<<< DUMP AND LOAD IN DATABASE >>>"
+echo ""
+cmd="${path}/Chelsa/workflow/dump_chelsa.sh"
+$cmd | tee "${path}/Chelsa/log/FINALISE_3_dump_chelsa.log"
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
+CHELSA_END=$(date +%s)
+elapsed=$((CHELSA_END-CHELSA_START))
+echo ""
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
+echo "==> CHELSA.sh - TOTAL TIME: $elapsed seconds"
+echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
