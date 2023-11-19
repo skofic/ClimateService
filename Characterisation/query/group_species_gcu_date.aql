@@ -1,0 +1,41 @@
+LET filtered = [
+    "_id",
+    "_key",
+    "_rev",
+    "std_dataset_id",
+    "gcu_id_number",
+    "species",
+    "std_date"
+]
+
+FOR doc IN @@collection
+
+    COLLECT dataset = doc.std_dataset_id,
+            unit = doc.gcu_id_number,
+            species = doc.species,
+            date = doc.std_date
+    INTO groups
+
+    LET data = MERGE_RECURSIVE(
+        FOR item IN groups[*].doc
+        RETURN UNSET(
+            item,
+            "_id",
+            "_key",
+            "_rev",
+            "std_dataset_id",
+            "gcu_id_number",
+            "species",
+            "std_date"
+        )
+    )
+
+RETURN MERGE(
+    {
+        std_dataset_id: dataset,
+        gcu_id_number: unit,
+        species: species,
+        std_date: date
+    },
+    data
+)

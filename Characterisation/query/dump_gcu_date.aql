@@ -1,0 +1,15 @@
+FOR doc IN @@collection
+    
+    LET cols = REMOVE_VALUES(
+        ATTRIBUTES(doc, true),
+        ["gcu_id_number"]
+    )
+    
+    FOR col IN cols
+        LET date = SUBSTRING(col, 1)
+    RETURN {
+        std_dataset_id: @uuid,
+        gcu_id_number: doc.gcu_id_number,
+        std_date: date,
+        [@variable]: doc[col]
+    }

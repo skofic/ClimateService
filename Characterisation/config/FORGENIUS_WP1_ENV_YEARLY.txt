@@ -1,0 +1,5 @@
+chr_MaxLandSurfTemp
+chr_MaxNormDiffVegIdx
+chr_MaxLeafAreaIdx
+chr_SumGrossPrimProd
+chr_MaxNormDiffWaterIdx

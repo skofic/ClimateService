@@ -1,0 +1,5 @@
+chr_AvYearDroughtIdx
+chr_CarbonStarvation
+chr_DessiccationTolerance
+chr_FrostDamage
+chr_VulWildFire
