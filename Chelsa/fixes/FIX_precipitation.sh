@@ -18,6 +18,10 @@ source "${HOME}/.ClimateService"
 collection="Chelsa"
 database="GeoService"
 data_dir="${path}/Data"
+
+###
+# Parameters.
+###
 dump="${data_dir}/Chelsa.jsonl.gz"
 dump_new="${data_dir}/Chelsa_fixed.jsonl.gz"
 query="${path}/Chelsa/fixes/dump_fix_precipitation.aql"
