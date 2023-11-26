@@ -17,8 +17,9 @@ source "${HOME}/.ClimateService"
 ###
 collection="Chelsa"
 database="GeoService"
-dump="${path}/Data/Chelsa.jsonl.gz"
-dump_new="${path}/Data/Chelsa_fixed.jsonl.gz"
+data_dir="${path}/Data"
+dump="${data_dir}/Chelsa.jsonl.gz"
+dump_new="${data_dir}/Chelsa_fixed.jsonl.gz"
 query="${path}/Chelsa/fixes/dump_fix_precipitation.aql"
 
 echo "**************************************************"
