@@ -1,0 +1,93 @@
+///
+// GEO - Dump updated monthly precipitation in Chelsa.
+///
+FOR doc IN Chelsa
+
+    LET month1 = (
+        FOR item IN doc.properties.`1981-2010`.std_date_span_month
+        RETURN {
+            std_month: item.std_month,
+            env_climate_pr: item.env_climate_pr * 10,
+            env_climate_tas: item.env_climate_tas,
+            env_climate_tasmax: item.env_climate_tasmax,
+            env_climate_tasmin: item.env_climate_tasmin
+        }
+    )
+    
+    LET month2 = (
+        FOR item IN doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+        RETURN {
+            std_month: item.std_month,
+            env_climate_pr: item.env_climate_pr * 10,
+            env_climate_tas: item.env_climate_tas,
+            env_climate_tasmax: item.env_climate_tasmax,
+            env_climate_tasmin: item.env_climate_tasmin
+        }
+    )
+    
+    LET month3 = (
+        FOR item IN doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+        RETURN {
+            std_month: item.std_month,
+            env_climate_pr: item.env_climate_pr * 10,
+            env_climate_tas: item.env_climate_tas,
+            env_climate_tasmax: item.env_climate_tasmax,
+            env_climate_tasmin: item.env_climate_tasmin
+        }
+    )
+    
+    LET month4 = (
+        FOR item IN doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+        RETURN {
+            std_month: item.std_month,
+            env_climate_pr: item.env_climate_pr * 10,
+            env_climate_tas: item.env_climate_tas,
+            env_climate_tasmax: item.env_climate_tasmax,
+            env_climate_tasmin: item.env_climate_tasmin
+        }
+    )
+
+RETURN {
+
+    _key: doc._key,
+
+    geometry_point: {
+        type: "Point",
+        coordinates: doc.geometry_point.coordinates
+    },
+    geometry_bounds: {
+        type: doc.geometry_bounds.type,
+        coordinates: doc.geometry_bounds.coordinates
+    },
+    
+    properties: {
+        `1981-2010`: MERGE(
+            UNSET(doc.properties.`1981-2010`, 'std_date_span_month'),
+            { std_date_span_month: month1 }
+        ),
+        `2011-2040`: {
+            `MPI-ESM1-2-HR`: {
+                ssp370: MERGE(
+                    UNSET(doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370, 'std_date_span_month'),
+                    { std_date_span_month: month2 }
+                )
+            }
+        },
+        `2041-2070`: {
+            `MPI-ESM1-2-HR`: {
+                ssp370: MERGE(
+                    UNSET(doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370, 'std_date_span_month'),
+                    { std_date_span_month: month3 }
+                )
+            }
+        },
+        `2071-2100`: {
+            `MPI-ESM1-2-HR`: {
+                ssp370: MERGE(
+                    UNSET(doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370, 'std_date_span_month'),
+                    { std_date_span_month: month4 }
+                )
+            }
+        }
+    }
+}
