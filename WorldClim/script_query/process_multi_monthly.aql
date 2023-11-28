@@ -6,5 +6,8 @@ FOR doc IN @@collection
 RETURN {
 	lon: doc.lon,
 	lat: doc.lat,
-	@variable: VALUES(UNSET(doc, '_id', '_key', '_rev', 'lon', 'lat'))
+	@variable: [
+		doc.jan, doc.feb, doc.mar, doc.apr, doc.may, doc.jun,
+		doc.jul, doc.aug, doc.sep, doc.oct, doc.nov, doc.dec
+	]
 }
