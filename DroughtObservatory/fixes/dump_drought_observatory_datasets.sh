@@ -21,7 +21,7 @@ query="${epoc}/fixes/dump_drought_observatory_dataset.aql"
 ###
 # Create directories.
 ###
-cmd="${epoc}/create_directories.sh"
+cmd="${epoc}/workflow/create_directories.sh"
 $cmd
 if [ $? -ne 0 ]
 then
