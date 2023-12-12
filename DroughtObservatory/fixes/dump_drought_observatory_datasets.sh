@@ -16,7 +16,7 @@ base="GeoService"
 collection="DroughtObservatory"
 epoc="${path}/DroughtObservatory"
 dump="${epoc}/data/${collection}.jsonl.gz"
-query="${epoc}/fixes/dump_drought_observatory_dataset.aql"
+query="${epoc}/fixes/dump_drought_observatory_datasets.aql"
 
 ###
 # Create directories.
@@ -46,6 +46,7 @@ arangoexport \
 	--server.password "$pass" \
 	--output-directory "$expo" \
 	--custom-query-file "$query" \
+	--custom-query-bindvars "{\"@@collection\": \"$collection\"" \
 	--compress-output true \
 	--overwrite true \
 	--type "jsonl"

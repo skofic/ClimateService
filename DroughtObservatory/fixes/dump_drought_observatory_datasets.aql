@@ -15,7 +15,7 @@ LET links = {
 	env_climate_tws: "398f8b9b-9cd4-4fb5-bc4d-49b88a5d210a"
 }
 
-FOR doc IN VIEW_DROUGHT_OBSERVATORY
+FOR doc IN @@collection
     
 	LET dataset = (
 		FOR item IN doc.std_terms
