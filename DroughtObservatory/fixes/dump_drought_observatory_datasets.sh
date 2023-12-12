@@ -46,7 +46,7 @@ arangoexport \
 	--server.password "$pass" \
 	--output-directory "$expo" \
 	--custom-query-file "$query" \
-	--custom-query-bindvars "{\"@@collection\": \"$collection\"" \
+	--custom-query-bindvars "{\"@@collection\": \"$collection\"}" \
 	--compress-output true \
 	--overwrite true \
 	--type "jsonl"
