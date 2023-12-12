@@ -1,6 +1,18 @@
 ///
 // Combine properties into dump.
 ///
+LET links = {
+	env_climate_cdi: "7b789ef4-aa2d-4f25-91c4-feab9d4cbb9b",
+	env_climate_fapar: "056e569a-66ef-4033-8d15-5c4c3c36c1bb",
+	env_climate_fapan: "056e569a-66ef-4033-8d15-5c4c3c36c1bb",
+	env_climate_hcwi_min: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
+	env_climate_hcwi_max: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
+	env_climate_hcwi_ano: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
+	env_climate_smi: "9eda6111-c840-4862-9759-4a805cd6fc35",
+	env_climate_sma: "9eda6111-c840-4862-9759-4a805cd6fc35",
+	env_climate_tws: "398f8b9b-9cd4-4fb5-bc4d-49b88a5d210a"
+}
+
 FOR doc IN @@collection
     LET properties = doc.properties
     COLLECT longitude = doc.lon,
@@ -18,13 +30,18 @@ FOR doc IN @@collection
         [ longitude-@radius, latitude-@radius ]
     ])
     LET hash = MD5(TO_STRING(area))
+	LET dataset = (
+		FOR item IN vars
+		RETURN TRANSLATE(item, links)
+	)
 RETURN {
     _key: CONCAT(hash, date),
-    geometry_hash: hash,
-	geometry_point: spot,
-    geometry_bounds: area,
-    geometry_point_radius: @radius,
 	std_date: date,
 	properties: vars,
-	std_terms: ATTRIBUTES(vars)
+	std_terms: ATTRIBUTES(vars),
+	std_dataset_ids: UNIQUE(dataset),
+    geometry_hash: hash,
+    geometry_point_radius: @radius,
+	geometry_point: spot,
+    geometry_bounds: area
 }
