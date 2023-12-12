@@ -18,6 +18,19 @@ epoc="${path}/DroughtObservatory"
 dump="${epoc}/data/${collection}.jsonl.gz"
 query="${epoc}/fixes/dump_drought_observatory_dataset.aql"
 
+###
+# Create directories.
+###
+cmd="${epoc}/create_directories.sh"
+$cmd
+if [ $? -ne 0 ]
+then
+	echo "*************"
+	echo "*** ERROR ***"
+	echo "*************"
+	exit 1
+fi
+
 echo "=================================================="
 echo "= DUMP DATA FILE"
 echo "=================================================="
