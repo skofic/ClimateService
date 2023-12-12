@@ -1,0 +1,25 @@
+///
+// Dump Remote Sensing Shapes with dataset references.
+///
+LET links = {
+	chr_AvElevation: "814b4937-3bbd-47c7-99d5-2cd51a0f3469",
+	chr_AvSlope: "814b4937-3bbd-47c7-99d5-2cd51a0f3469",
+	chr_StdElevation: "814b4937-3bbd-47c7-99d5-2cd51a0f3469",
+	chr_AvAspect: "814b4937-3bbd-47c7-99d5-2cd51a0f3469",
+	geo_shape_area: "814b4937-3bbd-47c7-99d5-2cd51a0f3469"
+}
+
+FOR doc IN @@collection
+    
+	LET dataset = (
+		FOR item IN ATTRIBUTES(doc.properties.topography)
+		RETURN TRANSLATE(item, links)
+	)
+
+RETURN {
+	"_key": doc._key,
+	"properties": doc.properties,
+	"geometry": doc.geometry,
+	"geometry_bounds": doc.geometry_bounds,
+	"std_dataset_ids": UNIQUE(dataset)
+}

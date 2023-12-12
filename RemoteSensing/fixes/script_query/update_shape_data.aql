@@ -46,5 +46,5 @@ RETURN {
 		properties: ZIP(keys, values),
 		std_date: doc.std_date,
 		std_date_span: doc.std_span,
-		std_terms: keys,
+		std_terms: keys
 }
