@@ -1,0 +1,49 @@
+European Digital Elevation Model (EU-DEM)
+EU-DEM is a 25 m. resolution digital surface model (DSM) at pan-European level representing the first surface as illuminated by the sensors. It is a hybrid product based on SRTM and ASTER GDEM data fused by a weighted averaging approach. EU-DEM is part of the European Union’s Copernicus Land Monitoring Service.
+https://www.eea.europa.eu/data-and-maps/data/copernicus-land-monitoring-service-eu-dem
+"chr_AvElevation", "chr_AvSlope", "chr_StdElevation", "chr_AvAspect", "geo_shape_area"
+
+Global Forest Canopy Height, 2019
+A new, 30-m spatial resolution global forest canopy height map was developed through the integration of the Global Ecosystem Dynamics Investigation (GEDI) lidar forest structure measurements and Landsat analysis-ready data time-series. The NASA GEDI is a spaceborne lidar instrument operating onboard the International Space Station since April 2019. It provides footprint-based measurements of vegetation structure, including forest canopy height between 52°N and 52°S globally. The Global Land Analysis and Discover team at the University of Maryland (UMD GLAD) integrated the GEDI data available to date (April-October 2019) with the year 2019 Landsat analysis-ready time-series data (Landsat ARD). The GEDI RH95 (relative height at 95%) metric was used to calibrate the model. The Landsat multi-temporal metrics that represent the surface phenology serve as the independent variables for global forest height modeling. The “moving window” locally calibrated and applied bagged regression tree ensemble model was implemented to ensure high quality of forest height prediction and global map consistency. The model was extrapolated in the boreal regions (beyond the GLAD data range) to create the global forest height prototype map.
+https://glad.umd.edu/dataset/gedi
+"chr_AvCanopyHeight"
+
+Dominant Leaf Type 2018
+Provides at pan-European level in the spatial resolution of 10 m information on the dominant leaf type (broadleaved or coniferous) for the 2018 reference year.
+https://land.copernicus.eu/en/products/high-resolution-layer-dominant-leaf-type/dominant-leaf-type-2018
+"chr_DomLeafType"
+
+CCI BIOMASS 2010
+The CCI BIOMASS project currently delivers 100 m. resolution spatially explicit estimates of AGB for five epochs and related standard deviations (SDs) as separate map products, plus AGB change on an annual and decadal basis. The AGB product consists of global datasets with estimates of AGB (unit: tons/ha = Mg/ha).\n\nAGB is defined as the mass, expressed as oven-dry weight of the woody parts (stem, bark, branches and twigs) of all living trees excluding stump and roots. The AGB SD product is a separate data layer providing per-pixel SD of the AGB estimates in Mg/ha.
+https://climate.esa.int/en/projects/biomass/data/
+"chr_AvBiomass"
+
+MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km
+The MOD11A2 V6.1 product provides an average 8-day land surface temperature (LST) in a 1200 x 1200 kilometer grid. Each pixel value in MOD11A2 is a simple average of all the corresponding MOD11A1 LST pixels collected within that 8 day period. The 8 day compositing period was chosen because twice that period is the exact ground track repeat period of the Terra and Aqua platforms. In this product, along with both the day- and night-time surface temperature bands and their quality indicator (QC) layers, are also MODIS bands 31 and 32 and eight observation layers.
+https://lpdaac.usgs.gov/products/mod11a2v061/
+"chr_LandSurfTemp"
+
+Terra Leaf Area Index/FPAR 8-Day Global 500m
+The MOD15A2H V6.1 MODIS combined Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) product is an 8-day composite dataset at 500m resolution. The algorithm chooses the "best" pixel available from all the acquisitions of the Terra sensor from within the 8-day period.
+https://lpdaac.usgs.gov/products/mod15a2hv061/
+"chr_AvLeafAreaIdx"
+
+Aqua Gross Primary Productivity 8-Day Global 500m
+The MYD17A2H V6.1 Gross Primary Productivity (GPP) product is a cumulative 8-day composite with a 500m resolution. The product is based on the radiation-use efficiency concept and can be potentially used as inputs to data models to calculate terrestrial energy, carbon, water cycle processes, and biogeochemistry of vegetation.
+https://lpdaac.usgs.gov/products/myd17a2hv061/
+"chr_AvGrossPrimProd"
+
+Sentinel-2 MSI: MultiSpectral Instrument, Level-1C
+Sentinel-2 is a wide-swath, high-resolution, multi-spectral imaging mission supporting Copernicus Land Monitoring studies, including the monitoring of vegetation, soil and water cover, as well as observation of inland waterways and coastal areas.
+https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/processing-levels/level-1
+"chr_AvNormDiffVegIdx"
+
+MODIS Combined 16-Day NDWI
+The Normalized Difference Water Index (NDWI) is sensitive to changes in liquid water content of vegetation canopies. It is derived from the Near-IR band and a second IR band, ≈1.24μm when available and the nearest available IR band otherwise. It ranges in value from -1.0 to 1.0. See [Gao (1996)](https://www.sciencedirect.com/science/article/pii/S0034425796000673) for details. This product is generated from the MODIS/006/MCD43A4 surface reflectance composites.
+https://developers.google.com/earth-engine/datasets/catalog/MODIS_MCD43A4_006_NDWI
+"chr_AvNormDiffWaterIdx"
+
+ERA5-Land Hourly - ECMWF Climate Reanalysis
+ERA5-Land is a reanalysis dataset providing a consistent view of the evolution of land variables over several decades at an enhanced resolution compared to ERA5. ERA5-Land has been produced by replaying the land component of the ECMWF ERA5 climate reanalysis. Reanalysis combines model data with observations from across the world into a globally complete and consistent dataset using the laws of physics. Reanalysis produces data that goes several decades back in time, providing an accurate description of the climate of the past. This dataset includes all 50 variables as available on CDS.
+https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land?tab=overview
+"env_climate_temp-2m", "env_climate_tpr", "env_climate_wind", "env_climate_soil_water_7", "env_climate_soil_water_28", "env_climate_soil_water_100", "env_climate_soil_water_289", "env_climate_soil_temp_7", "env_climate_soil_temp_28", "env_climate_soil_temp_100", "env_climate_soil_temp_289", "env_climate_slhf", "env_climate_snsrad", "chr_RelHumid"

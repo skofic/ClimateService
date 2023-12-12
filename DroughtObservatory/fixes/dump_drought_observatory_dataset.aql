@@ -1,0 +1,33 @@
+///
+// Dump Drought Observatory with dataset references.
+// Expects collection DroughtObservatory to be filled
+// and VIEW_DROUGHT_OBSERVATORY to be set with indexes.
+///
+LET links = {
+	env_climate_cdi: "7b789ef4-aa2d-4f25-91c4-feab9d4cbb9b",
+	env_climate_fapar: "056e569a-66ef-4033-8d15-5c4c3c36c1bb",
+	env_climate_fapan: "056e569a-66ef-4033-8d15-5c4c3c36c1bb",
+	env_climate_hcwi_min: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
+	env_climate_hcwi_max: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
+	env_climate_hcwi_ano: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
+	env_climate_smi: "9eda6111-c840-4862-9759-4a805cd6fc35",
+	env_climate_sma: "9eda6111-c840-4862-9759-4a805cd6fc35",
+	env_climate_tws: "398f8b9b-9cd4-4fb5-bc4d-49b88a5d210a"
+}
+
+FOR doc IN VIEW_DROUGHT_OBSERVATORY
+    
+	LET dataset = (
+		FOR item IN doc.std_terms
+		RETURN TRANSLATE(item, links)
+	)
+
+RETURN {
+	"std_date": doc.std_date,
+	"properties": doc.properties,
+	"std_terms": doc.std_terms,
+	"std_dataset_ids": UNIQUE(dataset),
+	"geometry_point_radius": doc.geometry_point_radius,
+	"geometry_point": doc.geometry_point,
+	"geometry_bounds": doc.geometry_bounds
+}
