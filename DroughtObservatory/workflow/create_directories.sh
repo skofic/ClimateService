@@ -26,6 +26,7 @@ CREATE_DIRECTORIES_START=$(date +%s)
 ###
 # Create top level folders.
 ###
+mkdir -p "$expo"
 mkdir -p "${epoc}/log/"
 mkdir -p "${epoc}/data/"
 
