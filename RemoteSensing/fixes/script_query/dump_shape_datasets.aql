@@ -18,7 +18,7 @@ FOR doc IN @@collection
 
 RETURN {
 	"_key": doc._key,
-	"properties": doc.properties,
+	"properties": doc.properties.topography,
 	"geometry": doc.geometry,
 	"geometry_bounds": doc.geometry_bounds,
 	"std_dataset_ids": UNIQUE(dataset)
