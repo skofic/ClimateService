@@ -30,7 +30,7 @@ FOR doc IN @@collection
     
 	LET dataset = (
 		FOR item IN doc.std_terms
-		RETURN TRANSLATE(item, links)
+		RETURN TRANSLATE(item, links, null)
 	)
 
 RETURN {
@@ -39,5 +39,5 @@ RETURN {
 	"std_date": doc.std_date,
 	"properties": doc.properties,
 	"std_terms": doc.std_terms,
-	"std_dataset_ids": UNIQUE(dataset)
+	"std_dataset_ids": REMOVE_VALUE(UNIQUE(dataset), null)
 }
