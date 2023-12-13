@@ -5,6 +5,7 @@ LET links = {
 	env_climate_cdi: "7b789ef4-aa2d-4f25-91c4-feab9d4cbb9b",
 	env_climate_fapar: "056e569a-66ef-4033-8d15-5c4c3c36c1bb",
 	env_climate_fapan: "056e569a-66ef-4033-8d15-5c4c3c36c1bb",
+	env_climate_hcwi: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
 	env_climate_hcwi_min: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
 	env_climate_hcwi_max: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
 	env_climate_hcwi_ano: "6b12011e-ef30-47d4-b4a3-3c8bdc4b4464",
