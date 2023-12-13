@@ -33,14 +33,14 @@ FOR doc IN @@collection
     LET hash = MD5(TO_STRING(area))
 	LET dataset = (
 		FOR item IN vars
-		RETURN TRANSLATE(item, links)
+		RETURN TRANSLATE(item, links, null)
 	)
 RETURN {
     _key: CONCAT(hash, date),
 	std_date: date,
 	properties: vars,
 	std_terms: ATTRIBUTES(vars),
-	std_dataset_ids: UNIQUE(dataset),
+	std_dataset_ids: REMOVE_VALUE(UNIQUE(dataset), null),
     geometry_hash: hash,
     geometry_point_radius: @radius,
 	geometry_point: spot,
