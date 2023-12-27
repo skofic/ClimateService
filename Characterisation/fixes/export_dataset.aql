@@ -1,0 +1,2 @@
+FOR doc IN dataset
+RETURN UNSET(doc, '_id', '_rev')

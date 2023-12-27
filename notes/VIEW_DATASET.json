@@ -1,0 +1,81 @@
+{
+	"writebufferSizeMax": 33554432,
+	"id": "279465406563",
+	"storedValues": [],
+	"name": "VIEW_DATASET",
+	"type": "arangosearch",
+	"consolidationPolicy": {
+		"type": "tier",
+		"segmentsBytesFloor": 2097152,
+		"segmentsBytesMax": 5368709120,
+		"segmentsMax": 10,
+		"segmentsMin": 1,
+		"minScore": 0
+	},
+	"writebufferActive": 0,
+	"links": {
+		"dataset": {
+			"analyzers": ["identity"],
+			"fields": {
+				"std_terms": {},
+				"subjects": {},
+				"_subject": {},
+				"_key": {},
+				"_classes": {},
+				"std_date_end": {},
+				"std_terms_summary": {},
+				"_tag": {},
+				"std_terms_quant": {},
+				"_citation": {
+					"analyzers": [
+						"text_en",
+						"identity"
+					]
+				},
+				"_title": {
+					"fields": {
+						"iso_639_3_eng": {
+							"analyzers": [
+								"text_en",
+								"identity"
+							]
+						}
+					}
+				},
+				"count": {},
+				"std_terms_key": {},
+				"std_date_start": {},
+				"_domain": {},
+				"std_dataset": {},
+				"std_date_submission": {},
+				"_description": {
+					"fields": {
+						"iso_639_3_eng": {
+							"analyzers": [
+								"text_en",
+								"identity"
+							]
+						}
+					}
+				},
+				"std_project": {},
+				"species_list": {
+					"analyzers": [
+						"text_en",
+						"identity"
+					]
+				}
+			},
+			"includeAllFields": false,
+			"storeValues": "id",
+			"trackListPositions": false
+		}
+	},
+	"commitIntervalMsec": 1000,
+	"consolidationIntervalMsec": 1000,
+	"globallyUniqueId": "h151C1D49588D/279465406563",
+	"cleanupIntervalStep": 2,
+	"primarySort": [],
+	"primarySortCompression": "lz4",
+	"writebufferIdle": 64
+}
