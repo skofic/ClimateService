@@ -1,0 +1,24 @@
+///
+// Dump Drought Observatory with geometry hash..
+///
+FOR doc IN @@collection
+    
+	LET hash = MD5(
+		TO_STRING(
+			GEO_POLYGON(
+				doc.geometry_bounds.coordinates
+			)
+		)
+	)
+
+RETURN {
+	"_key": doc._key,
+	"std_date": doc.std_date,
+	"properties": doc.properties,
+	"std_terms": doc.std_terms,
+	"std_dataset_ids": doc.std_dataset_ids,
+	"geometry_hash": hash,
+	"geometry_point_radius": doc.geometry_point_radius,
+	"geometry_point": doc.geometry_point,
+	"geometry_bounds": doc.geometry_bounds
+}
