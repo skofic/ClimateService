@@ -221,7 +221,7 @@ europe = ee.Geometry.MultiPolygon(
 """Declare common functions"""
 
 ###
-# Export a descriptor from a feature collection in CSV format on Goofle Drive.
+# Export a descriptor from a feature collection in CSV format on Google Drive.
 #
 # filename:      Output variable name and filename.
 # regions:      Features collection.
@@ -359,6 +359,7 @@ model = ee.ImageCollection("projects/phenology-303215/assets/eu_dem") \
           .filterBounds(europe)
 
 # elevation
+# Descriptor: chr_AvElevation.
 descriptor = 'elevation'
 descriptor_mean = 'elevation_mean'
 descriptor_stDev = 'elevation_stdDev'
@@ -368,11 +369,13 @@ regions = model.median().reduceRegions(collection=polygons, reducer=reducer, sca
 exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_id, descriptor_mean, descriptor_stDev])
 
 # slope
+# Descriptor: chr_AvSlope.
 descriptor = 'slope'
 regions = model.map(lambda image: ee.Terrain.slope(image)).median().reduceRegions(collection=polygons, reducer=ee.Reducer.mean().setOutputs([descriptor]), scale=25)
 exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_id, descriptor])
 
 # aspect
+# Descriptor: chr_AvAspect.
 descriptor = 'aspect'
 regions = model.map(lambda image: ee.Terrain.aspect(image)).median().reduceRegions(collection=polygons, reducer=ee.Reducer.mean().setOutputs([descriptor]), scale=25)
 exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_id, descriptor])
@@ -380,6 +383,7 @@ exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_i
 """### Canopy height"""
 
 # Set globals
+# Descriptor: chr_AvCanopyHeight.
 year = 2019
 descriptor = 'canopy_height'
 filename = 'canopy_height_2019'
@@ -406,6 +410,7 @@ https://land.copernicus.eu/pan-european/high-resolution-layers/forests/dominant-
 """
 
 # Set globals
+# Descriptor: chr_DomLeafType.
 year = 2018
 descriptor = 'dominant_forest_type'
 filename = 'dominant_leaf_type'
@@ -428,6 +433,7 @@ https://climate.esa.int/en/projects/biomass/data/
 """
 
 # Set globals
+# Descriptor: chr_AvBiomass.
 year = 2010
 descriptor = 'biomass_2010'
 filename = 'biomass_2010'
@@ -449,9 +455,14 @@ exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_i
 #### Catalogue entry https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MOD11A2
 """
 
+###
+# MILKO - Date range is 200101-202112.
+#         2000-02-18T00:00:00Z–2024-02-26T00:00:00 At comment time.
+# Descriptor: chr_LandSurfTemp.
+###
 # Set references
 descriptor = 'LST_Day_1km'
-startDate = '2000-01-01'
+startDate = '2000-02-18'
 endDate = '2023-12-31'
 dataBand = 'LST_Day_1km'
 qualityBand = 'QC_Day'
@@ -468,7 +479,7 @@ collection = ee.ImageCollection("MODIS/061/MOD11A2") \
         .map(lambda image: selectQualityPixels(image=image, mask=(0 << 0), qualityBand=qualityBand, dataBand=dataBand))
 
 # Aggregate data by year and month.
-years = ee.List.sequence(2001, 2021, 1)
+years = ee.List.sequence(2000, 2023, 1)
 monthlyCollection = ee.ImageCollection.fromImages(years.map(lambda year: groupByMonth(collection=collection, year=year, multiplier=0.02)).flatten())
 
 # Apply zonal statistics reducer.
@@ -483,16 +494,21 @@ exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_i
 
 """
 
+###
+# MILKO - Date range is 200301-202112.
+#         2000-02-18T00:00:00Z–2024-02-26T00:00:00 At comment time.
+# Descriptor: chr_AvLeafAreaIdx.
+###
 # Set references
 descriptor = 'Lai_500m'
-startDate = '2003-01-01'
+startDate = '2000-02-18'
 endDate = '2023-12-31'
 dataBand = 'Lai_500m'
 qualityBand = 'FparLai_QC'
 
 # Filter image collection by:
 # selecting Europe bounds,
-# selecting years 2000 to 2021,
+# selecting years 2000 to 2023,
 # select quality and data bands,
 # select only good quality pixels.
 #https://gis.stackexchange.com/questions/376972/time-series-extraction-of-modis-lai-product-every-3-days-a-new-satellite-image
@@ -503,7 +519,7 @@ collection = ee.ImageCollection("MODIS/061/MOD15A2H") \
         .map(lambda image: selectQualityPixels(image=image, mask=(1 << 0), qualityBand=qualityBand, dataBand=dataBand))
 
 # Aggregate data by year and month.
-years = ee.List.sequence(2003, 2021, 1)
+years = ee.List.sequence(2000, 2023, 1)
 monthlyCollection = ee.ImageCollection.fromImages(years.map(lambda year: groupByMonth(collection=collection, year=year, multiplier=0.1)).flatten())
 
 # check this bit as it does not work. year need changing (2024)
@@ -519,6 +535,11 @@ exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_i
 #### Catalogue entry https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MYD17A2H?hl=en
 """
 
+###
+# MILKO - Date range is 200301-202112.
+#         2021-01-01T00:00:00Z–2024-02-26T00:00:00 At comment time.
+# Descriptor: chr_AvGrossPrimProd.
+###
 # Set references
 descriptor = 'Gpp'
 start_year = 2021
@@ -526,7 +547,7 @@ start_year = 2021
 startDate = '2021-01-01'
 end_year = 2023
 # endDate = '2021-12-31'
-endDate = '2023-08-05'
+endDate = '2023-12-31'
 dataBand = 'Gpp'
 qualityBand = 'Psn_QC'
 
@@ -556,11 +577,16 @@ exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_i
 #### Guido's original code https://code.earthengine.google.com/8efacef6da5c9cfcfffcecfb0027190c
 """
 
+###
+# MILKO - Date range is 200301-202112.
+#         2015-06-27T00:00:00Z–2024-03-15T15:04:04 At comment time.
+# Descriptor: chr_AvNormDiffVegIdx.
+###
 # Set references
 descriptor = 'ndvi'
 filename = 'ndvi'
-startDate = '2016-01-01'
-endDate = '2021-12-31'
+startDate = '2015-06-27'
+endDate = '2023-12-31'
 originalBandNames = ['QA60', 'B1','B2','B3','B4','B5','B6','B7','B8','B8A', 'B9','B10', 'B11','B12','probability']
 renamedBandNames  = ['QA60','cb', 'blue', 'green', 'red', 're1','re2','re3','nir', 'nir2', 'waterVapor', 'cirrus','swir1', 'swir2','probability']
 
@@ -668,9 +694,14 @@ exportFeatureCollection(filename=filename, regions=regions, selectors=[shape_id,
 #### Catalogue entry https://developers.google.com/earth-engine/datasets/catalog/MODIS_MCD43A4_006_NDWI
 """
 
+###
+# MILKO - Date range is 200301-202112.
+#         2000-02-24T00:00:00Z–2023-02-10T00:00:00 At comment time.
+# Descriptor: chr_AvNormDiffWaterIdx.
+###
 # Set references
 descriptor = 'NDWI'
-startDate = '2001-01-01'
+startDate = '2000-02-24'
 endDate = '2023-12-31'
 
 # Filter image collection by:
@@ -869,6 +900,11 @@ def statsWindByDay(descriptor, prefix, startYear, endYear, scale, projection):
                                          selectors=[shape_id, 'year', 'day', descriptor])
     task.start()
 
+###
+# MILKO - Date range is 20000101-20221230 At comment time.
+#         1950-01-01T01:00:00Z–2024-03-07T11:00:00.
+#         https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_HOURLY
+###
 # ERA 5 Globals.
 startYear = 2000
 endYear = 2023
@@ -878,6 +914,7 @@ projection = 'EPSG:4326'
 """#### Temperature"""
 
 # Set locals.
+# Descriptor: env_climate_temp-2m.
 band = 'temperature_2m'
 descriptor = 'temperature_2m'
 prefix = 'temperature_2m_'
@@ -888,6 +925,7 @@ statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear,
 """#### Precipitation"""
 
 # Set locals.
+# Descriptor: env_climate_tpr.
 descriptor = 'total_precipitation'
 band = 'total_precipitation'
 prefix = 'total_precipitation_'
@@ -903,6 +941,7 @@ The meteorological convention for winds is that U component is positive for a we
 """
 
 # Set globals.
+# Descriptor: env_climate_wind.
 descriptor = 'wind_speed'
 prefix = 'wind_speed_'
 projection = 'EPSG:4326'
@@ -913,24 +952,28 @@ statsWindByDay(descriptor=descriptor, prefix=prefix, startYear=startYear, endYea
 """### Soil water content"""
 
 # layer 1 Layer 1: 0 - 7cm
+# Descriptor: env_climate_soil_water_7.
 descriptor = 'soil_water_0_7cm'
 band = 'volumetric_soil_water_layer_1'
 prefix = 'soil_water_7cm_'
 statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear, endYear=endYear, scale=scale, projection=projection)
 
 # Layer 2: 7 - 28cm
+# Descriptor: env_climate_soil_water_28.
 descriptor = 'soil_water_7_28cm'
 band = 'volumetric_soil_water_layer_2'
 prefix = 'soil_water_28cm_'
 statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear, endYear=endYear, scale=scale, projection=projection)
 
 # Layer 3: 28 - 100cm
+# Descriptor: env_climate_soil_water_100.
 descriptor = 'soil_water_28_100cm'
 band = 'volumetric_soil_water_layer_3'
 prefix = 'soil_water_100cm_'
 statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear, endYear=endYear, scale=scale, projection=projection)
 
 # Layer 4: 100 - 289cm
+# Descriptor: env_climate_soil_water_289.
 descriptor = 'soil_water_100_289cm'
 band = 'volumetric_soil_water_layer_4'
 prefix = 'soil_water_289cm_'
@@ -939,24 +982,28 @@ statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear,
 """### Soil temperature"""
 
 # Layer 1: 0 - 7cm
+# Descriptor: env_climate_soil_temp_7.
 descriptor = 'soil_temperature_0_7cm'
 band = 'soil_temperature_level_1'
 prefix = 'soil_temperature_7cm_'
 statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear, endYear=endYear, scale=scale, projection=projection)
 
 # Layer 2: 7 - 28cm
+# Descriptor: env_climate_soil_temp_28.
 descriptor = 'soil_temperature_7_28cm'
 band = 'soil_temperature_level_2'
 prefix = 'soil_temperature_28cm_'
 statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear, endYear=endYear, scale=scale, projection=projection)
 
 # Layer 3: 28 - 100cm
+# Descriptor: env_climate_soil_temp_100.
 descriptor = 'soil_temperature_28_100cm'
 band = 'soil_temperature_level_3'
 prefix = 'soil_temperature_100cm_'
 statsByDay(descriptor=descriptor, band=band, prefix=prefix, startYear=startYear, endYear=endYear, scale=scale, projection=projection)
 
 # Layer 4: 100 - 289cm
+# Descriptor: env_climate_soil_temp_289.
 descriptor = 'soil_temperature_100_289cm'
 band = 'soil_temperature_level_4'
 prefix = 'soil_temperature_289cm_'
@@ -969,6 +1016,7 @@ Exchange of latent heat with the surface through turbulent diffusion. This varia
 """
 
 # Latent heat flux.
+# Descriptor: env_climate_slhf.
 descriptor = 'surface_latent_heat_flux'
 band = 'surface_latent_heat_flux'
 prefix = 'latent_heat_flux'
@@ -980,7 +1028,8 @@ Amount of solar radiation (also known as shortwave radiation) reaching the surfa
 
 """
 
-# Incoming solar radiation.
+# Surface net solar radiation.
+# Descriptor: env_climate_snsrad.
 descriptor = 'surface_net_solar_radiation'
 band = 'surface_net_solar_radiation'
 prefix = 'incoming_solar_radiation'
@@ -991,6 +1040,7 @@ Formula from https://en.wikipedia.org/wiki/Dew_point
 """
 
 # Relative humidity.
+# Descriptor: chr_RelHumid.
 descriptor = 'relative_humidity'
 prefix = 'relative_humidity'
 humidStatsByDay(descriptor=descriptor, prefix=prefix, startYear=startYear, endYear=endYear, scale=scale, projection=projection)
