@@ -1,0 +1,55 @@
+/**
+ * Extract geometry collection from WorldClim.
+ */
+FOR doc IN WorldClim
+
+  LET hash = MD5(
+    TO_STRING(
+      ( doc.geometry_bounds.type == "Polygon" )
+        ? GEO_POLYGON(doc.geometry_bounds.coordinates)
+        : GEO_MULTIPOLYGON(doc.geometry_bounds.coordinates)
+    )
+  )
+  
+  LET properties =
+    UNIQUE(
+      UNION(
+        ATTRIBUTES(doc.properties.topography),
+        REMOVE_VALUE(ATTRIBUTES(doc.properties.`1970-2000`), "std_date_span_month"),
+        REMOVE_VALUE(UNIQUE(FLATTEN(
+          FOR item IN doc.properties.`1970-2000`.std_date_span_month
+          RETURN ATTRIBUTES(item)
+        )), "std_month"),
+        REMOVE_VALUE(ATTRIBUTES(doc.properties.`2021-2040`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+        REMOVE_VALUE(UNIQUE(FLATTEN(
+          FOR item IN doc.properties.`2021-2040`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+          RETURN ATTRIBUTES(item)
+        )), "std_month"),
+        REMOVE_VALUE(ATTRIBUTES(doc.properties.`2041-2060`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+        REMOVE_VALUE(UNIQUE(FLATTEN(
+          FOR item IN doc.properties.`2041-2060`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+          RETURN ATTRIBUTES(item)
+        )), "std_month"),
+        REMOVE_VALUE(ATTRIBUTES(doc.properties.`2061-2080`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+        REMOVE_VALUE(UNIQUE(FLATTEN(
+          FOR item IN doc.properties.`2061-2080`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+          RETURN ATTRIBUTES(item)
+        )), "std_month"),
+        REMOVE_VALUE(ATTRIBUTES(doc.properties.`2081-2100`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+        REMOVE_VALUE(UNIQUE(FLATTEN(
+          FOR item IN doc.properties.`2081-2100`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+          RETURN ATTRIBUTES(item)
+        )), "std_month")
+      )
+    )
+
+RETURN {
+  _key: hash,
+  geometry: doc.geometry_bounds,
+  geometry_area: GEO_AREA(doc.geometry_bounds, "wgs84"),
+  std_date_start: "1970",
+  std_date_end: "2100",
+  std_date_spans: ["std_date_span_range"],
+  std_dataset_ids: doc.std_dataset_ids,
+  std_terms: properties
+}

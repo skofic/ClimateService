@@ -1,0 +1,23 @@
+/**
+ * Extract geometry collection from DroughtObservatory.
+ */
+FOR doc IN VIEW_DROUGHT_OBSERVATORY
+
+  COLLECT geometry_hash = doc.geometry_hash,
+          geometry = doc.geometry_bounds
+          
+  AGGREGATE terms = UNIQUE(doc.std_terms),
+            datasets = UNIQUE(doc.std_dataset_ids),
+            start = MIN(doc.std_date),
+            end = MAX(doc.std_date)
+
+RETURN {
+  _key: geometry_hash,
+  geometry: geometry,
+  geometry_area: GEO_AREA(geometry, "wgs84"),
+  std_date_start: start,
+  std_date_end: end,
+  std_date_spans: ["std_date_span_day"],
+  std_dataset_ids: UNIQUE(FLATTEN(datasets)),
+  std_terms: UNIQUE(FLATTEN(terms))
+}

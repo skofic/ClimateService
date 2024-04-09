@@ -1,0 +1,37 @@
+/**
+ * Extract geometry collection from ShapeData.
+ */
+FOR shp IN Shapes
+
+  LET data = (
+    FOR doc IN VIEW_SHAPE_DATA
+      SEARCH doc.geometry_hash == shp._key
+      
+      COLLECT AGGREGATE terms = UNIQUE(doc.std_terms),
+                        datasets = UNIQUE(doc.std_dataset_ids),
+                        spans = UNIQUE([doc.std_date_span]),
+                        start = MIN(doc.std_date),
+                        end = MAX(doc.std_date)
+    RETURN {
+      start: start,
+      end: end,
+      spans: spans,
+      datasets: datasets,
+      terms: terms
+    }
+  )[0]
+
+RETURN {
+  _key: shp._key,
+  geometry: shp.geometry,
+  chr_AvElevation: shp.properties.chr_AvElevation,
+  chr_StdElevation: shp.properties.chr_StdElevation,
+  chr_AvSlope: shp.properties.chr_AvSlope,
+  chr_AvAspect: shp.properties.chr_AvAspect,
+  geometry_area: GEO_AREA(shp.geometry, "wgs84"),
+  std_date_start: data.start,
+  std_date_end: data.end,
+  std_date_spans: UNIQUE(FLATTEN(data.spans)),
+  std_dataset_ids: UNIQUE(FLATTEN(data.datasets)),
+  std_terms: UNIQUE(FLATTEN(data.terms))
+}
