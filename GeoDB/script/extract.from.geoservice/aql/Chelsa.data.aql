@@ -1,0 +1,96 @@
+/**
+ * Extract data collection from Chelsa.
+ */
+FOR doc IN Chelsa
+
+  LET hash = MD5(
+    TO_STRING(
+      ( doc.geometry_bounds.type == "Polygon" )
+        ? GEO_POLYGON(doc.geometry_bounds.coordinates)
+        : GEO_MULTIPOLYGON(doc.geometry_bounds.coordinates)
+    )
+  )
+  
+  LET data = [
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "1981-2010"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "1981",
+      std_date_end: "2010",
+      properties: doc.properties.`1981-2010`,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNION(
+          REMOVE_VALUE(ATTRIBUTES(doc.properties.`1981-2010`), "std_date_span_month"),
+          REMOVE_VALUE(UNIQUE(FLATTEN(
+            FOR item IN doc.properties.`1981-2010`.std_date_span_month
+            RETURN ATTRIBUTES(item)
+          )), "std_month")
+        )
+      )
+    },
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "2011-2040"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "2011",
+      std_date_end: "2040",
+      properties: doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNIQUE(
+          UNION(
+            REMOVE_VALUE(ATTRIBUTES(doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+            REMOVE_VALUE(UNIQUE(FLATTEN(
+              FOR item IN doc.properties.`2011-2040`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+              RETURN ATTRIBUTES(item)
+            )), "std_month")
+          )
+        )
+      )
+    },
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "2041-2070"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "2041",
+      std_date_end: "2070",
+      properties: doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNIQUE(
+          UNION(
+            REMOVE_VALUE(ATTRIBUTES(doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+            REMOVE_VALUE(UNIQUE(FLATTEN(
+              FOR item IN doc.properties.`2041-2070`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+              RETURN ATTRIBUTES(item)
+            )), "std_month")
+          )
+        )
+      )
+    },
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "2071-2100"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "2071",
+      std_date_end: "2100",
+      properties: doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNIQUE(
+          UNION(
+            REMOVE_VALUE(ATTRIBUTES(doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+            REMOVE_VALUE(UNIQUE(FLATTEN(
+              FOR item IN doc.properties.`2071-2100`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+              RETURN ATTRIBUTES(item)
+            )), "std_month")
+          )
+        )
+      )
+    }
+  ]
+  
+  FOR item IN data
+  RETURN item

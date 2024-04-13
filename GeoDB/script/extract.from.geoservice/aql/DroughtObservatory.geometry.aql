@@ -1,0 +1,56 @@
+/**
+ * Extract geometry collection from DroughtObservatory.
+ */
+ /*
+FOR doc IN DroughtObservatoryMap
+
+  LIMIT 10
+
+  LET data = (
+    FOR dat IN VIEW_DROUGHT_OBSERVATORY
+      SEARCH dat.geometry_hash == doc._key
+    RETURN {
+      terms: dat.std_terms,
+      datasets: dat.std_dataset_ids,
+      date: dat.std_date
+    }
+  )
+
+RETURN {
+  _key: doc._key,
+  geometry: doc.geometry,
+  geometry_point: doc.geometry_point,
+  geometry_point_radius: doc.geometry_point_radius,
+  geometry_area: GEO_AREA(doc.geometry, "wgs84"),
+  std_date_start: MIN(data[*].date),
+  std_date_end: MAX(data[*].date),
+  std_date_spans: ["std_date_span_day"],
+  std_dataset_ids: UNIQUE(FLATTEN(data[*].datasets)),
+  std_terms: UNIQUE(FLATTEN(data[*].terms))
+}
+*/
+
+FOR doc IN VIEW_DROUGHT_OBSERVATORY
+
+  COLLECT hash = doc.geometry_hash,
+          shape = doc.geometry_bounds,
+          point = doc.geometry_point,
+          radius = doc.geometry_point_radius
+          
+  AGGREGATE terms = UNIQUE(doc.std_terms),
+            datasets = UNIQUE(doc.std_dataset_ids),
+            start = MIN(doc.std_date),
+            end = MAX(doc.std_date)
+
+RETURN {
+  _key: hash,
+  geometry: shape,
+  geometry_point: point,
+  geometry_point_radius: radius,
+  geometry_area: GEO_AREA(shape, "wgs84"),
+  std_date_start: start,
+  std_date_end: end,
+  std_date_spans: ["std_date_span_day"],
+  std_dataset_ids: UNIQUE(FLATTEN(datasets)),
+  std_terms: UNIQUE(FLATTEN(terms))
+}

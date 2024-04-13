@@ -40,6 +40,8 @@ FOR doc IN Chelsa
 RETURN {
   _key: hash,
   geometry: doc.geometry_bounds,
+  geometry_point: doc.geometry_point,
+  geometry_point_radius: 0.004166665,
   geometry_area: GEO_AREA(doc.geometry_bounds, "wgs84"),
   std_date_start: "1981",
   std_date_end: "2100",

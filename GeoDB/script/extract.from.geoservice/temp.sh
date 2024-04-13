@@ -1,27 +1,25 @@
 #!/bin/sh
 
 ###
-# Export geometries.
+# Import data.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.GeoService"
-file="${path}/GeoDB/data/1.geometries.chelsa.jsonl.gz"
-query="${path}/GeoDB/script/extract.from.geoservice/aql/Chelsa.aql"
 
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> export..sh"
+echo "==> 4.import.data.sh"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
 START=$(date +%s)
 
 ###
-# Export Chelsa.
+# Import WorldClim.
 ###
-cmd="${path}/GeoDB/script/extract.from.geoservice/export.geometries.chelsa.sh"
+cmd="${path}/GeoDB/script/extract.from.geoservice/import.data.worldclim.sh"
 sh $cmd
 if [ $? -ne 0 ]
 then
@@ -32,9 +30,9 @@ then
 fi
 
 ###
-# Export WorldClim.
+# Import ShapeData.
 ###
-cmd="${path}/GeoDB/script/extract.from.geoservice/export.geometries.worldclim.sh"
+cmd="${path}/GeoDB/script/extract.from.geoservice/import.data.rs.sh"
 sh $cmd
 if [ $? -ne 0 ]
 then
@@ -45,22 +43,9 @@ then
 fi
 
 ###
-# Export DroughtObservatory.
+# Import DroughtObservatory.
 ###
-cmd="${path}/GeoDB/script/extract.from.geoservice/export.geometries.edo.sh"
-sh $cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Export ShapeData.
-###
-cmd="${path}/GeoDB/script/extract.from.geoservice/export.geometries.rs.sh"
+cmd="${path}/GeoDB/script/extract.from.geoservice/import.data.edo.sh"
 sh $cmd
 if [ $? -ne 0 ]
 then
@@ -74,6 +59,6 @@ END=$(date +%s)
 elapsed=$((END-START))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> export..sh - TOTAL TIME: $elapsed seconds"
+echo "==> 4.import.data.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""

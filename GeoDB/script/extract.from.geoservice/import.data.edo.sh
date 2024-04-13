@@ -1,51 +1,40 @@
 #!/bin/sh
 
 ###
-# Export Chelsa geometries.
+# Import DroughtObservatory data.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.GeoService"
-name="Chelsa"
-file="${path}/GeoDB/data/${name}.geometry.jsonl.gz"
-cache="${expo}/geometry"
-query="${path}/GeoDB/script/extract.from.geoservice/aql/${name}.geometry.aql"
+db="GeoDB"
+name="DroughtObservatory"
+file="${path}/GeoDB/data/${name}.data.jsonl.gz"
 
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> export.geometries.chelsa.sh"
+echo "==> import.data.edo.sh"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
 START=$(date +%s)
 
 ###
-# Export data to JSONL file.
+# Import data from JSONL file.
 ###
-arangoexport \
+arangoimport \
 	--server.endpoint "$host" \
-	--server.database "$base" \
+	--server.database "$db" \
 	--server.username "$user" \
 	--server.password "$pass" \
-	--output-directory "$cache" \
-	--custom-query-file "$query" \
+	--file "$file" \
 	--type "jsonl" \
-	--compress-output true \
+	--collection "$name" \
+	--create-collection true \
+	--create-collection-type "document" \
+	--auto-rate-limit true \
 	--overwrite true \
 	--progress true
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Move file to its directory.
-###
-mv -f "${cache}/query.jsonl.gz" "$file"
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -58,6 +47,6 @@ END=$(date +%s)
 elapsed=$((END-START))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> export.geometries.chelsa.sh - TOTAL TIME: $elapsed seconds"
+echo "==> import.data.edo.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""

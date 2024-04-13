@@ -8,8 +8,10 @@
 # Load default parameters.
 ###
 source "${HOME}/.GeoService"
-file="${path}/GeoDB/data/3.geometries.edo.jsonl.gz"
-query="${path}/GeoDB/script/extract.from.geoservice/aql/DroughtObservatory.aql"
+name="DroughtObservatory"
+file="${path}/GeoDB/data/${name}.geometry.jsonl.gz"
+cache="${expo}/geometry"
+query="${path}/GeoDB/script/extract.from.geoservice/aql/${name}.geometry.aql"
 
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
@@ -26,11 +28,12 @@ arangoexport \
 	--server.database "$base" \
 	--server.username "$user" \
 	--server.password "$pass" \
-	--output-directory "$expo" \
+	--output-directory "$cache" \
 	--custom-query-file "$query" \
 	--type "jsonl" \
 	--compress-output true \
 	--overwrite true \
+	--documents-per-batch 25 \
 	--progress true
 if [ $? -ne 0 ]
 then
@@ -43,7 +46,7 @@ fi
 ###
 # Move file to its directory.
 ###
-mv -f "${expo}/query.jsonl.gz" "$file"
+mv -f "${cache}/query.jsonl.gz" "$file"
 if [ $? -ne 0 ]
 then
 	echo "*************"

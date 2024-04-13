@@ -4,6 +4,7 @@
 FOR doc IN WorldClim
 
   LET hash = MD5(
+  
     TO_STRING(
       ( doc.geometry_bounds.type == "Polygon" )
         ? GEO_POLYGON(doc.geometry_bounds.coordinates)
@@ -46,6 +47,8 @@ FOR doc IN WorldClim
 RETURN {
   _key: hash,
   geometry: doc.geometry_bounds,
+  geometry_point: doc.geometry_point,
+  geometry_point_radius: 0.004166665,
   geometry_area: GEO_AREA(doc.geometry_bounds, "wgs84"),
   std_date_start: "1970",
   std_date_end: "2100",

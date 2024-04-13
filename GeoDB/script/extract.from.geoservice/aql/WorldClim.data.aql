@@ -1,0 +1,121 @@
+/**
+ * Extract data collection from WorldClim.
+ */
+FOR doc IN WorldClim
+
+  LET hash = MD5(
+    TO_STRING(
+      ( doc.geometry_bounds.type == "Polygon" )
+        ? GEO_POLYGON(doc.geometry_bounds.coordinates)
+        : GEO_MULTIPOLYGON(doc.geometry_bounds.coordinates)
+    )
+  )
+  
+  LET data = [
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "1970-2000"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "1970",
+      std_date_end: "2000",
+      geo_shape_elevation: doc.geo_shape_elevation,
+      properties: doc.properties.`1970-2000`,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNION(
+          REMOVE_VALUE(ATTRIBUTES(doc.properties.`1970-2000`), "std_date_span_month"),
+          REMOVE_VALUE(UNIQUE(FLATTEN(
+            FOR item IN doc.properties.`1970-2000`.std_date_span_month
+            RETURN ATTRIBUTES(item)
+          )), "std_month")
+        )
+      )
+    },
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "2021-2040"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "2021",
+      std_date_end: "2040",
+      geo_shape_elevation: doc.geo_shape_elevation,
+      properties: doc.properties.`2021-2040`.`MPI-ESM1-2-HR`.ssp370,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNIQUE(
+          UNION(
+            REMOVE_VALUE(ATTRIBUTES(doc.properties.`2021-2040`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+            REMOVE_VALUE(UNIQUE(FLATTEN(
+              FOR item IN doc.properties.`2021-2040`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+              RETURN ATTRIBUTES(item)
+            )), "std_month")
+          )
+        )
+      )
+    },
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "2041-2060"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "2041",
+      std_date_end: "2060",
+      geo_shape_elevation: doc.geo_shape_elevation,
+      properties: doc.properties.`2041-2060`.`MPI-ESM1-2-HR`.ssp370,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNIQUE(
+          UNION(
+            REMOVE_VALUE(ATTRIBUTES(doc.properties.`2041-2060`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+            REMOVE_VALUE(UNIQUE(FLATTEN(
+              FOR item IN doc.properties.`2041-2060`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+              RETURN ATTRIBUTES(item)
+            )), "std_month")
+          )
+        )
+      )
+    },
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "2061-2080"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "2061",
+      std_date_end: "2080",
+      geo_shape_elevation: doc.geo_shape_elevation,
+      properties: doc.properties.`2061-2080`.`MPI-ESM1-2-HR`.ssp370,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNIQUE(
+          UNION(
+            REMOVE_VALUE(ATTRIBUTES(doc.properties.`2061-2080`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+            REMOVE_VALUE(UNIQUE(FLATTEN(
+              FOR item IN doc.properties.`2061-2080`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+              RETURN ATTRIBUTES(item)
+            )), "std_month")
+          )
+        )
+      )
+    },
+    {
+      _key: CONCAT_SEPARATOR(":", hash, "2081-2100"),
+      geometry_hash: hash,
+      std_date_span: "std_date_span_range",
+      std_date_start: "2081",
+      std_date_end: "2100",
+      geo_shape_elevation: doc.geo_shape_elevation,
+      properties: doc.properties.`2081-2100`.`MPI-ESM1-2-HR`.ssp370,
+      std_dataset_ids: doc.std_dataset_ids,
+      std_terms: UNIQUE(
+        UNIQUE(
+          UNION(
+            REMOVE_VALUE(ATTRIBUTES(doc.properties.`2081-2100`.`MPI-ESM1-2-HR`.ssp370), "std_date_span_month"),
+            REMOVE_VALUE(UNIQUE(FLATTEN(
+              FOR item IN doc.properties.`2081-2100`.`MPI-ESM1-2-HR`.ssp370.std_date_span_month
+              RETURN ATTRIBUTES(item)
+            )), "std_month")
+          )
+        )
+      )
+    }
+  ]
+  
+  FOR item IN data
+  RETURN item

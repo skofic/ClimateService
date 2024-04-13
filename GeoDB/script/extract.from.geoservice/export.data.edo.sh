@@ -1,21 +1,21 @@
 #!/bin/sh
 
 ###
-# Export Chelsa geometries.
+# Export DroughtObservatory data.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.GeoService"
-name="Chelsa"
-file="${path}/GeoDB/data/${name}.geometry.jsonl.gz"
-cache="${expo}/geometry"
-query="${path}/GeoDB/script/extract.from.geoservice/aql/${name}.geometry.aql"
+name="DroughtObservatory"
+file="${path}/GeoDB/data/${name}.data.jsonl.gz"
+cache="${expo}/data"
+query="${path}/GeoDB/script/extract.from.geoservice/aql/${name}.data.aql"
 
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> export.geometries.chelsa.sh"
+echo "==> export.data.edo.sh"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
 START=$(date +%s)
@@ -58,6 +58,6 @@ END=$(date +%s)
 elapsed=$((END-START))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> export.geometries.chelsa.sh - TOTAL TIME: $elapsed seconds"
+echo "==> export.data.edo.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
