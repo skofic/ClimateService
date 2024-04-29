@@ -1,26 +1,39 @@
 #!/bin/sh
 
 ###
-# Import data.
+# Import Chelsa geometry.
 ###
 
 ###
 # Load default parameters.
 ###
 source "${HOME}/.GeoService"
+db="GeoDB"
+name="Chelsa"
+file="/home/ArangoDB/export/GeoDB/GeoDB.${name}.geometry.jsonl.gz"
 
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> 4.import.data.sh"
+echo "==> import.data.chelsa.sh"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""
 START=$(date +%s)
 
 ###
-# Import WorldClim.
+# Import data from JSONL file.
 ###
-cmd="${path}/GeoDB/script/extract.from.geoservice/import.data.worldclim.sh"
-sh $cmd
+arangoimport \
+	--server.endpoint "$host" \
+	--server.database "$db" \
+	--server.username "$user" \
+	--server.password "$pass" \
+	--file "$file" \
+	--type "jsonl" \
+	--collection "GEOMETRY" \
+	--create-collection true \
+	--create-collection-type "document" \
+	--overwrite true \
+	--progress true
 if [ $? -ne 0 ]
 then
 	echo "*************"
@@ -28,37 +41,12 @@ then
 	echo "*************"
 	exit 1
 fi
-
-###
-# Import ShapeData.
-###
-cmd="${path}/GeoDB/script/extract.from.geoservice/import.data.rs.sh"
-sh $cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
-
-###
-# Import DroughtObservatory.
-###
-cmd="${path}/GeoDB/script/extract.from.geoservice/import.data.edo.sh"
-sh $cmd
-if [ $? -ne 0 ]
-then
-	echo "*************"
-	echo "*** ERROR ***"
-	echo "*************"
-	exit 1
-fi
+# 	--auto-rate-limit true \
 
 END=$(date +%s)
 elapsed=$((END-START))
 echo ""
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
-echo "==> 4.import.data.sh - TOTAL TIME: $elapsed seconds"
+echo "==> import.data.chelsa.sh - TOTAL TIME: $elapsed seconds"
 echo "==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>"
 echo ""

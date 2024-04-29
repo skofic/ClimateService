@@ -1,0 +1,31 @@
+/**
+ * Merge temp in Geometry collection.
+ */
+FOR doc IN temp
+
+UPSERT {
+  _key: doc._key
+}
+
+INSERT {
+  _key: doc._key,
+  geometry: doc.geometry,
+  geometry_point: doc.geometry_point,
+  geometry_point_radius: doc.geometry_point_radius,
+  geometry_area: doc.geometry_area,
+  std_date_start: doc.std_date_start,
+  std_date_end: doc.std_date_end,
+  std_date_spans: doc.std_date_spans,
+  std_dataset_ids: doc.std_dataset_ids,
+  std_terms: doc.std_terms
+}
+
+UPDATE {
+  std_date_start: MIN([doc.std_date_start, OLD.std_date_start]),
+  std_date_end: MAX([doc.std_date_end, OLD.std_date_end]),
+  std_date_spans: UNIQUE(FLATTEN([doc.std_date_spans, OLD.std_date_spans])),
+  std_dataset_ids: UNIQUE(FLATTEN([doc.std_dataset_ids, OLD.std_dataset_ids])),
+  std_terms: UNIQUE(FLATTEN([doc.std_terms, OLD.std_terms]))
+}
+
+IN Geometry

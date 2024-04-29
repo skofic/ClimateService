@@ -11,12 +11,21 @@ Original file is located at
 
 !pip install geemap
 
-!earthengine authenticate
+# Import Earth Engine library
+import ee
+
+# Trigger the authentication flow.
+ee.Authenticate()
+
+# Initialize the library.
+ee.Initialize(project='heroic-bird-417714')
+
+#!earthengine authenticate
 
 """Import relevant python modules"""
 
-import ee
-ee.Initialize()
+#import ee
+#ee.Initialize()
 import geemap
 Map = geemap.Map()
 from IPython.display import JSON
@@ -462,7 +471,7 @@ exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_i
 ###
 # Set references
 descriptor = 'LST_Day_1km'
-startDate = '2000-02-18'
+startDate = '2000-03-01'
 endDate = '2023-12-31'
 dataBand = 'LST_Day_1km'
 qualityBand = 'QC_Day'
@@ -581,6 +590,7 @@ exportFeatureCollection(filename=descriptor, regions=regions, selectors=[shape_i
 # MILKO - Date range is 200301-202112.
 #         2015-06-27T00:00:00Z–2024-03-15T15:04:04 At comment time.
 # Descriptor: chr_AvNormDiffVegIdx.
+# Link: https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2
 ###
 # Set references
 descriptor = 'ndvi'
@@ -906,8 +916,8 @@ def statsWindByDay(descriptor, prefix, startYear, endYear, scale, projection):
 #         https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_HOURLY
 ###
 # ERA 5 Globals.
-startYear = 2000
-endYear = 2023
+startYear = 1950
+endYear = 2024
 scale = 1000
 projection = 'EPSG:4326'
 

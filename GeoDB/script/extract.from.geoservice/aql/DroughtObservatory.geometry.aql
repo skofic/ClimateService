@@ -29,7 +29,7 @@ RETURN {
   std_terms: UNIQUE(FLATTEN(data[*].terms))
 }
 */
-
+/*
 FOR doc IN VIEW_DROUGHT_OBSERVATORY
 
   COLLECT hash = doc.geometry_hash,
@@ -53,4 +53,14 @@ RETURN {
   std_date_spans: ["std_date_span_day"],
   std_dataset_ids: UNIQUE(FLATTEN(datasets)),
   std_terms: UNIQUE(FLATTEN(terms))
+}
+*/
+FOR doc IN DroughtObservatoryMap
+
+RETURN {
+  _key: doc._key,
+  geometry: doc.geometry,
+  geometry_point: doc.geometry_point,
+  geometry_point_radius: doc.geometry_point_radius,
+  geometry_area: GEO_AREA(doc.geometry, "wgs84")
 }
